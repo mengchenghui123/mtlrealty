@@ -126,3 +126,9 @@ a {
     font-size: 1.2rem;
   }
 }
+
+
+/* rent page css style, write here temporary */
+.rent-list{
+  border: 2px solid blue;
+}

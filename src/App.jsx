@@ -1,21 +1,16 @@
-import Header from './components/Header/Header'
-import Hero from './components/Hero/Hero'
-import Residencies from './components/Residencies/Risidencies'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Rent from './pages/Rent'
 
 
 function App() {
   return (
-    <div className="App">
-      <div>
-        <div className="white-gradient">
-          <Header/>
-          <Hero/>
-          <Residencies/>
-      </div>
-      
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/rent' element={<Rent />} />
+      </Routes>
+    </Router>
   );
 }
 
