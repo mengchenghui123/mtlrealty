@@ -13,7 +13,7 @@ export const Risidencies = () => {
                 <span className="orangeText">Best Choice</span>
                 <span className="primarytext">popular Residencies</span>
             </div>
-
+    {/* working on this */}
             <Swiper {...sliderSettings}>
                 {
                     data.map((card, i)=>(
