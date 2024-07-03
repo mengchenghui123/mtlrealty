@@ -1,0 +1,22 @@
+ .Hero{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+} 
+.hero-slider{
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.hero-image-container{
+    flex: 0 0 100%;
+    height: 100%;
+}
+
+.hero-image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
