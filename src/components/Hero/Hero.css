@@ -3,6 +3,7 @@
     width: 100%;
     height: 400px;
     overflow: hidden;
+    z-index: 1;
 } 
 .hero-slider{
     display: flex;
@@ -17,6 +18,6 @@
 
 .hero-image{
     width: 100%;
-    height: 100%;
+    height: 700px;
     object-fit: cover;
 }
