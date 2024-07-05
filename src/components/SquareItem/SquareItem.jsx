@@ -3,12 +3,14 @@ import './SquareItem.css';
 
 const SquareItem = ({ item }) => {
   return (
-    <div className="rent-item">
-      <img src={item.image} alt={item.name} />
-      <div className="rent-details">
+    <div className="rent-item r-card">
+      <img src={item.image} alt="property" />
+      <div className="secondaryText r-price price-line">
+        <p className='dollar'>$</p>
         <p className="rent-price">{item.price}</p>
-        <p className="rent-name">{item.name}</p>
       </div>
+      <p className="rent-name">{item.name}</p>
+      <p className="secondaryText">{item.detail}</p>
     </div>
   );
 };

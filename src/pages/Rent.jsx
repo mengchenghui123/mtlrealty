@@ -1,4 +1,4 @@
-import React from 'react'
+import Header from '../components/Header/Header'
 import SquareItem from '../components/SquareItem/SquareItem';
 import data from '../utils/slider.json'
 
@@ -8,11 +8,17 @@ const Rent = () => {
   
   return (
     <div className="rent-page">
-      <h1>Rent List</h1>
-      <div className="rent-list">
-        {data.map(item => (
-          <SquareItem key={item.id} item={item} />
-        ))}
+      <Header />
+      <div className="container">
+        <div className='content-box'>
+          <h1 className='title'>Rent Listings</h1>
+          <div className='break-line' />
+          <div className="rent-list">
+            {data.map((item, index) => (
+              <SquareItem key={index} item={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

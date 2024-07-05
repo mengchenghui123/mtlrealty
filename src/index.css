@@ -129,6 +129,40 @@ a {
 
 
 /* rent page css style, write here temporary */
+.container{
+  padding: 0 1rem;
+  margin: 2rem 0;
+}
+
+.title{
+  color: #1b1b1e;
+  margin-top: 10px;
+}
+
 .rent-list{
   border: 2px solid blue;
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  gap: 10px;
+  padding: 20px;
+}
+
+@media(min-width:640px) {
+  .container{
+  margin: 4rem 0;
+  }
+
+  .content-box{
+    padding: 2.5rem;
+  }
+  
+  .rent-list{
+    grid-template-columns: repeat(2,1fr);
+  }
+  
+  .break-line{
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
 }
