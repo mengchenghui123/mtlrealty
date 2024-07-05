@@ -1,3 +1,4 @@
+import React from 'react'
 import './SquareItem.css';
 
 const SquareItem = ({ item }) => {

@@ -1,9 +1,7 @@
 import React from 'react'
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
 import "swiper/css"
 import './Residencies.css'
 import data from '../../utils/slider.json'
-import { sliderSettings } from '../../utils/Common'
 
 export const Risidencies = () => {
   return (
@@ -13,12 +11,12 @@ export const Risidencies = () => {
                 <span className="orangeText">Best Choice</span>
                 <span className="primarytext">popular Residencies</span>
             </div>
-    {/* working on this */}
-            <Swiper {...sliderSettings}>
+
+
+            <div className="r-grid">
                 {
-                    data.map((card, i)=>(
-                        <SwiperSlide key={i}>
-                            <div className="flexColStart r-card">
+                    data.slice(0,8).map((card, i)=>(
+                            <div className="flexColStart r-card" key={i}>
                                 <img src={card.image} alt="home" />
                                 <span className='secondaryText r-price'>
                                     <span style={{color: "orange"}}>$</span>
@@ -27,10 +25,13 @@ export const Risidencies = () => {
                                 <span className="primaryText">{card.name}</span>
                                 <span className="secondaryText">{card.detail}</span>
                             </div>
-                        </SwiperSlide>
-                    ))  
-                }
-            </Swiper>
+                    ))}
+            </div>
+            <div className="view-more-container">
+                <button className="view-more-button">
+                    View More
+                </button>
+            </div>
         </div>
     </section>
   )
