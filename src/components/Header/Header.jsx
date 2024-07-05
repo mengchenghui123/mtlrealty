@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {Link} from 'react-router-dom';
 import './Header.css';
 
@@ -9,6 +9,7 @@ const Header = () => {
     franchise: false,
   });
 
+  //drop down menu
   const toggleDropDown=(menu)=>{
     console.log(`${menu} dropdown toggled`, !dropdowns[menu]);
     setDropdowns({
@@ -17,8 +18,27 @@ const Header = () => {
     });
   };
 
+  // Navigator follow
+  const [isheaderVisible, setIsHeaderVisible] = useState(true);
+  const prevScrollY = useRef(0);
+
+  useEffect(()=>{
+    const handleScroll = () =>{
+      const currentScrollY = window.scrollY;
+      if(prevScrollY.current < currentScrollY && currentScrollY>100){
+        setIsHeaderVisible(false);
+      }else{
+        setIsHeaderVisible(true);
+      }
+      prevScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return ()=> window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+
   return (
-    <section className="h_wrapper">
+    <section className={`h_wrapper ${isheaderVisible?'' : 'hidden'}`}>
         <div className="flexCenter paddings innerWidth h-container">
             <img src="./logo.png" alt="logi" width={100}/>
 
@@ -26,8 +46,8 @@ const Header = () => {
 
               {/*Residential */}
               <div className="menu-item" 
-              onMouseEnter={()=>{console.log("mouse entered"); toggleDropDown('residential');}}
-              onMouseLeave={()=>{console.log("mouse lefe"); toggleDropDown('residential');}}>
+              onMouseEnter={()=>{ toggleDropDown('residential');}}
+              onMouseLeave={()=>{ toggleDropDown('residential');}}>
               
                 <a href="">Residential</a>
 
