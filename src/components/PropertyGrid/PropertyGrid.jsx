@@ -6,9 +6,11 @@ const PropertyGrid=({properties, title})=>{
     return (
         
         <div className="property-grid-wrapper">
+
             <div className="r-head flexColStart">
                 <span className="orangeText">{title}</span>
             </div>
+
         <div className="r-grid">
             {properties.map((card,i)=>(
                 <div className="flexColStart r-card" key={i}>
@@ -22,6 +24,7 @@ const PropertyGrid=({properties, title})=>{
                 </div>
             ))}
         </div>
+        
         <div className="view-more-container">
             <button className="view-more-button">View More</button>
         </div>
