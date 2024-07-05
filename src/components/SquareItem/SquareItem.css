@@ -1,3 +1,14 @@
 .rent-item{
-  border: 1px solid red;
+  >img{
+    width: 100%;
+    max-width: 40rem;
+  }
+}
+.dollar{
+  color: orange;
+}
+.price-line{
+  >p{
+    display: inline;
+  }
 }
