@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer';
 import SquareItem from '../components/SquareItem/SquareItem';
 import data from '../utils/slider.json'
 
@@ -114,6 +115,7 @@ const Rent = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

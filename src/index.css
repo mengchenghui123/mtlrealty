@@ -129,6 +129,10 @@ a {
 
 
 /* rent page css style, write here temporary */
+.rent-page{
+  margin-top: 200px;
+}
+
 .container{
   padding: 0 1rem;
   margin: 2rem 0;
@@ -140,7 +144,6 @@ a {
 }
 
 .rent-list{
-  border: 2px solid blue;
   display: grid;
   grid-template-columns: repeat(1,1fr);
   gap: 10px;
@@ -185,6 +188,10 @@ a {
 }
 
 @media(min-width:640px) {
+  .rent-page{
+    margin-top: 0;
+  }
+
   .container{
   margin: 4rem 0;
   }

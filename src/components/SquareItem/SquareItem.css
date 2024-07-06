@@ -1,8 +1,5 @@
 .rent-item{
-  >img{
-    width: 100%;
-    max-width: 40rem;
-  }
+  max-width: 40rem;
 }
 .dollar{
   color: orange;
