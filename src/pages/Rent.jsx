@@ -6,7 +6,6 @@ import data from '../utils/slider.json'
 
 const Rent = () => {
 
-  console.log("Rent compoenent rendered");
 
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10;

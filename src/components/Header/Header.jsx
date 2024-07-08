@@ -11,7 +11,6 @@ const Header = () => {
 
   //drop down menu
   const toggleDropDown=(menu)=>{
-    console.log(`${menu} dropdown toggled`, !dropdowns[menu]);
     setDropdowns({
       ...dropdowns,
       [menu]: !dropdowns[menu]
@@ -94,7 +93,7 @@ const Header = () => {
 
               {/*Contact & news */}
                 <div className="menu-Item">
-                <Link to="#">Contact</Link>
+                <Link to="../../contact">Contact</Link>
                 </div>
                 <div className="menu-Item">
                 <Link to="#">News</Link>
