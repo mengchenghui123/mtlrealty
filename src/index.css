@@ -150,12 +150,6 @@ a {
   padding: 20px;
 }
 
-.filters-box{
-  border: 1px solid red;
-  display: flex;
-  justify-content: space-between;
-}
-
 .pagination-container{
   display: flex;
   justify-content: center;

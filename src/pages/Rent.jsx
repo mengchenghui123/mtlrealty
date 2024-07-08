@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer';
 import SquareItem from '../components/SquareItem/SquareItem';
+import Filters from '../components/Filters/Filters';
 import data from '../utils/slider.json'
 
 const Rent = () => {
@@ -86,12 +87,7 @@ const Rent = () => {
         <div className='content-box'>
           <h1 className='title'>Rent Listings</h1>
           <div className='break-line' />
-          <div className='filters-box'>
-            <div>filter 1</div>
-            <div>filter 2</div>
-            <div>filter 3</div>
-            <button>Submit</button>
-          </div>
+          <Filters />
           <div className="rent-list">
             {currentPageData.map((item) => (
               <SquareItem key={item.id} item={item} />

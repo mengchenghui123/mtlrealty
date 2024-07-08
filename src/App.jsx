@@ -1,16 +1,23 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Rent from './pages/Rent';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/rent",
+    element: <Rent />,
+  },
+]);
 
 function App() {
   return (
-    <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/rent' element={<Rent />} />
-    </Routes>
+    <RouterProvider router={router} />
   );
 }
 
