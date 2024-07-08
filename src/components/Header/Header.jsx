@@ -48,7 +48,7 @@ const Header = () => {
               onMouseEnter={()=>{ toggleDropDown('residential');}}
               onMouseLeave={()=>{ toggleDropDown('residential');}}>
               
-                <a href="">Residential</a>
+                <Link to="/">Residential</Link>
 
                 {dropdowns.residential && (
                   <div className="dropdown">
