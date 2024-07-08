@@ -1,23 +1,18 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Rent from './pages/Rent';
+import Contact from './pages/Contact'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/rent",
-    element: <Rent />,
-  },
-]);
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/rent' element={<Rent />} />
+        <Route path = 'contact' element={<Contact />} />
+    </Routes>
   );
 }
 

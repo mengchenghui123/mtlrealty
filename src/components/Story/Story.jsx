@@ -9,7 +9,7 @@ export const Story = () => {
                 <p className="our-story-contain">
                 Joseph Montanaro is an active real estate broker representing Buyers and 
                 Sellers of high-end Real Estate throughout greater Montreal and surrounding 
-                areas. Joseph’s professional career as a licensed architect began 
+                areas. Joseph's professional career as a licensed architect began 
                 in Manhattan. As a designer and project manager in New York City, 
                 Joseph worked for some of the most recognized luxury brands such as Cartier, 
                 where he managed the design and construction of upscale boutiques throughout
