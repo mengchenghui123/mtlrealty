@@ -1,6 +1,6 @@
 import { Form } from 'react-router-dom'
 import FormSelect from '../FormSelect/FormSelect';
-import FormRange from '../FormRange/FormRang';
+import FormRange from '../FormRange/FormRange';
 import './Filters.css'
 
 const Filters = () => {
