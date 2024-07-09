@@ -1,8 +1,16 @@
 import React from 'react'
 import './PropertyGrid.css'
 import PropTypes from 'prop-types'
+import {useNavigate} from 'react-router-dom';
 
 const PropertyGrid=({properties, title})=>{
+
+const navigate = useNavigate();
+
+const handleCardClick = (id) =>{
+    navigate(`/property/${id}`);
+};
+
     return (
         
         <div className="property-grid-wrapper">
@@ -13,7 +21,7 @@ const PropertyGrid=({properties, title})=>{
 
         <div className="r-grid">
             {properties.map((card,i)=>(
-                <div className="flexColStart r-card" key={i}>
+                <div className="flexColStart r-card" key={i} onClick={()=> handleCardClick(card.id)}>
                     <img src={card.image} alt="home" />
                     <span className="secondaryText r-price">
                         <span style={{color:"orange"}}>$</span>
@@ -35,6 +43,7 @@ const PropertyGrid=({properties, title})=>{
 PropertyGrid.prototype={
     properties:PropTypes.arrayOf(
         PropTypes.shape({
+            id:PropTypes.number.isRequired,
             image: PropTypes.string,
             price: PropTypes.string,
             name: PropTypes.string,

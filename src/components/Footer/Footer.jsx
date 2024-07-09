@@ -2,12 +2,12 @@ import React from 'react'
 import './Footer.css'
 
 export const Footer = () => {
+    console.log("aaa");
   return (
-    <>
-    <div className="Footer">
+    <footer className="footer">
         <div className="container">
         <div className="row">
-            <div className="col-md-6 col-lg-5 col-12 ft-1">
+            <div className="col-md-4 ft-1">
                 <h3>Richard Zhou</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatem placeat ullam itaque consequuntur inventore nesciunt, fuga rerum quasi animi quia ipsam illo eveniet. Asperiores pariatur maiores dolorem neque esse. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas libero sed dolorem rerum sunt expedita dolorum molestiae nisi? Iusto, et vel cum illo atque sit voluptatibus cupiditate assumenda rem animi.</p>
                 <div className="footer-icons">
@@ -19,26 +19,26 @@ export const Footer = () => {
             </div>
 
 
-            <div className="col-md-6 col-lg-3 col-12 ft-2">
+            <div className="col-md-4 ft-2">
                 <h5>Quick Links</h5>
                 <ul>
-                    <li className="nav-item">
-                        <a className = "" href="/">Services</a>
+                    <li>
+                        <a href="/">Services</a>
                     </li>
-                    <li className="nav-item">
-                        <a className = "" href="/">About Us</a>
+                    <li>
+                        <a href="/">About Us</a>
                     </li>
-                    <li className="nav-item">
-                        <a className = "" href="/">Contact</a>
+                    <li>
+                        <a href="/">Contact</a>
                     </li>
-                    <li className="nav-item">
-                        <a className = "" href="/">Blogs</a>
+                    <li>
+                        <a href="/">Blogs</a>
                     </li>
                 </ul>
             </div>
 
 
-            <div className="col-md-6 col-lg-4 col-12 ft-3">
+            <div className="col-md-4 ft-3">
                 <h5>Contact Info</h5>
                 <div className="contact-container">
                     <p><i  className="fa-solid fa-phone-volume"></i>+123-123-1234</p>
@@ -48,12 +48,11 @@ export const Footer = () => {
             </div>
         </div>
     </div>
-    </div>
     
     <div className="last-Footer">
         <p>Design by Firstname LastName</p>
     </div>
-    </>
+    </footer>
   );
 };
 

@@ -1,4 +1,5 @@
 .rent-item{
+  cursor: 'pointer';
   max-width: 40rem;
 }
 .dollar{

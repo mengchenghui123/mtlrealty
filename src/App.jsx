@@ -1,19 +1,40 @@
 import React from 'react'
-import {Route, Routes} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Rent from './pages/Rent';
 import Contact from './pages/Contact'
+import PropertyDetail from './components/PropertyDetail/PropertyDetail'
+import Residences from './components/Residencies/Risidencies'
 
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path:'/', 
+    element:<Home />,
+  },
+  {
+    path:'rent', 
+    element:<Rent />,
+  },
+  {
+    path:'/contact', 
+    element:<Contact />,
+  },
+  {
+    path:'/property/:id',
+    element: <PropertyDetail />
+  },
+  {
+    path: '/residencies/:id',
+    element: <Residences />,
+  },
+]);
+
+function App(){
   return (
-    <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/rent' element={<Rent />} />
-        <Route path = 'contact' element={<Contact />} />
-    </Routes>
-  );
+  <RouterProvider router = {router} />
+  )
 }
 
 export default App;

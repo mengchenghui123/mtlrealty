@@ -21,7 +21,7 @@ export const Risidencies = () => {
             {propertyChunks.map((chunk, index) => (
               <div key={index} className= {index === 1 ? 'full-width-background':'property-section'}>
                 <div className="paddings innerwidth r-container">
-                <PropertyGrid  properties={chunk} title={title[index%title.length]}/>
+                <PropertyGrid  properties={chunk} title={title[index % title.length]}/>
                 </div>
               </div>
           

@@ -7,7 +7,6 @@ import data from '../utils/moreData.json'
 
 const Rent = () => {
 
-
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10;
 
