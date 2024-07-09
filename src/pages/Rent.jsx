@@ -3,7 +3,7 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer';
 import SquareItem from '../components/SquareItem/SquareItem';
 import Filters from '../components/Filters/Filters';
-import data from '../utils/slider.json'
+import data from '../utils/moreData.json'
 
 const Rent = () => {
 
