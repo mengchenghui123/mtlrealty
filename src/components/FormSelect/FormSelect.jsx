@@ -2,7 +2,7 @@ const FormSelect = ({ label, name, list, defaultValue = '' }) => {
   return (
     <div className=" mb-2 mb-md-0">
       <label htmlFor={name} className="form-label">
-        <span>{label}</span>
+        <span className="fw-medium">{label}</span>
       </label>
       <select
         name={name}
