@@ -1,23 +1,22 @@
 .footer {
     padding: 2rem 0;
-    margin-top: 15rem;
     margin: auto;
   }
 
-  .footer-container{
+.footer-container{
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
   }
 
-  .row{
+.row{
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     gap: 20px;
   }
 
-  .ft-1, .ft-2, .ft-3{
+.ft-1, .ft-2, .ft-3{
     flex: 1;
     margin: 10px;
     min-width: 200px;
@@ -55,9 +54,7 @@
     cursor: pointer;
   }
   
-  .ft-2 h5 {
-    color: #f60838;
-  }
+  
   
   .ft-2 ul {
     list-style: none;
@@ -85,14 +82,13 @@
     padding-right: 0.5rem;
   }
   
-  .last-footer {
-    background: #f60838;
+  .Last-Footer {
+    background: white;
     text-align: center;
-    padding: 1rem 0;
   }
   
-  .last-footer p {
+  .Last-Footer p {
     margin-bottom: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 0.5rem;
+    font-weight: 50;
   }

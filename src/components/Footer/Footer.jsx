@@ -5,11 +5,11 @@ export const Footer = () => {
     console.log("aaa");
   return (
     <footer className="footer">
-        <div className="container">
+        <div className="footer-container">
         <div className="row">
             <div className="col-md-6 col-lg-5 col-12 ft-1">
                 <h3>Richard Zhou</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatem placeat ullam itaque consequuntur inventore nesciunt, fuga rerum quasi animi quia ipsam illo eveniet. Asperiores pariatur maiores dolorem neque esse. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas libero sed dolorem rerum sunt expedita dolorum molestiae nisi? Iusto, et vel cum illo atque sit voluptatibus cupiditate assumenda rem animi.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatem placeat ullam itaque consequuntur inventore nesciunt, .</p>
                 <div className="footer-icons">
                     <i className="fa-brands fa-facebook"></i>
                     <i className="fa-brands fa-weixin"></i>
@@ -20,7 +20,7 @@ export const Footer = () => {
 
 
             <div className="col-md-6 col-lg-3 col-12 ft-2">
-                <h5>Quick Links</h5>
+                <h3>Quick Links</h3>
                 <ul>
                     <li className="nav-item">
                         <a href="">Services</a>
@@ -39,7 +39,7 @@ export const Footer = () => {
 
 
             <div className="col-md-6 col-lg-4 col-12 ft-3">
-                <h5>Contact Info</h5>
+                <h3>Contact Info</h3>
                 <div className="contact-container">
                     <p><i  className="fa-solid fa-phone-volume"></i>+123-123-1234</p>
                     <p><i  className="fa-solid fa-envelope"></i>abc@gmail.com</p>
