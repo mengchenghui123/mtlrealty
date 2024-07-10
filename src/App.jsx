@@ -6,6 +6,7 @@ import Rent from './pages/Rent';
 import Contact from './pages/Contact'
 import PropertyDetail from './components/PropertyDetail/PropertyDetail'
 import Residences from './components/Residencies/Risidencies'
+import About from './components/About/About'
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/residencies/:id',
     element: <Residences />,
+  },
+  {
+    path: 'about',
+    element: <About />,
   },
 ]);
 

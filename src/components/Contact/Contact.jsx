@@ -30,9 +30,9 @@ export const Contact = () => {
 
 
   return (
-    <div className="container-fluid">
+    <div className="contact-page">
       <Header/>
-    <div className="container" >
+    <div className="ContactPagecontainer" >
       <div className="row mb-5 mt-3 text-center">
         <div className="col-12">
           <h1 className="display-4 mb-4">
@@ -42,7 +42,7 @@ export const Contact = () => {
       </div>
     
 {/* get in touch */}
-      <div className="row sec-sp">
+    <div className="contact-row sec-sp">
         <div className="col-lg-5 mb-5">
           <h3 className="color_sec py-4"> Get in Touch </h3>
           <address>
@@ -104,7 +104,7 @@ export const Contact = () => {
           <button type="submit" className="btn btn-primary mt-3">Submit</button>
         </form>
       </div>
-    </div>
+  </div>
     </div>
     <Footer/>
     </div>

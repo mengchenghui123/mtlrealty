@@ -2,11 +2,10 @@ import React from 'react'
 import './Footer.css'
 
 export const Footer = () => {
-    console.log("aaa");
   return (
     <footer className="footer">
         <div className="footer-container">
-        <div className="row">
+        <div className="footer-row">
             <div className="col-md-6 col-lg-5 col-12 ft-1">
                 <h3>Richard Zhou</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatem placeat ullam itaque consequuntur inventore nesciunt, .</p>
@@ -26,10 +25,10 @@ export const Footer = () => {
                         <a href="">Services</a>
                     </li>
                     <li className="nav-item">
-                        <a href="">About Us</a>
+                        <a href="../../about">About Us</a>
                     </li>
                     <li className="nav-item">
-                        <a href="">Contact</a>
+                        <a href="../../contact">Contact</a>
                     </li>
                     <li className="nav-item">
                         <a href="">Blogs</a>

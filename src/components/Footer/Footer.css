@@ -9,7 +9,7 @@
     padding: 0 15px;
   }
 
-.row{
+.footer-row{
     display: flex;
     justify-content: space-around;
     align-items: flex-start;

@@ -1,5 +1,16 @@
+.ContactPagecontainer{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-page{
+    padding-top: 100px;
+}
+
 .sec-sp{
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .color_sec{
