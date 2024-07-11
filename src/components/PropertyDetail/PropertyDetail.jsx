@@ -1,31 +1,165 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
-import {Swiper, SwiperSlide, useSwiper} from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react';
 import data from '../../utils/slider.json';
-import './PropertyDetail.css'
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import 'swiper/css';
+import './PropertyDetail.css';
+
+// SwiperCore.use([Autoplay]);
 
 export const PropertyDetail = () => {
-    const {id} = useParams();
-    const property = data.find((p)=>p.id === parseInt(id));
 
-    if(!property){
-        return <div className="container mt-5"><h2>roperty Not Found</h2></div>;
-    }
+    const images = ['https://via.placeholder.com/600x400?text=Image+1',
+    'https://via.placeholder.com/600x400?text=Image+2',
+    'https://via.placeholder.com/600x400?text=Image+3',
+    'https://via.placeholder.com/600x400?text=Image+4']
+    // const {id} = useParams();
+    // const property = data.find((p)=>p.id === parseInt(id));
+    // const [currentBatchIndex, setCurrentBatchIndex] = useState(0);
 
+    // if(!property){
+    //     return (
+    //     <div className="container mt-5">
+    //     <h2>roperty Not Found</h2>
+    //     </div>);
+    // }
+
+    // const batches = [];
+    // const images = property.images || [];
+
+    // for(let i = 0; i < images.length; i +=4){
+    //     batches.push(images.slice(i, i+4));
+    // }
+
+
+    // const handleSlideChange = (swiper) =>{
+    //     console.log('Swiper instance:', swiper);
+    //     console.log('Swiper realIndex:', swiper.realIndex);
+    //     setCurrentBatchIndex(swiper.realIndex % batches.length);
+    // }
+
+    // useEffect(()=>{
+    //     console.log('property:', property);
+    //     console.log('Batches:', batches);
+    // }, [property, batches]);
+        
   return (
-    <div className="container mt-5">
-        <div className="row">
-            <div className="col-md-8 offset-md-2"></div>
-            <div className="card">
-                <img src={property.image} className = "card-img-top" alt={property.name} />
-                <div className="card-body">
-                    <h5 className="card-title">{property.name}</h5>
-                    <p className="card-text text-muted">${property.price}</p>
-                    <p className="card-text">{property.detail}</p>
-                </div>
-            </div>
-        </div>
+    // 测试代码
+    <div className="simple-swiper-container">
+        <Swiper
+        spaceBetween={10}
+        slidesPerView={1}
+        autoplay={{delay:2000}}
+        loop={true}>
+        {images.map((image,index)=>{
+            <SwiperSlide key={index}>
+                <img src={image} alt="abc" />
+            </SwiperSlide>
+        })}
+        </Swiper>
     </div>
+
+
+
+    // <div className="property-detail-page">
+    //     <Header />
+    //     <div className="property-detail-container">
+    //         {/* 第一块，大图片 */}
+    //         <div className="property-main-page">
+    //             <img src={batches[currentBatchIndex]?.[0]} alt="Property" />
+    //         </div>
+    //         {/* 第二块，Swiper */}
+    //         {batches.length >0 && (
+    //         <div className="property-swiper">
+    //             <Swiper 
+    //                 spaceBetween={10}
+    //                 slidesPerView={1}
+    //                 autoplay={{delay:2000}}
+    //                 onSlideChange={handleSlideChange}
+    //                 loop={batches.length>1}
+    //                 >
+    //                 {batches.map((batch,index)=>{
+    //                     <SwiperSlide key={index}>
+    //                         <div className="swiper-batch">
+    //                             {batch.map((image, idx)=>{
+    //                                 <img key={idx} src={image} alt={`Property ${idx}`} />
+    //                             })}
+    //                         </div>
+    //                     </SwiperSlide>
+    //                 })}
+    //             </Swiper>
+    //         </div>
+    //         )}
+
+
+    //         {/*第三块： property介绍 */}
+    //         <div className="property-description">
+    //             <h2>Property Description</h2>
+    //             <p>{property.detail}</p>
+    //         </div>
+    //         {/* 第四块： property Overview */}
+    //         <div className="property-overview">
+    //             <h2>Proerty Overview</h2>
+    //             <div className="overvew-items">
+    //                 <div className="overview-item">
+    //                     <i className="fa fa-bed"></i>
+    //                     <span>{property.bedrooms} Bedrooms</span>
+    //                 </div>
+    //                 <div className="overview-item">
+    //                     <i className="fa fa-bath"></i>
+    //                     <span>{property.bathrooms} bathrooms</span>
+    //                 </div>
+    //                 <div className="overview-item">
+    //                     <i className="fa fa-building"></i>
+    //                     <span>{property.elevator ? 'Elevator' : 'No Elevator'}</span>
+    //                 </div>
+    //                 {/* add more as need */}
+    //             </div>
+    //         </div>
+
+    //         {/* 第五块：our gallery */}
+    //         <div className="property-gallery">
+    //             <h2>Our Gallery</h2>
+    //             <div className="gallery-items">
+    //                 {property.galleryImages.map((image, index)=> (
+    //                     <img key={index} src={image} alt={`Gallery ${index}`}
+    //                     onClick={()=>window.open(image, '_blank')}
+    //                     />
+    //                 ))}
+    //             </div>
+    //         </div>
+
+    //         {/* 第六块：Feature & Amenities */}
+    //         <div className="property-amenities">
+    //             <h2>Feature & Amenities</h2>
+    //             <div className="amenities-items">
+    //                 {property.amenities.map((amenity,index)=>(
+    //                     <div key={index} className="amenities-item">
+    //                         <i className="fa fa-check"></i>
+    //                         <span>{amenity}</span>
+    //                     </div>
+    //                 ))}
+    //             </div>
+    //         </div>
+    //         {/* 第七块：地图 */}
+    //         <div className="property-map">
+    //             <h2>Location</h2>
+    //             <iframe src={`https://www.google.ca/maps?q=${property.location}&output=embed`} 
+    //             width="100%"
+    //             height="400%"
+    //             style={{border:0}}
+    //             allowFullScreen=""
+    //             aria-hidden="false"
+    //             tabIndex="0"
+    //             >
+    //             </iframe>
+    //         </div>
+    //     </div>
+    //     <Footer/>
+    // </div>
+    
   );
 };
 

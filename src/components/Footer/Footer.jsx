@@ -22,9 +22,6 @@ export const Footer = () => {
                 <h3>Quick Links</h3>
                 <ul>
                     <li className="nav-item">
-                        <a href="">Services</a>
-                    </li>
-                    <li className="nav-item">
                         <a href="../../about">About Us</a>
                     </li>
                     <li className="nav-item">
