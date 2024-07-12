@@ -39,7 +39,8 @@ const Header = () => {
   return (
     <section className={`h_wrapper ${isheaderVisible?'' : 'hidden'}`}>
         <div className="flexCenter paddings innerWidth h-container">
-            <img src="./logo.png" alt="logi" width={100}/>
+        <Link to="/"><img src="/logo.png" alt="logi" width={100}/></Link>
+            
 
             <div className="flexCenter h-menu">
 
@@ -48,7 +49,7 @@ const Header = () => {
               onMouseEnter={()=>{ toggleDropDown('residential');}}
               onMouseLeave={()=>{ toggleDropDown('residential');}}>
               
-                <Link to="/">Residential</Link>
+                <Link to="">Residential</Link>
 
                 {dropdowns.residential && (
                   <div className="dropdown">

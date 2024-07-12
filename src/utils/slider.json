@@ -9,8 +9,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.pn, /r3.png, /wrapper1.webp, /wrapper2.pngg"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -23,8 +23,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -37,8 +37,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -51,8 +51,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -65,8 +65,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -79,8 +79,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -93,8 +93,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -107,8 +107,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
 
@@ -122,8 +122,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -136,8 +136,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -150,8 +150,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -164,8 +164,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -178,8 +178,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -192,8 +192,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -206,8 +206,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
 
@@ -221,8 +221,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -235,8 +235,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -249,8 +249,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -263,8 +263,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -277,8 +277,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -291,8 +291,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -305,8 +305,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -319,8 +319,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -333,8 +333,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -347,8 +347,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -361,8 +361,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -375,8 +375,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -389,8 +389,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -403,8 +403,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -417,8 +417,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -431,8 +431,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   },
   {
@@ -445,8 +445,8 @@
     "bathrooms": 2,
     "elevator": true,
     "location" : "Serang, Banten",
-    "images": ["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
-    "galleryImages":["/r1.png","/r2.png, /r3.png, /wrapper1.webp, /wrapper2.png"],
+    "images": ["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
+    "galleryImages":["/r1.png","/r2.png", "/r3.png", "/wrapper1.webp", "/wrapper2.png"],
     "amenities": ["AC", "Gym", "Balcony", "Swiming Pool"]
   }
 ]
