@@ -6,7 +6,6 @@ import './About.css';
 export const About = () => {
   return (
     <div className="about-page">
-        <Header/>
             <div className="about-container">
                 {/* 第一块 */}
                 <section className="about-section about-us">
@@ -69,7 +68,6 @@ export const About = () => {
                     </div>
                 </section>
             </div>
-        <Footer/>
     </div>
   );
 };

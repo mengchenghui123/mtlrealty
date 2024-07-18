@@ -1,9 +1,28 @@
 import React from 'react'
 import './Residencies.css'
-import data from '../../utils/slider.json'
 import PropertyGrid from '../PropertyGrid/PropertyGrid'
+import useProperty from '../../Hook/useProperty'
+import {PuffLoader} from 'react-spinners';
 
 export const Risidencies = () => {
+
+  const {data, isError, isLoading} = useProperty();
+
+  if(isError){
+    return <div className='wrapper'><span>Error loading Properties</span></div>;
+  }
+
+  if(isLoading){
+    return(<div className="wrapper flexCenter" style={{height: "60vh"}}>
+      <PuffLoader
+      height="80"
+      width = "80"
+      radius={1}
+      color="#4066ff"
+      aria-label="puff-loading"
+      />
+    </div>)
+  }
 
     const chunkSize=8;
     const numberOfChunk = 3;
@@ -15,7 +34,6 @@ export const Risidencies = () => {
     for(let i =0;i<limitedData.length; i+= chunkSize){
         propertyChunks.push(limitedData.slice(i, i+chunkSize));
     }
-    
   return (
     <section className="r-wrapper">
             {propertyChunks.map((chunk, index) => (
@@ -24,7 +42,6 @@ export const Risidencies = () => {
                 <PropertyGrid  properties={chunk} title={title[index % title.length]}/>
                 </div>
               </div>
-          
         ))}
         
     </section>
