@@ -23,10 +23,10 @@ const InquiryForm = () => {
       <div className="row justify-content-center">
         <div className="col-md-6">
           <form className="inquiry-form p-4 rounded shadow" onSubmit={handleSubmit}>
-            <input type="text" className="form-control mb-3" name="name" placeholder="Name" onChange={handleChange} />
-            <input type="tel" className="form-control mb-3" name="phone" placeholder="Phone" onChange={handleChange} />
-            <input type="email" className="form-control mb-3" name="email" placeholder="Email" onChange={handleChange} />
-            <input type="text" className="form-control mb-3" name="listingId" placeholder="Listing ID" onChange={handleChange} />
+            <input type="text" className="form-control mb-3" name="name" placeholder="Name*" onChange={handleChange} required />
+            <input type="tel" className="form-control mb-3" name="phone" placeholder="Phone*" onChange={handleChange} required />
+            <input type="email" className="form-control mb-3" name="email" placeholder="Email*" onChange={handleChange} required />
+            <input type="text" className="form-control mb-3" name="listingId" placeholder="Listing ID*" onChange={handleChange} required />
             <textarea className="form-control mb-3" name="message" placeholder="Message" onChange={handleChange}></textarea>
             <div className="d-flex justify-content-center">
               <button type="submit" className="btn btn-primary">Submit</button>

@@ -1,23 +1,22 @@
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import Introduce from "../components/Introduce/Introduce";
 import FeaturedListing from "../components/FeaturedListing/FeaturedListing";
 import InquiryForm from "../components/InquiryForm/InquiryForm";
-import data from '../utils/slider.json'
+import useProperty from '../Hook/useProperty'
 
 const Residential = () => {
+  const { data, isError, isLoading } = useProperty();
+
   return (
     <div className="page-container">
-      <Header />
       <div className="residential-box">
         <h1 className="title">Residential</h1>
         <Introduce />
         <div style={{ backgroundColor: '#f0f0f0' }}>
-          <FeaturedListing data={data} />
+          <FeaturedListing data={data} isError={isError} isLoading={isLoading} />
         </div>
         <InquiryForm />
       </div>
-      <Footer />
+      <div className='break-line' />
     </div >
   );
 }
