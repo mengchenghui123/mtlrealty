@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './Contact.css';
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer';
+
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +30,6 @@ export const Contact = () => {
 
   return (
     <div className="contact-page">
-      <Header/>
     <div className="ContactPagecontainer" >
       <div className="row mb-5 mt-3 text-center">
         <div className="col-12">
@@ -106,7 +104,6 @@ export const Contact = () => {
       </div>
   </div>
     </div>
-    <Footer/>
     </div>
 );
 };

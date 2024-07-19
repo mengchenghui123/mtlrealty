@@ -1,30 +1,47 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useParams} from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import data from '../../utils/slider.json';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import 'swiper/css';
 import './PropertyDetail.css';
+import useProperty from '../../Hook/useProperty'
+import {PuffLoader} from 'react-spinners';
 
-// SwiperCore.use([Autoplay]);
 
 export const PropertyDetail = () => {
-
-    const {id} = useParams();
-    const property = data.find((p)=>p.id === parseInt(id));
+    const {data, isError, isLoading} = useProperty();
     const [currentBatchIndex, setCurrentBatchIndex] = useState(0);
+    const {id} = useParams();
+    
 
+    if(isError){
+      return <div className='wrapper'><span>Error loading Properties</span></div>;
+    }
+  
+    if(isLoading || !data){
+      return(<div className="wrapper flexCenter" style={{height: "60vh"}}>
+        <PuffLoader
+        height="80"
+        width = "80"
+        radius={1}
+        color="#4066ff"
+        aria-label="puff-loading"
+        />
+      </div>);
+    }
+
+    const property = data.find((p)=>p.id === id);
     if(!property){
         return (
         <div className="container mt-5">
-        <h2>roperty Not Found</h2>
+        <h2>property Not Found</h2>
         </div>);
     }
-
+    console.log(data);
+    console.log(property);
     const batches = [];
     const images = property.images || [];
+    
 
     for(let i = 0; i < images.length; i +=4){
         batches.push(images.slice(i, i+4));
@@ -35,17 +52,11 @@ export const PropertyDetail = () => {
         setCurrentBatchIndex(swiper.realIndex % batches.length);
     }
 
-    useEffect(()=>{
-      console.log('images:', images);
-        console.log('property:', property);
-        console.log('Batches:', batches);
-    }, [property, batches]);
 
 
         
   return (
     <div className="property-detail-page">
-        <Header />
         <div className="property-detail-container">
             {/* 第一块，大图片 */}
             <div className="property-main-image">
@@ -79,7 +90,7 @@ export const PropertyDetail = () => {
             {/*第三块： property介绍 */}
             <div className="property-description">
                 <h2>Property Description</h2>
-                <p>{property.detail}</p>
+                <p>{property.description}</p>
             </div>
             {/* 第四块： property Overview */}
             <div className="property-overview">
@@ -87,15 +98,15 @@ export const PropertyDetail = () => {
                 <div className="overvew-items">
                     <div className="overview-item">
                         <i className="fa fa-bed"></i>
-                        <span>{property.bedrooms} Bedrooms</span>
+                        <span>{property.facilities.bedrooms} Bedrooms</span>
                     </div>
                     <div className="overview-item">
                         <i className="fa fa-bath"></i>
-                        <span>{property.bathrooms} bathrooms</span>
+                        <span>{property.facilities.bathrooms} bathrooms</span>
                     </div>
                     <div className="overview-item">
                         <i className="fa fa-building"></i>
-                        <span>{property.elevator ? 'Elevator' : 'No Elevator'}</span>
+                        <span>{property.facilities.parkings} Parkings</span>
                     </div>
                     {/* add more as need */}
                 </div>
@@ -107,10 +118,10 @@ export const PropertyDetail = () => {
             <div className="property-amenities">
                 <h2>Feature & Amenities</h2>
                 <div className="amenities-items">
-                    {property.amenities.map((amenity,index)=>(
+                    {property.amenities && Object.entries(property.amenities).map(([key,value],index)=>(
                         <div key={index} className="amenities-item">
                             <i className="fa fa-check"></i>
-                            <span>{amenity}</span>
+                            <span>{key}:{value}</span>
                         </div>
                     ))}
                 </div>
@@ -129,7 +140,6 @@ export const PropertyDetail = () => {
                 </iframe>
             </div>
         </div>
-        <Footer/>
     </div>
     
   );

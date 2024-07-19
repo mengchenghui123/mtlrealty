@@ -39,6 +39,7 @@ const Header = () => {
   return (
     <section className={`h_wrapper ${isheaderVisible ? '' : 'hidden'}`}>
       <div className="flexCenter paddings innerWidth h-container">
+        {/* Logo */}
         <Link to="/"><img src="/logo.png" alt="logi" width={100} /></Link>
 
 
@@ -92,13 +93,14 @@ const Header = () => {
             )}
           </div>
 
-          {/*Contact & news */}
+          {/*Contact & News & Login */}
           <div className="menu-Item">
             <Link to="../../contact">Contact</Link>
           </div>
           <div className="menu-Item">
             <Link to="#">News</Link>
           </div>
+          <button className="button">Login</button>
         </div>
       </div>
     </section>

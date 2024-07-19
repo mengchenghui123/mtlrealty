@@ -1,6 +1,7 @@
 .App{
     position: relative;
     overflow-x: clip;
+    
 }
 
 .App>:nth-child(1){
@@ -9,8 +10,9 @@
 }
 
 .white-gradient{
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.522);
+    background-color: white;
+    z-index: 1;
 }

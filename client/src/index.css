@@ -140,7 +140,9 @@ a {
 
 .title{
   color: #1b1b1e;
-  margin-top: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .data-list{
@@ -206,5 +208,18 @@ a {
 
   .pagination-container{
     justify-content: end;
+  }
+}
+
+/* residential home page css style, write here temporary */
+.residential-box{
+  /* padding: 0 1rem; */
+  margin: 2rem 0;
+}
+
+@media(min-width:640px) {
+  .residential-box{
+    margin: 4rem 0;
+    padding: 2.5rem 0;
   }
 }

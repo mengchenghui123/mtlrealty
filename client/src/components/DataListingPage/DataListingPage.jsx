@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import SquareItem from '../SquareItem/SquareItem';
 import Filters from '../Filters/Filters';
 import Pagination from '../Pagination/Pagination';
@@ -20,7 +18,6 @@ const DataListingPage = ({ data, title }) => {
 
   return (
     <div className="page-container">
-      <Header />
       <div className="container">
         <div className='content-box'>
           <h1 className='title'>{title}</h1>
@@ -35,7 +32,6 @@ const DataListingPage = ({ data, title }) => {
           <Pagination currentPage={currentPage} totalPage={totalPage} handlePageChange={handlePageChange} />
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
