@@ -13,6 +13,7 @@ import Residiences from "./components/Residencies/Risidencies"
 import About from "./pages/About"
 import Buy from "./pages/Buy"
 import Sell from "./pages/Sell"
+import Residential from './pages/Residential';
 import {QueryClient, QueryClientProvider} from 'react-query'
 import {ReactQueryDevtools} from "react-query/devtools"
 
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
     children:[
        {path:"/", element:<Home />},
        {path:"rent", element:<Rent />},
+       {path:"residential", element:<Residential />},
        {path:"contact", element:<Contact />},
        {path:"property/:id", element:<PropertyDetail />},
        {path: "/residencies/:id", element : <Residiences/>} ,
