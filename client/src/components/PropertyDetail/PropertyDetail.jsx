@@ -37,8 +37,6 @@ export const PropertyDetail = () => {
         <h2>property Not Found</h2>
         </div>);
     }
-    console.log(data);
-    console.log(property);
     const batches = [];
     const images = property.images || [];
     
