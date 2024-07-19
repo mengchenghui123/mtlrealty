@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import { useAuth0 } from '@auth0/auth0-react';
+import { ProfileMenu } from '../ProfileMenu/ProfileMenu';
 
 const Header = () => {
   const [dropdowns, setDropdowns] = useState({
@@ -8,6 +10,8 @@ const Header = () => {
     commercial: false,
     franchise: false,
   });
+
+  const {loginWithRedirect, isAuthenticated, user, logout} = useAuth0();
 
   //drop down menu
   const toggleDropDown = (menu) => {
@@ -100,8 +104,13 @@ const Header = () => {
           <div className="menu-Item">
             <Link to="#">News</Link>
           </div>
-          <button className="button">Login</button>
+          {!isAuthenticated ? 
+          (<button className="button" onClick={loginWithRedirect}>Login</button>)
+          :
+          (<ProfileMenu user={user} logout={logout}/>)
+          }
         </div>
+          
       </div>
     </section>
   );

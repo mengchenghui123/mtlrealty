@@ -3,12 +3,15 @@ import './PropertyGrid.css'
 import {AiFillHeart} from 'react-icons/ai'
 import {toast} from 'react-toastify';
 import {truncate} from 'lodash'
+import { useNavigate } from 'react-router-dom';
 
 const PropertyGrid=({properties, title})=>{
 
+const navigate = useNavigate();
+
 const handleCardClick = (id) =>{
     toast.success(`card with id ${id} clicked`);
-    console.log(`Card with id ${id} clicked`);
+    navigate(`/property/${id}`);
 };
 
     return (

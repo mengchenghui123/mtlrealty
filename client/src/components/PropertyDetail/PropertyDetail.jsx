@@ -89,6 +89,7 @@ export const PropertyDetail = () => {
             <div className="property-description">
                 <h2>Property Description</h2>
                 <p>{property.description}</p>
+                <button className="button">Book Your Visit</button>
             </div>
             {/* 第四块： property Overview */}
             <div className="property-overview">
