@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import PropertyDetail from './components/PropertyDetail/PropertyDetail'
 import Residences from './components/Residencies/Risidencies'
 import About from './components/About/About'
+import Residential from './pages/Residential';
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: 'sell',
     element: <Sell />,
+  },
+  {
+    path: 'residential',
+    element: <Residential />,
   },
   {
     path: '/contact',
