@@ -1,60 +1,52 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React, { Suspense } from 'react'
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './pages/Home';
-import Rent from './pages/Rent';
-import Sell from './pages/Sell';
-import Buy from './pages/Buy';
-import Contact from './pages/Contact'
-import PropertyDetail from './components/PropertyDetail/PropertyDetail'
-import Residences from './components/Residencies/Risidencies'
-import About from './components/About/About'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {ToastContainer, toast} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import Home  from "./pages/Home";
+import Rent from "./pages/Rent"
+import Contact from "./pages/Contact"
+import Layout from "./components/Layout/Layout"
+import PropertyDetail from "./components/PropertyDetail/PropertyDetail"
+import Residiences from "./components/Residencies/Risidencies"
+import About from "./pages/About"
+import Buy from "./pages/Buy"
+import Sell from "./pages/Sell"
 import Residential from './pages/Residential';
+import {QueryClient, QueryClientProvider} from 'react-query'
+import {ReactQueryDevtools} from "react-query/devtools"
 
+const queryClient = new QueryClient();
 
-const router = createBrowserRouter([
-  {
+const router = createBrowserRouter(
+  [{
     path: '/',
-    element: <Home />,
-  },
-  {
-    path: 'rent',
-    element: <Rent />,
-  },
-  {
-    path: 'buy',
-    element: <Buy />,
-  },
-  {
-    path: 'sell',
-    element: <Sell />,
-  },
-  {
-    path: 'residential',
-    element: <Residential />,
-  },
-  {
-    path: '/contact',
-    element: <Contact />,
-  },
-  {
-    path: '/property/:id',
-    element: <PropertyDetail />
-  },
-  {
-    path: '/residencies/:id',
-    element: <Residences />,
-  },
-  {
-    path: 'about',
-    element: <About />,
-  },
-]);
-
+    element:<Layout />,
+    children:[
+       {path:"/", element:<Home />},
+       {path:"rent", element:<Rent />},
+       {path:"residential", element:<Residential />},
+       {path:"contact", element:<Contact />},
+       {path:"property/:id", element:<PropertyDetail />},
+       {path: "/residencies/:id", element : <Residiences/>} ,
+       {path: "/about", element : <About/>} ,
+       {path: "/sell", element : <Sell/>} ,
+       {path: "/buy", element : <Buy/>} ,
+    ],
+  },]
+);
+ 
 function App() {
   return (
-    <RouterProvider router={router} />
-  )
+    <QueryClientProvider client={queryClient}>
+    <Suspense fallback={<div>Loading...</div>}>
+    <RouterProvider router = {router} />
+    </Suspense>
+    <ToastContainer/>
+    <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
