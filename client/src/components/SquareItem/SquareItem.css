@@ -1,6 +1,11 @@
 .rent-item{
   cursor: 'pointer';
   max-width: 40rem;
+  > img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
 }
 .dollar{
   color: orange;
