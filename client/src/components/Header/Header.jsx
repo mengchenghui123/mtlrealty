@@ -11,7 +11,7 @@ const Header = () => {
     franchise: false,
   });
 
-  const {loginWithRedirect, isAuthenticated, user, logout} = useAuth0();
+  const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
 
   //drop down menu
   const toggleDropDown = (menu) => {
@@ -54,7 +54,7 @@ const Header = () => {
             onMouseEnter={() => { toggleDropDown('residential'); }}
             onMouseLeave={() => { toggleDropDown('residential'); }}>
 
-            <Link to="">Residential</Link>
+            <Link to="../../residential">Residential</Link>
 
             {dropdowns.residential && (
               <div className="dropdown">
@@ -70,7 +70,7 @@ const Header = () => {
             onMouseEnter={() => toggleDropDown('commercial')}
             onMouseLeave={() => toggleDropDown('commercial')}>
 
-            <Link to="">Commercial</Link>
+            <Link to="../../commercial">Commercial</Link>
 
             {dropdowns.commercial && (
               <div className="dropdown">
@@ -86,7 +86,7 @@ const Header = () => {
             onMouseEnter={() => toggleDropDown('franchise')}
             onMouseLeave={() => toggleDropDown('franchise')}>
 
-            <Link to="">Franchise</Link>
+            <Link to="../../franchise">Franchise</Link>
 
             {dropdowns.franchise && (
               <div className="dropdown">
@@ -104,13 +104,13 @@ const Header = () => {
           <div className="menu-Item">
             <Link to="#">News</Link>
           </div>
-          {!isAuthenticated ? 
-          (<button className="button" onClick={loginWithRedirect}>Login</button>)
-          :
-          (<ProfileMenu user={user} logout={logout}/>)
+          {!isAuthenticated ?
+            (<button className="button" onClick={loginWithRedirect}>Login</button>)
+            :
+            (<ProfileMenu user={user} logout={logout} />)
           }
         </div>
-          
+
       </div>
     </section>
   );

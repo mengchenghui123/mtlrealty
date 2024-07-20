@@ -1,46 +1,62 @@
 import React from 'react'
 import './PropertyGrid.css'
-import {AiFillHeart} from 'react-icons/ai'
-import {toast} from 'react-toastify';
-import {truncate} from 'lodash'
+import { AiFillHeart } from 'react-icons/ai'
+import { toast } from 'react-toastify';
+import { truncate } from 'lodash'
 import { useNavigate } from 'react-router-dom';
 
-const PropertyGrid=({properties, title})=>{
+const PropertyGrid = ({ properties, title }) => {
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
-const handleCardClick = (id) =>{
-    toast.success(`card with id ${id} clicked`);
-    navigate(`/property/${id}`);
-};
+    const handleCardClick = (id) => {
+        toast.success(`card with id ${id} clicked`);
+        navigate(`/property/${id}`);
+    };
+
+    const titleToURL = {
+        "Residential": "../../residential",
+        "Commercial": "../../commercial",
+        "Franchise": "../../franchise",
+    };
+
+    const handleViewMore = () => {
+        const url = titleToURL[title];
+        if (url) {
+            window.scrollTo(0, 0);
+            navigate(url);
+        } else {
+            toast.error("404");
+        }
+    };
 
     return (
-        
-    <div className="property-grid-wrapper">
+
+        <div className="property-grid-wrapper">
 
             <div className="r-head flexColStart">
                 <span className="orangeText">{title}</span>
             </div>
 
-        <div className="r-grid">
-            {properties.map((card,i)=>(
-                <div className="flexColStart r-card" key={i} onClick={()=> handleCardClick(card.id)}>
-                    <AiFillHeart  size={24} color="white"/>
-                    <img src={card.image} alt="home" />
-                    <span className="secondaryText r-price">
-                        <span style={{color:"orange"}}>$</span>
-                        <span>{card.price}</span>
-                    </span>
-                    <span className="primaryText">{truncate(card.title, {length:15})}</span>
-                    <span className="secondaryText">{truncate(card.description, {length: 80})}</span>
-                </div>
-            ))}
+            <div className="r-grid">
+                {properties.map((card, i) => (
+                    <div className="flexColStart r-card" key={i} onClick={() => handleCardClick(card.id)}>
+                        <AiFillHeart size={24} color="white" />
+                        <img src={card.image} alt="home" />
+                        <span className="secondaryText r-price">
+                            <span style={{ color: "orange" }}>$</span>
+                            <span>{card.price}</span>
+                        </span>
+                        <span className="primaryText">{truncate(card.title, { length: 15 })}</span>
+                        <span className="secondaryText">{truncate(card.description, { length: 80 })}</span>
+                    </div>
+                ))}
+            </div>
+
+            <div className="view-more-container">
+                <button className="view-more-button" onClick={handleViewMore}>View More</button>
+            </div>
         </div>
-        
-        <div className="view-more-container">
-            <button className="view-more-button">View More</button>
-        </div>
-    </div>
     );
 };
 
