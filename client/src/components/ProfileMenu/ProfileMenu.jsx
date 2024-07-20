@@ -5,7 +5,12 @@ export const ProfileMenu = ({user, logout}) => {
   return (
     <Menu>
         <Menu.Target>
-            <Avatar src={user?.picture} alt='user image' radius={"xl"}/>
+            <Avatar 
+            src={user?.picture} 
+            alt='user image' 
+            size="lg"
+            radius = {"xs"}
+            sx={{ width: '50px !important', height: '50px !important', borderRadius: '50% !important', border: '2px solid #000 !important' }}            />
         </Menu.Target>
         <Menu.Dropdown>
             <Menu.Item>
@@ -15,3 +20,5 @@ export const ProfileMenu = ({user, logout}) => {
     </Menu>
   )
 }
+
+export default ProfileMenu

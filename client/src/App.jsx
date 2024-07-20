@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react'
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {ToastContainer, toast} from 'react-toastify';
