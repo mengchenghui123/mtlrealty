@@ -47,20 +47,22 @@ const Header = () => {
         <Link to="/"><img src="/logo.png" alt="logi" width={100} /></Link>
 
 
-        <div className="flexCenter h-menu">
+        <div className="flexCenter h-menu" role="menubar">
 
           {/*Residential */}
           <div className="menu-item"
             onMouseEnter={() => { toggleDropDown('residential'); }}
             onMouseLeave={() => { toggleDropDown('residential'); }}>
 
-            <Link to="">Residential</Link>
+
+
+            <Link to="../../residential" role="menuitem">Residential</Link>
 
             {dropdowns.residential && (
-              <div className="dropdown">
-                <Link to="../../rent">Rent</Link>
-                <Link to="../../sell">Sell</Link>
-                <Link to="../../buy">Buy</Link>
+              <div className="dropdown" role="menu">
+                <Link to="../../rent" role="menuitem">Rent</Link>
+                <Link to="../../sell" role="menuitem">Sell</Link>
+                <Link to="../../buy" role="menuitem">Buy</Link>
               </div>
             )}
           </div>
@@ -70,13 +72,15 @@ const Header = () => {
             onMouseEnter={() => toggleDropDown('commercial')}
             onMouseLeave={() => toggleDropDown('commercial')}>
 
-            <Link to="">Commercial</Link>
+
+            <Link to="../../commercial" role="menuitem">Commercial</Link>
+
 
             {dropdowns.commercial && (
-              <div className="dropdown">
-                <Link to="#">Commercial Leasing</Link>
-                <Link to="#">Partners</Link>
-                <Link to="#">Protetles</Link>
+              <div className="dropdown" role ="menu">
+                <Link to="#" role="menuitem">Commercial Leasing</Link>
+                <Link to="#" role="menuitem">Partners</Link>
+                <Link to="#" role="menuitem">Protetles</Link>
               </div>
             )}
           </div>
@@ -86,23 +90,25 @@ const Header = () => {
             onMouseEnter={() => toggleDropDown('franchise')}
             onMouseLeave={() => toggleDropDown('franchise')}>
 
-            <Link to="">Franchise</Link>
+
+            <Link to="../../franchise" role="menuitem">Franchise</Link>
+
 
             {dropdowns.franchise && (
-              <div className="dropdown">
-                <Link to="#">Introduction</Link>
-                <Link to="#">Procedure</Link>
-                <Link to="#">Brand</Link>
+              <div className="dropdown" role="menu">
+                <Link to="#" role="menuitem">Introduction</Link>
+                <Link to="#" role="menuitem">Procedure</Link>
+                <Link to="#" role="menuitem">Brand</Link>
               </div>
             )}
           </div>
 
           {/*Contact & News & Login */}
           <div className="menu-Item">
-            <Link to="../../contact">Contact</Link>
+            <Link to="../../contact" role="menuitem">Contact</Link>
           </div>
           <div className="menu-Item">
-            <Link to="#">News</Link>
+            <Link to="#" role="menuitem">News</Link>
           </div>
           {!isAuthenticated ? 
           (<button className="button" onClick={loginWithRedirect}>Login</button>)

@@ -1,24 +1,36 @@
 import React from 'react'
-import {Avatar, Menu} from '@mantine/core'
+import {Avatar, Menu} from '@mantine/core';
+import { useNavigate } from 'react-router-dom'
+
 
 export const ProfileMenu = ({user, logout}) => {
+  const navigate = useNavigate();
   return (
     <Menu>
         <Menu.Target>
-            <Avatar 
-            src={user?.picture} 
-            alt='user image' 
-            size="lg"
-            radius = {"xs"}
-            sx={{ width: '50px !important', height: '50px !important', borderRadius: '50% !important', border: '2px solid #000 !important' }}            />
+          <div role="button" aria-haspopup="menu" aria-expanded="false">
+          <Avatar src={user?.picture} alt='user image' radius={"lg"}/>
+          </div>
         </Menu.Target>
-        <Menu.Dropdown>
-            <Menu.Item>
+        
+        <Menu.Dropdown role="menu">
+            <Menu.Item role="menuitem">
                 Favourites
+            </Menu.Item>
+
+            <Menu.Item role="menuitem">
+                Bookings
+            </Menu.Item>
+
+            <Menu.Item role="menuitem" onClick={()=>{
+              localStorage.clear();
+              logout()
+            }}>
+                Logout
             </Menu.Item>
         </Menu.Dropdown>
     </Menu>
   )
+  
 }
-
 export default ProfileMenu
