@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     audience="http://localhost:8000"
     scope="openid profile email"
     >
-      <MantineProvider>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
         <App />
       </MantineProvider>
     </Auth0Provider>
