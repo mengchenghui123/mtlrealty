@@ -1,0 +1,47 @@
+# Real Estate
+
+## Introduction
+
+This is a brief description of your project. Explain what the project does, its key features, and any other relevant information.
+
+## Getting Started
+
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+Make sure you have the following software installed on your machine:
+
+- [Node.js](https://nodejs.org/) (version 14.x recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js) or [Yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/BaiyangChen/RealEstate.git
+    cd client and cd server
+    ```
+
+2. **Install dependencies:**
+
+    Run the following command to install all necessary dependencies:
+
+    ```bash
+    npm install
+    ```
+
+    or if you use Yarn:
+
+    ```bash
+    yarn install
+    ```
+
+### Running the Project
+
+To start the project, run the following command:
+
+```bash
+client site: yarn run dev
+sever site: yarn run start
