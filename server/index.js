@@ -12,11 +12,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.use((req, res, next) => { res.setHeader('Cache-Control', 'public, max-age=31536000'); res.setHeader('X-Content-Type-Options', 'nosniff'); next(); });
 
-app.use(express.json())
-app.use(cookieParser())
-app.use(cors())
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors());
 
 
 app.use('/api/user', userRoute)
