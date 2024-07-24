@@ -7,6 +7,9 @@ export const createUser = asyncHandler(async(req,res)=>{
     console.log("creating a user");
 
     let{email} = req.body;
+    if(!email){
+        return res.status(400).json({message:"Email is required"});
+    }
 
     const userExists = await prisma.user.findUnique({where:{email:email}})
 

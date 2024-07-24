@@ -1,16 +1,17 @@
 .h_wrapper{
-    background: var(--black);
     color: white;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 100;
     transition: transform 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 a{
     text-decoration: none;
     color: inherit;
+    font-size: 100%;
 }
 
 .hidden{
@@ -23,7 +24,6 @@ a{
     align-items: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    color: var(--secondary);
 }
 
 .h-menu{
@@ -55,17 +55,19 @@ a{
     z-index: 1000;
 }
 
-.menu-item:hover .dropdown{
-    display: flex;
+.mantine-Menu-dropdown {
+  background-color: var(--black) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+  z-index: 1000 !important;
 }
 
-.dropdown a{
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    color: var(--secondary);
-    white-space: nowrap;
+.mantine-Menu-item {
+  padding: 0.5rem 1rem !important;
+  text-decoration: none !important;
+  color: var(--secondary) !important;
+  white-space: nowrap !important;
 }
 
-.dropdown a:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+.mantine-Menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
