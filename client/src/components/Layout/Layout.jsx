@@ -9,20 +9,36 @@ import { createUser } from "../../utils/Api";
 
 const Layout = () => {
 
-  const {isAuthenticated, user} = useAuth0()
-  const {setUserDetails} =useContext(userDetailContext)
+  const {isAuthenticated, user, getAccessTokenWithPopup} = useAuth0()
+  const {setUserDetail} =useContext(userDetailContext)
 
   const {mutate} = useMutation({
     mutationKey: [user?.email],
-    mutationFn: ()=> createUser(user?.email)
+    mutationFn: (token)=> createUser(user?.email, token)
   })
 
- 
-
-
   useEffect(()=>{
-    isAuthenticated && mutate()
-  }, [isAuthenticated])
+    
+    const getTokenAndRegister = async ()=>{
+      try{
+        const res = await getAccessTokenWithPopup({
+          authorizationParams: {
+            audience: "https://dev-htkjk3aua38i5rux.us.auth0.com/api/v2/",
+            scope: "openid profile email",
+          },
+        });
+        localStorage.setItem("access_token", res)
+        setUserDetail((prev) => ({ ...prev, token: res }));
+        mutate(res);
+      }catch(error){
+        console.error("failed to get token", error)
+      }
+      
+    };
+    if(isAuthenticated){
+      getTokenAndRegister();
+    }
+  }, [isAuthenticated, getAccessTokenWithPopup, setUserDetail, mutate])
 
   
 
