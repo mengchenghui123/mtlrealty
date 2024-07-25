@@ -20,7 +20,14 @@ import { ReactQueryDevtools } from "react-query/devtools"
 import userDetailContext from './context/userDetailContext';
 
 
-const queryClient = new QueryClient();
+function App() {
+  const queryClient = new QueryClient();
+
+  const [userDetails, setUserDetail] = useState({
+    favourites:[],
+    bookings: [],
+    token: null
+  });
 
 const router = createBrowserRouter(
   [{
@@ -39,13 +46,7 @@ const router = createBrowserRouter(
     ],
   },]
 );
- 
-function App() {
-  const [userDetails, setUserDetail] = useState({
-    favourites:[],
-    bookings: [],
-    token: null
-  });
+
 
   return (
     <userDetailContext.Provider value = {{userDetails, setUserDetail}}>
