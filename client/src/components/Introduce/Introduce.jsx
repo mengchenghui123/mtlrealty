@@ -1,4 +1,5 @@
 import './Introduce.css'
+import CountUp from 'react-countup';
 
 const Introduce = ({ introduceData }) => {
 
@@ -9,19 +10,27 @@ const Introduce = ({ introduceData }) => {
           <div className="left-box">
             <div className='d-flex align-items-center justify-content-start mb-3'>
               <p className='fs-5' style={{ margin: '0 1px' }}>Number of properties:</p>
-              <span className="fs-3 fw-medium">{introduceData.properties}+</span>
+              <span className="fs-3 fw-medium">
+                <CountUp end={introduceData.properties} duration={3} />+
+              </span>
             </div>
             <div className='d-flex align-items-center mb-3'>
               <p className='fs-5' style={{ margin: '0 2px' }}>Number of Area Coverage:</p>
-              <span className="fs-3 fw-medium">{introduceData.areaCoverage}+</span>
+              <span className="fs-3 fw-medium">
+                <CountUp end={introduceData.areaCoverage} duration={3} />+
+              </span>
             </div>
             <div className='d-flex align-items-center mb-3'>
               <p className='fs-5' style={{ margin: '0 1px' }}>Number of brokers:</p>
-              <span className="fs-3 fw-medium">{introduceData.brokers}+</span>
+              <span className="fs-3 fw-medium">
+                <CountUp end={introduceData.brokers} duration={3} />+
+              </span>
             </div>
             <div className='d-flex align-items-center mb-3'>
               <p className='fs-5' style={{ margin: '0 1px' }}>Years in Business:</p>
-              <span className="fs-3 fw-medium">{introduceData.yearsInBusiness}+</span>
+              <span className="fs-3 fw-medium">
+                <CountUp end={introduceData.yearsInBusiness} duration={3} />+
+              </span>
             </div>
           </div>
         </div>
