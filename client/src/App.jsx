@@ -15,6 +15,8 @@ import Sell from "./pages/Sell"
 import Residential from './pages/Residential';
 import Commercial from './pages/Commercial';
 import Franchise from './pages/Franchise';
+import Partners from './pages/Partners';
+import Brands from './pages/Brands';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from "react-query/devtools"
 import userDetailContext from './context/userDetailContext';
@@ -40,6 +42,8 @@ function App() {
         { path: "commercial", element: <Commercial /> },
         { path: "franchise", element: <Franchise /> },
         { path: "contact", element: <Contact /> },
+        { path: "partners", element: <Partners /> },
+        { path: "brands", element: <Brands /> },
         { path: "property/:id", element: <PropertyDetail /> },
         { path: "/residencies/:id", element: <Residiences /> },
         { path: "/about", element: <About /> },
