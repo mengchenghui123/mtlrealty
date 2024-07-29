@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -9,6 +9,11 @@ import { PuffLoader } from "react-spinners";
 import useAuthCheck from "../../Hook/useAuthCheck";
 import { useAuth0 } from "@auth0/auth0-react";
 import BookingModal from "../BookingModal/BookingModal";
+import UserDetailContext from "../../context/userDetailContext";
+import { Button } from "@mantine/core";
+import { useMutation } from "react-query";
+import { removeBooking } from "../../utils/Api";
+import { toast } from "react-toastify";
 
 export const PropertyDetail = () => {
   const { data, isError, isLoading } = useProperty();
@@ -18,6 +23,23 @@ export const PropertyDetail = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
+
+  const {
+    userDetails: { token, bookings },
+    setUserDetail,
+  } = useContext(UserDetailContext);
+
+  const { mutate: cancelBooking, isLoading: cancelling } = useMutation({
+    mutationFn: () => removeBooking(id, user?.email, token),
+    onSuccess: () => {
+      setUserDetail((prev) => ({
+        ...prev,
+        bookings: prev.bookings.filter((booking) => booking?.id !== id),
+      }));
+
+      toast.success("Booking cancelled", { position: "bottom-right" });
+    },
+  });
 
   if (isError) {
     return (
@@ -95,14 +117,32 @@ export const PropertyDetail = () => {
         <div className="property-description">
           <h2>Property Description</h2>
           <p>{property.description}</p>
-          <button
-            className="button"
-            onClick={() => {
-              validateLogin() && setModalOpened(true);
-            }}
-          >
-            Book Your Visit
-          </button>
+
+          {bookings?.map((booking) => booking.id).includes(id) ? (
+            <>
+              <Button
+                variant="outline"
+                color="red"
+                onClick={() => cancelBooking()}
+                disabled={cancelling}
+              >
+                <span>Cancel Booking</span>
+              </Button>
+              <span>
+                Your visit already booked for date{" "}
+                {bookings?.filter((booking) => booking?.id === id)[0].date}
+              </span>
+            </>
+          ) : (
+            <button
+              className="button"
+              onClick={() => {
+                validateLogin() && setModalOpened(true);
+              }}
+            >
+              Book Your Visit
+            </button>
+          )}
 
           <BookingModal
             opened={modalOpened}

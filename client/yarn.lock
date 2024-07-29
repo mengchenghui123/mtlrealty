@@ -546,6 +546,11 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.11.2.tgz#5629dff7ae7253f94e819c26b3b1adf97e68fd48"
   integrity sha512-jhyVe/sbDEG2U8rr2lMecUPgQxcfr5hh9HazqGfkS7ZRIMDO7uJ947yAcTMGGkp5Lxtt5TBFt1Cb6tiB2/1agg==
 
+"@popperjs/core@^2.11.8":
+  version "2.11.8"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
+  integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
+
 "@remix-run/router@1.17.1":
   version "1.17.1"
   resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.17.1.tgz"

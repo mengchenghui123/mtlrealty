@@ -65,7 +65,7 @@ export const getAllBookings = asyncHandler(async(req,res)=>{
 })
 
 //取消预约
-export const cancelBookings = asyncHandler(async(req,res)=>{
+export const cancelBooking = asyncHandler(async(req,res)=>{
     const {email} = req.body;
     const {id} = req.params;
     try{
