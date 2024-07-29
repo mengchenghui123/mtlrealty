@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import {Menu} from '@mantine/core'
+import { Menu } from '@mantine/core'
 import { useAuth0 } from '@auth0/auth0-react';
-import  ProfileMenu  from '../ProfileMenu/ProfileMenu';
+import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
- const Header = () => {
+const Header = () => {
   const [dropdowns, setDropdowns] = useState({
     residential: false,
     commercial: false,
     franchise: false,
   });
 
-  const {loginWithRedirect, isAuthenticated, user, logout} = useAuth0();
+  const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
 
   // Navigator follow
   const [isheaderVisible, setIsHeaderVisible] = useState(true);
@@ -76,7 +76,7 @@ import  ProfileMenu  from '../ProfileMenu/ProfileMenu';
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item component={Link} to="#" role="menuitem">Commercial Leasing</Menu.Item>
-              <Menu.Item component={Link} to="#" role="menuitem">Partners</Menu.Item>
+              <Menu.Item component={Link} to="/partners" role="menuitem">Partners</Menu.Item>
               <Menu.Item component={Link} to="#" role="menuitem">Protetles</Menu.Item>
             </Menu.Dropdown>
           </Menu>
@@ -97,7 +97,7 @@ import  ProfileMenu  from '../ProfileMenu/ProfileMenu';
             <Menu.Dropdown>
               <Menu.Item component={Link} to="#" role="menuitem">Introduction</Menu.Item>
               <Menu.Item component={Link} to="#" role="menuitem">Procedure</Menu.Item>
-              <Menu.Item component={Link} to="#" role="menuitem">Brand</Menu.Item>
+              <Menu.Item component={Link} to="/brands" role="menuitem">Brand</Menu.Item>
             </Menu.Dropdown>
           </Menu>
 
