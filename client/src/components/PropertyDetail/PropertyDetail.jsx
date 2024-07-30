@@ -14,6 +14,7 @@ import { Button } from "@mantine/core";
 import { useMutation } from "react-query";
 import { removeBooking } from "../../utils/Api";
 import { toast } from "react-toastify";
+import Heart from "../Heart/Heart";
 
 export const PropertyDetail = () => {
   const { data, isError, isLoading } = useProperty();
@@ -87,6 +88,9 @@ export const PropertyDetail = () => {
       <div className="property-detail-container">
         {/* 第一块，大图片 */}
         <div className="property-main-image">
+          <div className="like">
+            <Heart id={id} />
+          </div>
           <img src={batches[currentBatchIndex]?.[0]} alt="Property" />
         </div>
         {/* 第二块，Swiper */}
@@ -195,7 +199,6 @@ export const PropertyDetail = () => {
             height="400%"
             style={{ border: 0 }}
             allowFullScreen=""
-            aria-hidden="false"
             tabIndex="0"
           ></iframe>
         </div>

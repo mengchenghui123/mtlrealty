@@ -73,3 +73,50 @@ export const removeBooking = async (id, email, token) => {
     }
   };
 
+  export const toFav = async(id, email, token) =>{
+    try {
+        await api.post(
+            `/user/toFav/${id}`,
+            {
+                email,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+            }
+        )
+    } catch (error) {
+        throw error
+    }
+  }
+
+export const getAllFav = async(email,token)=>{
+    if(!token) {console.error("No Token"); return[];}
+
+    try {
+        const res = await api.post(
+            `/user/allFav`,
+            {email},
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          console.log('Response from Server:', res.data)
+
+          const favourites = res.data.favResidenciesID;
+          if(!Array.isArray(favourites)){
+            console.error('Data format is incorrect', favourites)
+            throw new Error('Data formet is incorrect');
+          }
+          return favourites;
+    } catch (error) {
+        toast.error("Something went wrong while fetching fav");
+        console.error('Error fetching favourites', error)
+        throw error
+    }
+}
+  
+
