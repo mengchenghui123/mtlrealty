@@ -104,17 +104,9 @@ export const getAllFav = async(email,token)=>{
               },
             }
           );
-          console.log('Response from Server:', res.data)
-
-          const favourites = res.data.favResidenciesID;
-          if(!Array.isArray(favourites)){
-            console.error('Data format is incorrect', favourites)
-            throw new Error('Data formet is incorrect');
-          }
-          return favourites;
+          return res.data["favResidenciesID"]
     } catch (error) {
         toast.error("Something went wrong while fetching fav");
-        console.error('Error fetching favourites', error)
         throw error
     }
 }

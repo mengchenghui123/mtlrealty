@@ -9,25 +9,16 @@ const useFavourites = () => {
   const queryRef = useRef();
   const { user } = useAuth0();
 
-  console.log("user:", user);
-  console.log("userDetails", userDetails);
-
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: "allFavourites",
-    queryFn: () => {
-      if (!user?.email || !userDetails?.token) {
-        return [];
-      }
-      return getAllFav(user.email, userDetails.token);
-    },
+    queryFn: () => getAllFav(user.email, userDetails?.token),
     onSuccess: (data) => {
-      console.log("Data from Query", data);
       if (!Array.isArray(data)) {
         throw new Error("Data format is incorrect", data);
       }
       setUserDetail((prev) => ({ ...prev, favourites: data }));
     },
-    enabled: !!user && !!userDetails?.token,
+    enabled: !!user?.email && !!userDetails?.token,
     staleTime: 30000,
   });
 
@@ -36,8 +27,7 @@ const useFavourites = () => {
     if (userDetails?.token) {
       refetch();
     }
-  }, [userDetails?.token]);
-  console.log("Query Data:", data);
+  }, [userDetails?.token, refetch]);
   return { data, isError, isLoading, refetch };
 };
 
