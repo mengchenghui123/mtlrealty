@@ -9,9 +9,12 @@ import { createUser } from "../../utils/Api";
 import useFavourites from "../../Hook/useFavourites";
 import { toast } from "react-toastify";
 import { PuffLoader } from "react-spinners";
+import useBookings from "../../Hook/useBookings";
 
 const Layout = () => {
   useFavourites();
+  useBookings();
+
   const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();
   const { setUserDetail } = useContext(userDetailContext);
 
