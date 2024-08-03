@@ -16,7 +16,7 @@ export const getAllProperties = async()=>{
         }
         return response.data
     }catch(error){
-        toast.error("Something went wrong");
+        toast.error("Something went wrong while getting all property");
         throw error;
     }
 }
@@ -132,5 +132,26 @@ export const getAllBookings = async (email, token) =>{
         throw error
     }
 }
+
+export const createResidency = async(data, token)=>{
+    try {
+        const res = await api.post(
+            `/residency/create`,
+            {
+                data
+            }
+            ,
+            {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                },
+            }
+        )
+        return res.data
+    } catch (error) {
+        console.log("error from server:", error)
+        throw error
+    }
+};
   
 

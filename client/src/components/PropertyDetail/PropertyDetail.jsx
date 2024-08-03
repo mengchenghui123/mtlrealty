@@ -76,7 +76,11 @@ export const PropertyDetail = () => {
   const images = property.images || [];
 
   for (let i = 0; i < images.length; i += 4) {
-    batches.push(images.slice(i, i + 4));
+    const currentBatch = images.slice(i, i + 4);
+    while (currentBatch.length < 4) {
+      currentBatch.push(...images.slice(0, 4 - currentBatch.length));
+    }
+    batches.push(currentBatch);
   }
 
   const handleSlideChange = (swiper) => {
@@ -194,7 +198,7 @@ export const PropertyDetail = () => {
         <div className="property-map">
           <h2>Location</h2>
           <iframe
-            src={`https://www.google.ca/maps?q=${property.location}&output=embed`}
+            src={`https://www.google.ca/maps?q=${property.address}&output=embed`}
             width="100%"
             height="400%"
             style={{ border: 0 }}
