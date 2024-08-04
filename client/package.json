@@ -12,6 +12,7 @@
   "dependencies": {
     "@auth0/auth0-react": "2.0.1",
     "@emotion/react": "^11.12.0",
+    "@mantine/carousel": "^7.11.2",
     "@mantine/core": "^7.11.2",
     "@mantine/dates": "^7.11.2",
     "@mantine/form": "^7.11.2",
@@ -20,6 +21,7 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "dayjs": "^1.11.11",
+    "embla-carousel-react": "^7.1.0",
     "framer-motion": "^10.8.5",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
