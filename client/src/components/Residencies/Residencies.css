@@ -16,13 +16,11 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    background: white;
   }
 
   .full-width-background{
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    background-color: #f0f0f0;
     padding: 2rem 0;
   }
   

@@ -1,7 +1,7 @@
 .hero-container {
     margin-top: 4rem;
     padding-top: 12px;
-    border: 1px solid red;
+    background: white; /* 之后这里添加背景图片 */
   }
 
   .hero-left-container {
