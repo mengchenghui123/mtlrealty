@@ -1,26 +1,26 @@
-import React, { Suspense, useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { Suspense, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
-import Rent from "./pages/Rent"
-import Contact from "./pages/Contact"
-import Layout from "./components/Layout/Layout"
-import PropertyDetail from "./components/PropertyDetail/PropertyDetail"
-import Residiences from "./components/Residencies/Risidencies"
-import About from "./pages/About"
-import Buy from "./pages/Buy"
-import Sell from "./pages/Sell"
-import Residential from './pages/Residential';
-import Commercial from './pages/Commercial';
-import Franchise from './pages/Franchise';
-import Partners from './pages/Partners';
-import Brands from './pages/Brands';
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from "react-query/devtools"
-import userDetailContext from './context/userDetailContext';
-
+import Rent from "./pages/Rent";
+import Contact from "./pages/Contact";
+import Layout from "./components/Layout/Layout";
+import PropertyDetail from "./components/PropertyDetail/PropertyDetail";
+import Residiences from "./components/Residencies/Risidencies";
+import About from "./pages/About";
+import Buy from "./pages/Buy";
+import Sell from "./pages/Sell";
+import Residential from "./pages/Residential";
+import Commercial from "./pages/Commercial";
+import Franchise from "./pages/Franchise";
+import Partners from "./pages/Partners";
+import Brands from "./pages/Brands";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import userDetailContext from "./context/userDetailContext";
+import Bookings from "./pages/Bookings/Bookings";
 
 function App() {
   const queryClient = new QueryClient();
@@ -28,12 +28,12 @@ function App() {
   const [userDetails, setUserDetail] = useState({
     favourites: [],
     bookings: [],
-    token: null
+    token: null,
   });
 
-  const router = createBrowserRouter(
-    [{
-      path: '/',
+  const router = createBrowserRouter([
+    {
+      path: "/",
       element: <Layout />,
       children: [
         { path: "/", element: <Home /> },
@@ -45,14 +45,14 @@ function App() {
         { path: "partners", element: <Partners /> },
         { path: "brands", element: <Brands /> },
         { path: "property/:id", element: <PropertyDetail /> },
+        { path: "/bookings", element: <Bookings /> },
         { path: "/residencies/:id", element: <Residiences /> },
         { path: "/about", element: <About /> },
         { path: "/sell", element: <Sell /> },
         { path: "/buy", element: <Buy /> },
       ],
-    },]
-  );
-
+    },
+  ]);
 
   return (
     <userDetailContext.Provider value={{ userDetails, setUserDetail }}>

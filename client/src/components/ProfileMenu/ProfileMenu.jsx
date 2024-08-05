@@ -25,7 +25,9 @@ const ProfileMenu = ({ user, logout }) => {
       <Menu.Dropdown>
         <Menu.Item>Favourites</Menu.Item>
 
-        <Menu.Item>Bookings</Menu.Item>
+        <Menu.Item onClick={() => navigate("./bookings", { replace: true })}>
+          Bookings
+        </Menu.Item>
 
         <Menu.Item
           onClick={() => {
