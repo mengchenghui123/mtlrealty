@@ -136,8 +136,8 @@ const Header = () => {
           </Menu>
 
           {/* add property */}
-          <div onClick={handleAddPropertyClick}>Add Property</div>
-          <AddPropertyModal opened={modalOpened} setOpened={setModalopened} />
+          {/* <div onClick={handleAddPropertyClick}>Add Property</div>
+          <AddPropertyModal opened={modalOpened} setOpened={setModalopened} /> */}
 
           {/* Contact & News & Login */}
           <div className="menu-item">
