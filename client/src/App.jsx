@@ -21,6 +21,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import userDetailContext from "./context/userDetailContext";
 import Bookings from "./pages/Bookings/Bookings";
+import Favourites from "./pages/Favourites/Favourites";
 
 function App() {
   const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ function App() {
         { path: "brands", element: <Brands /> },
         { path: "property/:id", element: <PropertyDetail /> },
         { path: "/bookings", element: <Bookings /> },
+        { path: "/favourites", element: <Favourites /> },
         { path: "/residencies/:id", element: <Residiences /> },
         { path: "/about", element: <About /> },
         { path: "/sell", element: <Sell /> },
