@@ -1,0 +1,26 @@
+.property-services-container {
+  padding: 3rem 20px;
+  margin: 1.5rem 0;
+}
+.service-card {
+  border: 1px dashed rgb(179, 115, 55);
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+  position: relative;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background-color: rgb(179, 115, 55);
+  position: absolute;
+  top: -30px;
+  right: 10%;
+}
+
+.read-more svg {
+  margin-left: 5px;
+}

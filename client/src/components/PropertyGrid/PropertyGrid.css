@@ -38,13 +38,12 @@
 }
 
 .card-info {
-  background: rgba(0, 0, 0, 0.5);
   margin-bottom: .5rem;
 }
 
 .secondaryText {
   color:#fff;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 .primaryText {
@@ -68,9 +67,9 @@
 .carousel-controls {
   display: flex;
   justify-content: space-between;
-  width: 115%;
-  margin-left: -7.5%;
-  margin-right: -7.5%;
+  width: 112%;
+  margin-left: -6%;
+  margin-right: -6%;
 }
 
 .carousel-container {

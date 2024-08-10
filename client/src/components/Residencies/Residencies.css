@@ -6,7 +6,7 @@
   }
   
   .r-container {
-    max-width: 1200px; /* 控制 section 的最大宽度 */
+    max-width: 1380px; /* 控制 section 的最大宽度 */
     width: 100%;
     padding: 0 2rem; /* 控制两边的空白 */
     box-sizing: border-box;
