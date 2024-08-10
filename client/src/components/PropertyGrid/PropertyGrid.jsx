@@ -44,7 +44,7 @@ const PropertyGrid = ({ properties, title }) => {
         <Carousel
           withIndicators
           height={400}
-          slideSize={{ base: '100%', sm: '50%', md: '25%' }}
+          slideSize={{ base: '100%', sm: '50%', md: '20%' }}
           slideGap={{ base: 0, sm: 'md' }}
           controlSize={35}
           loop
@@ -93,7 +93,7 @@ const PropertyGrid = ({ properties, title }) => {
                 >
                   {card.status ? card.status : 'for rent'}
                 </Badge>
-                <Heart id={card?.id} className="heart-icon" />
+                {/* <Heart id={card?.id} className="heart-icon" /> */}
                 <div className="card-info">
                   <div className="d-flex flex-column align-items-start gap-2">
                     <span className="primaryText">
@@ -126,24 +126,12 @@ const PropertyGrid = ({ properties, title }) => {
                       </span>
                     </div>
                   </div>
-
-                  {/* <span className="secondaryText">
-                  {truncate(card.description, { length: 80 })}
-                </span> */}
                 </div>
               </div>
             </Carousel.Slide>
           ))}
         </Carousel>
       </div>
-
-
-      {/* <div className="view-more-container">
-        <button className="view-more-button" onClick={handleViewMore}>
-          View More
-        </button>
-      </div> */}
-
     </div >
   );
 };
