@@ -22,9 +22,13 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import userDetailContext from "./context/userDetailContext";
 import Bookings from "./pages/Bookings/Bookings";
 import Favourites from "./pages/Favourites/Favourites";
+import { useAuth0 } from "@auth0/auth0-react";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Admin from "./pages/Admin";
 
 function App() {
   const queryClient = new QueryClient();
+  const { user } = useAuth0();
 
   const [userDetails, setUserDetail] = useState({
     favourites: [],
@@ -52,6 +56,14 @@ function App() {
         { path: "/about", element: <About /> },
         { path: "/sell", element: <Sell /> },
         { path: "/buy", element: <Buy /> },
+        {
+          path: "/admin",
+          element: (
+            <PrivateRoute user={user} role="Admin">
+              <Admin />
+            </PrivateRoute>
+          ),
+        },
       ],
     },
   ]);

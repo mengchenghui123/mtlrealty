@@ -51,3 +51,14 @@ export const getResidency = asyncHandler(async(req,res)=>{
         res.status(500).json({error: 'Internal Server Error'})
     }
 });
+
+export const deleteResidency = asyncHandler(async(req,res)=>{
+    const {id} = req.params;
+    try {
+        await prisma.residency.delete({
+            where:{id},
+        });
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})

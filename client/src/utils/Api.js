@@ -153,5 +153,48 @@ export const createResidency = async(data, token)=>{
         throw error
     }
 };
+
+
+export const getAllUsers = async(token)=>{
+    try {
+        const res = await api.get(`/admin/users`,{
+            headers:{
+                Authorization: `Bearer ${token}`
+            },
+        });
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching users", error)
+        throw error
+    }
+};
+
+export const deleteUser = async(email, token)=>{
+    try {
+        await api.delete(`/admin/deleteUser/${email}`,{
+            headers:{
+                Authorization:`Bearer ${token}`,
+            },
+        });
+    } catch (error) {
+        console.error("Error deleting user", error);
+        throw error;
+    }
+};
+
+export const deleteResidency = async(id, token)=>{
+    try {
+        await api.delete(`/admin/deleteResidency/${id}`,{
+            headers:{
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    } catch (error) {
+        console.log("Error deleting residency", error);
+        throw error;
+    }
+}
+
+
   
 

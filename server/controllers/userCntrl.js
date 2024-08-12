@@ -146,3 +146,22 @@ export const getAllFav = asyncHandler(async(req,res)=>{
         throw new Error(err.message);
     }
 })
+
+export const getAllUsers = asyncHandler(async(req,res)=>{
+    const users = await prisma.user.findMany();
+    res.status(200).json(users);
+})
+
+
+
+export const deleteUser = asyncHandler(async(req,res)=>{
+    const {email} = req.params;
+    try {
+        await prisma.user.delete({
+            where:{email},
+        });
+        res.status(200).send("user deleted successfully")
+    } catch (error) {
+        res.status(500).json({message: err.message})
+    }
+})

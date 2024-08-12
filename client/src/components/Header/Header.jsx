@@ -15,6 +15,7 @@ const Header = () => {
   });
 
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
+  const isAdmin = user?.["https://realEstate.com/roles"]?.includes("Admin");
 
   // Navigator follow
   const [isheaderVisible, setIsHeaderVisible] = useState(true);
@@ -139,6 +140,13 @@ const Header = () => {
           {/* <div onClick={handleAddPropertyClick}>Add Property</div>
           <AddPropertyModal opened={modalOpened} setOpened={setModalopened} /> */}
 
+          {isAuthenticated && isAdmin && (
+            <div className="menu-item">
+              <Link to="/admin" role="menuitem">
+                Admin
+              </Link>
+            </div>
+          )}
           {/* Contact & News & Login */}
           <div className="menu-item">
             <Link to="/contact" role="menuitem">
@@ -150,6 +158,7 @@ const Header = () => {
               News
             </Link>
           </div>
+
           {!isAuthenticated ? (
             <button className="button" onClick={loginWithRedirect}>
               Login
