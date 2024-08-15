@@ -28,7 +28,7 @@ const Layout = () => {
       try {
         const res = await getAccessTokenWithPopup({
           authorizationParams: {
-            audience: "https://dev-htkjk3aua38i5rux.us.auth0.com/api/v2/",
+            audience: "https://api.realEstate.com",
             scope: "openid profile email",
           },
         });

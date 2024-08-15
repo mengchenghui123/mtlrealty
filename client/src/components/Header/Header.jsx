@@ -15,7 +15,7 @@ const Header = () => {
   });
 
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
-  const isAdmin = user?.["https://realEstate.com/roles"]?.includes("Admin");
+  const isAdmin = user?.["https://your-namespace/roles"]?.includes("Admin");
 
   // Navigator follow
   const [isheaderVisible, setIsHeaderVisible] = useState(true);
@@ -44,7 +44,10 @@ const Header = () => {
   }, []);
 
   return (
-    <section className={`h_wrapper ${isheaderVisible ? "" : "hidden"}`}>
+    <section
+      className={`h_wrapper ${isheaderVisible ? "" : "hidden"}`}
+      inert={!isheaderVisible ? "true" : undefined}
+    >
       <div className="flexCenter paddings innerWidth h-container">
         {/* Logo */}
         <Link to="/">
@@ -137,8 +140,8 @@ const Header = () => {
           </Menu>
 
           {/* add property */}
-          {/* <div onClick={handleAddPropertyClick}>Add Property</div>
-          <AddPropertyModal opened={modalOpened} setOpened={setModalopened} /> */}
+          <div onClick={handleAddPropertyClick}>Add Property</div>
+          <AddPropertyModal opened={modalOpened} setOpened={setModalopened} />
 
           {isAuthenticated && isAdmin && (
             <div className="menu-item">

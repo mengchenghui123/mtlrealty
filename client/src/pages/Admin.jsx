@@ -1,77 +1,126 @@
+// import React, { useContext, useEffect } from "react";
+// import userDetailContext from "../context/userDetailContext";
+// import { getAllUsers } from "../utils/Api";
+// import { toast } from "react-toastify";
+
+// const Admin = () => {
+//   const { userDetails, setUserDetail } = useContext(userDetailContext);
+//   const { token } = userDetails; // 从 context 中获取 token
+//   const users = userDetails.users || []; // 假设 userDetails 中有 users 数据
+
+//   useEffect(() => {
+//     const fetchUsers = async () => {
+//       if (!users.length) {
+//         try {
+//           const userData = await getAllUsers(token);
+//           setUserDetail((prevDetails) => ({
+//             ...prevDetails,
+//             users: userData, // 将获取的用户数据保存到 context 中
+//           }));
+//         } catch (error) {
+//           toast.error("Failed to fetch users");
+//         }
+//       }
+//     };
+
+//     fetchUsers();
+//   }, [token, users.length, setUserDetail]);
+
+//   if (!users.length) {
+//     return <div>Loading...</div>;
+//   }
+
+//   return (
+//     <div>
+//       <h1>All Users</h1>
+//       <table>
+//         <thead>
+//           <tr>
+//             <th>ID</th>
+//             <th>Email</th>
+//             <th>Name</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {users.map((user) => (
+//             <tr key={user.id}>
+//               <td>{user.id}</td>
+//               <td>{user.email}</td>
+//               <td>{user.name}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
+
+// export default Admin;
 import React, { useEffect, useState } from "react";
-import { deleteResidency, deleteUser, getAllUsers } from "../utils/Api";
 import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUsers } from "../utils/Api";
+import { toast } from "react-toastify";
 
 const Admin = () => {
-  const { user, getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
   const [users, setUsers] = useState([]);
-  const [residencies, setResidencies] = useState([]);
+  const [token, setToken] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAccessToken = async () => {
       try {
-        const token = await getAccessTokenSilently();
-        console.log("Token:", token);
-        const usersData = await getAllUsers(token);
-        const residenciesData = await getAllResidencies(token);
-        setUsers(usersData);
-        setResidencies(residenciesData);
-      } catch (err) {
-        console.error("Error fetching data", err);
+        const accessToken = await getAccessTokenSilently({
+          audience: "https://api.realEstate.com", // 您的 API 标识符
+          scope: "openid profile email",
+        });
+        setToken(accessToken); // 存储 accessToken 以备后续使用
+        console.log("Access Token:", accessToken); // 打印 Access Token 进行调试
+      } catch (error) {
+        console.error("Failed to get access token", error);
+        toast.error("Failed to get access token");
       }
     };
-    fetchData();
-  }, [user?.email]);
 
-  const handleDeleteUser = async (email) => {
-    try {
-      const token = await getAccessTokenSilently();
-      await deleteUser(email, token);
-      setUsers(users.filter((user) => user.email !== email));
-    } catch (err) {
-      console.error("Error deleting user", err);
+    if (isAuthenticated) {
+      fetchAccessToken();
     }
-  };
+  }, [isAuthenticated, getAccessTokenSilently]);
 
-  const handleDeleteResidency = async (id) => {
-    try {
-      const token = await getAccessTokenSilently();
-      await deleteResidency(id, token);
-      setResidencies(residencies.filter((residency) => residency.id !== id));
-    } catch (err) {
-      console.error("Error deleting residency", err);
-    }
-  };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      if (token) {
+        try {
+          const userData = await getAllUsers(token);
+          setUsers(userData);
+          console.log("Fetched Users:", userData); // 打印获取到的用户数据进行调试
+        } catch (error) {
+          console.error("Failed to fetch users", error);
+          toast.error("Failed to fetch users");
+        }
+      }
+    };
+
+    fetchUsers();
+  }, [token]);
+
+  if (!token) {
+    return <div>Loading token...</div>;
+  }
+
+  if (!users.length) {
+    return <div>Loading users...</div>;
+  }
+
   return (
     <div>
-      <h2>Admin Dashboard</h2>
-      <section>
-        <h3>Users</h3>
-        <ul>
-          {users.map((user) => (
-            <li key={user.email}>
-              {user.email}{" "}
-              <button onClick={() => handleDeleteUser(user.email)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section>
-        <h3>Residencies</h3>
-        <ul>
-          {residencies.map((residency) => (
-            <li key={residency.id}>
-              {residency.title}{" "}
-              <button onClick={() => handleDeleteResidency(residency.id)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <h1>All Users (Test)</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.id}: {user.email} - {user.name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

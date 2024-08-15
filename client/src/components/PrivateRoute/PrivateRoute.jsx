@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 const PrivateRoute = ({ children, role }) => {
   const { isAuthenticated, user } = useAuth0();
 
-  const userRoles = user?.["https://realEstate.com/roles"] || [];
+  const userRoles = user?.["https://your-namespace/roles"] || [];
 
   if (!isAuthenticated || !user || !userRoles.includes(role)) {
     return <Navigate to="/" />;
