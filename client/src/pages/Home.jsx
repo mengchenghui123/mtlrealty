@@ -1,8 +1,6 @@
-
-import Hero from '../components/Hero/Hero'
-import Residencies from '../components/Residencies/Risidencies'
-import '../App.css'
-
+import Hero from "../components/Hero/Hero";
+import Residencies from "../components/Residencies/Risidencies";
+import "../App.css";
 
 function Home() {
   return (
