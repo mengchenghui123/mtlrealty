@@ -23,20 +23,41 @@ model User {
 
 model Residency {
     id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    title       String
-    description String
-    price       Int
-    address     String
-    city        String
-    country     String
-    image       String
+    title       String?
+    type        String?
+    description String?
+    price       Int?
+    address     String?
+    mlsNumber   String?
+    propertyType String?
+    livingSpace Float?
+    lotSize     Float?
+    yearBuild   Int?
+    city        String?
+    country     String?
+    municipalTaxes  Float?
+    schoolTaxes Float?
+    condoFee    Float?
+    rooms       Room[]
+    image       String?
     facilities  Json
     images      Json
     userEmail   String
+    agentInfo   Json
     owner       User     @relation("Owner", fields: [userEmail], references: [email])
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
-    amenities   Json
+    amenities   String[]
 
-    @@unique(fields: [address, userEmail])
+    @@unique(fields: [mlsNumber, userEmail])
+}
+
+model Room {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  type            String
+  level           String
+  dimensions      String
+  flooring        String
+  residencyId     String    @db.ObjectId
+  residency       Residency @relation(fields: [residencyId], references: [id]) // 定义外键关系
 }

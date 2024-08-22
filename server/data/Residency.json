@@ -1,268 +1,1630 @@
 [
     {
       "_id": { "$oid": "64392d39dfd90fb29e464fb7" },
-      "title": "Sunny Meadow Cottage",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 6000,
-      "address": "Street 1",
-      "city": "Chicago",
-      "country": "US",
-      "image": "https://images.pexels.com/photos/7031406/pexels-photo-7031406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:38:48.762Z" },
-      "updatedAt": { "$date": "2023-04-14T10:38:48.762Z" },
-      "facilities": { "bathrooms": "2", "parking": "1", "bedrooms": "5" }
+      "type" : "Sale",
+      "title": "Single Family Detached for Sale in Westmount",
+      "description": "<p>Ideally located in the heart of middle Westmount, this lovely semi-detached well maintained family home has it all. Boasting hardwood floors, original old world charm, high ceilings, large living and dining room, 4+2 bedrooms, 3+1 bathrooms, 2nd floor solarium with panoramic views, and a sun filled eat-in kitchen, terrace and private garden, finished basement, 1 garage and covered outdoor parking. A must see!<br><br>Welcome to 4876 Westmount Ave. in the heart of middle Westmount close to Victoria Village, schools, parks and so much more!<br>Enter this lovely semi-detached family home with old world charm. The home has been well maintained and up-dated where functionality meets refined architectural details.<br>The ground floor offers voluminous interior living spaces with a formal living room and dining room perfect for entertaining and day to day living. There are high ceilings and hardwood floors on all levels. An exquisitely bright and functional eat-in kitchen features a timeless white quartz countertop that pairs superbly with the white backsplash. From the kitchen there is access to a large terrace and private backyard with a cozy garage-top terrace. The ground floor is complete with a powder room.<br>The second floor boasts a sunny staircase with a dazzling skylight. A grand master bedroom that provides an atmosphere of serenity with a walk-in closet and a sunroom. The second bedroom is equipped with a fireplace and a dressing room and charming balcony. There are two additional bedrooms and a family bathroom on this floor.<br>The basement is finished with a back entrance leading to the backyard. There is a family room, two bedrooms and a bathroom with a laundry area on this level.<br>Declarations: - All fireplaces need to be verified by the buyer and are sold without any warranty with respect to their compliance with applicable regulations and insurance company requirements. - The choice of building inspector to be agreed upon by both parties prior to inspection.</p>",
+      "price": 2098000,
+      "address": "4876 Av. Westmount, Westmount, QC H3Y 1Y1",
+      "mlsNumber": "24897013",
+      "propertyType": "Residential, Single Family Detached",
+      "livingSpace": 2600.56,
+      "lotSize": 2807.23,
+      "yearBuild": 1920,
+      "municipalTaxes": 11474,
+      "schoolTaxes": 1344,
+      "city": "Westmount",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Basement - Finished",
+        "Garage"
+        ],
+      "rooms": [
+          { "type": "Other", "level": "Ground floor", "dimensions": "5' 1.2\" x 5'", "flooring": "Tiles" },
+          { "type": "Hallway", "level": "Ground floor", "dimensions": "14' 10.8\" x 16' 1.2\"", "flooring": "Wood" },
+          { "type": "Living room", "level": "Ground floor", "dimensions": "14' x 16' 6\"", "flooring": "Wood" },
+          { "type": "Dining room", "level": "Ground floor", "dimensions": "14' 9.6\" x 13' 3.6\"", "flooring": "Wood" },
+          { "type": "Other", "level": "Ground floor", "dimensions": "8' x 5' 8.4\"", "flooring": "Tiles" },
+          { "type": "Kitchen", "level": "Ground floor", "dimensions": "19' 10.8\" x 11' 2.4\"", "flooring": "Tiles" },
+          { "type": "Washroom", "level": "Ground floor", "dimensions": "5' 3.6\" x 2' 7.2\"", "flooring": "Tiles" },
+          { "type": "Primary bedroom", "level": "2nd floor", "dimensions": "20' 7.2\" x 15' 1.2\"", "flooring": "Wood" },
+          { "type": "Solarium/Sunroom", "level": "2nd floor", "dimensions": "10' 9.6\" x 7' 10.8\"", "flooring": "Wood" },
+          { "type": "Walk-In Closet", "level": "2nd floor", "dimensions": "11' 6\" x 7' 8.4\"", "flooring": "Wood" },
+          { "type": "Bedroom", "level": "2nd floor", "dimensions": "16' 10.8\" x 11' 10.8\"", "flooring": "Wood" },
+          { "type": "Bedroom", "level": "2nd floor", "dimensions": "14' 8.4\" x 11' 3.6\"", "flooring": "Wood" },
+          { "type": "Other", "level": "2nd floor", "dimensions": "10' 9.6\" x 3' 4.8\"", "flooring": "Tiles" },
+          { "type": "Bathroom", "level": "2nd floor", "dimensions": "9' 1.2\" x 4' 10.8\"", "flooring": "Tiles" },
+          { "type": "Family room", "level": "Basement", "dimensions": "23' 10.8\" x 19' 1.2\"", "flooring": "Carpet" },
+          { "type": "Bedroom", "level": "Basement", "dimensions": "11' 4.8\" x 6' 10.8\"", "flooring": "Tiles" },
+          { "type": "Bedroom", "level": "Basement", "dimensions": "9' 9.6\" x 11' 3.6\"", "flooring": "Tiles" },
+          { "type": "Bathroom", "level": "Basement", "dimensions": "14' x 5' 6\"", "flooring": "Tiles" },
+          { "type": "Storage", "level": "Basement", "dimensions": "3' 6\" x 8' 9.6\"", "flooring": "Tiles" }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817981r.jpg",
+      "images": [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817981r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817982r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817983r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817984r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817985r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817986r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817987r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817988r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817989r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817990r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817991r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817992r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817993r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817994r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817995r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817996r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818091r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818092r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818093r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818094r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818095r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817974r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817975r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817976r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818096r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818097r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818098r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225818099r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817977r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817978r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817979r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1835806/225817980r.jpg"],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "3+1", "parking": "2", "bedrooms": "6" }
     },
+
+
     {
       "_id": { "$oid": "64392e0bdfd90fb29e464fbc" },
-      "title": "Coastal Breeze Villa",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 8000,
-      "address": "Street 2",
-      "city": "Multan",
-      "country": "Pakistan",
-      "image": "https://3.bp.blogspot.com/-84l-BoUL090/VTDHcQzSTNI/AAAAAAAAuHI/Khftta_CF5E/s1920/wow-home-design.jpg",
-      "facilities": { "bathrooms": "5", "parking": "1", "bedrooms": "4" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:42:19.231Z" },
-      "updatedAt": { "$date": "2023-04-14T10:42:19.231Z" }
+      "type" : "Sale",
+      "title": "Single Family Detached for Sale in La Prairie",
+      "description": "<p>Nestled in the esteemed neighborhood of Symbiocité in La Prairie, this stunning modern townhouse offers an inviting haven for your family. With 2 spacious bedrooms, 1 full bathroom, and a convenient powder room, this home is designed for both comfort and elegance. High-quality construction and superior finishes ensure a luxurious living experience.<br>Symbiocité, the newest and most coveted sector in La Prairie, is renowned for its serene streets and vibrant community. Just a short walk from the ice rink and numerous parks, you'll find endless activities for the entire family to enjoy. Everything you need is within reach, including the CPE, École de la Petite-Garde, and Collège Jean de La Mennais. Additionally, you'll have quick access to Quartier Dix30 in Brossard and the REM station, making commuting a breeze. Embrace a lifestyle of convenience and tranquility in this exceptional home.</p>",
+      "price": 2098000,
+      "address": "75 Rue du Vice Roi, La Prairie, QC J5R 0T1",
+      "mlsNumber": "15649344",
+      "propertyType": "Residential, Single Family Detached",
+      "lotSize": 2066.67,
+      "yearBuild": 2018,
+      "municipalTaxes": 3189,
+      "schoolTaxes": 159,
+      "city": "La Prairie",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Basement - Finished",
+        "Garage",
+        "Parking"
+        ],
+      "rooms": [
+        {
+          "type": "Hallway",
+          "level": "Ground floor",
+          "dimensions": "5' 7.2\" x 3' 10.8\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Living room",
+          "level": "Ground floor",
+          "dimensions": "13' 4.8\" x 14' 4.8\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Dining room",
+          "level": "Ground floor",
+          "dimensions": "10' x 11' 1.3\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Kitchen",
+          "level": "Ground floor",
+          "dimensions": "8' 9.6\" x 11' 9.6\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Washroom",
+          "level": "Ground floor",
+          "dimensions": "4' 6\" x 5' 2.4\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Primary bedroom",
+          "level": "2nd floor",
+          "dimensions": "14' 8.4\" x 12' 3.6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Walk-In Closet",
+          "level": "2nd floor",
+          "dimensions": "5' 1.2\" x 8' 8.4\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "2nd floor",
+          "dimensions": "10' 8.4\" x 11' 1.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "2nd floor",
+          "dimensions": "8' 1.3\" x 11' 1.2\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Laundry room",
+          "level": "2nd floor",
+          "dimensions": "5' 1.2\" x 5'",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Family room",
+          "level": "Basement",
+          "dimensions": "18' x 8' 2.4\"",
+          "flooring": "Floating floor"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Basement",
+          "dimensions": "7' 1.3\" x 4' 8.4\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Storage",
+          "level": "Basement",
+          "dimensions": "3' 4.8\" x 4' 6\"",
+          "flooring": "Concrete"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323483r.jpg",
+      "images": [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323483r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323440r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323442r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323443r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323444r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323446r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323447r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323449r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323450r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323451r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323453r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323454r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323456r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323457r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323459r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323460r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323461r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323463r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323464r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323466r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323467r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323468r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323470r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323471r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323473r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323474r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323476r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323477r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323478r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323480r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323481r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323483r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1925051/229323440r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "2+1", "parking": "3", "bedrooms": "3" }
     },
+
+
     {
       "_id": { "$oid": "6439001c74446601d6fce96d" },
-      "title": "Citralan Puri Serang",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 3000,
-      "address": "Street 3",
-      "city": "California",
-      "country": "US",
-      "image": "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T07:26:20.051Z" },
-      "updatedAt": { "$date": "2023-04-14T07:26:20.051Z" },
-      "facilities": { "bathrooms": "3", "parking": "1", "bedrooms": "2" }
+      "type" : "Sale",
+      "title": "Condo for Sale in Ville-Marie",
+      "description": "<p>Impressive condo located in the Heart of Downtown Montreal. Beautiful two bedroom unit with the views of downtown. Scavolini kitchen, outdoor pool on the rooftop with panoramic views, gym. Perfect location, close to the restaurants, shoppingmall and universities.</p>",
+      "price": 570000,
+      "address": "1211 Rue Drummond #805, Montréal, QC H3G 0E6",
+      "mlsNumber": "21573210",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 630.01,
+      "yearBuild": 2017,
+      "municipalTaxes": 3414,
+      "schoolTaxes": 451,
+      "condoFee": 4764,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "City",
+        "Elevator",
+        "Garage",
+        "Mountain",
+        "Mountain View"
+        ],
+      "rooms": [
+        {
+          "type": "Living room",
+          "level": "Other",
+          "dimensions": "17' x 11' 6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Kitchen",
+          "level": "Other",
+          "dimensions": "8' 6\" x 8' 6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "Other",
+          "dimensions": "9' 3.6\" x 12' 6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "Other",
+          "dimensions": "7' 4.8\" x 9' 3.6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Other",
+          "dimensions": "6' 10.8\" x 10' 6\"",
+          "flooring": "Ceramic tiles"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854329r.jpg",
+      "images": [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854329r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854304r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854305r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854306r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854307r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854308r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854309r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854310r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854311r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854312r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854313r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854314r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854315r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854316r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854317r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854318r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854319r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854320r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854321r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854322r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854323r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854324r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854325r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854326r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854327r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854328r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854329r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860475/222854304r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1", "parking": "", "bedrooms": "2" }
     },
+
     {
       "_id": { "$oid": "64392e1edfd90fb29e464fbd" },
-      "title": "Autumn Mist Cottage",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 3800,
-      "address": "Street 4",
-      "city": "Karachi",
-      "country": "Pakistan",
-      "image": "https://e0.pxfuel.com/wallpapers/12/377/desktop-wallpaper-beautiful-houses-beautiful-mansion.jpg",
-      "facilities": { "bathrooms": "2", "parking": "1", "bedrooms": "3" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:42:37.946Z" },
-      "updatedAt": { "$date": "2023-04-14T10:42:37.946Z" }
+      "type" : "Sale",
+      "title": "Condo for Sale in Ville-Marie",
+      "description": "<p>Welcome to your dream home at 1788 Rue Joseph-Manseau, Apt. 106, a stunning 2-bedroom, 2-bathroom condo that offers the perfect blend of luxury, comfort, and convenience. This modern and stylish property was built in 2018, and it's located in heart of Montreal.<br>Upon entering the home, you'll be greeted by a spacious and inviting living area that's perfect for relaxing or entertaining. With 933.23 square feet of living space, this condo is the perfect size for those who want to enjoy all the benefits of city living without feeling cramped or confined.<br>The open-concept kitchen is a chef's dream, with stainless steel appliances, qurtz countertops, and plenty of cabinet space for storage. Whether you're cooking a gourmet meal or simply grabbing a quick snack, this kitchen has everything you need.<br>The master bedroom is a true oasis, featuring a large closet, plenty of natural light, and an en-suite bathroom with a spacious shower. The second bedroom is perfect for a home office or a guest room, and the second bathroom is located just steps away for added convenience.<br>This condo also boasts a private balcony that's perfect for enjoying a morning coffee or an evening drink while taking in the stunning city views. Other features of this property include in-unit laundry and a secure parking space.<br>Located in the heart of Ville-Marie, this condo is just steps away from some of the city's best restaurants, shops, and attractions. Priced at $650,000, this property is the perfect choice for those who want to enjoy all the benefits of city living without sacrificing comfort or style. Don't miss your chance to make this stunning condo your new home - schedule a viewing today and see for yourself what makes this property so special.</p>",
+      "price": 549000,
+      "address": "1788 Rue Joseph-Manseau, Apt. 106, Ville-Marie, QC",
+      "mlsNumber": "27496978",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 933.23,
+      "yearBuild": 2018,
+      "municipalTaxes": 5093,
+      "schoolTaxes": 633,
+      "condoFee": 9696,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator",
+        "Garage",
+        "Golf"
+        ],
+      "rooms": [
+        {
+          "type": "Living room",
+          "level": "Ground floor",
+          "dimensions": "15' 3.6\" x 17' 6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Kitchen",
+          "level": "Ground floor",
+          "dimensions": "10' x 11' 6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Primary bedroom",
+          "level": "Ground floor",
+          "dimensions": "9' 3.6\" x 13' 8.4\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Ground floor",
+          "dimensions": "5' 6\" x 8' 9.6\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Ground floor",
+          "dimensions": "9' x 11' 3.6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "Ground floor",
+          "dimensions": "5' 6\" x 8' 9.6\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Hallway",
+          "level": "Ground floor",
+          "dimensions": "4' 8.4\" x 8' 3.6\"",
+          "flooring": "Wood"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311951r.jpg",
+      "images": 
+      [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311951r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310634r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311344r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310635r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310636r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310637r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310638r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310639r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310640r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310641r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310642r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310643r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310644r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310645r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310646r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311471r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311555r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311681r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311755r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311838r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105311951r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1044453/105310634r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "2", "parking": "1", "bedrooms": "2" }
     },
+
+
+
     {
       "_id": { "$oid": "64392d67dfd90fb29e464fb8" },
-      "title": "Rustic Pine Lodge",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 7050,
-      "address": "Street 5",
-      "city": "San Diego",
-      "country": "US",
-      "image": "https://images.pexels.com/photos/208736/pexels-photo-208736.jpeg",
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:39:35.044Z" },
-      "updatedAt": { "$date": "2023-04-14T10:39:35.044Z" },
-      "facilities": { "bathrooms": "5", "parking": "1", "bedrooms": "4" }
+      "type" : "Sale",
+      "title": "Condo for Sale in Ville-Marie",
+      "description": "<p>Welcome to your dream home at 1788 Rue Joseph-Manseau, Apt. 106, a stunning 2-bedroom, 2-bathroom condo that offers the perfect blend of luxury, comfort, and convenience. This modern and stylish property was built in 2018, and it's located in heart of Montreal.<br>Upon entering the home, you'll be greeted by a spacious and inviting living area that's perfect for relaxing or entertaining. With 933.23 square feet of living space, this condo is the perfect size for those who want to enjoy all the benefits of city living without feeling cramped or confined.<br>The open-concept kitchen is a chef's dream, with stainless steel appliances, qurtz countertops, and plenty of cabinet space for storage. Whether you're cooking a gourmet meal or simply grabbing a quick snack, this kitchen has everything you need.<br>The master bedroom is a true oasis, featuring a large closet, plenty of natural light, and an en-suite bathroom with a spacious shower. The second bedroom is perfect for a home office or a guest room, and the second bathroom is located just steps away for added convenience.<br>This condo also boasts a private balcony that's perfect for enjoying a morning coffee or an evening drink while taking in the stunning city views. Other features of this property include in-unit laundry and a secure parking space.<br>Located in the heart of Ville-Marie, this condo is just steps away from some of the city's best restaurants, shops, and attractions. Priced at $650,000, this property is the perfect choice for those who want to enjoy all the benefits of city living without sacrificing comfort or style. Don't miss your chance to make this stunning condo your new home - schedule a viewing today and see for yourself what makes this property so special.</p>",
+      "price": 498800,
+      "address": "1211 Rue Drummond, Apt. 204, Ville-Marie, QC",
+      "mlsNumber": "15548008",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 566.18,
+      "yearBuild": 2018,
+      "municipalTaxes": 2697,
+      "schoolTaxes": 351,
+      "condoFee": 3348,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator",
+        "City"
+        ],
+      "rooms": [
+        {
+          "type": "Kitchen",
+          "level": "2nd floor",
+          "dimensions": "10' 1.2\" x 8' 7.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Family room",
+          "level": "2nd floor",
+          "dimensions": "13' 3.6\" x 9' 10.8\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Dining room",
+          "level": "2nd floor",
+          "dimensions": "10' 1.2\" x 6' 1.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "2nd floor",
+          "dimensions": "9' 1.3\" x 8' 9.6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "2nd floor",
+          "dimensions": "7' 9.6\" x 5' 10.8\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Den",
+          "level": "2nd floor",
+          "dimensions": "8' x 9' 10.8\"",
+          "flooring": "Wood"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855854r.jpg",
+      "images": 
+      [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855868r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855849r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855850r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855851r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855852r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855853r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855854r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855855r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855856r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855857r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855858r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855859r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855860r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855861r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855862r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855863r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855864r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855865r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855866r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855867r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855868r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1860512/222855849r.jpg"
+
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1", "parking": "0", "bedrooms": "2" }
     },
+
     {
       "_id": { "$oid": "64392df2dfd90fb29e464fbb" },
-      "title": "Rolling Hills Retreat",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain inthe 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2000,
-      "address": "Street 6",
-      "city": "Phoenix",
-      "country": "US",
-      "image": "https://www.hollywoodreporter.com/wp-content/uploads/2023/03/image_h_01-H-2023.jpg",
-      "facilities": { "bathrooms": "7", "parking": "2", "bedrooms": "10" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:41:54.156Z" },
-      "updatedAt": { "$date": "2023-04-14T10:41:54.156Z" }
+      "type" : "Sale",
+      "title": "Condo for Sale in Ville-Marie",
+      "description": "<p>Amazing condo in the heart of downtown Montreal. Cozy and sunny livingroom with large windows. 2 bedrooms, 1 bathroom, a balcony, wood floor and modern finishes. Soundproof concrete building with gym, outdoor swimming pool and electronic key access. Close to different metro stations, green line Guy-Concordia and orange line Lucien d'Allier.</p>",
+      "price": 429000,
+      "address": "1190 Rue MacKay, Apt. 314, Ville-Marie, QC",
+      "mlsNumber": "21035057",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 458.54,
+      "yearBuild": 2019,
+      "municipalTaxes": 2352,
+      "schoolTaxes": 302,
+      "condoFee": 1668,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "rooms": [
+        {
+          "type": "Living room",
+          "level": "3nd floor",
+          "dimensions": "16' x 12'",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Primary bedroom",
+          "level": "3nd floor",
+          "dimensions": "9' x 10'",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "3nd floor",
+          "dimensions": "6' 10.8\" x 8'",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "3nd floor",
+          "dimensions": "5' x 5'",
+          "flooring": "Ceramic tiles"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264472r.jpg",
+      "images": 
+      [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264483r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264472r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264473r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264474r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264475r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264476r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264477r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264478r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264479r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264480r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264481r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264482r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264483r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1288135/154264472r.jpg"
+
+
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1", "parking": "0", "bedrooms": "2" }
     },
+
+
+   
     {
       "_id": { "$oid": "64392e32dfd90fb29e464fbe" },
-      "title": "Riverstone Manor",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2000,
-      "address": "Street 7",
-      "city": "Tampa",
-      "country": "US",
-      "image": "https://st.hzcdn.com/simgs/pictures/exteriors/builders-in-kochi-creo-homes-pvt-ltd-img~a751d25e0d2ef808_4-0254-1-cb5c87b.jpg",
-      "facilities": { "bathrooms": "5", "parking": "1", "bedrooms": "4" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:42:58.826Z" },
-      "updatedAt": { "$date": "2023-04-14T10:42:58.826Z" }
+      "type" : "Sale",
+      "title": "Condo for Sale in Ville-Marie",
+      "description": "<p>In the heart of downtown Montreal, steps away from McGill and Concordia University, shopping center, restaurants, bars, museum, parks, groceries, transportation. The building has gorgeous rooftop terrace with BBQ to enjoy the summer, fully equipped gym. Good investment and enjoy the downtown living.<br><br>CONDO<br>- Located on the 8th floor - View of downtown and Mont Royal - High-end finishes - Quartz counter - Stainless steel electric appliances<br> BUILDING<br>- Rooftop terrace with BBQ - Fully equipped gym - Steps away from McGill and Concordia University, shopping center, restaurants, bars, museum, parks, groceries, transportation. </p>",
+      "price": 407600,
+      "address": "1205 Rue MacKay, Apt. 810, Ville-Marie, QC",
+      "mlsNumber": "26314404",
+
+      "propertyType": "Residential, Condo",
+      "livingSpace": 498,
+      "yearBuild": 2015,
+      "municipalTaxes": 2480,
+      "schoolTaxes": 327,
+      "condoFee": 2148,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "rooms": [
+        {
+          "type": "Bedroom",
+          "level": "Other",
+          "dimensions": "9' x 10",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Living room",
+          "level": "Otherr",
+          "dimensions": "9' x 10",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Kitchen",
+          "level": "Other",
+          "dimensions": "7' x 10'",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Other",
+          "dimensions": "6' x 8'",
+          "flooring": "Ceramic tiles"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189337r.jpg",
+      "images": 
+      [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189350r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189335r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189336r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189337r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189338r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189339r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189340r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189341r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189342r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189343r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189344r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189345r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189346r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189347r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189348r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189349r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189350r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1814174/220189335r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1", "parking": "0", "bedrooms": "1" }
     },
+
+    
     {
       "_id": { "$oid": "64392e46dfd90fb29e464fbf" },
-      "title": "Summerhill Estate",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2000,
-      "address": "Street 8",
-      "city": "Denver",
-      "country": "US",
-      "image": "https://i.pinimg.com/originals/89/56/5c/89565c305737e1da2a1a5b62600fbcd4.jpg",
-      "facilities": { "bathrooms": "2", "parking": "1", "bedrooms": "2" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:43:18.186Z" },
-      "updatedAt": { "$date": "2023-04-14T10:43:18.186Z" }
+      "type" : "Sale",
+      "title": "Condo for Sale in Ville-Marie",
+      "description": "<p>Amazing condo in the heart of downtown Montreal. One bedrooms one bathroom with large windows, face south and west side, lots of sunny during whole afternoon, spacious bathroom with shower, a balcony, wood floor and modern finishes. Outdoor swimming pool on the 6th floor, roof terrace, Gym. Close to all services and amenities, universities, Lucien-L'Allier train station and metro stations, public transport, shopping centers, Concordia and Mcgill universities.centers and much more!</p>",
+      "price": 396000,
+      "address": "1190 Rue MacKay, Apt. 1406, Ville-Marie, QC",
+      "mlsNumber": "27960889",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 441.32,
+      "yearBuild": 2019,
+      "municipalTaxes": 2349,
+      "schoolTaxes": 306,
+      "condoFee": 1608,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "rooms": [
+        {
+          "type": "Kitchen",
+          "level": "Other",
+          "dimensions": "7' 10.8\" x 8' 10.8\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Living room",
+          "level": "Otherr",
+          "dimensions": "8' 1.3\" x 10' 1.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Dining room",
+          "level": "Other",
+          "dimensions": "8' 1.2\" x 8' 1.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "Other",
+          "dimensions": "10' 10.8\" x 11' 1.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Other",
+          "dimensions": "6' 9.6\" x 8' 1.2\"",
+          "flooring": "Ceramic tiles"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409286r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409299r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409286r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409287r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409288r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409289r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409290r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409291r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409292r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409293r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409294r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409295r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409296r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409297r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409298r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409299r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1659760/205409286r.jpg"
+
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1", "parking": "0", "bedrooms": "1" }
     },
+
+
+
     {
       "_id": { "$oid": "64392e57dfd90fb29e464fc0" },
-      "title": "Crimson Peak Chalet",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2000,
-      "address": "Street 9",
-      "city": "Chicago",
-      "country": "US",
-      "image": "https://cutewallpaper.org/24/house-images/1819611997.jpg",
-      "facilities": { "bathrooms": "3", "parking": "1", "bedrooms": "4" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:43:35.761Z" },
-      "updatedAt": { "$date": "2023-04-14T10:43:35.761Z" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Brand new condo in a luxury condo building. A stunning studio in the Griffintown<br>Built in 2024, this condo boasts modern design, high-end finishes, and 298 square feet of living space, making it the perfect choice for young professionals, students or those who prefer a minimalist lifestyle.<br>Located in the heart of Griffintown, next to the water. Close to downtown and old port, close to large supermarket, pharmacy, banks and restaurants. Close to ALL. Common area: gym, roof top swimming pool, terrace, BBQ, etc.</p>",
+      "price": 1400,
+      "address": "1485 Rue des Bassins, Apt. 728, Le Sud-Ouest, Quebec, H3J0C2 Canada",
+      "mlsNumber": "9039820",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 298,
+      "yearBuild": 2024,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419308r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419322r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419308r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419309r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419310r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419311r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419312r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419313r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419314r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419315r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419316r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419317r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419318r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419319r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419320r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419321r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419322r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1937427/230419308r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1","parking": "0", "bedrooms": "0"}
     },
+
+
     {
       "_id": { "$oid": "64392e69dfd90fb29e464fc1" },
-      "title": "Cedar Ridge Ranch",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2000,
-      "address": "Street 10",
-      "city": " New York",
-      "country": "US",
-      "image": "https://media.istockphoto.com/id/1184625380/photo/large-modern-expensive-home.jpg?s=612x612&w=0&k=20&c=TuX7dnAQvrxt02_BMnlgtVMMdvBLmh3gcXL1bPnobP8=",
-      "facilities": { "bathrooms": "5", "parking": "1", "bedrooms": "4" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:43:53.665Z" },
-      "updatedAt": { "$date": "2023-04-14T10:43:53.665Z" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Brand new condo in a luxury condo building. A stunning studio in the Griffintown<br>Built in 2024, this condo boasts modern design, high-end finishes, and 298 square feet of living space, making it the perfect choice for young professionals, students or those who prefer a minimalist lifestyle.<br>Located in the heart of Griffintown, next to the water. Close to downtown and old port, close to large supermarket, pharmacy, banks and restaurants. Close to ALL. Common area: gym, roof top swimming pool, terrace, BBQ, etc.</p>",
+      "price": 1400,
+      "address": "1485 Rue des Bassins, Apt. 802, Le Sud-Ouest, Québec, H3C0C2 Canada",
+      "mlsNumber": "9039820",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 298,
+      "yearBuild": 2024,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052144r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052158r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052144r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052145r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052146r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052147r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052148r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052149r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052150r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052151r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052152r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052153r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052154r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052155r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052156r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052157r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052158r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970196/234052144r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1","parking": "0", "bedrooms": "0"}
     },
+
     {
       "_id": { "$oid": "643a30b60c4348510952923a" },
-      "title": "Modern Marvel Mansion",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2000,
-      "address": "Street 11",
-      "city": "Multan",
-      "country": "Pakistan",
-      "image": "https://www.homedecorbuzz.com/wp-content/uploads/2017/07/Beautiful-pink-kitchen-design-image.jpg",
-      "facilities": { "bathrooms": "5", "parking": "1", "bedrooms": "4" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-15T05:05:58.189Z" },
-      "updatedAt": { "$date": "2023-04-15T05:05:58.189Z" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Brand new condo in a luxury condo building. A stunning studio in the Griffintown<br>Built in 2024, this condo boasts modern design, high-end finishes, and 298 square feet of living space, making it the perfect choice for young professionals, students or those who prefer a minimalist lifestyle.<br>Located in the heart of Griffintown, next to the water. Close to downtown and old port, close to large supermarket, pharmacy, banks and restaurants. Close to ALL. Common area: gym, roof top swimming pool, terrace, BBQ, etc.</p>",
+      "price": 1400,
+      "address": "1485 Rue des Bassins, Apt. 811, Le Sud-Ouest, Québec, H3J0C2 Canada",
+      "mlsNumber": "19197010",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 298,
+      "yearBuild": 2024,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052159nr.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052173r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052159nr.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052160r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052161r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052162r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052163r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052164r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052165r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052166r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052167r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052168r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052169r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052170r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052171r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052172r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052173r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1970197/234052159nr.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1","parking": "0", "bedrooms": "0"}
     },
+
+
     {
       "_id": { "$oid": "643900fa74446601d6fce96e" },
-      "title": "Whispering Willow Estate",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 4000,
-      "address": "Street 12",
-      "city": "Tokyo",
-      "country": "Japan",
-      "image": "https://images.pexels.com/photos/1127119/pexels-photo-1127119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T07:29:58.262Z" },
-      "updatedAt": { "$date": "2023-04-14T07:29:58.262Z" },
-      "facilities": { "bathrooms": "4", "parking": "1", "bedrooms": "4" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Brand new condo in a luxury condo building. A stunning One Bedroom unit in the Griffintown.<br>Built in 2024, this condo boasts modern design, high-end finishes, and 298 square feet of living space, making it the perfect choice for young professionals, students or those who prefer a minimalist lifestyle.<br>Located in the heart of Griffintown, next to the water. Close to downtown and old port, close to large supermarket, pharmacy, banks and restaurants. Close to ALL. Common area: gym, roof top swimming pool, terrace, BBQ, etc.</p>",
+      "price": 2100,
+      "address": "1485 Rue des Bassins, Apt. 626, Le Sud-Ouest, Québec, H3J0C2 Canada",
+      "mlsNumber": "26193715",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 483,
+      "yearBuild": 2024,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803103r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803121r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803103r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803104r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803105r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803106r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803107r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803108r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803109r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803110r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803111r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803112r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803113r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803114r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803115r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803116r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803117r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803118r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803119r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803120r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803121r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023299/241803103r.jpg"
+
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bathrooms": "1", "bedrooms": "1","parking": "0"}
     },
+
+
     {
       "_id": { "$oid": "6439011d74446601d6fce96f" },
-      "title": "Blue Horizon Manor",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2500,
-      "address": "Street 13",
-      "city": "Delhi",
-      "country": "India",
-      "image": "https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T07:30:36.761Z" },
-      "updatedAt": { "$date": "2023-04-14T07:30:36.761Z" },
-      "facilities": { "bathrooms": "2", "parking": "1", "bedrooms": "3" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Luxurious living in Maestria Project. Perched on the 49th floor, this Studio offers amazing city's view. The space is enhanced by contemporary design elements, floor-to-ceiling windows, and 9-foot ceilings. Take advantage of unique amenities such as suspended Skybridge, pools, spas, a gym, a business center, WiFi-enabled lounges, a games room, and virtual golf. Situated in downtown Montreal's shopping district, near Place des Spectacles, Place des Arts, UQÀM &amp; Mcgill Universities, Metro station!</p>",
+      "price": 1550,
+      "address": "1210 Rue Jeanne-Mance, Apt. 4916, Ville-Marie, QC",
+      "mlsNumber": "24569524",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 284,
+      "yearBuild": 2024,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator", "City", "Exercise Room", "Garage", "Mountain", "Mountain View"
+        ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803277r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803316r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803277r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803278r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803279r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803280r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803281r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803282r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803283r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803284r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803285r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803286r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803287r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803288r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803289r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803290r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803291r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803292r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803293r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803294r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803295r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803296r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803297r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803298r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803299r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803300r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803301r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803302r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803303r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803304r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803305r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803306r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803307r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803308r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803309r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803310r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803311r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803312r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803313r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803314r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803315r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803316r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2023301/241803277r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "parking": "1", "bedrooms": "0", "bathrooms":"1"}
     },
+
     {
       "_id": { "$oid": "64392ddddfd90fb29e464fba" },
-      "title": "Golden Fields Ranch",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 4000,
-      "address": "Street 14",
-      "city": "Los Angeles",
-      "country": "US",
-      "image": "https://lovehomedesigns.com/wp-content/uploads/2022/01/cute-house-012522.jpg",
-      "facilities": { "bathrooms": "5", "parking": "1", "bedrooms": "4" },
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T10:41:32.998Z" },
-      "updatedAt": { "$date": "2023-04-14T10:41:32.998Z" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Brossard",
+      "description": "<p>Excellent two story condo located on Brossard section L! 2 bedrooms + big mezzanine that could become a third bedroom or a nice work space depending on your needs, located on the last floor, 1 garage + 1 outdoor parking space. Close to Quartier Dix30 and 2 minutes away from the future REM station that will let you get to downtown Montreal in less than 15 minutes.</p>",
+      "price": 2450,
+      "address": "5330 Rue de Leslie, Apt. 4, Brossard, Québec, J4Y0N2 Canada",
+      "mlsNumber": "23965068",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 1250.77,
+      "yearBuild": 2014,
+      "city": "Brossard",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Garage", "Parking"
+        ],
+        "rooms": [
+        {
+          "type": "Living room",
+          "level": "Ground floor",
+          "dimensions": "14' 1.3\" x 10' 1.3\"",
+          "flooring": "Floating floor"
+        },
+        {
+          "type": "Dining room",
+          "level": "Ground floor",
+          "dimensions": "8' 1.2\" x 12' 4.8\"",
+          "flooring": "Floating floor"
+        },
+        {
+          "type": "Kitchen",
+          "level": "Ground floor",
+          "dimensions": "9' 6\" x 9' 7.2\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Primary bedroom",
+          "level": "Ground floor",
+          "dimensions": "12' 1.3\" x 11' 10.8\"",
+          "flooring": "Floating floor"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Ground floor",
+          "dimensions": "11' 1.2\" x 11' 1.2\"",
+          "flooring": "Floating floor"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Ground floor",
+          "dimensions": "8' 3.6\" x 10' 6\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Mezzanine",
+          "level": "2nd floor",
+          "dimensions": "12' 4.8\" x 19' 10.8\"",
+          "flooring": "Floating floor"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776539r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776564r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776539r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776540r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776541r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776542r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776543r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776544r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776545r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776546r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776547r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776548r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776549r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776550r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776551r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776552r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776553r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776554r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776555r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776556r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776557r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776558r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776559r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776560r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776561r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776562r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776563r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776564r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1940912/230776539r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "parking": "2", "bedrooms": "3", "bathrooms":"1"}
     },
+
+
+
     {
       "_id": { "$oid": "6438ffdd74446601d6fce96c" },
-      "title": "Asatti Garden City",
-      "description": "Massive opportunity to build your dream home at the base of Mummy Mountain in the 3 C's school district. Home is currently updated and very livable if your plans are to build at a later date.* Bonus * to live hillside without hillside restrictions in the town of PV. Run don't walk to capture this needle in a hay stack.",
-      "price": 2000,
-      "address": "Street 15",
-      "city": " New York",
-      "country": "US",
-      "image": "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1%201x,%20https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2%202x",
-      "userEmail": "mukhtarhamza294@gmail.com",
-      "createdAt": { "$date": "2023-04-14T07:25:13.156Z" },
-      "updatedAt": { "$date": "2023-04-14T07:25:13.156Z" },
-      "facilities": { "bathrooms": "2", "parking": "2", "bedrooms": "10" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Ville-Marie",
+      "description": "<p>Great One-bedroom unit in the heart of downtown Montreal. Luxury master kitchen, high-end finishing and appliances included. Building includes a magnificent spa, pool and Gym.</p>",
+      "price": 1900,
+      "address": "1500 Boul. René-Lévesque O., Apt. 417, Ville-Marie, Québec, H3G0H6 Canada",
+      "mlsNumber": "27694361",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 627,
+      "yearBuild": 2023,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+        
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555726r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555737r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555726r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555727r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555728r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555729r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555730r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555731r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555732r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555733r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555734r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555735r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555736r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555737r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1928651/229555726r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bedrooms": "1", "bathrooms":"1","parking":"0"}
     },
+
+
     {
       "_id": { "$oid": "645cd0d8616ffb7ce699bb8e" },
-      "title": "Jansheen villan",
-      "description": "Villa is a marvelous piece of luxury and Art. Decorated with two helipads, wide compartment, long sea view and astonishing paints make it more bold.",
-      "price": 8000,
-      "address": "Street 16",
-      "city": "Lahore",
-      "country": "Pakistan",
-      "image": "https://res.cloudinary.com/dkg6ajfen/image/upload/v1683804284/jlap7xq7owdsfb4tlsyt.png",
-      "facilities": { "bedrooms": 12, "parkings": 2, "bathrooms": 3 },
-      "userEmail": "ahmadrao925@gmail.com",
-      "createdAt": { "$date": "2023-05-11T11:26:15.44Z" },
-      "updatedAt": { "$date": "2023-05-11T11:26:15.44Z" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Brand new condo in a luxury condo building. A stunning one bedroom unit in Griffintown.<br>Built in 2024, this condo boasts modern design, high-end finishes, and 298 square feet of living space, making it the perfect choice for young professionals, students or those who prefer a minimalist lifestyle.<br>Located in the heart of Griffintown, next to the water. Close to downtown and old port, close to large supermarket, pharmacy, banks and restaurants. Close to ALL. Common area: gym, roof top swimming pool, terrace, BBQ, etc.</p>",
+      "price": 1650,
+      "address": "1485 Rue des Bassins, Apt. 117, Le Sud-Ouest, Québec, H3J0C2 Canada",
+      "mlsNumber": "27503256",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 433,
+      "yearBuild": 2024,
+      "city": "Le Sud-Ouest",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+        
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414790r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414608r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414790r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414593r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414594r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414595r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414596r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414597r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414598r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414599r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414600r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414601r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414602r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414603r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414604r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414605r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414606r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414607r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414608r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/2033358/243414790r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bedrooms": "1", "bathrooms":"1","parking":"0"}
     },
+
+
     {
       "_id": { "$oid": "645e27938b90ba42adbed599" },
-      "title": "The Johnson Palace",
-      "description": "This is an amazing place to live with all facilities around you",
-      "price": 5000,
-      "address": "Street 17",
-      "city": "New York",
-      "country": "United States",
-      "image": "https://res.cloudinary.com/dkg6ajfen/image/upload/v1683892030/eb99xugad9w3pswx7h3f.jpg",
-      "facilities": { "bedrooms": 2, "parkings": 3, "bathrooms": 2 },
-      "userEmail": "zain@gaintime.io",
-      "createdAt": { "$date": "2023-05-12T11:48:35.028Z" },
-      "updatedAt": { "$date": "2023-05-12T11:48:35.028Z" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Brand new condo in a luxury condo building. A stunning studio in the Griffintown<br>Built in 2024, this condo boasts modern design, high-end finishes, and 298 square feet of living space, making it the perfect choice for young professionals, students or those who prefer a minimalist lifestyle.<br>Located in the heart of Griffintown, next to the water. Close to downtown and old port, close to large supermarket, pharmacy, banks and restaurants. Close to ALL. Common area: gym, roof top swimming pool, terrace, BBQ, etc.</p>",
+      "price": 1490,
+      "address": "1485 Rue des Bassins, Apt. 712, Le Sud-Ouest, Québec, H3J0C2 Canada",
+      "mlsNumber": "10094480",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 298,
+      "yearBuild": 2024,
+      "city": "Le Sud-Ouest",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+        
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823569r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823581r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823569r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823570r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823571r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823572r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823573r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823574r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823575r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823576r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823577r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823578r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823579r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823580r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823581r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1897940/226823569r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bedrooms": "0", "bathrooms":"1", "parking":"0"}
     },
+
     {
       "_id": { "$oid": "6460802e05fa5b3fd0527f65" },
-      "title": "ZKC Villa ",
-      "description": "Its an amazing house to live",
-      "price": 5000,
-      "address": "Street 18",
-      "city": "Delhi",
-      "country": "India",
-      "image": "https://res.cloudinary.com/dkg6ajfen/image/upload/v1684045778/zdc3pb1d0kgfwxuk8hch.jpg",
-      "facilities": { "bedrooms": 5, "parkings": 2, "bathrooms": 3 },
-      "userEmail": "ahmadrao925@gmail.com",
-      "createdAt": { "$date": "2023-05-14T06:31:09.883Z" },
-      "updatedAt": { "$date": "2023-05-14T06:31:09.883Z" }
+      "type" : "Rent",
+      "title": "Condo for Rent in Ville-Marie",
+      "description": "<p>1 Square Phillips, the tallest residential building in downtown Montreal! This stunning studio located on the 27th floor, features high-end finishes and luxurious comfort, with amazing views of the city. The amenities are spectacular, from the indoor pool, spa and steam room, to the gym and yoga studio, a great wellness retreat in your building. Within walking distance to McGill University, Eaton Centre, and McGill Metro Station.</p>",
+      "price": 1700,
+      "address": "1205 Place Phillips, Apt. 2714, Ville-Marie, Québec, H3B3H3 Canada",
+      "mlsNumber": "27941543",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 395,
+      "yearBuild": 2024,
+      "city": "Montreal",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+      "rooms": [
+        {
+          "type": "Kitchen",
+          "level": "Other",
+          "dimensions": "14' 1.2\" x 5' 8.4\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "Other",
+          "dimensions": "8' 1.2\" x 4' 8.4\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Living room",
+          "level": "Other",
+          "dimensions": "17' 6\" x 11' 2.4\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Laundary Room",
+          "level": "Other",
+          "dimensions": "3' 1.3\" x 3' 1.3\"",
+          "flooring": "Ceramic tiles"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454134r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454176r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454134r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454135r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454136r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454137r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454138r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454139r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454140r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454141r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454142r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454143r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454144r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454145r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454146r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454147r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454148r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454149r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454150r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454151r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454152r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454153r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454154r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454155r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454156r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454157r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454158r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454159r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454160r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454161r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454162r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454163r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454164r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454165r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454166r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454167r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454168r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454169r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454170r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454171r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454172r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454173r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454174r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454175r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454176r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998551/237454134r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bedrooms": "0", "bathrooms":"1", "parking":"0"}
     },
+
     {
       "_id": { "$oid": "648a1ed5d52203e45f037608" },
-      "title": "Beautiful House",
-      "description": "This is a good home to live",
-      "price": 10000,
-      "address": "Street 19",
-      "city": "Mumbai",
-      "country": "India",
-      "image": "https://res.cloudinary.com/dkg6ajfen/image/upload/v1686773421/ihdmmu9mjsors2rvlu4j.png",
-      "facilities": { "bedrooms": 5, "parkings": 5, "bathrooms": 8 },
-      "userEmail": "zain@gaintime.io",
-      "createdAt": { "$date": "2023-06-14T20:11:01.081Z" },
-      "updatedAt": { "$date": "2023-06-14T20:11:01.081Z" }
+      "type" : "Rent",
+      "title": "Single Family Detached for Rent in La Prairie",
+      "description": "",
+      "price": 2600,
+      "address": "345 Rue du Moissonneur, La Prairie, Québec, J5R0P7 Canada",
+      "mlsNumber": "9208326",
+      "propertyType": "Residential, Single Family Detached",
+      "lotSize": 2066,
+      "yearBuild": 2016,
+      "city": "La Prairi",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Garage", "Parking"
+        ],
+      "rooms": [
+        {
+          "type": "Hallway",
+          "level": "Ground floor",
+          "dimensions": "5' 9.6\" x 4' 7.2\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Living room",
+          "level": "Ground floor",
+          "dimensions": "11' 7.2\" x 13' 1.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Kitchen",
+          "level": "Ground floor",
+          "dimensions": "8' x 10' 4.8\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Dining room",
+          "level": "Ground floor",
+          "dimensions": "11' 2.4\" x 11' 7.2\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Washroom",
+          "level": "Ground floor",
+          "dimensions": "4' 6\" x 6' 3.6\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Primary bedroom",
+          "level": "2nd floo",
+          "dimensions": "11' 7.2\" x 14' 8.4\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bedroom",
+          "level": "2nd floo",
+          "dimensions": "10' 9.6\" x 11' 6\"",
+          "flooring": "Wood"
+        },
+        {
+          "type": "Bathroom",
+          "level": "2nd floo",
+          "dimensions": "9' x 17' 1.2\"",
+          "flooring": "Ceramic tiles"
+        },
+        {
+          "type": "Bedroom",
+          "level": "Basement",
+          "dimensions": "8' 2.4\" x 19' 6\"",
+          "flooring": "Floating floor"
+        },
+        {
+          "type": "Storage",
+          "level": "Basement",
+          "dimensions": "4' 3.6\" x 7' 2.4\"",
+          "flooring": "Concrete"
+        },
+        {
+          "type": "Washroom",
+          "level": "Basement",
+          "dimensions": "4' 3.6\" x 7' 7.2\"",
+          "flooring": "Ceramic tiles"
+        }
+      ],
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454177r.jpg",
+      "images": 
+      [
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454212r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454177r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454178r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454179r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454180r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454181r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454182r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454183r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454184r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454185r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454186r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454187r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454188r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454189r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454190r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454191r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454192r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454193r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454194r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454195r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454196r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454197r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454198r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454199r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454200r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454201r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454202r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454203r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454204r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454205r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454206r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454207r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454208r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454209r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454210r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454211r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454212r.jpg",
+        "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1998552/237454177r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bedrooms": "3", "bathrooms":"1+2", "parking":"3"}
+    },
+
+    {
+      "type" : "Rent",
+      "title": "Condo for Rent in Le Sud-Ouest",
+      "description": "<p>Brand new condo in a luxury condo building. A stunning studio in the Griffintown<br>Built in 2024, this condo boasts modern design, high-end finishes, and 298 square feet of living space, making it the perfect choice for young professionals, students or those who prefer a minimalist lifestyle.<br>Located in the heart of Griffintown, next to the water. Close to downtown and old port, close to large supermarket, pharmacy, banks and restaurants. Close to ALL. Common area: gym, roof top swimming pool, terrace, BBQ, etc.</p>",
+      "price": 1400,
+      "address": "1485 Rue des Bassins, Apt. 809, Le Sud-Ouest, Québec, H3C0C2 Canada",
+      "mlsNumber": "16707018",
+      "propertyType": "Residential, Condo",
+      "livingSpace": 298,
+      "yearBuild": 2024,
+      "city": "Le Sud-Ouest",
+      "country": "Canada",
+      "amenities": 
+        [
+        "Elevator"
+        ],
+        
+      "agentInfo": 
+        {
+        "name": "Jiesi Zhou",
+        "phoneNumber": "514-262-7709",
+        "email": "richard@mengchenghui.com"
+        },
+      "image": "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454070r.jpg",
+      "images": 
+      [
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454087r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454070r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454071r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454072r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454073r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454074r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454075r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454076r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454077r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454078r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454079r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454080r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454081r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454082r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454083r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454084r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454085r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454086r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454087r.jpg",
+      "https://sircmedia.s3.ca-central-1.amazonaws.com/live/images/listings/1986288/237454070r.jpg"
+      ],
+      "userEmail": "richard@mengchenghui.com",
+      "createdAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "updatedAt": { "$date": "2024-08-20T10:38:48.762Z" },
+      "facilities": { "bedrooms": "0", "bathrooms":"1", "parking":"0"}
     }
   ]
