@@ -1,16 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import "./PropertyDetail.css";
 import useProperty from "../../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
 import useAuthCheck from "../../Hook/useAuthCheck";
 import { useAuth0 } from "@auth0/auth0-react";
 import BookingModal from "../BookingModal/BookingModal";
 import UserDetailContext from "../../context/userDetailContext";
-import { Button } from "@mantine/core";
 import { useMutation } from "react-query";
 import { removeBooking } from "../../utils/Api";
 import { toast } from "react-toastify";
@@ -83,8 +78,18 @@ export const PropertyDetail = () => {
     batches.push(currentBatch);
   }
 
-  const handleSlideChange = (swiper) => {
-    setCurrentBatchIndex(swiper.realIndex % batches.length);
+  const handleNext = () => {
+    setCurrentBatchIndex((prevIndex) => (prevIndex + 1) % batches.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentBatchIndex(
+      (prevIndex) => (prevIndex - 1 + batches.length) % batches.length
+    );
+  };
+
+  const handlePageChange = (index) => {
+    setCurrentBatchIndex(index);
   };
 
   return (
@@ -115,7 +120,7 @@ export const PropertyDetail = () => {
                     <div className="single detail-wrapper mr-2">
                       <div className="detail-wrapper-body">
                         <div className="listing-title-bar">
-                          <h4>${property.price}</h4>
+                          <h4>${property.price.toLocaleString("en-US")}</h4>
                           <div className="mt-0">
                             <a
                               href="#listing-location"
@@ -142,156 +147,79 @@ export const PropertyDetail = () => {
                 >
                   <h5 className="mb-4">Gallery</h5>
                   <div className="carousel-inner">
-                    <div
-                      className="active item carousel-item"
-                      data-slide-number={0}
-                    >
-                      <img
-                        src="images/single-property/s-1.jpg"
-                        className="img-fluid"
-                        alt="slider-listing"
-                      />
-                    </div>
-                    <div className="item carousel-item" data-slide-number={1}>
-                      <img
-                        src="images/single-property/s-2.jpg"
-                        className="img-fluid"
-                        alt="slider-listing"
-                      />
-                    </div>
-                    <div className="item carousel-item" data-slide-number={2}>
-                      <img
-                        src="images/single-property/s-3.jpg"
-                        className="img-fluid"
-                        alt="slider-listing"
-                      />
-                    </div>
-                    <div className="item carousel-item" data-slide-number={4}>
-                      <img
-                        src="images/single-property/s-4.jpg"
-                        className="img-fluid"
-                        alt="slider-listing"
-                      />
-                    </div>
-                    <div className="item carousel-item" data-slide-number={5}>
-                      <img
-                        src="images/single-property/s-5.jpg"
-                        className="img-fluid"
-                        alt="slider-listing"
-                      />
-                    </div>
-                    <a
-                      className="carousel-control left"
-                      href="#listingDetailsSlider"
-                      data-slide="prev"
-                    >
-                      <i className="fa fa-angle-left" />
-                    </a>
-                    <a
-                      className="carousel-control right"
-                      href="#listingDetailsSlider"
-                      data-slide="next"
-                    >
-                      <i className="fa fa-angle-right" />
-                    </a>
+                    {batches[currentBatchIndex].map((image, index) => (
+                      <div
+                        key={index}
+                        className={`${
+                          index === 0 ? "active" : ""
+                        } item carousel-item`}
+                        data-slide-number={index}
+                      >
+                        <img
+                          src={image}
+                          className="img-fluid"
+                          alt={`slider-listing-${index}`}
+                        />
+                      </div>
+                    ))}
                   </div>
-                  {/* main slider carousel nav controls */}
+
+                  <a
+                    className="carousel-control left"
+                    href="#listingDetailsSlider"
+                    data-slide="prev"
+                  >
+                    <i className="fa fa-angle-left" />
+                  </a>
+                  <a
+                    className="carousel-control right"
+                    href="#listingDetailsSlider"
+                    data-slide="next"
+                  >
+                    <i className="fa fa-angle-right" />
+                  </a>
+
                   <ul className="carousel-indicators smail-listing list-inline">
-                    <li className="list-inline-item active">
-                      <a
-                        id="carousel-selector-0"
-                        className="selected"
-                        data-slide-to={0}
-                        data-target="#listingDetailsSlider"
+                    {batches[currentBatchIndex].map((image, index) => (
+                      <li
+                        key={index}
+                        className={`list-inline-item ${
+                          index === 0 ? "active" : ""
+                        }`}
                       >
-                        <img
-                          src="images/single-property/s-1.jpg"
-                          className="img-fluid"
-                          alt="listing-small"
-                        />
-                      </a>
-                    </li>
-                    <li className="list-inline-item">
-                      <a
-                        id="carousel-selector-1"
-                        data-slide-to={1}
-                        data-target="#listingDetailsSlider"
-                      >
-                        <img
-                          src="images/single-property/s-2.jpg"
-                          className="img-fluid"
-                          alt="listing-small"
-                        />
-                      </a>
-                    </li>
-                    <li className="list-inline-item">
-                      <a
-                        id="carousel-selector-2"
-                        data-slide-to={2}
-                        data-target="#listingDetailsSlider"
-                      >
-                        <img
-                          src="images/single-property/s-3.jpg"
-                          className="img-fluid"
-                          alt="listing-small"
-                        />
-                      </a>
-                    </li>
-                    <li className="list-inline-item">
-                      <a
-                        id="carousel-selector-3"
-                        data-slide-to={3}
-                        data-target="#listingDetailsSlider"
-                      >
-                        <img
-                          src="images/single-property/s-4.jpg"
-                          className="img-fluid"
-                          alt="listing-small"
-                        />
-                      </a>
-                    </li>
-                    <li className="list-inline-item">
-                      <a
-                        id="carousel-selector-4"
-                        data-slide-to={4}
-                        data-target="#listingDetailsSlider"
-                      >
-                        <img
-                          src="images/single-property/s-5.jpg"
-                          className="img-fluid"
-                          alt="listing-small"
-                        />
-                      </a>
-                    </li>
+                        <a
+                          id={`carousel-selector-${index}`}
+                          className={`${index === 0 ? "selected" : ""}`}
+                          data-slide-to={index}
+                          data-target="#listingDetailsSlider"
+                        >
+                          <img
+                            src={image}
+                            className="img-fluid"
+                            alt={`listing-small-${index}`}
+                          />
+                        </a>
+                      </li>
+                    ))}
                   </ul>
-                  {/* main slider carousel items */}
+
+                  <div className="carousel-pagination">
+                    {batches.map((_, pageIndex) => (
+                      <button
+                        key={pageIndex}
+                        className={`page-btn ${
+                          currentBatchIndex === pageIndex ? "active" : ""
+                        }`}
+                        onClick={() => handlePageChange(pageIndex)}
+                      >
+                        {pageIndex + 1}
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <div className="blog-info details mb-30">
                   <h5 className="mb-4">Description</h5>
-                  <p className="mb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Cum rerum beatae consequatur, totam fugit, alias fuga
-                    aliquam quod tempora a nisi esse magnam nulla quas! Error
-                    praesentium, vero dolorum laborum. Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit. Cum rerum beatae
-                    consequatur, totam fugit.
-                  </p>
-                  <p className="mb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Cum rerum beatae consequatur, totam fugit, alias fuga
-                    aliquam quod tempora a nisi esse magnam nulla quas! Error
-                    praesentium, vero dolorum laborum. Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit. Cum rerum beatae
-                    consequatur, totam fugit.
-                  </p>
-                  <p className="mb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Cum rerum beatae consequatur, totam fugit, alias fuga
-                    aliquam quod tempora a nisi esse magnam nulla quas! Error
-                    praesentium, vero dolorum laborum. Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit. Cum rerum beatae
-                    consequatur, totam fugit.
-                  </p>
+                  <p className="mb-3">{property.description}</p>
                 </div>
               </div>
             </div>
@@ -300,8 +228,8 @@ export const PropertyDetail = () => {
               <h5 className="mb-4">Property Details</h5>
               <ul className="homes-list clearfix">
                 <li>
-                  <span className="font-weight-bold mr-1">Property ID:</span>
-                  <span className="det">V254680</span>
+                  <span className="font-weight-bold mr-1">mlsNumber:</span>
+                  <span className="det">{property.mlsNumber}</span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Property Type:</span>

@@ -82,7 +82,7 @@ a {
   font-weight: 600;
 }
 
-.button{
+.button {
   font-weight: 500;
   padding: 0.6rem 1.4rem;
   color: white;
@@ -93,7 +93,7 @@ a {
   transition: all 300ms ease-in;
 }
 
-.button:hover{
+.button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
@@ -127,98 +127,97 @@ a {
   }
 }
 
-
 /* rent page css style, write here temporary */
-.page-container{
+.page-container {
   margin-top: 200px;
 }
 
-.container{
+.container {
   padding: 0 1rem;
   margin: 2rem 0;
 }
 
-.title{
+.title {
   color: #1b1b1e;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
-.data-list{
+.data-list {
   display: grid;
-  grid-template-columns: repeat(1,1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 10px;
   padding: 20px;
 }
 
-.pagination-container{
+.pagination-container {
   display: flex;
   justify-content: center;
   margin: 0 2rem;
-  >button {
+  > button {
     padding: 8px 16px;
     margin: 0 4px;
     border: 1px solid #ccc;
     background-color: #fff;
     cursor: pointer;
   }
-  >button:hover{
+  > button:hover {
     border: 1px solid #1b1b1b;
   }
-  >button:disabled{
+  > button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
     border: 1px solid #ccc;
   }
-  >.active{
+  > .active {
     background-color: #1b1b1b;
     color: #fff;
     border: 1px solid #1b1b1b;
     font-weight: bolder;
   }
-  >.ellipsis:hover{
+  > .ellipsis:hover {
     border: 1px solid #ccc;
     cursor: auto;
   }
 }
 
-@media(min-width:640px) {
-  .page-container{
+@media (min-width: 640px) {
+  .page-container {
     margin-top: 0;
   }
 
-  .container{
-  margin: 4rem 0;
+  .container {
+    margin: 4rem 0;
   }
 
-  .content-box{
+  .content-box {
     padding: 2.5rem;
   }
-  
-  .data-list{
-    grid-template-columns: repeat(2,1fr);
+
+  .data-list {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .break-line{
-    border-bottom: 1px solid rgba(0,0,0,.1);
+
+  .break-line {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
     margin-top: 2rem;
   }
 
-  .pagination-container{
+  .pagination-container {
     justify-content: end;
   }
 }
 
 /* residential home page css style, write here temporary */
-.residential-box{
+.residential-box {
   /* padding: 0 1rem; */
   margin: 2rem 0;
 }
 
-@media(min-width:640px) {
-  .residential-box{
+@media (min-width: 640px) {
+  .residential-box {
     margin: 4rem 0;
     padding: 2.5rem 0;
   }
