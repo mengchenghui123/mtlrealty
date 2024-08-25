@@ -11,6 +11,7 @@ Version      : 1.0
         version: 1.0,
         mobile: false,
         init: function () {
+            console.log("Inland first loaded.")
 
             if (!this.initialised) {
                 this.initialised = true;
@@ -44,6 +45,7 @@ Version      : 1.0
         // End Swipper Slider
 
     };
+    window.Inland = Inland;
     Inland.init();
 
 }(jQuery));
