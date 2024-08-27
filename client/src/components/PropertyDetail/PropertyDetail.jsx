@@ -10,6 +10,7 @@ import { useMutation } from "react-query";
 import { removeBooking } from "../../utils/Api";
 import { toast } from "react-toastify";
 import Heart from "../Heart/Heart";
+import axios from "axios";
 
 export const PropertyDetail = () => {
   const { data, isError, isLoading } = useProperty();
@@ -20,6 +21,7 @@ export const PropertyDetail = () => {
   const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
 
+  const [coordinates, setCoordinates] = useState(null);
   const {
     userDetails: { token, bookings },
     setUserDetail,
@@ -33,6 +35,7 @@ export const PropertyDetail = () => {
       document.body.className = "";
     };
   }, []);
+
   const { mutate: cancelBooking, isLoading: cancelling } = useMutation({
     mutationFn: () => removeBooking(id, user?.email, token),
     onSuccess: () => {
@@ -89,6 +92,10 @@ export const PropertyDetail = () => {
   const handlePageChange = (index) => {
     setCurrentBatchIndex(index);
   };
+
+  if (window.loadMapWithAddress && property.address) {
+    window.loadMapWithAddress(property.address);
+  }
 
   return (
     <section className="single-proper blog details">
