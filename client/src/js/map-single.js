@@ -35,7 +35,7 @@ window.initializeMap = function (lat, lon) {
     }).addTo(map);
   } else if (map) {
     // 如果地图已存在，更新中心位置
-    map.setView([lat, lon], 12);
+    map.setView([lat, lon]);
   }
 };
 

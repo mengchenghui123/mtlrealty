@@ -9,8 +9,8 @@ import UserDetailContext from "../../context/userDetailContext";
 import { useMutation } from "react-query";
 import { removeBooking } from "../../utils/Api";
 import { toast } from "react-toastify";
+import emailjs from "emailjs-com";
 import Heart from "../Heart/Heart";
-import axios from "axios";
 
 export const PropertyDetail = () => {
   const { data, isError, isLoading } = useProperty();
@@ -20,21 +20,30 @@ export const PropertyDetail = () => {
   const [modalOpened, setModalOpened] = useState(false);
   const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
-
-  const [coordinates, setCoordinates] = useState(null);
   const {
     userDetails: { token, bookings },
     setUserDetail,
   } = useContext(UserDetailContext);
 
+  const [formData, setFormData] = useState({
+    full_name: "",
+    email_address: "",
+    phone_number: "",
+    message: "",
+    date: "",
+  });
+  const [coordinates, setCoordinates] = useState(null);
+
   useEffect(() => {
     document.body.className = "inner-pages sin-1 homepage-4 hd-white";
 
-    // Cleanup on unmount
+    const bookingDate =
+      bookings?.find((booking) => booking.id === id)?.date || "";
+    setFormData((prevData) => ({ ...prevData, date: bookingDate }));
     return () => {
       document.body.className = "";
     };
-  }, []);
+  }, [id, bookings]);
 
   const { mutate: cancelBooking, isLoading: cancelling } = useMutation({
     mutationFn: () => removeBooking(id, user?.email, token),
@@ -96,6 +105,33 @@ export const PropertyDetail = () => {
   if (window.loadMapWithAddress && property.address) {
     window.loadMapWithAddress(property.address);
   }
+
+  const handleFormChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        "service_q33lpyn", // 替换为你的 EmailJS 服务ID
+        "template_0h18zpb", // 替换为你的 EmailJS 模板ID
+        formData,
+        "k6e91nsNgaMtTME-P" // 替换为你的 EmailJS 用户ID
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Message sent successfully!");
+        },
+        (err) => {
+          console.log("FAILED...", err);
+          alert("Failed to send message.");
+        }
+      );
+  };
 
   return (
     <section className="single-proper blog details">
@@ -450,119 +486,6 @@ export const PropertyDetail = () => {
           </div>
           <aside className="col-lg-4 col-md-12 car">
             <div className="single widget">
-              {/* Start: Schedule a Tour */}
-              <div className="schedule widget-boxed mt-33 mt-0">
-                <div className="widget-boxed-header">
-                  <h4>
-                    <i className="fa fa-calendar pr-3 padd-r-10" />
-                    Schedule a Tour
-                  </h4>
-                </div>
-                <div className="widget-boxed-body">
-                  <div className="row">
-                    <div className="col-lg-6 col-md-12 book">
-                      <input
-                        type="text"
-                        id="reservation-date"
-                        data-lang="en"
-                        data-large-mode="true"
-                        data-min-year={2017}
-                        data-max-year={2020}
-                        data-disabled-days="08/17/2017,08/18/2017"
-                        data-id="datedropper-0"
-                        data-theme="my-style"
-                        className="form-control"
-                        readOnly
-                      />
-                    </div>
-                    <div className="col-lg-6 col-md-12 book2">
-                      <input
-                        type="text"
-                        id="reservation-time"
-                        className="form-control"
-                        readOnly
-                      />
-                    </div>
-                  </div>
-                  <div className="row mrg-top-15 mb-3">
-                    <div className="col-lg-6 col-md-12 mt-4">
-                      <label className="mb-4">Adult</label>
-                      <div className="input-group">
-                        <span className="input-group-btn">
-                          <button
-                            type="button"
-                            className="btn counter-btn theme-cl btn-number"
-                            disabled="disabled"
-                            data-type="minus"
-                            data-field="quant[1]"
-                          >
-                            <i className="fa fa-minus" />
-                          </button>
-                        </span>
-                        <input
-                          type="text"
-                          name="quant[1]"
-                          className="border-0 text-center form-control input-number"
-                          data-min={0}
-                          data-max={10}
-                          defaultValue={0}
-                        />
-                        <span className="input-group-btn">
-                          <button
-                            type="button"
-                            className="btn counter-btn theme-cl btn-number"
-                            data-type="plus"
-                            data-field="quant[1]"
-                          >
-                            <i className="fa fa-plus" />
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-md-12 mt-4">
-                      <label className="mb-4">Children</label>
-                      <div className="input-group">
-                        <span className="input-group-btn">
-                          <button
-                            type="button"
-                            className="btn counter-btn theme-cl btn-number"
-                            disabled="disabled"
-                            data-type="minus"
-                            data-field="quant[2]"
-                          >
-                            <i className="fa fa-minus" />
-                          </button>
-                        </span>
-                        <input
-                          type="text"
-                          name="quant[2]"
-                          className="border-0 text-center form-control input-number"
-                          data-min={0}
-                          data-max={10}
-                          defaultValue={0}
-                        />
-                        <span className="input-group-btn">
-                          <button
-                            type="button"
-                            className="btn counter-btn theme-cl btn-number"
-                            data-type="plus"
-                            data-field="quant[2]"
-                          >
-                            <i className="fa fa-plus" />
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <a
-                    href="payment-method.html"
-                    className="btn reservation btn-radius theme-btn full-width mrg-top-10"
-                  >
-                    Submit Request
-                  </a>
-                </div>
-              </div>
-              {/* End: Schedule a Tour */}
               {/* end author-verified-badge */}
               <div className="sidebar">
                 <div className="widget-boxed mt-33 mt-5">
@@ -572,12 +495,9 @@ export const PropertyDetail = () => {
                   <div className="widget-boxed-body">
                     <div className="sidebar-widget author-widget2">
                       <div className="author-box clearfix">
-                        <img
-                          src="images/testimonials/ts-1.jpg"
-                          alt="author-image"
-                          className="author__img"
-                        />
-                        <h4 className="author__title">Lisa Clark</h4>
+                        <h4 className="author__title">
+                          {property.agentInfo.name}
+                        </h4>
                         <p className="author__meta">Agent of Property</p>
                       </div>
                       <ul className="author__contact">
@@ -585,33 +505,31 @@ export const PropertyDetail = () => {
                           <span className="la la-map-marker">
                             <i className="fa fa-map-marker" />
                           </span>
-                          302 Av Park, New York
+                          2015 rue drummond
                         </li>
                         <li>
                           <span className="la la-phone">
                             <i className="fa fa-phone" aria-hidden="true" />
                           </span>
-                          <a href="#">(234) 0200 17813</a>
+                          <a href="#">{property.agentInfo.phoneNumber}</a>
                         </li>
                         <li>
                           <span className="la la-envelope-o">
                             <i className="fa fa-envelope" aria-hidden="true" />
                           </span>
-                          <a href="#">lisa@gmail.com</a>
+                          <a href="#">{property.agentInfo.email}</a>
                         </li>
                       </ul>
                       <div className="agent-contact-form-sidebar">
                         <h4>Request Inquiry</h4>
-                        <form
-                          name="contact_form"
-                          method="post"
-                          action="functions.php"
-                        >
+                        <form name="contact_form" onSubmit={handleSubmit}>
                           <input
                             type="text"
                             id="fname"
                             name="full_name"
                             placeholder="Full Name"
+                            value={formData.full_name}
+                            onChange={handleFormChange}
                             required
                           />
                           <input
@@ -619,6 +537,8 @@ export const PropertyDetail = () => {
                             id="pnumber"
                             name="phone_number"
                             placeholder="Phone Number"
+                            value={formData.phone_number}
+                            onChange={handleFormChange}
                             required
                           />
                           <input
@@ -626,14 +546,58 @@ export const PropertyDetail = () => {
                             id="emailid"
                             name="email_address"
                             placeholder="Email Address"
+                            value={formData.email_address}
+                            onChange={handleFormChange}
                             required
                           />
                           <textarea
                             placeholder="Message"
                             name="message"
+                            value={formData.message}
+                            onChange={handleFormChange}
                             required
-                            defaultValue={""}
                           />
+                          <div className="schedule widget-boxed mt-33 mt-0">
+                            {bookings
+                              ?.map((booking) => booking.id)
+                              .includes(id) ? (
+                              <>
+                                <input
+                                  type="button"
+                                  className="btn counter-btn theme-cl"
+                                  value="Cancel Booking"
+                                  color="red"
+                                  onClick={() => cancelBooking()}
+                                  disabled={cancelling}
+                                />
+                                <span>
+                                  Your visit already booked for date{" "}
+                                  {
+                                    bookings?.find(
+                                      (booking) => booking.id === id
+                                    )?.date
+                                  }
+                                </span>
+                              </>
+                            ) : (
+                              <input
+                                type="button"
+                                className="btn counter-btn theme-cl"
+                                color="red"
+                                value={formData.date || "Book your Visit"}
+                                onClick={() => {
+                                  validateLogin() && setModalOpened(true);
+                                }}
+                              />
+                            )}
+
+                            <BookingModal
+                              opened={modalOpened}
+                              setOpened={setModalOpened}
+                              propertyId={id}
+                              email={user?.email}
+                            />
+                          </div>
                           <input
                             type="submit"
                             name="sendmessage"

@@ -90,45 +90,44 @@
 
     <!-- Additional Scripts -->
     <script>
-      $("#reservation-date").dateDropper();
-      $("#reservation-time").timeDropper({
-        setCurrentTime: false,
-        meridians: true,
-        primaryColor: "#e8212a",
-        borderColor: "#e8212a",
-        minutesInterval: "15",
-      });
       $(document).ready(function () {
-        $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
-          disableOn: 700,
-          type: "iframe",
-          mainClass: "mfp-fade",
-          removalDelay: 160,
-          preloader: false,
-          fixedContentPos: false,
-        });
-      });
-      $(".slick-carousel").each(function () {
-        var slider = $(this);
-        $(this).slick({
-          infinite: true,
-          dots: false,
-          arrows: false,
-          centerMode: true,
-          centerPadding: "0",
-        });
-        $(this)
-          .closest(".slick-slider-area")
-          .find(".slick-prev")
-          .on("click", function () {
-            slider.slick("slickPrev");
+        // 初始化 dateDropper 插件
+
+        // 初始化 Magnific Popup 插件
+        // $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
+        //   disableOn: 700,
+        //   type: "iframe",
+        //   mainClass: "mfp-fade",
+        //   removalDelay: 160,
+        //   preloader: false,
+        //   fixedContentPos: false,
+        // });
+
+        // 初始化 Slick Carousel 插件
+        $(".slick-carousel").each(function () {
+          var slider = $(this);
+          $(this).slick({
+            infinite: true,
+            dots: false,
+            arrows: false,
+            centerMode: true,
+            centerPadding: "0",
           });
-        $(this)
-          .closest(".slick-slider-area")
-          .find(".slick-next")
-          .on("click", function () {
-            slider.slick("slickNext");
-          });
+
+          // 处理自定义导航箭头的点击事件
+          $(this)
+            .closest(".slick-slider-area")
+            .find(".slick-prev")
+            .on("click", function () {
+              slider.slick("slickPrev");
+            });
+          $(this)
+            .closest(".slick-slider-area")
+            .find(".slick-next")
+            .on("click", function () {
+              slider.slick("slickNext");
+            });
+        });
       });
     </script>
     <script type="module" src="/src/main.jsx"></script>
