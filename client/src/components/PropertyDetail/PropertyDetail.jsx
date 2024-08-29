@@ -31,19 +31,8 @@ export const PropertyDetail = () => {
     phone_number: "",
     message: "",
     date: "",
+    address: "",
   });
-  const [coordinates, setCoordinates] = useState(null);
-
-  useEffect(() => {
-    document.body.className = "inner-pages sin-1 homepage-4 hd-white";
-
-    const bookingDate =
-      bookings?.find((booking) => booking.id === id)?.date || "";
-    setFormData((prevData) => ({ ...prevData, date: bookingDate }));
-    return () => {
-      document.body.className = "";
-    };
-  }, [id, bookings]);
 
   const { mutate: cancelBooking, isLoading: cancelling } = useMutation({
     mutationFn: () => removeBooking(id, user?.email, token),
@@ -52,10 +41,25 @@ export const PropertyDetail = () => {
         ...prev,
         bookings: prev.bookings.filter((booking) => booking?.id !== id),
       }));
-
       toast.success("Booking cancelled", { position: "bottom-right" });
     },
   });
+
+  useEffect(() => {
+    document.body.className = "inner-pages sin-1 homepage-4 hd-white";
+
+    const bookingDate =
+      bookings?.find((booking) => booking.id === id)?.date || "";
+    const bookingAddress = data.find((p) => p.id === id).address;
+    setFormData((prevData) => ({
+      ...prevData,
+      date: bookingDate,
+      address: bookingAddress,
+    }));
+    return () => {
+      document.body.className = "";
+    };
+  }, [id, bookings]);
 
   if (isError) {
     return (
@@ -83,13 +87,13 @@ export const PropertyDetail = () => {
   if (!property) {
     return (
       <div className="container mt-5">
-        <h2>property Not Found</h2>
+        <h2>Property Not Found</h2>
       </div>
     );
   }
+
   const batches = [];
   const images = property.images || [];
-
   for (let i = 0; i < images.length; i += 4) {
     const currentBatch = images.slice(i, i + 4);
     while (currentBatch.length < 4) {
@@ -103,7 +107,7 @@ export const PropertyDetail = () => {
   };
 
   if (window.loadMapWithAddress && property.address) {
-    window.loadMapWithAddress(property.address);
+    window.loadMapWithAddress(property.address.split(",")[0]);
   }
 
   const handleFormChange = (e) => {
@@ -112,14 +116,15 @@ export const PropertyDetail = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     emailjs
       .send(
-        "service_q33lpyn", // 替换为你的 EmailJS 服务ID
-        "template_0h18zpb", // 替换为你的 EmailJS 模板ID
+        "service_q33lpyn",
+        "template_0h18zpb",
         formData,
-        "k6e91nsNgaMtTME-P" // 替换为你的 EmailJS 用户ID
+        "k6e91nsNgaMtTME-P"
       )
       .then(
         (response) => {
@@ -352,6 +357,7 @@ export const PropertyDetail = () => {
                 ))}
               </tbody>
             </table>
+
             <div className="property-location map">
               <h5>Location</h5>
               <div className="divider-fade" />

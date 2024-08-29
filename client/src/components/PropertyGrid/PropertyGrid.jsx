@@ -1,13 +1,13 @@
 import React from "react";
 import "./PropertyGrid.css";
 import { Carousel } from "@mantine/carousel";
-import '@mantine/carousel/styles.css';
+import "@mantine/carousel/styles.css";
 import { Badge } from "@mantine/core";
 import { toast } from "react-toastify";
 import { truncate } from "lodash";
 import { useNavigate } from "react-router-dom";
 import Heart from "../Heart/Heart";
-import { FaBed, FaBath, FaRegObjectGroup } from 'react-icons/fa';
+import { FaBed, FaBath, FaRegObjectGroup } from "react-icons/fa";
 
 const PropertyGrid = ({ properties, title }) => {
   const navigate = useNavigate();
@@ -44,32 +44,32 @@ const PropertyGrid = ({ properties, title }) => {
         <Carousel
           withIndicators
           height={400}
-          slideSize={{ base: '100%', sm: '50%', md: '20%' }}
-          slideGap={{ base: 0, sm: 'md' }}
+          slideSize={{ base: "100%", sm: "50%", md: "20%" }}
+          slideGap={{ base: 0, sm: "md" }}
           controlSize={35}
           loop
           align="start"
           classNames={{
-            controls: 'carousel-controls',
+            controls: "carousel-controls",
           }}
           styles={{
             indicator: {
               width: 10,
               height: 10,
-              border: '1px solid rgb(179, 115, 55)',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(179, 115, 55, 0.5)',
-              '&[dataActive]': {
-                backgroundColor: 'rgba(179, 115, 55, 1)',
+              border: "1px solid rgb(179, 115, 55)",
+              borderRadius: "50%",
+              backgroundColor: "rgba(179, 115, 55, 0.5)",
+              "&[dataActive]": {
+                backgroundColor: "rgba(179, 115, 55, 1)",
               },
             },
             control: {
-              backgroundColor: '#fff',
+              backgroundColor: "#fff",
             },
             indicators: {
-              position: 'absolute',
-              bottom: '-2rem',
-            }
+              position: "absolute",
+              bottom: "-2rem",
+            },
           }}
         >
           {properties.map((card, i) => (
@@ -78,20 +78,21 @@ const PropertyGrid = ({ properties, title }) => {
               key={i}
               onClick={() => handleCardClick(card.id)}
             >
-              <div className="card r-card"
+              <div
+                className="card r-card"
                 style={{
                   backgroundImage: `url(${card.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  height: '100%'
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  height: "100%",
                 }}
               >
                 <Badge
                   className="status-badge"
-                  color={card.status === 'for sale' ? 'red' : 'blue'}
+                  color={card.status === "for sale" ? "red" : "blue"}
                   radius="xs"
                 >
-                  {card.status ? card.status : 'for rent'}
+                  {card.status ? card.status : "for rent"}
                 </Badge>
                 {/* <Heart id={card?.id} className="heart-icon" /> */}
                 <div className="card-info">
@@ -101,26 +102,42 @@ const PropertyGrid = ({ properties, title }) => {
                     </span>
                     <span className="primaryText">
                       <span>$</span>
-                      <span>{card.price}</span>
+                      <span>{card.price.toLocaleString("en-US")}</span>
                     </span>
                     <div className="d-flex">
                       <span className="secondaryText">
                         <span>
-                          <FaBed style={{ color: 'rgb(233,41,78)', margin: '0 4px' }} />
+                          <FaBed
+                            style={{ color: "rgb(233,41,78)", margin: "0 4px" }}
+                          />
                           {card.facilities.bedrooms} Bed
                         </span>
                       </span>
-                      <div style={{ borderLeft: '1px solid #fff', margin: '0 8px' }} />
+                      <div
+                        style={{
+                          borderLeft: "1px solid #fff",
+                          margin: "0 8px",
+                        }}
+                      />
                       <span className="secondaryText">
                         <span>
-                          <FaBath style={{ color: 'rgb(233,41,78)', margin: '0 4px' }} />
+                          <FaBath
+                            style={{ color: "rgb(233,41,78)", margin: "0 4px" }}
+                          />
                           {card.facilities.bathrooms} Bath
                         </span>
                       </span>
-                      <div style={{ borderLeft: '1px solid #fff', margin: '0 8px' }} />
+                      <div
+                        style={{
+                          borderLeft: "1px solid #fff",
+                          margin: "0 8px",
+                        }}
+                      />
                       <span className="secondaryText">
                         <span>
-                          <FaRegObjectGroup style={{ color: 'rgb(233,41,78)', margin: '0 4px' }} />
+                          <FaRegObjectGroup
+                            style={{ color: "rgb(233,41,78)", margin: "0 4px" }}
+                          />
                           xxx sq ft
                         </span>
                       </span>
@@ -132,7 +149,7 @@ const PropertyGrid = ({ properties, title }) => {
           ))}
         </Carousel>
       </div>
-    </div >
+    </div>
   );
 };
 

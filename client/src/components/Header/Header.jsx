@@ -125,13 +125,6 @@ const Header = () => {
                   <li>
                     <a href="contact-us.html">Contact</a>
                   </li>
-
-                  <li className="d-none d-xl-none d-block d-lg-block">
-                    <a href="login.html">Login</a>
-                  </li>
-                  <li className="d-none d-xl-none d-block d-lg-block">
-                    <a href="register.html">Register</a>
-                  </li>
                 </ul>
               </nav>
               {/* Main Navigation / End */}

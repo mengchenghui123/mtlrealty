@@ -9,7 +9,7 @@
     />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="html 5 template" />
-    <meta name="author" content="" />
+    <meta name="BaiyangChen" content="" />
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -30,11 +30,12 @@
     <link rel="stylesheet" href="src/css/leaflet.markercluster.css" />
     <link rel="stylesheet" href="src/css/leaflet.markercluster.default.css" />
     <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="src/css/timedropper.css" />
-    <link rel="stylesheet" href="src/css/datedropper.css" />
     <link rel="stylesheet" href="src/css/animate.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/aos2.css" />
     <link rel="stylesheet" href="src/css/magnific-popup.css" />
     <link rel="stylesheet" href="src/css/lightcase.css" />
+    <link rel="stylesheet" href="css/owl-carousel.css" />
     <link rel="stylesheet" href="src/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="src/css/bootstrap.min.css" />
     <link rel="stylesheet" href="src/css/menu.css" />
@@ -51,9 +52,7 @@
   </head>
 
   <body>
-    <div id="wrapper" class="int_main_wraapper">
-      <div id="root"></div>
-    </div>
+    <div id="root"></div>
     <!-- jQuery -->
     <script src="src/js/jquery-3.5.1.min.js"></script>
     <script src="src/js/jquery-ui.js"></script>
@@ -64,17 +63,27 @@
     <script src="src/js/mmenu.min.js"></script>
     <script src="src/js/mmenu.js"></script>
     <script src="src/js/swiper.min.js"></script>
+    <script src="src/js/swiper.js"></script>
     <!-- <script src="src/js/swiper.js"></script> -->
+    <script src="src/js/moment.js"></script>
     <script src="src/js/slick.min.js"></script>
     <script src="src/js/slick4.js"></script>
     <script src="src/js/fitvids.js"></script>
+    <script src="src/js/aos.js"></script>
+    <script src="src/js/aos2.js"></script>
     <script src="src/js/smooth-scroll.min.js"></script>
     <script src="src/js/jquery.magnific-popup.min.js"></script>
+    <script src="src/js/jquery.waypoints.min.js"></script>
+    <script src="src/js/jquery.counterup.min.js"></script>
+    <script src="src/js/lightcase.js"></script>
+    <script src="src/js/imagesloaded.pkgd.min.js"></script>
+    <script src="src/js/isotope.pkgd.min.js"></script>
     <script src="src/js/popup.js"></script>
     <script src="src/js/ajaxchimp.min.js"></script>
     <script src="src/js/newsletter.js"></script>
     <script src="src/js/timedropper.js"></script>
     <script src="src/js/datedropper.js"></script>
+    <script src="src/js/owl.carousel.js"></script>
     <script src="src/js/jqueryadd-count.js"></script>
     <script src="src/js/leaflet.js"></script>
     <script src="src/js/leaflet-gesture-handling.min.js"></script>
@@ -83,6 +92,9 @@
     <script src="src/js/map-single.js"></script>
     <script src="src/js/color-switcher.js"></script>
     <script src="src/js/inner.js"></script>
+    <script src="src/js/jquery.form.js"></script>
+    <script src="src/js/jquery.validate.min.js"></script>
+    <script src="src/js/forms-2.js"></script>
 
     <!-- Slider Revolution scripts -->
     <script src="src/revolution/js/jquery.themepunch.tools.min.js"></script>
@@ -130,6 +142,44 @@
         });
       });
     </script>
+
+    <script>
+      $(".style1").owlCarousel({
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        responsive: {
+          0: {
+            items: 1,
+          },
+          400: {
+            items: 1,
+            margin: 20,
+          },
+          500: {
+            items: 1,
+            margin: 20,
+          },
+          768: {
+            items: 2,
+            margin: 20,
+          },
+          991: {
+            items: 2,
+            margin: 20,
+          },
+          1025: {
+            items: 4,
+            margin: 20,
+          },
+        },
+      });
+    </script>
+
+    <!-- MAIN JS -->
+    <script src="src/js/script.js"></script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

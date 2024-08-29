@@ -1,7 +1,6 @@
+import { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
 import Residencies from "../components/Residencies/Risidencies";
-import "../App.css";
-import { useEffect } from "react";
 
 function Home() {
   useEffect(() => {
