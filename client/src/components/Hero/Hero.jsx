@@ -47,7 +47,7 @@ const Hero = () => {
 
   const heroProperty = data
     .filter((property) => property.type === "Sale" || property.type === "Rent")
-    .slice(0, 4);
+    .slice(0, 5);
 
   return (
     <div className="int_content_wraapper int_content_left">
@@ -139,17 +139,6 @@ const Hero = () => {
                           </div>
                         </div>
                       ))}
-                      <div className="swiper-slide">
-                        <div className="swiper_contbox">
-                          <div className="swipper_conntent">
-                            <img
-                              src="images/slider/slider-9.png"
-                              className="img-fluid"
-                              alt="images"
-                            />
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
