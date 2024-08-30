@@ -124,6 +124,7 @@ const PropertyGrid = ({ properties, title }) => {
                         <i className="fa fa-object-group mr-1" aria-hidden="true" />{" "}
                         {property.facilities.area}
                       </div>
+
                     </div>
                     <div className="view-proper">View Details</div>
                   </a>

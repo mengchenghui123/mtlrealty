@@ -38,7 +38,7 @@ model Residency {
     municipalTaxes  Float?
     schoolTaxes Float?
     condoFee    Float?
-    rooms       Room[]
+    rooms       Json?
     image       String?
     facilities  Json
     images      Json
@@ -52,12 +52,12 @@ model Residency {
     @@unique(fields: [mlsNumber, userEmail])
 }
 
-model Room {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  type            String
-  level           String
-  dimensions      String
-  flooring        String
-  residencyId     String    @db.ObjectId
-  residency       Residency @relation(fields: [residencyId], references: [id]) // 定义外键关系
-}
+// model Room {
+//   id              String    @id @default(auto()) @map("_id") @db.ObjectId
+//   type            String
+//   level           String
+//   dimensions      String
+//   flooring        String
+//   residencyId     String    @db.ObjectId
+//   residency       Residency @relation(fields: [residencyId], references: [id]) // 定义外键关系
+// }
