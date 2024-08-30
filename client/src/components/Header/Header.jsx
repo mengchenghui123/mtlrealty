@@ -150,20 +150,50 @@ const Header = () => {
                 opened={modalOpened}
                 setOpened={setModalopened}
               />
-
-              {/* Header Widget / End */}
             </div>
-            {/* Right Side Content / End */}
-            {/* Right Side Content / End */}
-            <div className="header-user-menu user-menu add">
-              <div className="header-user-name">
-                {!isAuthenticated ? (
-                  <button className="button" onClick={loginWithRedirect}>
-                    Login
-                  </button>
-                ) : (
-                  <ProfileMenu user={user} logout={logout} />
-                )}
+            <div className="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+              <div className="header-widget sign-in">
+                <div className="show-reg-form modal-open">
+                  {!isAuthenticated ? (
+                    <button onClick={loginWithRedirect}>Login</button>
+                  ) : (
+                    <ProfileMenu user={user} logout={logout} />
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
+              <div className="lang-wrap">
+                <div className="show-lang">
+                  <span>
+                    <i className="fas fa-globe-americas"></i>
+                    <strong>ENG</strong>
+                  </span>
+                  <i className="fa fa-caret-down arrlan"></i>
+                </div>
+                <ul className="lang-tooltip lang-action no-list-style">
+                  <li>
+                    <a href="#" className="current-lan" data-lantext="En">
+                      English
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" data-lantext="Fr">
+                      Francais
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" data-lantext="Es">
+                      Espanol
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" data-lantext="De">
+                      Deutsch
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
             {/* Right Side Content / End */}
@@ -172,135 +202,6 @@ const Header = () => {
         {/* Header / End */}
       </header>
     </div>
-
-    // <section
-    //   className={`h_wrapper ${isheaderVisible ? "" : "hidden"}`}
-    //   inert={!isheaderVisible ? "true" : undefined}
-    // >
-    //   <div className="flexCenter paddings innerWidth h-container">
-    //     {/* Logo */}
-    //     <Link to="/">
-    //       <img src="/logo.png" alt="logo" width={100} />
-    //     </Link>
-
-    //     <div className="flexCenter h-menu" role="menubar">
-    //       {/* Residential */}
-    //       <Menu
-    //         trigger="hover"
-    //         delay={500}
-    //         transition="fade"
-    //         placement="end"
-    //         withinPortal
-    //       >
-    //         <Menu.Target>
-    //           <div className="menu-item">
-    //             <Link to="/residential" role="menuitem">
-    //               Residential
-    //             </Link>
-    //           </div>
-    //         </Menu.Target>
-    //         <Menu.Dropdown>
-    //           <Menu.Item component={Link} to="/rent" role="menuitem">
-    //             Rent
-    //           </Menu.Item>
-    //           <Menu.Item component={Link} to="/sell" role="menuitem">
-    //             Sell
-    //           </Menu.Item>
-    //           <Menu.Item component={Link} to="/buy" role="menuitem">
-    //             Buy
-    //           </Menu.Item>
-    //         </Menu.Dropdown>
-    //       </Menu>
-
-    //       {/* Commercial */}
-    //       <Menu
-    //         trigger="hover"
-    //         delay={500}
-    //         transition="fade"
-    //         placement="end"
-    //         withinPortal
-    //       >
-    //         <Menu.Target>
-    //           <div className="menu-item">
-    //             <Link to="/commercial" role="menuitem">
-    //               Commercial
-    //             </Link>
-    //           </div>
-    //         </Menu.Target>
-    //         <Menu.Dropdown>
-    //           <Menu.Item component={Link} to="#" role="menuitem">
-    //             Commercial Leasing
-    //           </Menu.Item>
-    //           <Menu.Item component={Link} to="/partners" role="menuitem">
-    //             Partners
-    //           </Menu.Item>
-    //           <Menu.Item component={Link} to="#" role="menuitem">
-    //             Protetles
-    //           </Menu.Item>
-    //         </Menu.Dropdown>
-    //       </Menu>
-
-    //       {/* Franchise */}
-    //       <Menu
-    //         trigger="hover"
-    //         delay={500}
-    //         transition="fade"
-    //         placement="end"
-    //         withinPortal
-    //       >
-    //         <Menu.Target>
-    //           <div className="menu-item">
-    //             <Link to="/franchise" role="menuitem">
-    //               Franchise
-    //             </Link>
-    //           </div>
-    //         </Menu.Target>
-    //         <Menu.Dropdown>
-    //           <Menu.Item component={Link} to="#" role="menuitem">
-    //             Introduction
-    //           </Menu.Item>
-    //           <Menu.Item component={Link} to="#" role="menuitem">
-    //             Procedure
-    //           </Menu.Item>
-    //           <Menu.Item component={Link} to="/brands" role="menuitem">
-    //             Brand
-    //           </Menu.Item>
-    //         </Menu.Dropdown>
-    //       </Menu>
-
-    //       {/* add property */}
-    //       <div onClick={handleAddPropertyClick}>Add Property</div>
-    //       <AddPropertyModal opened={modalOpened} setOpened={setModalopened} />
-
-    //       {isAuthenticated && isAdmin && (
-    //         <div className="menu-item">
-    //           <Link to="/admin" role="menuitem">
-    //             Admin
-    //           </Link>
-    //         </div>
-    //       )}
-    //       {/* Contact & News & Login */}
-    //       <div className="menu-item">
-    //         <Link to="/contact" role="menuitem">
-    //           Contact
-    //         </Link>
-    //       </div>
-    //       <div className="menu-item">
-    //         <Link to="#" role="menuitem">
-    //           News
-    //         </Link>
-    //       </div>
-
-    //       {!isAuthenticated ? (
-    //         <button className="button" onClick={loginWithRedirect}>
-    //           Login
-    //         </button>
-    //       ) : (
-    //         <ProfileMenu user={user} logout={logout} />
-    //       )}
-    //     </div>
-    //   </div>
-    // </section>
   );
 };
 
