@@ -1,74 +1,53 @@
 import { useState, useEffect } from "react";
-import { FaCaretRight } from "react-icons/fa";
+
 import useProperty from "../../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
-import React from "react";
+import { property } from "lodash";
 
 const Hero = () => {
-  // const [properties] = useState([
-  //   {
-  //     type: "For Sale",
-  //     estate: "Estate",
-  //     title: "Luxury Villa House",
-  //     price: "230,000",
-  //     location: "Est St, 77 - Central Park South, NYC",
-  //     bedrooms: 6,
-  //     bathrooms: 3,
-  //     area: "720 sq ft",
-  //     garages: 2,
-  //     image: "/wrapper2.png",
-  //     bannerClass: "imgbox1",
-  //   },
-  //   {
-  //     type: "For Rent",
-  //     estate: "Estate",
-  //     title: "Luxury Villa House",
-  //     price: "4,600",
-  //     location: "Est St, 77 - Central Park South, NYC",
-  //     bedrooms: 6,
-  //     bathrooms: 3,
-  //     area: "720 sq ft",
-  //     garages: 2,
-  //     image: "/wrapper1.webp",
-  //     bannerClass: "imgbox2",
-  //   },
-  // ]);
+  const { data, isError, isLoading } = useProperty();
+  useEffect(() => {
+    if (!isLoading && !isError && data.length > 0) {
+      new Swiper(".swiper-container", {
+        speed: 1000,
+        loop: true,
+        autoplay: false,
+        slidesPerView: 1,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    } else {
+      console.log("initializing data");
+    }
+  }, [isLoading, isError, data]);
 
-  // useEffect(() => {
-  //   const initSwiper = () => {
-  //     if (!window.Inland) {
-  //       window.Inland = {
-  //         initialised: false,
-  //         version: 1.0,
-  //         mobile: false,
-  //         init: function () {
-  //           if (!this.initialised) {
-  //             this.initialised = true;
-  //             this.BannerSlider();
-  //           }
-  //         },
+  if (isError) {
+    return (
+      <div className="wrapper">
+        <span>Error loading Properties</span>
+      </div>
+    );
+  }
 
-  //         BannerSlider: function () {
-  //           new window.Swiper(".banner_box_wrapper .swiper-container", {
-  //             speed: 1000,
-  //             loop: true,
-  //             autoplay: false,
-  //             slidesPerView: 1,
-  //             navigation: {
-  //               nextEl: ".banner_box_wrapper .swiper-button-next",
-  //               prevEl: ".banner_box_wrapper .swiper-button-prev",
-  //             },
-  //           });
-  //         },
-  //       };
-  //       window.Inland.init();
-  //     }
-  //   };
+  if (isLoading) {
+    return (
+      <div className="wrapper flexCenter" style={{ height: "60vh" }}>
+        <PuffLoader
+          height="80"
+          width="80"
+          radius={1}
+          color="#4066ff"
+          aria-label="puff-loading"
+        />
+      </div>
+    );
+  }
 
-  //   setTimeout(() => {
-  //     initSwiper();
-  //   }, 0);
-  // }, []);
+  const heroProperty = data
+    .filter((property) => property.type === "Sale" || property.type === "Rent")
+    .slice(0, 4);
 
   return (
     <div className="int_content_wraapper int_content_left">
@@ -81,112 +60,63 @@ const Hero = () => {
                 <div className="main_contentblock">
                   <div className="swiper-container" data-aos="fade-right">
                     <div className="swiper-wrapper">
-                      <div className="swiper-slide">
-                        <div className="swiper_imgbox imgbox1">
-                          <div className="swipper_img">
-                            <h4>
-                              For Sale <span>Estate</span>
-                            </h4>
-                            <h2>Luxury Villa House</h2>
-                            <h3>
-                              $ 230,000
-                              <span className="banner_span1" />
-                            </h3>
-                            <p>
-                              <i className="fa fa-map-marker mr-3" />
-                              Est St, 77 - Central Park South, NYC
-                            </p>
-                            {/* homes List */}
-                            <ul className="homes-list clearfix">
-                              <li>
-                                <i className="fa fa-bed" aria-hidden="true" />
-                                <span>6 Bedrooms</span>
-                              </li>
-                              <li>
-                                <i className="fa fa-bath" aria-hidden="true" />
-                                <span>3 Bathrooms</span>
-                              </li>
-                              <li>
-                                <i
-                                  className="fa fa-object-group"
-                                  aria-hidden="true"
-                                />
-                                <span>720 sq ft</span>
-                              </li>
-                              <li>
-                                <i
-                                  className="fas fa-warehouse"
-                                  aria-hidden="true"
-                                />
-                                <span>2 Garages</span>
-                              </li>
-                            </ul>
-                            <a
-                              href="single-property-1.html"
-                              className="int_btn"
-                            >
-                              View Property{" "}
-                              <span className="btn_caret">
-                                <i className="fas fa-caret-right" />
-                              </span>
-                            </a>
-                            <h1>Real</h1>
+                      {heroProperty.map((property) => (
+                        <div className="swiper-slide" key={property.id}>
+                          <div className="swiper_imgbox imgbox1">
+                            <div className="swipper_img">
+                              <h4>
+                                For {property.type} <span>Estate</span>
+                              </h4>
+                              <h2>{property.title}</h2>
+                              <h3>
+                                ${property.price.toLocaleString("en-US")}
+                                <span className="banner_span1" />
+                              </h3>
+                              <p>
+                                <i className="fa fa-map-marker mr-3" />
+                                {property.address}
+                              </p>
+                              <ul className="homes-list clearfix">
+                                <li>
+                                  <i className="fa fa-bed" aria-hidden="true" />
+                                  <span>{property.facilities.bedrooms}</span>
+                                </li>
+                                <li>
+                                  <i
+                                    className="fa fa-bath"
+                                    aria-hidden="true"
+                                  />
+                                  <span>{property.facilities.bathrooms}</span>
+                                </li>
+                                <li>
+                                  <i
+                                    className="fa fa-object-group"
+                                    aria-hidden="true"
+                                  />
+                                  <span>{property.livingSpace} sq ft</span>
+                                </li>
+                                <li>
+                                  <i
+                                    className="fas fa-warehouse"
+                                    aria-hidden="true"
+                                  />
+                                  <span>{property.parking || 0}</span>
+                                </li>
+                              </ul>
+                              <a
+                                href={`/property/${property.id}`}
+                                className="int_btn"
+                              >
+                                View Property{" "}
+                                <span className="btn_caret">
+                                  <i className="fas fa-caret-right" />
+                                </span>
+                              </a>
+                              <h1>Real</h1>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="swiper-slide">
-                        <div className="swiper_imgbox imgbox2">
-                          <div className="swipper_img">
-                            <h4>
-                              For Rent <span>Estate</span>
-                            </h4>
-                            <h2>Luxury Villa House</h2>
-                            <h3>
-                              $ 4,600
-                              <span className="banner_span1" />
-                            </h3>
-                            <p>
-                              <i className="fa fa-map-marker mr-3" />
-                              Est St, 77 - Central Park South, NYC
-                            </p>
-                            {/* homes List */}
-                            <ul className="homes-list clearfix">
-                              <li>
-                                <i className="fa fa-bed" aria-hidden="true" />
-                                <span>6 Bedrooms</span>
-                              </li>
-                              <li>
-                                <i className="fa fa-bath" aria-hidden="true" />
-                                <span>3 Bathrooms</span>
-                              </li>
-                              <li>
-                                <i
-                                  className="fa fa-object-group"
-                                  aria-hidden="true"
-                                />
-                                <span>720 sq ft</span>
-                              </li>
-                              <li>
-                                <i
-                                  className="fas fa-warehouse"
-                                  aria-hidden="true"
-                                />
-                                <span>2 Garages</span>
-                              </li>
-                            </ul>
-                            <a
-                              href="single-property-1.html"
-                              className="int_btn"
-                            >
-                              View Property{" "}
-                              <span className="btn_caret">
-                                <i className="fas fa-caret-right" />
-                              </span>
-                            </a>
-                            <h1>Real</h1>
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -196,17 +126,19 @@ const Hero = () => {
                 <div className="main_imgblock">
                   <div className="swiper-container" data-aos="fade-left">
                     <div className="swiper-wrapper">
-                      <div className="swiper-slide">
-                        <div className="swiper_contbox">
-                          <div className="swipper_conntent">
-                            <img
-                              src="images/slider/slider-8.png"
-                              className="img-fluid "
-                              alt="images"
-                            />
+                      {heroProperty.map((property) => (
+                        <div className="swiper-slide" key={property.id}>
+                          <div className="swiper_contbox">
+                            <div className="swipper_conntent">
+                              <img
+                                src={property.image || "error"}
+                                className="img-fluid "
+                                alt="images"
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ))}
                       <div className="swiper-slide">
                         <div className="swiper_contbox">
                           <div className="swipper_conntent">
