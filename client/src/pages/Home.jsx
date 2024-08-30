@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
 import Residencies from "../components/Residencies/Risidencies";
-
 function Home() {
   useEffect(() => {
     document.body.className = "int_white_bg hd-white";

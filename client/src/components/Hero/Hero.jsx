@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
-import { FaCaretRight } from "react-icons/fa";
-import useProperty from "../../Hook/useProperty";
-import { PuffLoader } from "react-spinners";
-import React from "react";
+import { useState, useEffect } from 'react';
+
 
 const Hero = () => {
   // const [properties] = useState([

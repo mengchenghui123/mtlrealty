@@ -4398,8 +4398,8 @@ div.partners {
 /*-----------------------------------*/
 section.counterup {
   padding: 6rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/bg-counter2.jpg) no-repeat center center;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/bg-counter2.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../../public/bg-counter2.jpg) no-repeat center center;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../../public/bg-counter2.jpg) no-repeat center center;
   background-attachment: fixed;
   color: #fff;
   text-align: center;
@@ -10048,7 +10048,7 @@ body.int_white_bg {
 }
 
 .bg-white-1 {
-  background: url(../images/bg/bg-pattern-dot.png) 0 0 repeat !important;
+  background: url(../../public/bg-pattern-dot.png) 0 0 repeat !important;
 }
 
 .bg-white-2 {
