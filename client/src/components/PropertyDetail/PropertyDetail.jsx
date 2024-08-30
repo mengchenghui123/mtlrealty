@@ -48,14 +48,18 @@ export const PropertyDetail = () => {
   useEffect(() => {
     document.body.className = "inner-pages sin-1 homepage-4 hd-white";
 
-    const bookingDate =
-      bookings?.find((booking) => booking.id === id)?.date || "";
-    const bookingAddress = data.find((p) => p.id === id).address;
-    setFormData((prevData) => ({
-      ...prevData,
-      date: bookingDate,
-      address: bookingAddress,
-    }));
+    if (!isLoading && data && bookings) {
+      const bookingDate =
+        bookings.find((booking) => booking.id === id)?.date || "";
+      const bookingAddress = data.find((p) => p.id === id)?.address || "";
+      setFormData((prevData) => ({
+        ...prevData,
+        date: bookingDate,
+        address: bookingAddress,
+      }));
+    } else {
+      console.log("error loading data and bookings");
+    }
     return () => {
       document.body.className = "";
     };

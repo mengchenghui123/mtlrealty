@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { truncate } from "lodash";
 import { useNavigate } from "react-router-dom";
-import { formatPrice } from '../../utils/Common';
+import { formatPrice } from "../../utils/Common";
 
 const PropertyGrid = ({ properties, title }) => {
   const navigate = useNavigate();
@@ -11,7 +11,6 @@ const PropertyGrid = ({ properties, title }) => {
     toast.success(`card with id ${id} clicked`);
     navigate(`/property/${id}`);
   };
-
   const titleToURL = {
     Residential: "../../residential",
     Commercial: "../../commercial",
@@ -29,43 +28,51 @@ const PropertyGrid = ({ properties, title }) => {
   };
 
   useEffect(() => {
-    console.log(properties[1]);
     const initSlick = () => {
       const $ = window.jQuery;
-      if ($ && $('.slick-lancers').length) {
-        $('.slick-lancers').slick({
-          infinite: false,
-          slidesToShow: 5,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: true,
-          adaptiveHeight: true,
-          responsive: [{
-            breakpoint: 1292,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              dots: true,
-              arrows: false
-            }
-          }, {
-            breakpoint: 993,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-              dots: true,
-              arrows: false
-            }
-          }, {
-            breakpoint: 769,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              dots: true,
-              arrows: false
-            }
-          }]
-        });
+      const slickElement = $(".slick-lancers");
+
+      if (slickElement.length > 0) {
+        if (!slickElement.hasClass("slick-initialized"))
+          slickElement.slick({
+            infinite: false,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            dots: true,
+            arrows: true,
+            adaptiveHeight: true,
+            responsive: [
+              {
+                breakpoint: 1292,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  dots: true,
+                  arrows: false,
+                },
+              },
+              {
+                breakpoint: 993,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                  dots: true,
+                  arrows: false,
+                },
+              },
+              {
+                breakpoint: 769,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  dots: true,
+                  arrows: false,
+                },
+              },
+            ],
+          });
+      } else {
+        console.log("Slick element already initialized or not found");
       }
     };
 
@@ -114,17 +121,23 @@ const PropertyGrid = ({ properties, title }) => {
                       <span>{property.type}</span>
                     </div>
                     <div className="recent-details">
-                      <div className="recent-title">{truncate(property.title, { length: 15 })}</div>
-                      <div className="recent-price mb-3">{formatPrice(property.price)}</div>
+                      <div className="recent-title">
+                        {truncate(property.title, { length: 15 })}
+                      </div>
+                      <div className="recent-price mb-3">
+                        {formatPrice(property.price)}
+                      </div>
                       <div className="house-details thehp-1">
                         <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
                         {property.facilities.bedrooms} Bed <span>|</span>{" "}
                         <i className="fa fa-bath mr-1" aria-hidden="true" />{" "}
                         {property.facilities.bathrooms} Bath <span>|</span>{" "}
-                        <i className="fa fa-object-group mr-1" aria-hidden="true" />{" "}
+                        <i
+                          className="fa fa-object-group mr-1"
+                          aria-hidden="true"
+                        />{" "}
                         {property.facilities.area}
                       </div>
-
                     </div>
                     <div className="view-proper">View Details</div>
                   </a>
