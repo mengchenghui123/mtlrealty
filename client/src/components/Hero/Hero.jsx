@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { FaCaretRight } from 'react-icons/fa';
 
 const Hero = () => {
   const [properties] = useState([

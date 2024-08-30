@@ -1,6 +1,3 @@
-import { FaCommentDots, FaHeart, FaShareAlt } from 'react-icons/fa';
-import './NewsGrid.css';
-
 const newsData = [
   {
     id: 1,
@@ -50,48 +47,68 @@ const newsData = [
 
 const NewsGrid = () => {
   return (
-    <div className="news-grid">
-      <div className="row">
-        <div className="col-12">
-          <div className="r-head flexColStart">
-            <span className="fs-5 fw-semibold text-uppercase">Latest</span>
-            <span className="orangeText">News</span>
+    <>
+      {/* START SECTION BLOG */}
+      <section className="blog-section bg-white-1 rec-pro">
+        <div className="container-fluid">
+          <div className="section-title">
+            <h3>Latest</h3>
+            <h2>News</h2>
           </div>
-        </div>
-      </div>
-      <div className="row">
-        {newsData.map((news) => (
-          <div key={news.id} className="col-md-6 mb-4">
-            <div className="card news-card shadow-sm d-flex flex-row">
-              <div className="row g-0 h-100">
-                <div className="col-4 h-100">
-                  <img src={news.image} alt={news.title} className="img-fluid news-img h-100" />
-                </div>
-                <div className="col-8 h-100">
-                  <div className="card-body d-flex flex-column justify-content-between">
-                    <div>
-                      <h5 className="card-title">{news.title}</h5>
-                      <p className="card-text">
-                        {news.date} / By {news.author}
-                      </p>
-                      <p className='pt-2'>{news.description}</p>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <p className="card-text mb-0 fw-bold">Read more...</p>
-                      <div className="d-flex">
-                        <span className="me-3"><FaHeart /> {news.likes}</span>
-                        <span className="me-3"><FaCommentDots /> {news.comments}</span>
-                        <span className="me-3"><FaShareAlt /> {news.shares}</span>
+          <div className="news-wrap">
+            <div className="row">
+              {newsData.map((news, index) => (
+                <div
+                  key={news.id}
+                  className={`col-xl-6 col-md-12 col-xs-12 ${index % 2 === 0 ? 'fade-right' : 'fade-left'}`}
+                  data-aos={`fade-${index % 2 === 0 ? 'right' : 'left'}`}
+                >
+                  <div className="news-item news-item-sm">
+                    <a href="blog-details.html" className="news-img-link">
+                      <div className="news-item-img">
+                        <img
+                          className="resp-img"
+                          src={news.image}
+                          alt="blog image"
+                        />
+                      </div>
+                    </a>
+                    <div className="news-item-text">
+                      <a href="blog-details.html">
+                        <h3>{news.title}</h3>
+                      </a>
+                      <span className="date">
+                        {news.date} &nbsp;/&nbsp; By {news.author}
+                      </span>
+                      <div className="news-item-descr">
+                        <p>{news.description}</p>
+                      </div>
+                      <div className="news-item-bottom">
+                        <a href="blog-details.html" className="news-link">
+                          Read more...
+                        </a>
+                        <ul className="action-list">
+                          <li className="action-item">
+                            <i className="fa fa-heart" /> <span>{news.likes}</span>
+                          </li>
+                          <li className="action-item">
+                            <i className="fa fa-comment" /> <span>{news.comments}</span>
+                          </li>
+                          <li className="action-item">
+                            <i className="fa fa-share-alt" /> <span>{news.shares}</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      </section>
+      {/* END SECTION BLOG */}
+    </>
   );
 }
 

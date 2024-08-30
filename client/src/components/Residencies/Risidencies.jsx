@@ -1,5 +1,5 @@
 import React from "react";
-import "./Residencies.css";
+// import "./Residencies.css";
 import PropertyGrid from "../PropertyGrid/PropertyGrid";
 import PropertyServices from "../PropertyServices/PropertyServices";
 import NewsGrid from "../NewsGrid/NewsGrid";
@@ -49,7 +49,7 @@ export const Risidencies = () => {
             <div
               key="services"
               className="property-section"
-              style={{ backgroundColor: "#cacaca", margin: "2rem 0" }}
+            // style={{ backgroundColor: "#cacaca", margin: "2rem 0" }}
             >
               <div className="paddings innerwidth r-container">
                 <PropertyServices />

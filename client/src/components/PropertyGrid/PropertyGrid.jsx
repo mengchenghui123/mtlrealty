@@ -1,13 +1,8 @@
-import React from "react";
-import "./PropertyGrid.css";
-import { Carousel } from "@mantine/carousel";
-import '@mantine/carousel/styles.css';
-import { Badge } from "@mantine/core";
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { truncate } from "lodash";
 import { useNavigate } from "react-router-dom";
-import Heart from "../Heart/Heart";
-import { FaBed, FaBath, FaRegObjectGroup } from 'react-icons/fa';
+import { formatPrice } from '../../utils/Common';
 
 const PropertyGrid = ({ properties, title }) => {
   const navigate = useNavigate();
@@ -33,106 +28,113 @@ const PropertyGrid = ({ properties, title }) => {
     }
   };
 
-  return (
-    <div className="property-grid-wrapper">
-      <div className="r-head flexColStart">
-        <span className="fs-5 fw-semibold text-uppercase">properties</span>
-        <span className="orangeText">{title}</span>
-      </div>
-
-      <div className="carousel-container">
-        <Carousel
-          withIndicators
-          height={400}
-          slideSize={{ base: '100%', sm: '50%', md: '20%' }}
-          slideGap={{ base: 0, sm: 'md' }}
-          controlSize={35}
-          loop
-          align="start"
-          classNames={{
-            controls: 'carousel-controls',
-          }}
-          styles={{
-            indicator: {
-              width: 10,
-              height: 10,
-              border: '1px solid rgb(179, 115, 55)',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(179, 115, 55, 0.5)',
-              '&[dataActive]': {
-                backgroundColor: 'rgba(179, 115, 55, 1)',
-              },
-            },
-            control: {
-              backgroundColor: '#fff',
-            },
-            indicators: {
-              position: 'absolute',
-              bottom: '-2rem',
+  useEffect(() => {
+    console.log(properties[1]);
+    const initSlick = () => {
+      const $ = window.jQuery;
+      if ($ && $('.slick-lancers').length) {
+        $('.slick-lancers').slick({
+          infinite: false,
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          dots: true,
+          arrows: true,
+          adaptiveHeight: true,
+          responsive: [{
+            breakpoint: 1292,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              dots: true,
+              arrows: false
             }
-          }}
-        >
-          {properties.map((card, i) => (
-            <Carousel.Slide
-              // className="flexColStart r-card"
-              key={i}
-              onClick={() => handleCardClick(card.id)}
-            >
-              <div className="card r-card"
-                style={{
-                  backgroundImage: `url(${card.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  height: '100%'
-                }}
+          }, {
+            breakpoint: 993,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              dots: true,
+              arrows: false
+            }
+          }, {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: true,
+              arrows: false
+            }
+          }]
+        });
+      }
+    };
+
+    // 延迟初始化，确保 DOM 元素存在
+    const timeoutId = setTimeout(() => {
+      initSlick();
+    }, 100);
+
+    // 清理定时器
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  return (
+    // <!-- START SECTION PROPERTIES FOR SALE -->
+    <section className="recently portfolio featured bg-white-1 rec-pro">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="section-title col-md-5 pl-44">
+            <h3>Properties</h3>
+            <h2>{title}</h2>
+          </div>
+        </div>
+        <div className="portfolio col-xl-12 p-0">
+          <div className="slick-lancers">
+            {properties.map((property, index) => (
+              <div
+                key={property.id}
+                className="agents-grid"
+                data-aos="fade-up"
+                data-aos-delay={150 + index * 100}
               >
-                <Badge
-                  className="status-badge"
-                  color={card.status === 'for sale' ? 'red' : 'blue'}
-                  radius="xs"
-                >
-                  {card.status ? card.status : 'for rent'}
-                </Badge>
-                {/* <Heart id={card?.id} className="heart-icon" /> */}
-                <div className="card-info">
-                  <div className="d-flex flex-column align-items-start gap-2">
-                    <span className="primaryText">
-                      {truncate(card.title, { length: 15 })}
-                    </span>
-                    <span className="primaryText">
-                      <span>$</span>
-                      <span>{card.price}</span>
-                    </span>
-                    <div className="d-flex">
-                      <span className="secondaryText">
-                        <span>
-                          <FaBed style={{ color: 'rgb(233,41,78)', margin: '0 4px' }} />
-                          {card.facilities.bedrooms} Bed
-                        </span>
-                      </span>
-                      <div style={{ borderLeft: '1px solid #fff', margin: '0 8px' }} />
-                      <span className="secondaryText">
-                        <span>
-                          <FaBath style={{ color: 'rgb(233,41,78)', margin: '0 4px' }} />
-                          {card.facilities.bathrooms} Bath
-                        </span>
-                      </span>
-                      <div style={{ borderLeft: '1px solid #fff', margin: '0 8px' }} />
-                      <span className="secondaryText">
-                        <span>
-                          <FaRegObjectGroup style={{ color: 'rgb(233,41,78)', margin: '0 4px' }} />
-                          xxx sq ft
-                        </span>
-                      </span>
+                <div className="landscapes listing-item compact thehp-1">
+                  <a
+                    href="#"
+                    className="recent-16"
+                    onClick={() => handleCardClick(property.id)}
+                  >
+                    <div
+                      className="recent-img16 img-fluid img-center"
+                      style={{
+                        backgroundImage: `url(${property.image})`,
+                      }}
+                    />
+                    <div className="recent-content" />
+                    <div className="listing-badges">
+                      <span>{property.type}</span>
                     </div>
-                  </div>
+                    <div className="recent-details">
+                      <div className="recent-title">{truncate(property.title, { length: 15 })}</div>
+                      <div className="recent-price mb-3">{formatPrice(property.price)}</div>
+                      <div className="house-details thehp-1">
+                        <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
+                        {property.facilities.bedrooms} Bed <span>|</span>{" "}
+                        <i className="fa fa-bath mr-1" aria-hidden="true" />{" "}
+                        {property.facilities.bathrooms} Bath <span>|</span>{" "}
+                        <i className="fa fa-object-group mr-1" aria-hidden="true" />{" "}
+                        {property.facilities.area}
+                      </div>
+                    </div>
+                    <div className="view-proper">View Details</div>
+                  </a>
                 </div>
               </div>
-            </Carousel.Slide>
-          ))}
-        </Carousel>
+            ))}
+          </div>
+        </div>
       </div>
-    </div >
+    </section>
+    // <!-- END SECTION PROPERTIES FOR SALE -->
   );
 };
 
