@@ -46,6 +46,15 @@
 
 
     <title>Real Estate</title>
+    <style>
+      .puffloaderStyle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        width: 100%;
+      }
+    </style>
     <script
       src="https://upload-widget.cloudinary.com/global/all.js"
       type="text/javascript"
@@ -104,19 +113,6 @@
     <!-- Additional Scripts -->
     <script>
       $(document).ready(function () {
-        // 初始化 dateDropper 插件
-
-        // 初始化 Magnific Popup 插件
-        // $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
-        //   disableOn: 700,
-        //   type: "iframe",
-        //   mainClass: "mfp-fade",
-        //   removalDelay: 160,
-        //   preloader: false,
-        //   fixedContentPos: false,
-        // });
-
-        // 初始化 Slick Carousel 插件
         $(".slick-carousel").each(function () {
           var slider = $(this);
           $(this).slick({

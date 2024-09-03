@@ -19,7 +19,7 @@ export const Risidencies = () => {
 
   if (isLoading) {
     return (
-      <div className="wrapper flexCenter" style={{ height: "60vh" }}>
+      <div className="puffloaderStyle" style={{ height: "60vh" }}>
         <PuffLoader
           height="80"
           width="80"
@@ -49,7 +49,8 @@ export const Risidencies = () => {
             <div
               key="services"
               className="property-section"
-            // style={{ backgroundColor: "#cacaca", margin: "2rem 0" }}
+
+              // style={{ backgroundColor: "#cacaca", margin: "2rem 0" }}
             >
               <div className="paddings innerwidth r-container">
                 <PropertyServices />
