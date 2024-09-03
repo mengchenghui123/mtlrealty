@@ -12,7 +12,7 @@ const Header = () => {
   });
 
   useEffect(() => {
-    document.body.className = "inner-pages sin-1 homepage-4 hd-white";
+    document.body.className = "int_white_bg hd-white";
 
     // Cleanup on unmount
     return () => {

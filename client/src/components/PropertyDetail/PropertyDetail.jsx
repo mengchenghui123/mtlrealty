@@ -58,7 +58,7 @@ export const PropertyDetail = () => {
         address: bookingAddress,
       }));
     } else {
-      console.log("error loading data and bookings");
+      console.log("Loading page");
     }
     return () => {
       document.body.className = "";
@@ -75,7 +75,7 @@ export const PropertyDetail = () => {
 
   if (isLoading || !data) {
     return (
-      <div className="wrapper flexCenter" style={{ height: "60vh" }}>
+      <div className="puffloaderStyle" style={{ height: "60vh" }}>
         <PuffLoader
           height="80"
           width="80"
@@ -171,20 +171,7 @@ export const PropertyDetail = () => {
                       <div className="detail-wrapper-body">
                         <div className="listing-title-bar">
                           <h4>${property.price.toLocaleString("en-US")}</h4>
-                          <div className="mt-0">
-                            <a
-                              href="#listing-location"
-                              className="listing-address"
-                            >
-                              <p>
-                                {" "}
-                                Living Space:{" "}
-                                {property.livingSpace
-                                  ? `${property.livingSpace} sq ft`
-                                  : "Not Available"}
-                              </p>
-                            </a>
-                          </div>
+                          <div className="mt-0"></div>
                         </div>
                       </div>
                     </div>
@@ -287,44 +274,70 @@ export const PropertyDetail = () => {
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Living Space:</span>
-                  <span className="det">{property.livingSpace}sqft</span>
+                  <span className="det">
+                    {property.livingSpace
+                      ? `${property.livingSpace} sqft`
+                      : "N/A"}
+                  </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Lot Size:</span>
-                  <span className="det">{property.lotSize}sqft</span>
+                  <span className="det">
+                    {property.lotSize ? `${property.lotSize} sqft` : "N/A "}
+                  </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Rooms:</span>
-                  <span className="det">{property.rooms.length}</span>
+                  <span className="det">
+                    {property.rooms > 0 ? property.rooms.length : "N/A"}
+                  </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Bedrooms:</span>
-                  <span className="det">{property.facilities.bedrooms}</span>
+                  <span className="det">
+                    {property.facilities.bedrooms
+                      ? property.facilities.bedrooms
+                      : "N/A"}
+                  </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Bath:</span>
-                  <span className="det">{property.facilities.bathrooms}</span>
+                  <span className="det">
+                    {property.facilities.bathrooms
+                      ? property.facilities.bathrooms
+                      : "N/A"}
+                  </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Parking Space:</span>
-                  <span className="det">{property.facilities.parking}</span>
+                  <span className="det">
+                    {property.facilities.parking
+                      ? property.facilities.parking
+                      : "N/A"}
+                  </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">Year Built:</span>
-                  <span className="det">{property.yearBuild}</span>
+                  <span className="det">
+                    {property.yearBuild ? property.yearBuild : "N/A"}
+                  </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">
                     Municipal Taxes:
                   </span>
                   <span className="det">
-                    {property.municipalTaxes.toLocaleString("en-US")}
+                    {property.municipalTaxes
+                      ? property.municipalTaxes.toLocaleString("en-US")
+                      : "N/A"}
                   </span>
                 </li>
                 <li>
                   <span className="font-weight-bold mr-1">School Taxes:</span>
                   <span className="det">
-                    {property.schoolTaxes.toLocaleString("en-US")}
+                    {property.schoolTaxes
+                      ? property.schoolTaxes.toLocaleString("en-US")
+                      : "N/A"}
                   </span>
                 </li>
               </ul>
@@ -332,12 +345,14 @@ export const PropertyDetail = () => {
               <h5 className="mt-5">Amenities</h5>
               {/* cars List */}
               <ul className="homes-list clearfix">
-                {property.amenities.map((facility, index) => (
-                  <li key={index}>
-                    <i className="fa fa-check-square" aria-hidden="true" />
-                    <span>{facility}</span>
-                  </li>
-                ))}
+                {property.amenities
+                  ? property.amenities.map((facility, index) => (
+                      <li key={index}>
+                        <i className="fa fa-check-square" aria-hidden="true" />
+                        <span>{facility}</span>
+                      </li>
+                    ))
+                  : "N/A"}
               </ul>
             </div>
             <h3>Rooms</h3>
@@ -351,14 +366,20 @@ export const PropertyDetail = () => {
                 </tr>
               </thead>
               <tbody>
-                {property.rooms.map((room, index) => (
-                  <tr key={index}>
-                    <td>{room.type}</td>
-                    <td>{room.level}</td>
-                    <td>{room.dimensions}</td>
-                    <td>{room.flooring}</td>
+                {property.rooms && property.rooms.length > 0 ? (
+                  property.rooms.map((room, index) => (
+                    <tr key={index}>
+                      <td>{room.type}</td>
+                      <td>{room.level}</td>
+                      <td>{room.dimensions}</td>
+                      <td>{room.flooring}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="4">N/A</td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
 

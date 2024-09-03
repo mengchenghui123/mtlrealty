@@ -33,7 +33,7 @@ const Hero = () => {
 
   if (isLoading) {
     return (
-      <div className="wrapper flexCenter" style={{ height: "60vh" }}>
+      <div className="puffloaderStyle" style={{ height: "60vh" }}>
         <PuffLoader
           height="80"
           width="80"

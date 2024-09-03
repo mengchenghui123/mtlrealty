@@ -1,53 +1,56 @@
-import React from 'react'
-import './Footer.css'
+import React, { useEffect } from "react";
 
 export const Footer = () => {
+  useEffect(() => {
+    document.body.className = "int_white_bg hd-white";
+
+    // Cleanup on unmount
+    return () => {
+      document.body.className = "";
+    };
+  }, []);
   return (
-    <footer className="footer">
-        <div className="footer-container">
-        <div className="footer-row">
-            <div className="col-md-6 col-lg-5 col-12 ft-1">
-                <h3>Richard Zhou</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatem placeat ullam itaque consequuntur inventore nesciunt, .</p>
-                <div className="footer-icons">
-                    <i className="fa-brands fa-facebook"></i>
-                    <i className="fa-brands fa-weixin"></i>
-                    <i className="fa-brands fa-instagram"></i>
-                    <i className="fa-brands fa-linkedin-in"></i>
-                </div>
-            </div>
-
-
-            <div className="col-md-6 col-lg-3 col-12 ft-2">
-                <h3>Quick Links</h3>
+    <footer className="first-footer rec-pro">
+      <div className="top-footer bg-white">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-3 col-md-6">
+              <div className="netabout">
+                <a href="index.html" className="logo">
+                  <img src="images/logo-black.svg" alt="netcom" />
+                </a>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
+                  incidunt architecto soluta laboriosam, perspiciatis,
+                  aspernatur officiis esse.
+                </p>
+              </div>
+              <div className="contactus">
                 <ul>
-                    <li className="nav-item">
-                        <a href="../../about">About Us</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="../../contact">Contact</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="">Blogs</a>
-                    </li>
+                  <li>
+                    <div className="info">
+                      <i className="fa fa-map-marker" aria-hidden="true" />
+                      <p className="in-p">95 South Park Avenue, USA</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="info">
+                      <i className="fa fa-phone" aria-hidden="true" />
+                      <p className="in-p">+456 875 369 208</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="info">
+                      <i className="fa fa-envelope" aria-hidden="true" />
+                      <p className="in-p ti">support@findhouses.com</p>
+                    </div>
+                  </li>
                 </ul>
+              </div>
             </div>
-
-
-            <div className="col-md-6 col-lg-4 col-12 ft-3">
-                <h3>Contact Info</h3>
-                <div className="contact-container">
-                    <p><i  className="fa-solid fa-phone-volume"></i>+123-123-1234</p>
-                    <p><i  className="fa-solid fa-envelope"></i>abc@gmail.com</p>
-                    <p><i className="fa-solid fa-location-dot"></i> 1234 Rue Drumond</p>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-    
-    <div className='Last-Footer'>
-        <p>Design by Firstname LastName</p>
-    </div>
+      </div>
     </footer>
   );
 };
