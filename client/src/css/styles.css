@@ -346,7 +346,7 @@ img {
   color: #fff;
 }
 
-.social-icons-header .fa-twitter {
+.social-icons-header .fa-weixin {
   color: #fff;
 }
 
@@ -1527,7 +1527,7 @@ section.recently.portfolio {
 }
 
 .homepage-1 .team .team-social li a.facebook,
-.homepage-1 .team .team-social li a.twitter,
+.homepage-1 .team .team-social li a.weixin,
 .homepage-1 .team .team-social li a.instagram,
 .homepage-1 .team .team-social li a.linkedin {
   background-color: rgba(74, 74, 76, 0.5);
@@ -3710,7 +3710,7 @@ section.team {
   background: #3b5998;
 }
 
-.team .team-pro .fa.fa-twitter {
+.team .team-pro .fa.fa-weixin {
   background: #1da1f2;
 }
 
@@ -4590,12 +4590,12 @@ section.counterup {
   color: #fff;
 }
 
-.first-footer .netsocials a .fa-twitter {
+.first-footer .netsocials a .fa-weixin {
   background: transparent;
   color: #fff;
 }
 
-.first-footer .netsocials a .fa-twitter:hover {
+.first-footer .netsocials a .fa-weixin:hover {
   background: #1da1f2;
   color: #fff;
 }
@@ -4628,10 +4628,10 @@ section.counterup {
   background: #3b5998;
 }
 
-.homepage-2 .first-footer .netsocials a .fa-twitter,
-.homepage-5 .first-footer .netsocials a .fa-twitter,
-.int_white_bg .first-footer .netsocials a .fa-twitter,
-.th-17 .first-footer .netsocials a .fa-twitter {
+.homepage-2 .first-footer .netsocials a .fa-weixin,
+.homepage-5 .first-footer .netsocials a .fa-weixin,
+.int_white_bg .first-footer .netsocials a .fa-weixin,
+.th-17 .first-footer .netsocials a .fa-weixin {
   background: #1da1f2;
 }
 
@@ -4812,31 +4812,31 @@ section.counterup {
   margin-bottom: 1.5rem;
 }
 
-.twitter-widget.contuct .single-item {
+.weixin-widget.contuct .single-item {
   position: relative;
   margin-bottom: 25px;
 }
 
-.twitter-widget.contuct .single-item:last-child {
+.weixin-widget.contuct .single-item:last-child {
   margin-bottom: 0px;
 }
 
-.twitter-widget.contuct .twitter-area .icon-holder {
+.weixin-widget.contuct .weixin-area .icon-holder {
   position: absolute;
   left: 0;
   top: 0;
 }
 
-.twitter-widget.contuct .twitter-area .icon-holder i {
+.weixin-widget.contuct .weixin-area .icon-holder i {
   color: #fff;
 }
 
-.twitter-widget.contuct .twitter-area .text {
+.weixin-widget.contuct .weixin-area .text {
   padding: 0px 0px 0px 30px;
 }
 
-.twitter-widget.contuct .twitter-area .text h5,
-.inner-pages .twitter-widget.contuct .twitter-area .text h5 {
+.weixin-widget.contuct .weixin-area .text h5,
+.inner-pages .weixin-widget.contuct .weixin-area .text h5 {
   font-size: 14px;
   color: rgba(245, 255, 255, 0.8);
   font-weight: 400;
@@ -4844,14 +4844,14 @@ section.counterup {
   line-height: 1.3rem;
 }
 
-.twitter-widget.contuct .twitter-area .text h5 a,
-.inner-pages .twitter-widget.contuct .twitter-area .text h5 a {
+.weixin-widget.contuct .weixin-area .text h5 a,
+.inner-pages .weixin-widget.contuct .weixin-area .text h5 a {
   color: #fff;
   font-weight: 400;
 }
 
-.twitter-widget.contuct .twitter-area .text h4,
-.inner-pages .twitter-widget.contuct .twitter-area .text h4 {
+.weixin-widget.contuct .weixin-area .text h4,
+.inner-pages .weixin-widget.contuct .weixin-area .text h4 {
   font-size: 14px;
   color: rgba(245, 255, 255, 0.8);
   font-weight: 500;
@@ -4868,7 +4868,7 @@ section.counterup {
     margin-top: 3rem;
   }
 }
-.inner-pages .first-footer .twitter-widget.contuct h5::after {
+.inner-pages .first-footer .weixin-widget.contuct h5::after {
   display: none;
 }
 
@@ -5163,7 +5163,7 @@ element.style {
 }
 
 .homepage-2 .team .team-social li a.facebook,
-.homepage-2 .team .team-social li a.twitter,
+.homepage-2 .team .team-social li a.weixin,
 .homepage-2 .team .team-social li a.instagram,
 .homepage-2 .team .team-social li a.linkedin {
   background: rgba(74, 74, 76, 0.5);
@@ -5281,7 +5281,7 @@ element.style {
     margin-top: 0px;
   }
 
-  .homepage-2 .twitter-widget.contuct .single-item,
+  .homepage-2 .weixin-widget.contuct .single-item,
   .homepage-2 .first-footer .netabout p {
     width: 280px;
   }
@@ -5562,7 +5562,7 @@ element.style {
   background: #3b5998;
 }
 
-.login-and-register-form .soc-log a.twitter-log {
+.login-and-register-form .soc-log a.weixin-log {
   text-align: center;
   background: #55acee;
 }
@@ -5578,7 +5578,7 @@ element.style {
   background: #3b5998;
 }
 
-.login-and-register-form .soc-log a.twitter-log {
+.login-and-register-form .soc-log a.weixin-log {
   background: #55acee;
 }
 
@@ -7149,7 +7149,7 @@ a.button,
 
 .homepage-5 .popular-places .listing-badges .featured,
 .homepage-5 .team .team-social li a.facebook,
-.homepage-5 .team .team-social li a.twitter,
+.homepage-5 .team .team-social li a.weixin,
 .homepage-5 .team .team-social li a.instagram,
 .homepage-5 .team .team-social li a.linkedin {
   background: #3e4452;
@@ -9255,15 +9255,15 @@ a.button {
 .int_dark_bg .first-footer .contactus ul li .fa,
 .int_dark_bg .first-footer h3,
 .int_dark_bg .navigation ul li a,
-.int_dark_bg .twitter-widget.contuct .twitter-area .icon-holder i,
-.int_dark_bg .twitter-widget.contuct .twitter-area .text h5,
+.int_dark_bg .weixin-widget.contuct .weixin-area .icon-holder i,
+.int_dark_bg .weixin-widget.contuct .weixin-area .text h5,
 .int_dark_bg .newsletters p {
   color: #fff;
 }
 
 .int_dark_bg .navigation ul li a:hover,
-.int_dark_bg .twitter-widget.contuct .twitter-area .text h5 a,
-.int_dark_bg .twitter-widget.contuct .twitter-area .text h4 {
+.int_dark_bg .weixin-widget.contuct .weixin-area .text h5 a,
+.int_dark_bg .weixin-widget.contuct .weixin-area .text h4 {
   color: #c18847;
 }
 
@@ -10258,8 +10258,8 @@ a.button {
 .int_white_bg .first-footer .contactus ul li .fa,
 .int_white_bg .first-footer h3,
 .int_white_bg .navigation ul li a,
-.int_white_bg .twitter-widget.contuct .twitter-area .icon-holder i,
-.int_white_bg .twitter-widget.contuct .twitter-area .text h5 {
+.int_white_bg .weixin-widget.contuct .weixin-area .icon-holder i,
+.int_white_bg .weixin-widget.contuct .weixin-area .text h5 {
   color: #333;
 }
 
@@ -10269,8 +10269,8 @@ a.button {
 }
 
 .int_white_bg .navigation ul li a:hover,
-.int_white_bg .twitter-widget.contuct .twitter-area .text h5 a,
-.int_white_bg .twitter-widget.contuct .twitter-area .text h4 {
+.int_white_bg .weixin-widget.contuct .weixin-area .text h5 a,
+.int_white_bg .weixin-widget.contuct .weixin-area .text h4 {
   color: #c18847;
 }
 
@@ -12843,7 +12843,7 @@ section.team {
   background-color: #687389;
 }
 
-.team .team-social li a.twitter {
+.team .team-social li a.weixin {
   background-color: #687389;
 }
 
@@ -14194,8 +14194,8 @@ a.button {
 }
 
 .int_white_bg.h19 .navigation ul li a:hover,
-.int_white_bg.h19 .twitter-widget.contuct .twitter-area .text h5 a,
-.int_white_bg.h19 .twitter-widget.contuct .twitter-area .text h4 {
+.int_white_bg.h19 .weixin-widget.contuct .weixin-area .text h5 a,
+.int_white_bg.h19 .weixin-widget.contuct .weixin-area .text h4 {
   color: #293046;
 }
 
@@ -14337,8 +14337,8 @@ a.button,
 }
 
 .int_dark_bg.h20 .navigation ul li a:hover,
-.int_dark_bg.h20 .twitter-widget.contuct .twitter-area .text h5 a,
-.int_dark_bg.h20 .twitter-widget.contuct .twitter-area .text h4 {
+.int_dark_bg.h20 .weixin-widget.contuct .weixin-area .text h5 a,
+.int_dark_bg.h20 .weixin-widget.contuct .weixin-area .text h4 {
   color: #f5b200;
 }
 
@@ -17870,7 +17870,7 @@ h2.white {
   background: #3b5998;
 }
 
-.inner-pages .team .team-pro .fa.fa-twitter:hover {
+.inner-pages .team .team-pro .fa.fa-weixin:hover {
   background: #1da1f2;
 }
 
@@ -18215,12 +18215,12 @@ ul.the-agents-details li a {
   color: #fff;
 }
 
-.inner-pages .agent-content .netsocials a .fa-twitter {
+.inner-pages .agent-content .netsocials a .fa-weixin {
   background: #1da1f2;
   color: #fff;
 }
 
-.inner-pages .agent-content .netsocials a .fa-twitter:hover {
+.inner-pages .agent-content .netsocials a .fa-weixin:hover {
   background: #1da1f2;
   color: #fff;
 }
@@ -21563,7 +21563,7 @@ a.btn_1 {
   color: #fff;
 }
 
-.inner-pages .recent-post .netsocials a .fa-twitter {
+.inner-pages .recent-post .netsocials a .fa-weixin {
   background: #1da1f2;
   color: #fff;
 }
@@ -21806,7 +21806,7 @@ a.btn_1 {
   color: #3b5998;
 }
 
-.inner-pages .social-share .fa-twitter {
+.inner-pages .social-share .fa-weixin {
   color: #1da1f2;
 }
 
