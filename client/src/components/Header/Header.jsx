@@ -73,10 +73,10 @@ const Header = () => {
                         <a href="/rent">Rent</a>
                       </li>
                       <li>
-                        <a href="/sell">Buy</a>
+                        <a href="/buy">Buy</a>
                       </li>
                       <li>
-                        <a href="/buy">Sell</a>
+                        <a href="/sell">Sell</a>
                       </li>
                     </ul>
                   </li>
