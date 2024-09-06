@@ -1,14 +1,6 @@
 import React, { useEffect } from "react";
 
 export const Footer = () => {
-  useEffect(() => {
-    document.body.className = "int_white_bg hd-white";
-
-    // Cleanup on unmount
-    return () => {
-      document.body.className = "";
-    };
-  }, []);
   return (
     <div id="wrapper" className="int_main_wraapper">
       <footer className="first-footer rec-pro">
@@ -149,7 +141,7 @@ export const Footer = () => {
                   className="bloq-email mailchimp form-inline"
                   method="post"
                 >
-                  <label for="subscribeEmail" className="error"></label>
+                  <label htmlFor="subscribeEmail" className="error"></label>
                   <div className="email">
                     <input
                       type="email"
@@ -186,7 +178,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a href="#">
-                  <i class="fa fa-youtube" aria-hidden="true"></i>
+                  <i className="fa fa-youtube" aria-hidden="true"></i>
                 </a>
               </li>
             </ul>

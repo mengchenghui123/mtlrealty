@@ -11,15 +11,6 @@ const Header = () => {
     franchise: false,
   });
 
-  useEffect(() => {
-    document.body.className = "int_white_bg hd-white";
-
-    // Cleanup on unmount
-    return () => {
-      document.body.className = "";
-    };
-  }, []);
-
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
   const isAdmin = user?.["https://your-namespace/roles"]?.includes("Admin");
 
