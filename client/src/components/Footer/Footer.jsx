@@ -23,19 +23,19 @@ export const Footer = () => {
                     <li>
                       <div className="info">
                         <i className="fa fa-map-marker" aria-hidden="true" />
-                        <p className="in-p">95 South Park Avenue, USA</p>
+                        <p className="in-p">2015 Rue Drummond, Montreal</p>
                       </div>
                     </li>
                     <li>
                       <div className="info">
                         <i className="fa fa-phone" aria-hidden="true" />
-                        <p className="in-p">+456 875 369 208</p>
+                        <p className="in-p">+514-262-7709</p>
                       </div>
                     </li>
                     <li>
                       <div className="info">
                         <i className="fa fa-envelope" aria-hidden="true" />
-                        <p className="in-p ti">support@findhouses.com</p>
+                        <p className="in-p ti">richard@mengchenghui.com</p>
                       </div>
                     </li>
                   </ul>
@@ -47,21 +47,19 @@ export const Footer = () => {
                   <div className="nav-footer">
                     <ul>
                       <li>
-                        <a href="index.html">Home One</a>
+                        <a href="/">Home</a>
                       </li>
                       <li>
-                        <a href="properties-right-sidebar.html">
-                          Properties Right
-                        </a>
+                        <a href="/sell">Sale</a>
                       </li>
                       <li>
-                        <a href="properties-full-list.html">Properties List</a>
+                        <a href="/buy">Buy</a>
                       </li>
                       <li>
-                        <a href="properties-details.html">Property Details</a>
+                        <a href="rent">Rent</a>
                       </li>
                       <li className="no-mgb">
-                        <a href="agents-listing-grid.html">Agents Listing</a>
+                        <a href="franchise">Franchise</a>
                       </li>
                     </ul>
                     <ul className="nav-right">
@@ -89,30 +87,6 @@ export const Footer = () => {
                   <h3>Twitter Feeds</h3>
                   <div className="twitter-widget contuct">
                     <div className="twitter-area">
-                      <div className="single-item">
-                        <div className="icon-holder">
-                          <i className="fa fa-twitter" aria-hidden="true"></i>
-                        </div>
-                        <div className="text">
-                          <h5>
-                            <a href="#">@findhouses</a> all share them with me
-                            baby said inspet.
-                          </h5>
-                          <h4>about 5 days ago</h4>
-                        </div>
-                      </div>
-                      <div className="single-item">
-                        <div className="icon-holder">
-                          <i className="fa fa-twitter" aria-hidden="true"></i>
-                        </div>
-                        <div className="text">
-                          <h5>
-                            <a href="#">@findhouses</a> all share them with me
-                            baby said inspet.
-                          </h5>
-                          <h4>about 5 days ago</h4>
-                        </div>
-                      </div>
                       <div className="single-item">
                         <div className="icon-holder">
                           <i className="fa fa-twitter" aria-hidden="true"></i>
