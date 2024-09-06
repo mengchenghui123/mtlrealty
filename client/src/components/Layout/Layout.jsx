@@ -24,6 +24,7 @@ const Layout = () => {
   });
 
   useEffect(() => {
+    document.body.classList.add("int_white_bg", "hd-white");
     const getTokenAndRegister = async () => {
       try {
         const res = await getAccessTokenWithPopup({
@@ -42,6 +43,9 @@ const Layout = () => {
     if (isAuthenticated) {
       getTokenAndRegister();
     }
+    return () => {
+      document.body.classList.remove("int_white_bg", "hd-white");
+    };
   }, [isAuthenticated, getAccessTokenWithPopup, setUserDetail, mutate]);
 
   return (

@@ -4,20 +4,18 @@ import Residencies from "../components/Residencies/Risidencies";
 
 function Home() {
   useEffect(() => {
-    document.body.className = "int_white_bg hd-white";
+    document.body.classList.add("int_white_bg", "hd-white");
 
     // Cleanup on unmount
     return () => {
-      document.body.className = "";
+      document.body.classList.remove("int_white_bg", "hd-white");
     };
   }, []);
   return (
     <div className="App">
       <div>
-        <div className="white-gradient">
-          <Hero />
-          <Residencies />
-        </div>
+        <Hero />
+        <Residencies />
       </div>
     </div>
   );

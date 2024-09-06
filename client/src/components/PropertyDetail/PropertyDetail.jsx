@@ -46,7 +46,7 @@ export const PropertyDetail = () => {
   });
 
   useEffect(() => {
-    document.body.className = "inner-pages sin-1 homepage-4 hd-white";
+    document.body.classList.add("inner-pages", "int_white_bg", "hd-white");
 
     if (!isLoading && data && bookings) {
       const bookingDate =
@@ -61,7 +61,7 @@ export const PropertyDetail = () => {
       console.log("Loading page");
     }
     return () => {
-      document.body.className = "";
+      document.body.classList.remove("inner-pages", "int_white_bg", "hd-white");
     };
   }, [id, bookings]);
 
