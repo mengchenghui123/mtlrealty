@@ -136,7 +136,7 @@ const PropertyGrid = ({ properties, title }) => {
                           className="fa fa-object-group mr-1"
                           aria-hidden="true"
                         />{" "}
-                        {property.facilities.area}
+                        {property.lotSize ? `${property.lotSize}` : "N/A "}
                       </div>
                     </div>
                     <div className="view-proper">View Details</div>
