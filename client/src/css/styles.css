@@ -10048,7 +10048,7 @@ body.int_white_bg {
 }
 
 .bg-white-1 {
-  background: url(../../public/bg-pattern-dot.png) 0 0 repeat !important;
+  background: url(../../bg-pattern-dot.png) 0 0 repeat !important;
 }
 
 .bg-white-2 {
@@ -22019,8 +22019,8 @@ form label.error {
 
 /*---- CONTACT INFO ----*/
 .inner-pages .bgc {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(32, 51, 100, 0.8)), to(rgba(32, 51, 100, 0.8))), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
-  background: linear-gradient(rgba(32, 51, 100, 0.8), rgba(32, 51, 100, 0.8)), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(32, 51, 100, 0.8)), to(rgba(32, 51, 100, 0.8))), url(../../bg-testimonials.jpg) no-repeat center center;
+  background: linear-gradient(rgba(32, 51, 100, 0.8), rgba(32, 51, 100, 0.8)), url(../../bg-testimonials.jpg) no-repeat center center;
   padding: 2rem;
   background-size: cover;
 }
