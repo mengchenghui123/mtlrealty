@@ -13,6 +13,8 @@ export const Contact = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
+    document.body.classList.add("inner-pages", "hd-white");
+
     const address = '2015 Rue Drummond, Montreal';
     if (window.loadMapWithAddress) {
       window.loadMapWithAddress(address);
