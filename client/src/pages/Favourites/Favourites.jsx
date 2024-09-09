@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useProperty from "../../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
 import Pagination from "../../components/Pagination/Pagination";
@@ -17,6 +17,12 @@ const Favourites = () => {
   const {
     userDetails: { favourites },
   } = useContext(userDetailContext);
+  useEffect(() => {
+    document.body.classList.add("int_white_bg", "hd-white");
+    return () => {
+      document.body.classList.remove("int_white_bg", "hd-white");
+    };
+  });
 
   if (isError) {
     return (

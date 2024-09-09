@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { truncate } from "lodash";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { formatPrice } from "../../utils/Common";
+import Heart from "../Heart/Heart";
 
 const PropertyGrid = ({ properties, title }) => {
   const navigate = useNavigate();
-
+  const { pathname } = useLocation();
+  const id = pathname.split("/").slice(-1);
   const handleCardClick = (id) => {
     toast.success(`card with id ${id} clicked`);
     navigate(`/property/${id}`);
@@ -104,6 +106,7 @@ const PropertyGrid = ({ properties, title }) => {
                 data-aos="fade-up"
                 data-aos-delay={150 + index * 100}
               >
+                <Heart id={property.id} />
                 <div className="landscapes listing-item compact thehp-1">
                   <a
                     href="#"
@@ -151,18 +154,5 @@ const PropertyGrid = ({ properties, title }) => {
     // <!-- END SECTION PROPERTIES FOR SALE -->
   );
 };
-
-// PropertyGrid.prototype={
-//     properties:PropTypes.arrayOf(
-//         PropTypes.shape({
-//             id:PropTypes.number.isRequired,
-//             image: PropTypes.string,
-//             price: PropTypes.string,
-//             name: PropTypes.string,
-//             detail: PropTypes.string,
-//         })
-//     ).isRequired,
-//     title: PropTypes.string.isRequired,
-// };
 
 export default PropertyGrid;

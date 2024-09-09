@@ -8,7 +8,7 @@ import { toFav } from "../../utils/Api";
 import { checkFavourites, updateFavourites } from "../../utils/Common";
 
 const Heart = ({ id }) => {
-  const [heartColor, setHeartColor] = useState("white");
+  const [heartColor, setHeartColor] = useState("black");
   const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
 
@@ -34,7 +34,7 @@ const Heart = ({ id }) => {
   const handleLike = () => {
     if (validateLogin()) {
       mutate();
-      setHeartColor((prev) => (prev === "#fa3e5f" ? "white" : "#fa3e5f"));
+      setHeartColor((prev) => (prev === "#fa3e5f" ? "black" : "#fa3e5f"));
     }
   };
 

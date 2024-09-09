@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUsers } from "../utils/Api";
@@ -13,7 +12,7 @@ const Admin = () => {
     const fetchAccessToken = async () => {
       try {
         const accessToken = await getAccessTokenSilently({
-          audience: "https://api.realEstate.com", // 您的 API 标识符
+          audience: "https://api.realEstate.com", // API 标识符
           scope: "openid profile email",
         });
         setToken(accessToken); // 存储 accessToken 以备后续使用

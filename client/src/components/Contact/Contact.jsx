@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import emailjs from "emailjs-com";
 // import "./Contact.css"
-
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
+    full_name: "",
+    email_address: "",
+    phone_number: "",
+    message: "",
   });
 
   const [showAlert, setShowAlert] = useState(false);
@@ -15,7 +15,7 @@ export const Contact = () => {
   useEffect(() => {
     document.body.classList.add("inner-pages", "hd-white");
 
-    const address = '2015 Rue Drummond, Montreal';
+    const address = "2015 Rue Drummond, Montreal";
     if (window.loadMapWithAddress) {
       window.loadMapWithAddress(address);
     }
@@ -25,15 +25,37 @@ export const Contact = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 3000);
-  }
+    // setShowAlert(true);
+    emailjs
+      .send(
+        "service_q33lpyn",
+        "template_0h18zpb",
+        formData,
+        "k6e91nsNgaMtTME-P"
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Message sent successfully!");
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            message: "",
+          });
+        },
+        (err) => {
+          console.log("FAILED...", err);
+          alert("Failed to send message.");
+        }
+      );
+  };
 
   return (
     <>
@@ -67,37 +89,25 @@ export const Contact = () => {
                 noValidate=""
                 onSubmit={handleSubmit}
               >
-                <div id="success" className="successform">
-                  {showAlert && (
-                    <p className="alert alert-success font-weight-bold" role="alert">
-                      Your message was sent successfully!
-                    </p>
-                  )}
-                </div>
-                <div id="error" className="errorform">
-                  <p>
-                    Something went wrong, try refreshing and submitting the form again.
-                  </p>
-                </div>
                 <div className="form-group">
                   <input
                     type="text"
-                    required=""
+                    required
                     className="form-control input-custom input-full"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={formData.firstName}
+                    name="full_name"
+                    placeholder="Full Name"
+                    value={formData.full_name}
                     onChange={handleChange}
                   />
                 </div>
                 <div className="form-group">
                   <input
-                    type="text"
+                    type="number"
                     required=""
                     className="form-control input-custom input-full"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={formData.lastName}
+                    name="phone_number"
+                    placeholder="Phone"
+                    value={formData.phone_number}
                     onChange={handleChange}
                   />
                 </div>
@@ -105,9 +115,9 @@ export const Contact = () => {
                   <input
                     type="text"
                     className="form-control input-custom input-full"
-                    name="email"
+                    name="email_address"
                     placeholder="Email"
-                    value={formData.email}
+                    value={formData.email_address}
                     onChange={handleChange}
                   />
                 </div>
@@ -172,7 +182,6 @@ export const Contact = () => {
     </>
   );
 
-
   // return (
   //   <div className="contact-page">
   //     <div className="ContactPagecontainer" >
@@ -197,7 +206,6 @@ export const Contact = () => {
   //             </p>
   //           </address>
   //         </div>
-
 
   //         {/* contact form */}
   //         <div className="col-lg-7 mb-5">

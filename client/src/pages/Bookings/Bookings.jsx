@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import useProperty from "../../Hook/useProperty";
 import "./Bookings.css";
 import { PuffLoader } from "react-spinners";
@@ -18,7 +18,12 @@ const Bookings = () => {
   const {
     userDetails: { bookings },
   } = useContext(userDetailContext);
-
+  useEffect(() => {
+    document.body.classList.add("int_white_bg", "hd-white");
+    return () => {
+      document.body.classList.remove("int_white_bg", "hd-white");
+    };
+  });
   if (isError) {
     return (
       <div className="wrapper">

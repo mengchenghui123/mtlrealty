@@ -36,7 +36,7 @@ export const updateFavourites = (id, favourites) => {
 };
 
 export const checkFavourites = (id, favourites) => {
-  return favourites?.includes(id) ? "#fa3e5f" : "white";
+  return favourites?.includes(id) ? "#fa3e5f" : "black";
 };
 
 export const validateString = (value) => {

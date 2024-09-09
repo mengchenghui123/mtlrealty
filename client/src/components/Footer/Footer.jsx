@@ -76,7 +76,7 @@ export const Footer = () => {
                         <a href="blog-details.html">Blog Details</a>
                       </li>
                       <li className="no-mgb">
-                        <a href="contact-us.html">Contact Us</a>
+                        <a href="contact">Contact Us</a>
                       </li>
                     </ul>
                   </div>

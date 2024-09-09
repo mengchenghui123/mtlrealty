@@ -114,7 +114,7 @@ const Header = () => {
                     <a href="#">News</a>
                   </li>
                   <li>
-                    <a href="contact-us.html">Contact</a>
+                    <a href="/contact">Contact</a>
                   </li>
                 </ul>
               </nav>
