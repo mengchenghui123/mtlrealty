@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "@mantine/core/styles.css";
 
 const ProfileMenu = ({ user, logout }) => {
+  const isAdmin = user?.["https://your-namespace/roles"]?.includes("Admin");
   const navigate = useNavigate();
-
   if (!user) {
     return null;
   }
@@ -30,7 +30,11 @@ const ProfileMenu = ({ user, logout }) => {
         <Menu.Item onClick={() => navigate("./bookings", { replace: true })}>
           Bookings
         </Menu.Item>
-
+        {isAdmin && (
+          <Menu.Item onClick={() => navigate("/admin", { replace: true })}>
+            Admin
+          </Menu.Item>
+        )}
         <Menu.Item
           onClick={() => {
             localStorage.clear();

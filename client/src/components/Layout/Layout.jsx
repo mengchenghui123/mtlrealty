@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import userDetailContext from "../../context/userDetailContext";
 import { useMutation } from "react-query";
@@ -15,6 +15,8 @@ const Layout = () => {
   useFavourites();
   useBookings();
 
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith("/admin");
   const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();
   const { setUserDetail } = useContext(userDetailContext);
 
@@ -50,11 +52,15 @@ const Layout = () => {
 
   return (
     <>
-      <Header />
+      {!isAdminPage && <Header />}
+
       <div>
         <Outlet />
       </div>
-      <Footer />
+      {!isAdminPage && <Footer />}
+      <a data-scroll href="#wrapper" className="go-up">
+        <i className="fa fa-angle-double-up" aria-hidden="true"></i>
+      </a>
     </>
   );
 };
