@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers } from "../utils/Api";
+import { getAllUsers, deleteUser, deleteResidency } from "../utils/Api";
 import { toast } from "react-toastify";
 import useProperty from "../Hook/useProperty";
+import { PuffLoader } from "react-spinners";
 
 const Admin = () => {
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
   const [users, setUsers] = useState([]);
   const [token, setToken] = useState("");
-  const { data } = useProperty();
+  const { data, isError, isLoading } = useProperty();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
   useEffect(() => {
     document.body.classList.add(
       "int_white_bg",
@@ -52,6 +56,29 @@ const Admin = () => {
     fetchUsers();
   }, [token]);
 
+  if (isError) {
+    return (
+      <div className="wrapper">
+        <span>Error loading Datas</span>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="puffloaderStyle" style={{ height: "60vh" }}>
+        <PuffLoader
+          height="80"
+          width="80"
+          radius={1}
+          color="#4066ff"
+          aria-label="puff-loading"
+        />
+      </div>
+    );
+  }
+  const totalPage = Math.ceil(data.length / itemsPerPage);
+
   if (!token) {
     return <div>Loading token...</div>;
   }
@@ -59,6 +86,51 @@ const Admin = () => {
   if (!users.length) {
     return <div>Loading users...</div>;
   }
+
+  const currentData = data.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
+
+  const getMlsNumber = (itemId) => {
+    const match = data.find((item) => item.id === itemId);
+    return match ? match.mlsNumber : "N/A";
+  };
+
+  const handleDelectUser = async (email) => {
+    try {
+      await deleteUser(email, token);
+      toast.success(`User ${email} deleted successfully`);
+      setUsers(users.filter((user) => user.email !== email));
+    } catch (error) {
+      toast.error("Failed to delete user");
+    }
+  };
+
+  const handleDeleteResidence = async (id) => {
+    try {
+      await deleteResidency(id, token);
+      toast.success(`User ${id} deleted successfully`);
+    } catch (error) {
+      console.error("Failed to delete residency", error);
+    }
+  };
 
   return (
     // <div>
@@ -111,9 +183,9 @@ const Admin = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="index.html">
+                      <a href="/">
                         <i className="fas fa-sign-out-alt" />
-                        Log Out
+                        Home
                       </a>
                     </li>
                   </ul>
@@ -173,80 +245,67 @@ const Admin = () => {
                 </div>
               </div>
               <div className="dashborad-box">
-                <h4 className="title">Listing</h4>
+                <h4 className="title">Users</h4>
                 <div className="section-body listing-table">
                   <div className="table-responsive">
                     <table className="table table-striped">
                       <thead>
                         <tr>
-                          <th>Listing Name</th>
-                          <th>Date</th>
-                          <th>Rating</th>
-                          <th>Status</th>
-                          <th>Edit</th>
+                          <th>User id</th>
+                          <th>User Email</th>
+                          <th>Booked Visit</th>
+                          <th>Favourites</th>
+                          <th>Delete</th>
                         </tr>
                       </thead>
+
                       <tbody>
-                        <tr>
-                          <td>Luxury Restaurant</td>
-                          <td>23 Jan 2020</td>
-                          <td className="rating">
-                            <span>5.0</span>
-                          </td>
-                          <td className="status">
-                            <span className=" active">Active</span>
-                          </td>
-                          <td className="edit">
-                            <a href="#">
-                              <i className="fa fa-pencil" />
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Gym in Town</td>
-                          <td>11 Feb 2020</td>
-                          <td className="rating">
-                            <span>4.5</span>
-                          </td>
-                          <td className="status">
-                            <span className="active">Active</span>
-                          </td>
-                          <td className="edit">
-                            <a href="#">
-                              <i className="fa fa-pencil" />
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Cafe in Boston</td>
-                          <td>09 Jan 2020</td>
-                          <td className="rating">
-                            <span>5.0</span>
-                          </td>
-                          <td className="status">
-                            <span className="non-active">Non-Active</span>
-                          </td>
-                          <td className="edit">
-                            <a href="#">
-                              <i className="fa fa-pencil" />
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="pb-0">Car Dealer in New York</td>
-                          <td className="pb-0">24 Feb 2018</td>
-                          <td className="rating pb-0">
-                            <span>4.5</span>
-                          </td>
-                          <td className="status pb-0">
-                            <span className="active">Active</span>
-                          </td>
-                          <td className="edit pb-0">
-                            <a href="#">
-                              <i className="fa fa-pencil" />
-                            </a>
-                          </td>
-                        </tr>
+                        {users.map((user) => (
+                          <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.email}</td>
+                            <td className="rating">
+                              {user.bookedVisits && user.bookedVisits.length > 0
+                                ? user.bookedVisits.map((visit, index) => (
+                                    <div key={visit.id}>
+                                      <span>Date: {visit.date}</span> <br />
+                                      <span>
+                                        MLS Number: {getMlsNumber(visit.id)}
+                                      </span>
+                                      {index < user.bookedVisits.length - 1 && (
+                                        <hr />
+                                      )}{" "}
+                                      {/* Add a line break between visits */}
+                                    </div>
+                                  ))
+                                : "N/A"}
+                            </td>
+                            <td className="status">
+                              {user.favResidenciesID &&
+                              user.favResidenciesID.length > 0
+                                ? user.favResidenciesID.map((item) => {
+                                    const mlsNumber = getMlsNumber(item);
+                                    return (
+                                      <span key={item.id}>
+                                        MLS Number: {mlsNumber || "N/A"} <br />
+                                      </span>
+                                    );
+                                  })
+                                : "N/A"}
+                            </td>
+                            <td className="edit">
+                              <a
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleDelectUser(user.email);
+                                }}
+                                style={{ cursor: "pointer" }}
+                              >
+                                <i className="far fa-trash-alt" />
+                              </a>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
@@ -258,56 +317,92 @@ const Admin = () => {
                     <tr>
                       <th className="pl-2">My Properties</th>
                       <th className="p-0" />
-                      <th>Date Added</th>
-                      <th>Views</th>
+                      <th>Type</th>
+                      <th>Price</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td className="image myelist">
-                        <a href="single-property-1.html">
-                          <img
-                            alt="my-properties-3"
-                            src="images/feature-properties/fp-1.jpg"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </td>
-                      <td>
-                        <div className="inner">
+                  {currentData.map((item) => (
+                    <tbody key={item.id}>
+                      <tr>
+                        <td className="image myelist">
                           <a href="single-property-1.html">
-                            <h2>Luxury Villa House</h2>
+                            <img
+                              alt="my-properties-3"
+                              src={item.image}
+                              className="img-fluid"
+                            />
                           </a>
-                          <figure>
-                            <i className="lni-map-marker" /> Est St, 77 -
-                            Central Park South, NYC
-                          </figure>
-                        </div>
-                      </td>
-                      <td>08.14.2020</td>
-                      <td>163</td>
-                      <td className="actions">
-                        <a href="#" className="edit">
-                          <i className="lni-pencil" />
-                          Edit
-                        </a>
-                        <a href="#">
-                          <i className="far fa-trash-alt" />
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
+                        </td>
+
+                        <td>
+                          <div className="inner">
+                            <a href="single-property-1.html">
+                              <h2>{item.title}</h2>
+                            </a>
+                            <figure>
+                              <i className="lni-map-marker" /> {item.address}
+                            </figure>
+                            <figure>
+                              <i className="lni-map-marker" /> Mls:
+                              {item.mlsNumber}
+                            </figure>
+                          </div>
+                        </td>
+                        <td>{item.type}</td>
+                        <td>{item.price}</td>
+                        <td className="actions">
+                          <a href="#" className="edit">
+                            <i className="lni-pencil" />
+                            Edit
+                          </a>
+                          <a
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleDeleteResidence(item.id);
+                            }}
+                            style={{
+                              cursor: "pointer",
+                            }}
+                          >
+                            <i className="far fa-trash-alt" />
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  ))}
                 </table>
                 <div className="pagination-container">
                   <nav>
                     <ul className="pagination">
-                      <li className="page-item">
-                        <a className="btn btn-common" href="#">
+                      <li
+                        className={`page-item ${
+                          currentPage === 1 ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="btn btn-common"
+                          onClick={handlePrevPage}
+                        >
                           <i className="lni-chevron-left" /> Previous{" "}
-                        </a>
+                        </button>
                       </li>
-                      <li className="page-item">
+                      {Array.from({ length: totalPage }, (_, index) => (
+                        <li
+                          key={index + 1}
+                          className={`page-item ${
+                            currentPage === index + 1 ? "active" : ""
+                          }`}
+                        >
+                          <button
+                            className="page-link"
+                            onClick={() => handlePageClick(index + 1)}
+                          >
+                            {index + 1}
+                          </button>
+                        </li>
+                      ))}
+                      {/* <li className="page-item">
                         <a className="page-link" href="#">
                           1
                         </a>
@@ -321,11 +416,18 @@ const Admin = () => {
                         <a className="page-link" href="#">
                           3
                         </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="btn btn-common" href="#">
+                      </li> */}
+                      <li
+                        className={`page-item ${
+                          currentPage === totalPage ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="btn btn-common"
+                          onClick={handleNextPage}
+                        >
                           Next <i className="lni-chevron-right" />
-                        </a>
+                        </button>
                       </li>
                     </ul>
                   </nav>
