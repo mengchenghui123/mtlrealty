@@ -38,6 +38,7 @@ const Layout = () => {
         localStorage.setItem("access_token", res);
         setUserDetail((prev) => ({ ...prev, token: res }));
         mutate(res);
+        console.log(res);
       } catch (error) {
         console.error("failed to get token", error);
       }

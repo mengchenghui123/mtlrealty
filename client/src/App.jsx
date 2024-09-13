@@ -24,6 +24,7 @@ import Favourites from "./pages/Favourites/Favourites";
 import { useAuth0 } from "@auth0/auth0-react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Admin from "./pages/Admin";
+import BrandPage from "./pages/BrandPage";
 
 function App() {
   const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ function App() {
         { path: "/about", element: <About /> },
         { path: "/sell", element: <Sell /> },
         { path: "/buy", element: <Buy /> },
+        { path: "/brands/:brand", element: <BrandPage /> },
         {
           path: "/admin",
           element: (
