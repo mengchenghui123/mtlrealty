@@ -67,7 +67,7 @@ export const Footer = () => {
                         <a href="agent-details.html">Agents Details</a>
                       </li>
                       <li>
-                        <a href="about.html">About Us</a>
+                        <a href="/about">About Us</a>
                       </li>
                       <li>
                         <a href="blog.html">Blog Default</a>

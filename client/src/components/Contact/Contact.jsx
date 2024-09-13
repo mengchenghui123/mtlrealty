@@ -60,7 +60,7 @@ export const Contact = () => {
   return (
     <>
       <div className="clearfix"></div>
-      <section className="headings">
+      <section style={{}}>
         <div className="text-heading text-center">
           <div className="container">
             <h1>Contact Us</h1>

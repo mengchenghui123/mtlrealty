@@ -286,7 +286,7 @@ const Admin = () => {
                                 ? user.favResidenciesID.map((item) => {
                                     const mlsNumber = getMlsNumber(item);
                                     return (
-                                      <span key={item.id}>
+                                      <span key={item}>
                                         MLS Number: {mlsNumber || "N/A"} <br />
                                       </span>
                                     );

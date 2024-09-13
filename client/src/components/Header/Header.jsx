@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import useAuthCheck from "../../Hook/useAuthCheck";
 import AddPropertyModal from "../AddPropertyModal/AddPropertyModal";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
@@ -48,30 +49,30 @@ const Header = () => {
                 <nav id="navigation" className="style-1">
                   <ul id="responsive">
                     <li>
-                      <a href="/residential">Residential</a>
+                      <Link to="/residential">Residential</Link>
                       <ul>
                         <li>
-                          <a href="/rent">Rent</a>
+                          <Link to="/rent">Rent</Link>
                         </li>
                         <li>
-                          <a href="/buy">Buy</a>
+                          <Link to="/buy">Buy</Link>
                         </li>
                         <li>
-                          <a href="/sell">Sell</a>
+                          <Link to="/sell">Sell</Link>
                         </li>
                       </ul>
                     </li>
                     <li>
-                      <a href="#">Commercial</a>
+                      <Link to="/#">Commercial</Link>
                       <ul>
                         <li>
-                          <a href="#">Commercial Leasing</a>
+                          <Link to="/#">Commercial Leasing</Link>
                         </li>
                         <li>
-                          <a href="/partners">Partners</a>
+                          <Link to="/partners">Partners</Link>
                         </li>
                         <li>
-                          <a href="#">proprietary</a>
+                          <Link to="#">proprietary</Link>
                         </li>
                       </ul>
                     </li>
@@ -80,22 +81,20 @@ const Header = () => {
                       <a>franchise </a>
                       <ul>
                         <li>
-                          <a href="franchise">Introduction</a>
+                          <Link to="franchise">Introduction</Link>
                         </li>
+
                         <li>
-                          <a href="#">Procedure</a>
-                        </li>
-                        <li>
-                          <a href="/brands">Brand</a>
+                          <Link to="/brands">Brand</Link>
                         </li>
                       </ul>
                     </li>
 
                     <li>
-                      <a href="#">News</a>
+                      <Link to="#">News</Link>
                     </li>
                     <li>
-                      <a href="/contact">Contact</a>
+                      <Link to="/contact">Contact</Link>
                     </li>
                   </ul>
                 </nav>

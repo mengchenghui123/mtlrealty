@@ -4000,7 +4000,6 @@ div.partners {
 
 .partners .style2 img {
   width: 100%;
-  opacity: 0.5;
   background: transparent;
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
@@ -15344,18 +15343,10 @@ header.payment-card-header .pull-right img {
 }
 
 .inner-pages .headings {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(18, 27, 34, 0.6)),
-      to(rgba(18, 27, 34, 0.6))
-    ),
-    url(https://i.imgur.com/FoE3O6U.png) no-repeat center center;
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)),
-    url(https://i.imgur.com/FoE3O6U.png) no-repeat center center;
+  background: url(https://i.imgur.com/FoE3O6U.png) no-repeat center center;
   width: 100%;
-  height: 30vh;
+  height: 50vh;
+  background-size: cover;
 }
 
 .inner-pages .headings h1 {
