@@ -1,75 +1,243 @@
-import React from 'react';
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer';
+import React, { useEffect } from 'react';
+// import Header from '../Header/Header'
+// import Footer from '../Footer/Footer';
 import './About.css';
 
 export const About = () => {
-  return (
-    <div className="about-page">
-            <div className="about-container">
-                {/* 第一块 */}
-                <section className="about-section about-us">
-                    <div className="about-us-content">
-                        <img src="r1.png" alt="about us" className="about-us-image"/>
-                        <div className="about-us-text">
-                            <h1 className="primaryText">About US</h1>
-                            <p className="secondaryText">this is a brief descriptipn......</p>
+    useEffect(() => {
+        document.body.classList.add("inner-pages", "hd-white");
+    }, []);
+
+    return (
+        <>
+            {/* Section Headings */}
+            <section className="headings">
+                <div className="text-heading text-center">
+                    <div className="container">
+                        <h1>About Our Company</h1>
+                        <h2>
+                            <a href="index.html">Home</a> &nbsp;/&nbsp; About Us
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section About Us */}
+            <section className="about-us fh">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-md-12 who-1">
+                            <div>
+                                <h2 className="text-left mb-4">
+                                    About <span>Find Houses</span>
+                                </h2>
+                            </div>
+                            <div className="pftext">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum odio id voluptatibus incidunt cum? Atque quasi eum debitis optio ab. Esse itaque officiis tempora possimus odio rerum aperiam ratione, sunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit sunt.
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum odio id voluptatibus incidunt cum? Atque quasi eum debitis optio ab. Esse itaque officiis tempora possimus odio rerum aperiam ratione, sunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit sunt.
+                                </p>
+                            </div>
+                            <div className="box bg-2">
+                                <a
+                                    href="about.html"
+                                    className="text-center button button--moema button--text-thick button--text-upper button--size-s"
+                                >
+                                    Read More
+                                </a>
+                                <img src="signature-example.png" className="ml-5" alt="signature" />
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-md-12 col-xs-12">
+                            <div className="wprt-image-video w50">
+                                <img alt="image" src="bg-video.jpg" />
+                                <a className="icon-wrap popup-video popup-youtube" href="https://www.youtube.com/watch?v=2xHQqYRcrx4">
+                                    <i className="fa fa-play"></i>
+                                </a>
+                                <div className="iq-waves">
+                                    <div className="waves wave-1"></div>
+                                    <div className="waves wave-2"></div>
+                                    <div className="waves wave-3"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <div className="about-us-stats-buttons">
-                        <div className="about-us-stats">
-                            <p>Project Completed: 10000</p>
-                            <p>Years in Business: 50</p>
-                            <p>Number of Client: 2000</p>
-                            <p>Number of Area Coverage: 5</p>
-                        </div>
-                        <div className="about-us-button">
-                            <button className="button">Contact Us</button>
-                            <button className="button">Our Vision for Your Home</button>
-                        </div>
+            {/* Section Why Choose Us */}
+            <section className="how-it-works bg-white-2">
+                <div className="container">
+                    <div className="sec-title">
+                        <h2>
+                            <span>Why </span>Choose Us
+                        </h2>
+                        <p>We provide full service at every step.</p>
                     </div>
-                </section>
-
-                {/* 第二块 */}
-                <section className="about-section our-story">
-                    <h2 className="primaryText">Our Story</h2>
-                    <p className="secondaryText">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
-                    
-                </section>
-
-                {/* 第三块 */}
-                <section className="about-section why-choose-us">
-                    <div className="why-choose-us-content">
-                        <div className="why-choose-us-text">
-                            <h2 className="primaryText">Why Choose Us</h2>
-                            <p className="secondaryText">Reason to choose us: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo tenetur omnis harum. Officia minima illo, vitae harum sed repellendus consectetur libero assumenda omnis commodi quisquam odit placeat in corrupti nihil?</p>
-                        </div>
-                        <img src="r2.png" alt="why choose us" className="why-choose-us-image"/>
+                    <div className="row service-1">
+                        {[
+                            {
+                                icon: "icon-4.svg",
+                                title: "Wide Range Of Properties",
+                                text: "Lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.",
+                            },
+                            {
+                                icon: "icon-5.svg",
+                                title: "Trusted by thousands",
+                                text: "Lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.",
+                            },
+                            {
+                                icon: "icon-6.svg",
+                                title: "Financing made easy",
+                                text: "Lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.",
+                            },
+                        ].map((service, index) => (
+                            <article key={index} className="col-lg-4 col-md-6 col-xs-12 serv" data-aos="fade-up">
+                                <div className="serv-flex">
+                                    <div className={`art-1 img-${index + 13}`}>
+                                        <img src={service.icon} alt="" />
+                                        <h3>{service.title}</h3>
+                                    </div>
+                                    <div className="service-text-p">
+                                        <p className="text-center">{service.text}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* 第四块 */}
-                <section className="about-section our-team">
-                    <h2 className="primaryText">Our Team</h2>
-                    <p className="secondaryText">Meet our team</p>
-                </section>
+            {/* Section Counter Up */}
+            <section className="counterup">
+                <div className="container">
+                    <div className="row">
+                        {[
+                            { icon: "fa-home", count: 300, title: "Sold Houses" },
+                            { icon: "fa-list", count: 400, title: "Daily Listings" },
+                            { icon: "fa-users", count: 250, title: "Expert Agents" },
+                            { icon: "fa-trophy", count: 200, title: "Won Awards" },
+                        ].map((counter, index) => (
+                            <div key={index} className="col-lg-3 col-md-6 col-xs-12">
+                                <div className={`countr ${index >= 2 ? "mb-0" : ""} ${index === 3 ? "last" : ""}`}>
+                                    <i className={`fa ${counter.icon}`} aria-hidden="true"></i>
+                                    <div className="count-me">
+                                        <p className="counter text-left">{counter.count}</p>
+                                        <h3>{counter.title}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            {/* Section Team */}
+            <section className="team">
+                <div className="container">
+                    <div className="sec-title">
+                        <h2>
+                            <span>Our </span>Team
+                        </h2>
+                        <p>We provide full service at every step.</p>
+                    </div>
+                    <div className="row team-all">
+                        {[
+                            { name: "Carls Jhons", role: "Financial Advisor", image: "t-5.jpg" },
+                            { name: "Arling Tracy", role: "Acountant", image: "t-5.jpg" },
+                            { name: "Mark Web", role: "Founder & CEO", image: "t-5.jpg" },
+                            { name: "Katy Grace", role: "Team Leader", image: "t-5.jpg" },
+                        ].map((member, index) => (
+                            <div key={index} className={`col-lg-3 col-md-6 team-pro ${index >= 2 ? "pb-none" : ""}`}>
+                                <div className="team-wrap">
+                                    <div className="team-img">
+                                        <img src={member.image} alt="" />
+                                    </div>
+                                    <div className="team-content">
+                                        <div className="team-info">
+                                            <h3>{member.name}</h3>
+                                            <p>{member.role}</p>
+                                            <div className="team-socials">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#" title="facebook">
+                                                            <i className="fa fa-facebook" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a href="#" title="twitter">
+                                                            <i className="fa fa-twitter" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a href="#" title="instagram">
+                                                            <i className="fa fa-instagram" aria-hidden="true"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <span>
+                                                <a href="team-details.html">View Profile</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                {/* 第五块 */}
-                <section className="about-section testimonials">
-                    <h2 className="primaryText">Customer Testimonial</h2>
-                    <div className="testimonial-box">
-                        <p className="secondaryText">Great service and support...</p>
-                        <p className="secondaryText">Customer name</p>
+            {/* Section Testimonials */}
+            <section className="testimonials home18 bg-white">
+                <div className="container">
+                    <div className="sec-title">
+                        <h2>
+                            <span>Clients </span>Testimonials
+                        </h2>
+                        <p>We collect reviews from our customers.</p>
                     </div>
-                    <div className="testimonial-box">
-                        <p className="secondaryText">"i highly recomend them...."</p>
-                        <p className="secondaryText">customer name</p>
+                    <div className="owl-carousel style3">
+                        {[
+                            { name: "Lisa Smith", location: "New York", stars: 5, image: "images/testimonials/ts-1.jpg", text: "Lorem ipsum dolor sit amet..." },
+                            { name: "Jhon Morris", location: "Los Angeles", stars: 4.5, image: "images/testimonials/ts-2.jpg", text: "Lorem ipsum dolor sit amet..." },
+                            // Add other testimonials here
+                        ].map((testimony, index) => (
+                            <div key={index} className="test-1 pb-0 pt-0">
+                                <img src={testimony.image} alt="" />
+                                <h3 className="mt-3 mb-0">{testimony.name}</h3>
+                                <h6 className="mt-1">{testimony.location}</h6>
+                                <ul className="starts text-center mb-2">
+                                    {Array.from({ length: 5 }, (_, i) => (
+                                        <li key={i}>
+                                            <i className={`fa ${i < testimony.stars ? "fa-star" : "fa-star-o"}`}></i>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p>{testimony.text}</p>
+                            </div>
+                        ))}
                     </div>
-                </section>
+                </div>
+            </section>
+
+            {/* Section Partners */}
+            <div className="partners bg-white-2">
+                <div className="container">
+                    <div className="sec-title">
+                        <h2>
+                            <span>Our </span>Partners
+                        </h2>
+                        <p>The Companies That Represent Us.</p>
+                    </div>
+                    <div className="owl-carousel style4">
+                        {["11.jpg", "12.jpg", "13.jpg"].map((partner, index) => (
+                            <div key={index} className="owl-item">
+                                <img src={partner} alt="partner" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
-    </div>
-  );
+        </>
+    );
 };
 
 export default About;
