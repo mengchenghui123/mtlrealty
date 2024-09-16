@@ -13,12 +13,15 @@ export const Contact = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
-    document.body.classList.add("inner-pages", "hd-white");
+    document.body.classList.add("inner-pages", "hd-white", "int_white_bg");
 
     const address = "2015 Rue Drummond, Montreal";
     if (window.loadMapWithAddress) {
       window.loadMapWithAddress(address);
     }
+    return () => {
+      document.body.classList.remove("inner-pages", "hd-white", "int_white_bg");
+    };
   }, []);
 
   const handleChange = (e) => {

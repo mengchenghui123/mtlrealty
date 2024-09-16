@@ -11,7 +11,12 @@ const Franchise = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.body.classList.add("inner-pages", "hd-white", "about");
+    document.body.classList.add(
+      "inner-pages",
+      "hd-white",
+      "about",
+      "int_white_bg"
+    );
     if (window.jQuery && window.jQuery(carouselRef.current).owlCarousel) {
       window.jQuery(carouselRef.current).owlCarousel({
         loop: true,
@@ -43,7 +48,12 @@ const Franchise = () => {
     }
     // Cleanup on unmount
     return () => {
-      document.body.classList.remove("inner-pages", "hd-white", "about");
+      document.body.classList.remove(
+        "inner-pages",
+        "hd-white",
+        "about",
+        "int_white_bg"
+      );
     };
   }, []);
 
@@ -57,16 +67,7 @@ const Franchise = () => {
   return (
     <div id="wrapper">
       <div className="clearfix"></div>
-      <section className="headings">
-        <div className="text-heading text-center">
-          <div className="container">
-            <h1>About Our Company</h1>
-            <h2>
-              <a href="/">Home </a> &nbsp;/&nbsp; About Us
-            </h2>
-          </div>
-        </div>
-      </section>
+      <section className="headings"></section>
       <section className="about-us fh">
         <div className="container">
           <div className="row">
@@ -161,39 +162,30 @@ const Franchise = () => {
       <section className="counterup">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-md-6 col-xs-12">
+            <div className="col-lg-4 col-md-6 col-xs-12">
               <div className="countr">
-                <i className="fa fa-home" aria-hidden="true" />
+                <i className="fa fa-trophy " aria-hidden="true" />
                 <div className="count-me">
-                  <p className="counter text-left">300</p>
-                  <h3>Sold Houses</h3>
+                  <p className="counter text-left">22</p>
+                  <h3>Cooperative Brand</h3>
                 </div>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 col-xs-12">
-              <div className="countr">
-                <i className="fa fa-list" aria-hidden="true" />
-                <div className="count-me">
-                  <p className="counter text-left">400</p>
-                  <h3>Daily Listings</h3>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-xs-12">
+            <div className="col-lg-4 col-md-6 col-xs-12">
               <div className="countr mb-0">
+                <i className="fa fa-shopping-bag" aria-hidden="true" />
+                <div className="count-me">
+                  <p className="counter text-left">100</p>
+                  <h3>Franchise Stores</h3>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6 col-xs-12">
+              <div className="countr mb-0 last">
                 <i className="fa fa-users" aria-hidden="true" />
                 <div className="count-me">
-                  <p className="counter text-left">250</p>
-                  <h3>Expert Agents</h3>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-xs-12">
-              <div className="countr mb-0 last">
-                <i className="fa fa-trophy" aria-hidden="true" />
-                <div className="count-me">
-                  <p className="counter text-left">200</p>
-                  <h3>Won Awars</h3>
+                  <p className="counter text-left">11</p>
+                  <h3>Proprietaries</h3>
                 </div>
               </div>
             </div>

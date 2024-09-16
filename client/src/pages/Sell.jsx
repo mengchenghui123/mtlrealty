@@ -22,7 +22,8 @@ const Sell = () => {
       "list",
       "hp-6",
       "full",
-      "hd-white"
+      "hd-white",
+      "int_white_bg"
     );
 
     // Remove class on unmount
@@ -34,7 +35,8 @@ const Sell = () => {
         "list",
         "hp-6",
         "full",
-        "hd-white"
+        "hd-white",
+        "int_white_bg"
       );
     };
   }, []);
