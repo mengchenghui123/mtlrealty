@@ -216,3 +216,23 @@ export const deleteResidency = async (id, token) => {
     throw error;
   }
 };
+
+export const updateResidency = async (id, data, token) => {
+  try {
+    const res = await api.post(
+      `/residency/update/${id}`,
+      {
+        data,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    console.log("Error updating residency:", error);
+    throw error;
+  }
+};
