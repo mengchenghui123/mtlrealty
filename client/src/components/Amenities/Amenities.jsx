@@ -6,7 +6,8 @@ import UserDetailContext from "../../context/userDetailContext";
 import useProperties from "../../Hook/useProperty.jsx";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
-import { createResidency } from "../../utils/Api.js";
+import { updateResidency, createResidency } from "../../utils/Api.js";
+import { useEffect } from "react";
 
 const Amenities = ({
   prevStep,
@@ -14,6 +15,7 @@ const Amenities = ({
   setPropertyDetails,
   setOpened,
   setActiveStep,
+  isEdit = false,
 }) => {
   const form = useForm({
     initialValues: {
@@ -33,6 +35,21 @@ const Amenities = ({
         value === "yes" || value === "no" ? null : "please type yes or no",
     },
   });
+
+  useEffect(() => {
+    // if (PropertyDetails.amenities) {
+    //   form.setValues({
+    //     gym: PropertyDetails.amenities.gym || "",
+    //     pool: PropertyDetails.amenities.pool || "",
+    //     ac: PropertyDetails.amenities.ac || "",
+    //     balcony: PropertyDetails.amenities.balcony || "",
+    //   });
+    // }
+    if (PropertyDetails) {
+      console.log("Updated PropertyDetails: ", PropertyDetails);
+      setPropertyDetails(PropertyDetails);
+    }
+  }, [PropertyDetails]);
 
   const { gym, pool, ac, balcony } = form.values;
 
@@ -55,19 +72,17 @@ const Amenities = ({
   } = useContext(UserDetailContext);
   const { refetch: refetchProperties } = useProperties();
 
+  const mutationFn = isEdit
+    ? () => updateResidency(PropertyDetails.id, { ...PropertyDetails, amenities: { gym, pool, ac, balcony } }, token)
+    : () => createResidency({ ...PropertyDetails, amenities: { gym, pool, ac, balcony } }, token);
+
+
   const { mutate, isLoading } = useMutation({
-    mutationFn: () =>
-      createResidency(
-        {
-          ...PropertyDetails,
-          amenities: { gym, pool, ac, balcony },
-        },
-        token
-      ),
+    mutationFn,
     onError: ({ response }) =>
       toast.error(response.data.message, { position: "bottom-right" }),
     onSettled: () => {
-      toast.success("Added Successfully", { position: "bottom-right" });
+      toast.success(isEdit ? "Updated Successfully" : "Added Successfully", { position: "bottom-right" });
       setPropertyDetails({
         title: "",
         description: "",
@@ -134,7 +149,7 @@ const Amenities = ({
             Back
           </Button>
           <Button type="submit" color="green" disabled={isLoading}>
-            {isLoading ? "Submitting" : "Add Property"}
+            {isLoading ? "Submitting" : isEdit ? "Update Property" : "Add Property"}
           </Button>
         </Group>
       </form>
