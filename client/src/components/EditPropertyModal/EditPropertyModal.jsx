@@ -1,7 +1,7 @@
 import { Container, Modal, Stepper } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getProperty, updateResidency } from "../../utils/Api";
+import { updateResidency } from "../../utils/Api";
 import AddLocation from "../AddLocation/AddLocation";
 import UploadImage from "../UploadImage/UploadImage";
 import BasicDetails from "../BasicDetails/BasicDetails";
@@ -36,10 +36,9 @@ const EditPropertyModal = ({ opened, setOpened, propertyId, propertyDetails }) =
     userEmail: user?.email,
   });
 
-  // 确保在 propertyDetails prop 发生变化时同步更新表单数据
   useEffect(() => {
     if (propertyDetails) {
-      setPropertyDetails(propertyDetails); // 更新 PropertyDetails
+      setPropertyDetails(propertyDetails);
     }
   }, [propertyDetails]);
 
@@ -49,7 +48,7 @@ const EditPropertyModal = ({ opened, setOpened, propertyId, propertyDetails }) =
 
   const handleSave = async () => {
     try {
-      await updateResidency(propertyId, PropertyDetails); // 使用 PropertyDetails 进行更新
+      await updateResidency(propertyId, PropertyDetails);
       toast.success("Property updated successfully");
       setOpened(false);
     } catch (error) {
@@ -123,6 +122,7 @@ const EditPropertyModal = ({ opened, setOpened, propertyId, propertyDetails }) =
               onSubmit={handleSave}
               setOpened={setOpened}
               setActiveStep={setActive}
+              isEdit={true}
             />
           </Stepper.Step>
 
