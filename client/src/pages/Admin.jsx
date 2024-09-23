@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers, deleteUser, deleteResidency, getProperty } from "../utils/Api";
+import {
+  getAllUsers,
+  deleteUser,
+  deleteResidency,
+  updateResidency,
+} from "../utils/Api";
 import { toast } from "react-toastify";
 import useProperty from "../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
@@ -16,6 +21,8 @@ const Admin = () => {
   const [editModalOpened, setEditModalOpened] = useState(false);
   const [selectedPropertyId, setSelectedPropertyId] = useState(null);
   const [selectedPropertyDetails, setSelectedPropertyDetails] = useState(null);
+  const [formData, setFormData] = useState({});
+  const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
     document.body.classList.add(
@@ -136,28 +143,39 @@ const Admin = () => {
     }
   };
 
-  const handleEditResidence = async (id) => {
-    try {
-      const details = await getProperty(id);
-      setSelectedPropertyDetails(details);
-      setSelectedPropertyId(id);
-      setEditModalOpened(true);
-    } catch (error) {
-      toast.error("Failed to load property details");
+  const handleEditClick = async (id) => {
+    const propertyToEdit = data.find((item) => item.id === id);
+    if (propertyToEdit) {
+      setFormData(propertyToEdit);
+      setEditingId(id);
+    }
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    // 提交表单逻辑
+    if (formData && editingId) {
+      console.log("Submitting data for ID:", editingId);
+      console.log("Data:", formData);
+      try {
+        await updateResidency(editingId, formData, token);
+        toast.success("Property updated successfully");
+      } catch (error) {
+        console.error("Error updating property:", error);
+        toast.error("Failed to update property");
+      }
     }
   };
 
   return (
-    // <div>
-    //   <h1>All Users (Test)</h1>
-    //   <ul>
-    //     {users.map((user) => (
-    //       <li key={user.id}>
-    //         {user.id}: {user.email} - {user.name}
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
     <>
       <div id="wrapper" className="int_main_wraapper">
         <div className="clearfix" />
@@ -281,32 +299,35 @@ const Admin = () => {
                               <td>{user.id}</td>
                               <td>{user.email}</td>
                               <td className="rating">
-                                {user.bookedVisits && user.bookedVisits.length > 0
+                                {user.bookedVisits &&
+                                user.bookedVisits.length > 0
                                   ? user.bookedVisits.map((visit, index) => (
-                                    <div key={visit.id}>
-                                      <span>Date: {visit.date}</span> <br />
-                                      <span>
-                                        MLS Number: {getMlsNumber(visit.id)}
-                                      </span>
-                                      {index < user.bookedVisits.length - 1 && (
-                                        <hr />
-                                      )}{" "}
-                                      {/* Add a line break between visits */}
-                                    </div>
-                                  ))
+                                      <div key={visit.id}>
+                                        <span>Date: {visit.date}</span> <br />
+                                        <span>
+                                          MLS Number: {getMlsNumber(visit.id)}
+                                        </span>
+                                        {index <
+                                          user.bookedVisits.length - 1 && (
+                                          <hr />
+                                        )}{" "}
+                                        {/* Add a line break between visits */}
+                                      </div>
+                                    ))
                                   : "N/A"}
                               </td>
                               <td className="status">
                                 {user.favResidenciesID &&
-                                  user.favResidenciesID.length > 0
+                                user.favResidenciesID.length > 0
                                   ? user.favResidenciesID.map((item) => {
-                                    const mlsNumber = getMlsNumber(item);
-                                    return (
-                                      <span key={item}>
-                                        MLS Number: {mlsNumber || "N/A"} <br />
-                                      </span>
-                                    );
-                                  })
+                                      const mlsNumber = getMlsNumber(item);
+                                      return (
+                                        <span key={item}>
+                                          MLS Number: {mlsNumber || "N/A"}{" "}
+                                          <br />
+                                        </span>
+                                      );
+                                    })
                                   : "N/A"}
                               </td>
                               <td className="edit">
@@ -369,7 +390,7 @@ const Admin = () => {
                           <td>{item.price}</td>
                           <td className="actions">
                             <a
-                              onClick={() => handleEditResidence(item.id)}
+                              onClick={() => handleEditClick(item.id)}
                               className="edit"
                               style={{ cursor: "pointer" }}
                             >
@@ -396,8 +417,9 @@ const Admin = () => {
                     <nav>
                       <ul className="pagination">
                         <li
-                          className={`page-item ${currentPage === 1 ? "disabled" : ""
-                            }`}
+                          className={`page-item ${
+                            currentPage === 1 ? "disabled" : ""
+                          }`}
                         >
                           <button
                             className="btn btn-common"
@@ -409,8 +431,9 @@ const Admin = () => {
                         {Array.from({ length: totalPage }, (_, index) => (
                           <li
                             key={index + 1}
-                            className={`page-item ${currentPage === index + 1 ? "active" : ""
-                              }`}
+                            className={`page-item ${
+                              currentPage === index + 1 ? "active" : ""
+                            }`}
                           >
                             <button
                               className="page-link"
@@ -420,24 +443,10 @@ const Admin = () => {
                             </button>
                           </li>
                         ))}
-                        {/* <li className="page-item">
-                        <a className="page-link" href="#">
-                          1
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          2
-                        </a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link" href="#">
-                          3
-                        </a>
-                      </li> */}
                         <li
-                          className={`page-item ${currentPage === totalPage ? "disabled" : ""
-                            }`}
+                          className={`page-item ${
+                            currentPage === totalPage ? "disabled" : ""
+                          }`}
                         >
                           <button
                             className="btn btn-common"
@@ -450,6 +459,52 @@ const Admin = () => {
                     </nav>
                   </div>
                 </div>
+
+                {formData && (
+                  <div className="edit-form">
+                    <h3>Edit {formData.title}</h3>
+                    <form onSubmit={handleFormSubmit}>
+                      <div>
+                        <label>Title</label>
+                        <input
+                          type="text"
+                          name="title"
+                          value={formData.title || ""}
+                          onChange={handleFormChange}
+                        />
+                      </div>
+                      <div>
+                        <label>Type</label>
+                        <input
+                          type="text"
+                          name="type"
+                          value={formData.type || ""}
+                          onChange={handleFormChange}
+                        />
+                      </div>
+                      <div>
+                        <label>Price</label>
+                        <input
+                          type="number"
+                          name="price"
+                          value={formData.price || ""}
+                          onChange={handleFormChange}
+                        />
+                      </div>
+                      <div>
+                        <label>Address</label>
+                        <input
+                          type="text"
+                          name="address"
+                          value={formData.address || ""}
+                          onChange={handleFormChange}
+                        />
+                      </div>
+                      {/* 继续添加其他字段 */}
+                      <button type="submit">Save Changes</button>
+                    </form>
+                  </div>
+                )}
               </div>
             </div>
           </div>

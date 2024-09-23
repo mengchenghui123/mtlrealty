@@ -52,12 +52,18 @@ model Residency {
     @@unique(fields: [mlsNumber, userEmail])
 }
 
-// model Room {
-//   id              String    @id @default(auto()) @map("_id") @db.ObjectId
-//   type            String
-//   level           String
-//   dimensions      String
-//   flooring        String
-//   residencyId     String    @db.ObjectId
-//   residency       Residency @relation(fields: [residencyId], references: [id]) // 定义外键关系
-// }
+model Franchise {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  title        String?   
+  description  String?   
+  size         String?    
+  rent         String?    
+  investment   String?    
+  franchiseFee Float?    
+  sales        String?    
+  targetPeople String?   
+  image        String?   
+  images       String[]  
+  maps         String[]  
+  agentInfo    Json 
+}

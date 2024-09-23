@@ -6,16 +6,25 @@ export const createResidency = asyncHandler(async (req, res) => {
   const {
     title,
     description,
+    type,
     price,
     address,
+    mlsNumber,
+    propertyType,
+    livingSpace,
+    lotSize,
+    yearBuild,
     country,
-    city,
-    facilities,
-    image,
-    images,
-    amenities,
-    userEmail,
+    municipalTaxes,
+    schoolTaxes,
+    condoFee,
     rooms,
+    image,
+    facilities,
+    images,
+    userEmail,
+    agentInfo,
+    amenities,
   } = req.body.data;
   if (rooms === null || typeof rooms !== "object") {
     return res.status(400).send({
@@ -27,15 +36,25 @@ export const createResidency = asyncHandler(async (req, res) => {
       data: {
         title,
         description,
+        type,
         price,
         address,
+        mlsNumber,
+        propertyType,
+        livingSpace,
+        lotSize,
+        yearBuild,
         country,
-        city,
-        facilities,
-        image,
-        images,
-        amenities,
+        municipalTaxes,
+        schoolTaxes,
+        condoFee,
         rooms,
+        image,
+        facilities,
+        images,
+        userEmail,
+        agentInfo,
+        amenities,
         owner: { connect: { email: userEmail } },
       },
     });
@@ -93,3 +112,31 @@ export const deleteResidency = asyncHandler(async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+export const updateResidency = async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  try {
+    const updatedResidency = await prisma.residency.update({
+      where: { id },
+      data,
+    });
+    res.status(200).json(updatedResidency);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const getUpdateResidency = async (req, res) => {
+  const { id } = req.params; // 从请求参数中获取 ID
+  try {
+    const residency = await prisma.residency.findUnique({ where: { id } }); // 查找居住地
+    if (!residency) {
+      return res.status(404).json({ message: "Residency not found" }); // 如果未找到，返回404
+    }
+    res.status(200).json(residency); // 返回居住地数据
+  } catch (err) {
+    res.status(500).json({ message: err.message }); // 处理错误
+  }
+};
