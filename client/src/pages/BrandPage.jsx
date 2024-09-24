@@ -1,209 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useFranchise from "../Hook/useFranchise";
+import { PuffLoader } from "react-spinners";
 
 const BrandPage = () => {
-  const { brand } = useParams();
-  const brandData = {
-    yangguofu: {
-      title: "Brand 1",
-      description: "Description for yangguofu",
-      imageUrl: "https://i.imgur.com/RWCvEfx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    chimaek: {
-      title: "Brand 2",
-      description: "Description for chimaek",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    tori: {
-      title: "Brand 2",
-      description: "Description for tori",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    chickenplus: {
-      title: "Brand 2",
-      description: "Description for chickenplus",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    yifang: {
-      title: "Brand 2",
-      description: "Description for yifang",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    chungchun: {
-      title: "Brand 2",
-      description: "Description for chungchun",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    pho: {
-      title: "Brand 2",
-      description: "Description for pho",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    cnt: {
-      title: "Brand 2",
-      description: "Description for cnt",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    k2: {
-      title: "Brand 2",
-      description: "Description for k2",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    clawmee: {
-      title: "Brand 2",
-      description: "Description for clawmee",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    lepetitsao: {
-      title: "Brand 2",
-      description: "Description for pho",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    meetfresh: {
-      title: "Brand 2",
-      description: "Description for meetfresh",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    lanzhou: {
-      title: "Brand 2",
-      description: "Description for lanzhou",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    lepoke: {
-      title: "Brand 2",
-      description: "Description for lepoke",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    clawville: {
-      title: "Brand 2",
-      description: "Description for clawville",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    deargarden: {
-      title: "Brand 2",
-      description: "Description for deargarden",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    shuyi: {
-      title: "Brand 2",
-      description: "Description for shuyi",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    sushisama: {
-      title: "Brand 2",
-      description: "Description for sushisama",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    heytea: {
-      title: "Brand 2",
-      description: "Description for heytea",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    burgerking: {
-      title: "Brand 2",
-      description: "Description for burgerking",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    ganadara: {
-      title: "Brand 2",
-      description: "Description for ganadara",
-      imageUrl: "https://i.imgur.com/lKAI3Cg.jpg",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-    presotea: {
-      title: "Brand 2",
-      description: "Description for presotea",
-      imageUrl: "https://i.imgur.com/DjmJcWx.png",
-      imageUrl1: "https://i.imgur.com/Fp71E5j.png",
-      imageUrl2: "https://i.imgur.com/xrExzgz.png",
-      imageUrl3: "https://i.imgur.com/tcSNKzD.jpg",
-      imageUrl4: "https://i.imgur.com/mnA7gy3.jpg",
-    },
-  };
-  // 添加更多品牌数据
+  const { id } = useParams();
+  const { data, isError, isLoading } = useFranchise();
 
   useEffect(() => {
     document.body.classList.add(
@@ -228,16 +30,37 @@ const BrandPage = () => {
     };
   }, []);
 
-  // 获取当前品牌的数据
-  const data = brandData[brand] || {
-    title: "Brand Not Found",
-    description: "No description available.",
-    imageUrl: "",
-    imageUrl1: "",
-    imageUrl2: "",
-    imageUrl3: "",
-    imageUrl4: "",
-  };
+  if (isError) {
+    return (
+      <div className="wrapper">
+        <span>Error loading Properties</span>
+      </div>
+    );
+  }
+
+  if (isLoading || !data) {
+    return (
+      <div className="puffloaderStyle" style={{ height: "60vh" }}>
+        <PuffLoader
+          height="80"
+          width="80"
+          radius={1}
+          color="#4066ff"
+          aria-label="puff-loading"
+        />
+      </div>
+    );
+  }
+
+  const franchise = data.find((p) => p.id === id);
+  if (!franchise) {
+    return (
+      <div className="container mt-5">
+        <h2>franchise Not Found</h2>
+      </div>
+    );
+  }
+
   return (
     <div id="wrapper">
       <div className="clearfix"></div>
@@ -248,11 +71,11 @@ const BrandPage = () => {
               <div className="row m0">
                 <div className="col-lg-12 p0">
                   <div className="popup-images">
-                    <a className="popup-img" href="images/interior/p-1.png">
+                    <a className="popup-img" href={franchise.image}>
                       <img
                         className="img-fluid w100"
-                        src={data.imageUrl}
-                        alt=""
+                        src={franchise.image}
+                        alt="waiting"
                       />
                     </a>
                   </div>
@@ -266,9 +89,8 @@ const BrandPage = () => {
                     <a className="popup-img" href="images/interior/p-2.png">
                       <img
                         className="img-fluid w100"
-                        src={data.imageUrl1}
-                        alt=""
-                        style={{ height: "325px" }}
+                        src={franchise.images[0]}
+                        alt="waiting"
                       />
                     </a>
                   </div>
@@ -278,9 +100,8 @@ const BrandPage = () => {
                     <a className="popup-img" href="images/interior/p-3.png">
                       <img
                         className="img-fluid w100"
-                        src={data.imageUrl2}
-                        alt=""
-                        style={{ height: "325px" }}
+                        src={franchise.images[1]}
+                        alt="waiting"
                       />
                     </a>
                   </div>
@@ -290,9 +111,8 @@ const BrandPage = () => {
                     <a className="popup-img" href="images/interior/p-4.png">
                       <img
                         className="img-fluid w100"
-                        src={data.imageUrl3}
-                        alt=""
-                        style={{ height: "325px" }}
+                        src={franchise.images[2]}
+                        alt="waiting"
                       />
                     </a>
                   </div>
@@ -302,9 +122,8 @@ const BrandPage = () => {
                     <a className="popup-img" href="images/interior/p-5.png">
                       <img
                         className="img-fluid w100"
-                        src={data.imageUrl4}
-                        alt=""
-                        style={{ height: "325px" }}
+                        src={franchise.images[3]}
+                        alt="waiting"
                       />
                     </a>
                   </div>
@@ -325,9 +144,9 @@ const BrandPage = () => {
                       <div className="detail-wrapper-body">
                         <div className="listing-title-bar">
                           <h3>
-                            Luxury Villa House{" "}
+                            {franchise.title}{" "}
                             <span className="mrg-l-5 category-tag">
-                              For Sale
+                              Franchise
                             </span>
                           </h3>
                         </div>
@@ -337,30 +156,7 @@ const BrandPage = () => {
                   {/* Star Description */}
                   <div className="blog-info details mb-30">
                     <h5 className="mb-4">Description</h5>
-                    <p className="mb-3">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Cum rerum beatae consequatur, totam fugit, alias fuga
-                      aliquam quod tempora a nisi esse magnam nulla quas! Error
-                      praesentium, vero dolorum laborum. Lorem ipsum dolor sit
-                      amet, consectetur adipisicing elit. Cum rerum beatae
-                      consequatur, totam fugit.
-                    </p>
-                    <p className="mb-3">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Cum rerum beatae consequatur, totam fugit, alias fuga
-                      aliquam quod tempora a nisi esse magnam nulla quas! Error
-                      praesentium, vero dolorum laborum. Lorem ipsum dolor sit
-                      amet, consectetur adipisicing elit. Cum rerum beatae
-                      consequatur, totam fugit.
-                    </p>
-                    <p className="mb-3">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Cum rerum beatae consequatur, totam fugit, alias fuga
-                      aliquam quod tempora a nisi esse magnam nulla quas! Error
-                      praesentium, vero dolorum laborum. Lorem ipsum dolor sit
-                      amet, consectetur adipisicing elit. Cum rerum beatae
-                      consequatur, totam fugit.
-                    </p>
+                    <p className="mb-3">{franchise.description}</p>
                   </div>
                   {/* End Description */}
                 </div>
@@ -368,62 +164,45 @@ const BrandPage = () => {
               {/* Star Property Details */}
               <div className="single homes-content details mb-30">
                 {/* title */}
-                <h5 className="mb-4">Property Details</h5>
+                <h5 className="mb-4">Brand Details</h5>
                 <ul className="homes-list clearfix">
                   <li>
-                    <span className="font-weight-bold mr-1">Property ID:</span>
-                    <span className="det">V254680</span>
+                    <span className="font-weight-bold mr-1">Size:</span>
+                    <span className="det">{franchise.size}</span>
+                  </li>
+                  <li>
+                    <span className="font-weight-bold mr-1">Rent:</span>
+                    <span className="det">{franchise.rent}</span>
+                  </li>
+                  <li>
+                    <span className="font-weight-bold mr-1">Investment:</span>
+                    <span className="det">{franchise.investment}</span>
                   </li>
                   <li>
                     <span className="font-weight-bold mr-1">
-                      Property Type:
+                      Franchise Fee:
                     </span>
-                    <span className="det">House</span>
+                    <span className="det">${franchise.franchiseFee}</span>
                   </li>
                   <li>
-                    <span className="font-weight-bold mr-1">
-                      Property status:
-                    </span>
-                    <span className="det">For Sale</span>
+                    <span className="font-weight-bold mr-1">Sales:</span>
+                    <span className="det">{franchise.sales}</span>
                   </li>
                   <li>
-                    <span className="font-weight-bold mr-1">
-                      Property Price:
-                    </span>
-                    <span className="det">$230,000</span>
-                  </li>
-                  <li>
-                    <span className="font-weight-bold mr-1">Rooms:</span>
-                    <span className="det">6</span>
-                  </li>
-                  <li>
-                    <span className="font-weight-bold mr-1">Bedrooms:</span>
-                    <span className="det">7</span>
-                  </li>
-                  <li>
-                    <span className="font-weight-bold mr-1">Bath:</span>
-                    <span className="det">4</span>
-                  </li>
-                  <li>
-                    <span className="font-weight-bold mr-1">Garages:</span>
-                    <span className="det">2</span>
-                  </li>
-                  <li>
-                    <span className="font-weight-bold mr-1">Year Built:</span>
-                    <span className="det">10/6/2020</span>
+                    <span className="font-weight-bold mr-1">Target People</span>
+                    <span className="det">{franchise.targetPeople}</span>
                   </li>
                 </ul>
                 {/* title */}
               </div>
               <div className="floor-plan property wprt-image-video w50 pro">
-                <h5>Floor Plans</h5>
-                <img alt="image" src="images/bg/floor-plan-1.png" />
+                <h5>Current Location</h5>
+                <img alt="image" src={franchise.maps[0] || "image"} />
               </div>
 
               <div className="property-location map">
-                <h5>Location</h5>
-                <div className="divider-fade" />
-                <div id="map-contact" className="contact-map" />
+                <h5>Location Opportunities</h5>
+                <img alt="image" src={franchise.maps[1] || "image"} />
               </div>
             </div>
             <aside className="col-lg-4 col-md-12 car">
@@ -509,7 +288,7 @@ const BrandPage = () => {
                               type="submit"
                               name="sendmessage"
                               className="multiple-send-message"
-                              defaultValue="Submit Request"
+                              value="Submit Request"
                             />
                           </form>
                         </div>

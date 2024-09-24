@@ -44,3 +44,12 @@ export const createFranchise = asyncHandler(async (req, res) => {
     throw new Error(err.message);
   }
 });
+
+export const getAllFranchise = asyncHandler(async (req, res) => {
+  const franchise = await prisma.franchise.findMany({
+    orderBy: {
+      title: "desc",
+    },
+  });
+  res.send(franchise);
+});

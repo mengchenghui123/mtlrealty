@@ -165,8 +165,9 @@ const Admin = () => {
     if (formData && editingId) {
       console.log("Submitting data for ID:", editingId);
       console.log("Data:", formData);
+      const { id, ...dataToUpdate } = formData;
       try {
-        await updateResidency(editingId, formData, token);
+        await updateResidency(editingId, dataToUpdate, token);
         toast.success("Property updated successfully");
       } catch (error) {
         console.error("Error updating property:", error);

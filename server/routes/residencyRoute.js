@@ -12,6 +12,6 @@ const router = express.Router();
 router.post("/create", jwtCheck, createResidency);
 router.get("/allresd", getAllResidencies);
 router.get("/:id", getResidency);
-router.put("/residency/update/:id", updateResidency);
+router.put("/update/:id", updateResidency);
 
 export { router as residencyRoute };

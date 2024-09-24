@@ -56,7 +56,7 @@ function App() {
         { path: "/about", element: <About /> },
         { path: "/sell", element: <Sell /> },
         { path: "/buy", element: <Buy /> },
-        { path: "/brands/:brand", element: <BrandPage /> },
+        { path: "/brands/:id", element: <BrandPage /> },
         {
           path: "/admin",
           element: (

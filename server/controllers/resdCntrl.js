@@ -116,27 +116,28 @@ export const deleteResidency = asyncHandler(async (req, res) => {
 export const updateResidency = async (req, res) => {
   const { id } = req.params;
   const data = req.body;
+  console.log("Received request to update residency with ID:", id);
 
   try {
+    console.log("Received data:", data);
+    console.log("Checking if residency exists...");
+    console.log("Received request to update residency with ID:", id);
+    const existingResidency = await prisma.residency.findUnique({
+      where: { id },
+    });
+
+    if (!existingResidency) {
+      return res.status(404).json({ message: "Residency not found" });
+    }
+    console.log("Updating residency...");
     const updatedResidency = await prisma.residency.update({
       where: { id },
       data,
     });
+
     res.status(200).json(updatedResidency);
   } catch (err) {
+    console.error("Error updating residency:", JSON.stringify(err, null, 2));
     res.status(500).json({ message: err.message });
-  }
-};
-
-export const getUpdateResidency = async (req, res) => {
-  const { id } = req.params; // 从请求参数中获取 ID
-  try {
-    const residency = await prisma.residency.findUnique({ where: { id } }); // 查找居住地
-    if (!residency) {
-      return res.status(404).json({ message: "Residency not found" }); // 如果未找到，返回404
-    }
-    res.status(200).json(residency); // 返回居住地数据
-  } catch (err) {
-    res.status(500).json({ message: err.message }); // 处理错误
   }
 };

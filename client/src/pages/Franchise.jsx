@@ -1,14 +1,11 @@
-import Introduce from "../components/Introduce/Introduce";
-import FeaturedListing from "../components/FeaturedListing/FeaturedListing";
-import InquiryForm from "../components/InquiryForm/InquiryForm";
-import useProperty from "../Hook/useProperty";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import useFranchise from "../Hook/useFranchise";
 
 const Franchise = () => {
-  const { data, isError, isLoading } = useProperty();
   const carouselRef = useRef(null);
   const navigate = useNavigate();
+  const { data, isError, isLoading } = useFranchise();
 
   useEffect(() => {
     document.body.classList.add(
@@ -56,11 +53,15 @@ const Franchise = () => {
       );
     };
   }, []);
-
   const handleItemClick = (event) => {
     const brand = event.currentTarget.getAttribute("data-brand");
-    if (brand) {
-      navigate(`/brands/${brand}`);
+    if (brand && data) {
+      const selectFranchise = data.find(
+        (franchiseItem) => franchiseItem.title === brand
+      );
+      if (selectFranchise && !isError && !isLoading) {
+        navigate(`/brands/${selectFranchise.id}`);
+      }
     }
   };
 
@@ -268,7 +269,7 @@ const Franchise = () => {
             </div>
             <div
               className="owl-item"
-              data-brand="pho"
+              data-brand="I AM PHO"
               onClick={handleItemClick}
             >
               <img src="https://i.imgur.com/ofp4dSx.png" alt="" />
@@ -285,7 +286,7 @@ const Franchise = () => {
             </div>
             <div
               className="owl-item"
-              data-brand="clawmee"
+              data-brand="Clawmee"
               onClick={handleItemClick}
             >
               <img src="https://i.imgur.com/6SUx0Vv.png" alt="" />
@@ -313,14 +314,14 @@ const Franchise = () => {
             </div>
             <div
               className="owl-item"
-              data-brand="lepoke"
+              data-brand="le poke station"
               onClick={handleItemClick}
             >
               <img src="https://i.imgur.com/L8YtxUt.png" alt="" />
             </div>
             <div
               className="owl-item"
-              data-brand="clawville"
+              data-brand="Clawville"
               onClick={handleItemClick}
             >
               <img src="https://i.imgur.com/dA5l84O.png" alt="" />
@@ -341,7 +342,7 @@ const Franchise = () => {
             </div>
             <div
               className="owl-item"
-              data-brand="sushisama"
+              data-brand="SUSHI SAMA"
               onClick={handleItemClick}
             >
               <img src="https://i.imgur.com/ECA71em.png" alt="" />
@@ -355,14 +356,14 @@ const Franchise = () => {
             </div>
             <div
               className="owl-item"
-              data-brand="burgerking"
+              data-brand="BURGER KING"
               onClick={handleItemClick}
             >
               <img src="https://i.imgur.com/K9ywrfo.png" alt="" />
             </div>
             <div
               className="owl-item"
-              data-brand="ganadara"
+              data-brand="GANADARA"
               onClick={handleItemClick}
             >
               <img src="https://i.imgur.com/RXI7mOr.png" alt="" />

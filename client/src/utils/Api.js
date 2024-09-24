@@ -11,7 +11,22 @@ export const getAllProperties = async () => {
     const response = await api.get("/residency/allresd", {
       timeout: 10 * 1000,
     });
-    if (response.status === 400 || response === 500) {
+    if (response.status === 400 || response.status === 500) {
+      throw response.data;
+    }
+    return response.data;
+  } catch (error) {
+    toast.error("Something went wrong while getting all property");
+    throw error;
+  }
+};
+
+export const getAllFranchise = async () => {
+  try {
+    const response = await api.get("/franchise/allfrchs", {
+      timeout: 10 * 1000,
+    });
+    if (response.status === 400 || response.status === 500) {
       throw response.data;
     }
     return response.data;
@@ -219,11 +234,14 @@ export const deleteResidency = async (id, token) => {
 
 export const updateResidency = async (id, data, token) => {
   try {
-    const res = await api.get(`/residency/update/${id}`, data, {
+    console.log(`API URL: /residency/update/${id}`);
+    console.log("Data:", data);
+    const res = await api.put(`/residency/update/${id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log("res::", res);
     return res.data;
   } catch (error) {
     console.log("Error updating residency:", error);
