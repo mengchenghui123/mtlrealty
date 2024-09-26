@@ -2,10 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFranchise from "../Hook/useFranchise";
 import { PuffLoader } from "react-spinners";
+import emailjs from "emailjs-com";
 
 const BrandPage = () => {
   const { id } = useParams();
   const { data, isError, isLoading } = useFranchise();
+
+  const [formData, setFormData] = useState({
+    full_name: "",
+    email_address: "",
+    phone_number: "",
+    message: "",
+    date: "",
+    address: "",
+  });
 
   useEffect(() => {
     document.body.classList.add(
@@ -60,6 +70,34 @@ const BrandPage = () => {
       </div>
     );
   }
+
+  const handleFormChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        "service_q33lpyn",
+        "template_0h18zpb",
+        formData,
+        "k6e91nsNgaMtTME-P"
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Message sent successfully!");
+        },
+        (err) => {
+          console.log("FAILED...", err);
+          alert("Failed to send message.");
+        }
+      );
+  };
 
   return (
     <div id="wrapper">
@@ -219,12 +257,9 @@ const BrandPage = () => {
                     <div className="widget-boxed-body">
                       <div className="sidebar-widget author-widget2">
                         <div className="author-box clearfix">
-                          <img
-                            src="images/testimonials/ts-1.jpg"
-                            alt="author-image"
-                            className="author__img"
-                          />
-                          <h4 className="author__title">Lisa Clark</h4>
+                          <h4 className="author__title">
+                            {franchise.agentInfo.name}
+                          </h4>
                           <p className="author__meta">Agent of Property</p>
                         </div>
                         <ul className="author__contact">
@@ -232,13 +267,13 @@ const BrandPage = () => {
                             <span className="la la-map-marker">
                               <i className="fa fa-map-marker" />
                             </span>
-                            302 Av Park, New York
+                            2015 Rue Drummond
                           </li>
                           <li>
                             <span className="la la-phone">
                               <i className="fa fa-phone" aria-hidden="true" />
                             </span>
-                            <a href="#">(234) 0200 17813</a>
+                            <a>{franchise.agentInfo.phone}</a>
                           </li>
                           <li>
                             <span className="la la-envelope-o">
@@ -247,42 +282,45 @@ const BrandPage = () => {
                                 aria-hidden="true"
                               />
                             </span>
-                            <a href="#">lisa@gmail.com</a>
+                            <a>{franchise.agentInfo.email}</a>
                           </li>
                         </ul>
                         <div className="agent-contact-form-sidebar">
                           <h4>Request Inquiry</h4>
-                          <form
-                            name="contact_form"
-                            method="post"
-                            action="functions.php"
-                          >
+                          <form name="contact_form" onSubmit={handleSubmit}>
                             <input
                               type="text"
                               id="fname"
                               name="full_name"
                               placeholder="Full Name"
-                              required=""
+                              value={formData.full_name}
+                              onChange={handleFormChange}
+                              required
                             />
                             <input
                               type="number"
                               id="pnumber"
                               name="phone_number"
                               placeholder="Phone Number"
-                              required=""
+                              value={formData.phone_number}
+                              onChange={handleFormChange}
+                              required
                             />
                             <input
                               type="email"
                               id="emailid"
                               name="email_address"
                               placeholder="Email Address"
-                              required=""
+                              value={formData.email_address}
+                              onChange={handleFormChange}
+                              required
                             />
                             <textarea
                               placeholder="Message"
                               name="message"
                               required=""
-                              defaultValue={""}
+                              value={formData.message}
+                              onChange={handleFormChange}
                             />
                             <input
                               type="submit"
@@ -299,9 +337,6 @@ const BrandPage = () => {
               </div>
             </aside>
           </div>
-          {/* START SIMILAR PROPERTIES */}
-
-          {/* END SIMILAR PROPERTIES */}
         </div>
       </section>
     </div>

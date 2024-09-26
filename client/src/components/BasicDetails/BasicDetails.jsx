@@ -20,21 +20,69 @@ const BasicDetails = ({
     initialValues: {
       title: PropertyDetails.title,
       description: PropertyDetails.description,
+      type: PropertyDetails.type,
       price: PropertyDetails.price,
+      mlsNumber: PropertyDetails.mlsNumber,
+      propertyType: PropertyDetails.propertyType,
+      livingSpace: PropertyDetails.livingSpace,
+      yearBuild: PropertyDetails.yearBuild,
+      municipalTaxes: PropertyDetails.municipalTaxes,
+      schoolTaxes: PropertyDetails.schoolTaxes,
+      condoFee: PropertyDetails.condoFee,
+      lotSize: PropertyDetails.lotSize,
     },
     validate: {
       title: (value) => validateString(value),
       description: (value) => validateString(value),
+      type: (value) =>
+        value === "Rent" || value === "Sale"
+          ? null
+          : "Must be either 'Rent' or 'Sale'",
       price: (value) =>
         value < 100 ? "Must be greater than 100 dollars" : null,
+      mlsNumber: (value) => validateString(value),
+      propertyType: (value) => validateString(value),
+      livingSpace: (value) => (value < 0 ? "Must be greater than 0" : null),
+      yearBuild: (value) => (value < 1000 ? "Must be greater than 1000" : null),
+      municipalTaxes: (value) => (value < 0 ? "Must be greater than 0" : null),
+      schoolTaxes: (value) => (value < 0 ? "Must be greater than 0" : null),
+      condoFee: (value) => (value < 0 ? "Must be greater than 0" : null),
+      lotSize: (value) => (value < 0 ? "Must be greater than 0" : null),
     },
   });
 
-  const { title, description, price } = form.values;
+  const {
+    title,
+    description,
+    price,
+    type,
+    mlsNumber,
+    propertyType,
+    livingSpace,
+    yearBuild,
+    municipalTaxes,
+    schoolTaxes,
+    condoFee,
+    lotSize,
+  } = form.values;
   const handleSubmit = () => {
     const { hasErrors } = form.validate();
     if (!hasErrors) {
-      setPropertyDetails((prev) => ({ ...prev, title, description, price }));
+      setPropertyDetails((prev) => ({
+        ...prev,
+        title,
+        description,
+        price,
+        type,
+        mlsNumber,
+        propertyType,
+        livingSpace,
+        yearBuild,
+        municipalTaxes,
+        schoolTaxes,
+        condoFee,
+        lotSize,
+      }));
       nextStep();
     }
   };
@@ -50,7 +98,7 @@ const BasicDetails = ({
         <TextInput
           withAsterisk
           label="Title"
-          placeholder="Property Name"
+          placeholder="Property title"
           {...form.getInputProps("title")}
         />
         <Textarea
@@ -59,6 +107,12 @@ const BasicDetails = ({
           withAsterisk
           {...form.getInputProps("description")}
         />
+        <Textarea
+          placeholder="Rent or Sale"
+          label="Type"
+          withAsterisk
+          {...form.getInputProps("type")}
+        />
         <NumberInput
           withAsterisk
           label="Price"
@@ -66,6 +120,61 @@ const BasicDetails = ({
           min={0}
           {...form.getInputProps("price")}
         />
+        <TextInput
+          withAsterisk
+          label="mls number"
+          placeholder="msl number"
+          {...form.getInputProps("mlsNumber")}
+        />
+        <TextInput
+          withAsterisk
+          label="property type"
+          placeholder="Rent or Sale"
+          {...form.getInputProps("propertyType")}
+        />
+        <NumberInput
+          withAsterisk
+          label="livingSpace"
+          placeholder="0"
+          min={0}
+          {...form.getInputProps("livingSpace")}
+        />
+        <NumberInput
+          withAsterisk
+          label="yearBuild"
+          placeholder="0"
+          min={1000}
+          {...form.getInputProps("yearBuild")}
+        />
+        <NumberInput
+          withAsterisk
+          label="municipalTaxes"
+          placeholder="0"
+          min={0}
+          {...form.getInputProps("municipalTaxes")}
+        />
+        <NumberInput
+          withAsterisk
+          label="schoolTaxes"
+          placeholder="0"
+          min={0}
+          {...form.getInputProps("schoolTaxes")}
+        />
+        <NumberInput
+          withAsterisk
+          label="condoFee"
+          placeholder="0"
+          min={0}
+          {...form.getInputProps("condoFee")}
+        />
+        <NumberInput
+          withAsterisk
+          label="lotSize"
+          placeholder="0"
+          min={0}
+          {...form.getInputProps("lotSize")}
+        />
+
         <Group position="center" mt="xl">
           <Button variant="default" onClick={prevStep}>
             Back

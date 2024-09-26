@@ -84,7 +84,7 @@ const AddLocation = ({ PropertyDetails, setPropertyDetails, nextStep }) => {
             )}&output=embed`}
             width="100%"
             height="450"
-            style={{ border: 0 }}
+            style={{ border: 0, marginTop: "20px" }}
             allowFullScreen
             tabIndex="0"
           ></iframe>

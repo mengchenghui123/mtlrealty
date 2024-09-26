@@ -162,39 +162,6 @@ const Rent = () => {
                   </div>
                 </div>
               </div>
-              <div className="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center">
-                <div className="input-group border rounded input-group-lg w-auto mr-4">
-                  <label
-                    className="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3"
-                    htmlFor="inputGroupSelect01"
-                  >
-                    <i className="fas fa-align-left fs-16 pr-2" />
-                    Sortby:
-                  </label>
-                  <select
-                    className="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby"
-                    data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3"
-                    id="inputGroupSelect01"
-                    name="sortby"
-                  >
-                    <option value={1}>Top Selling</option>
-                    <option value={2}>Most Viewed</option>
-                    <option value={3}>Price(low to high)</option>
-                    <option value={4}>Price(high to low)</option>
-                  </select>
-                </div>
-                <div className="sorting-options">
-                  <a href="#" className="change-view-btn active-view-btn">
-                    <i className="fa fa-th-list" />
-                  </a>
-                  <a
-                    href="properties-full-grid-1.html"
-                    className="change-view-btn lde"
-                  >
-                    <i className="fa fa-th-large" />
-                  </a>
-                </div>
-              </div>
             </div>
           </section>
 
@@ -206,24 +173,25 @@ const Rent = () => {
                     className="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
                     data-aos="fade-up"
                   >
-                    <div className="project-single mb-0 bb-0">
+                    <div
+                      className="project-single mb-0 bb-0"
+                      onClick={() => handleCardClick(property.id)}
+                      style={{ cursor: "pointer" }}
+                    >
                       <div className="project-inner project-head">
                         <div className="homes">
                           {/* homes img */}
-                          <a
-                            href="#"
-                            className="homes-img"
-                            onClick={() => handleCardClick(property.id)}
-                          >
-                            <div className="homes-tag button alt featured">
-                              Featured
+                          <a className="homes-img">
+                            <div
+                              className="homes-tag button alt featured"
+                              style={{ fontSize: "120%" }}
+                            >
+                              ${property.price.toLocaleString("en-CA")}
                             </div>
                             <div className="homes-tag button alt sale">
                               For Rent
                             </div>
-                            <div className="homes-price">
-                              ${property.price.toLocaleString("en-CA")}
-                            </div>
+
                             <img
                               src={property.image}
                               alt={`home-${property.id}`}
@@ -239,10 +207,7 @@ const Rent = () => {
                             <i className="fa fa-link" />
                           </a>
 
-                          <a
-                            href="single-property-2.html"
-                            className="img-poppu btn"
-                          >
+                          <a className="img-poppu btn">
                             <i className="fa fa-photo" />
                           </a>
                         </div>
@@ -255,7 +220,7 @@ const Rent = () => {
                     data-aos="fade-up"
                   >
                     {/* homes address */}
-                    <h3>
+                    <h3 style={{ cursor: "pointer" }}>
                       <a onClick={() => handleCardClick(property.id)}>
                         {property.title}
                       </a>
@@ -308,7 +273,7 @@ const Rent = () => {
                       </li>
                     </ul>
                     <div className="footer">
-                      <a href="agent-details.html">JieSi Zhou</a>
+                      <a href="contact">JieSi Zhou</a>
                     </div>
                   </div>
                 </div>

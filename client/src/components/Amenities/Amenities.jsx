@@ -1,67 +1,39 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Box, Button, Group, Select } from "@mantine/core";
+import { Box, Button, Group, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import UserDetailContext from "../../context/userDetailContext";
 import useProperties from "../../Hook/useProperty.jsx";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
-import { updateResidency, createResidency } from "../../utils/Api.js";
-import { useEffect } from "react";
+import { createResidency } from "../../utils/Api.js";
+import { validateString } from "../../utils/Common";
 
 const Amenities = ({
-  prevStep,
   PropertyDetails,
   setPropertyDetails,
   setOpened,
   setActiveStep,
-  isEdit = false,
+  prevStep,
 }) => {
-  const form = useForm({
-    initialValues: {
-      gym: PropertyDetails.amenities.gym,
-      pool: PropertyDetails.amenities.pool,
-      ac: PropertyDetails.amenities.ac,
-      balcony: PropertyDetails.amenities.balcony,
-    },
-    validate: {
-      gym: (value) =>
-        value === "yes" || value === "no" ? null : "please type yes or no",
-      pool: (value) =>
-        value === "yes" || value === "no" ? null : "please type yes or no",
-      ac: (value) =>
-        value === "yes" || value === "no" ? null : "please type yes or no",
-      balcony: (value) =>
-        value === "yes" || value === "no" ? null : "please type yes or no",
-    },
-  });
+  const [amenities, setAmenities] = useState(PropertyDetails.amenities || []);
+  const [newAmenity, setNewAmenity] = useState("");
 
-  useEffect(() => {
-    // if (PropertyDetails.amenities) {
-    //   form.setValues({
-    //     gym: PropertyDetails.amenities.gym || "",
-    //     pool: PropertyDetails.amenities.pool || "",
-    //     ac: PropertyDetails.amenities.ac || "",
-    //     balcony: PropertyDetails.amenities.balcony || "",
-    //   });
-    // }
-    if (PropertyDetails) {
-      console.log("Updated PropertyDetails: ", PropertyDetails);
-      setPropertyDetails(PropertyDetails);
+  const handleAddAmenity = () => {
+    if (newAmenity.trim() === "") {
+      toast.error("Amenity must be a non-empty string");
+      return;
     }
-  }, [PropertyDetails]);
-
-  const { gym, pool, ac, balcony } = form.values;
+    setAmenities((prev) => [...prev, newAmenity]);
+    setNewAmenity("");
+  };
 
   const handleSubmit = () => {
-    const { hasErrors } = form.validate();
-    if (!hasErrors) {
-      setPropertyDetails((prev) => ({
-        ...prev,
-        amenities: { gym, pool, ac, balcony },
-      }));
-      mutate();
-    }
+    setPropertyDetails((prev) => ({
+      ...prev,
+      amenities: amenities,
+    }));
+    mutate();
   };
 
   //=========================upload logic===============================
@@ -72,17 +44,15 @@ const Amenities = ({
   } = useContext(UserDetailContext);
   const { refetch: refetchProperties } = useProperties();
 
-  const mutationFn = isEdit
-    ? () => updateResidency(PropertyDetails.id, { ...PropertyDetails, amenities: { gym, pool, ac, balcony } }, token)
-    : () => createResidency({ ...PropertyDetails, amenities: { gym, pool, ac, balcony } }, token);
-
-
   const { mutate, isLoading } = useMutation({
-    mutationFn,
+    mutationFn: () =>
+      createResidency({ ...PropertyDetails, amenities: amenities }, token),
     onError: ({ response }) =>
       toast.error(response.data.message, { position: "bottom-right" }),
     onSettled: () => {
-      toast.success(isEdit ? "Updated Successfully" : "Added Successfully", { position: "bottom-right" });
+      toast.success("Added Successfully", {
+        position: "bottom-right",
+      });
       setPropertyDetails({
         title: "",
         description: "",
@@ -90,6 +60,14 @@ const Amenities = ({
         country: "",
         city: "",
         address: "",
+        mlsNumber: "",
+        propertyType: "",
+        lotSize: 0,
+        livingSpace: 0,
+        yearBuild: 0,
+        municipalTaxes: 0,
+        schoolTaxes: 0,
+        condoFee: 0,
         image: null,
         images: [],
         facilities: {
@@ -97,12 +75,9 @@ const Amenities = ({
           bathrooms: 0,
           parking: 0,
         },
-        amenities: {
-          gym: "",
-          pool: "",
-          ac: "",
-          balcony: "",
-        },
+        amenities: [],
+        rooms: [],
+        agentInfo: {},
         userEmail: user?.email,
       });
       setOpened(false);
@@ -119,37 +94,42 @@ const Amenities = ({
           handleSubmit();
         }}
       >
-        <Select
-          withAsterisk
-          label="Gym"
-          data={["yes", "no"]}
-          {...form.getInputProps("gym")}
-        />
-        <Select
-          withAsterisk
-          label="AC"
-          data={["yes", "no"]}
-          {...form.getInputProps("ac")}
-        />
-        <Select
-          withAsterisk
-          label="Balcony"
-          data={["yes", "no"]}
-          {...form.getInputProps("balcony")}
-        />
-        <Select
-          withAsterisk
-          label="Pool"
-          data={["yes", "no"]}
-          {...form.getInputProps("pool")}
-        />
+        <Group position="center" mt="xl">
+          <TextInput
+            label="Add Amenity"
+            value={newAmenity}
+            onChange={(e) => setNewAmenity(e.target.value)}
+            placeholder="Enter amenity"
+          />
+          <Button type="button" onClick={handleAddAmenity}>
+            Add
+          </Button>
+        </Group>
+
+        <Box mt="md">
+          <h4>Amenities:</h4>
+          <ul>
+            {amenities.map((amenity, index) => (
+              <li key={index}>
+                {amenity}
+                <Button
+                  onClick={() =>
+                    setAmenities(amenities.filter((_, i) => i !== index))
+                  }
+                >
+                  Remove
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </Box>
 
         <Group position="center" mt="xl">
           <Button variant="default" onClick={prevStep}>
             Back
           </Button>
           <Button type="submit" color="green" disabled={isLoading}>
-            {isLoading ? "Submitting" : isEdit ? "Update Property" : "Add Property"}
+            {isLoading ? "Submitting" : "Add Property"}
           </Button>
         </Group>
       </form>

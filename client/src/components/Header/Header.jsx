@@ -1,22 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
-import useAuthCheck from "../../Hook/useAuthCheck";
-import AddPropertyModal from "../AddPropertyModal/AddPropertyModal";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
-  const isAdmin = user?.["https://your-namespace/roles"]?.includes("Admin");
-
-  const [modalOpened, setModalopened] = useState(false);
-
-  const { validateLogin } = useAuthCheck();
-  const handleAddPropertyClick = () => {
-    if (validateLogin()) {
-      setModalopened(true);
-    }
-  };
 
   //hide header bar
   return (
@@ -31,7 +19,7 @@ const Header = () => {
                 {/* Logo */}
                 <div id="logo">
                   <a href="/">
-                    <img src="/logo.png" alt="" />
+                    <img src="https://i.imgur.com/awa2U2i.png" alt="" />
                   </a>
                 </div>
                 {/* Mobile Navigation */}
@@ -102,26 +90,7 @@ const Header = () => {
               </div>
               {/* Left Side Content / End */}
               {/* Right Side Content / End */}
-              <div className="right-side d-none d-none d-lg-none d-xl-flex">
-                {/* Header Widget */}
-                <div className="header-widget">
-                  <a
-                    className="button border"
-                    onClick={(e) => {
-                      e.preventDefault(); // 阻止默认的跳转行为
-                      handleAddPropertyClick(); // 调用点击处理函数
-                    }}
-                  >
-                    Add Listing
-                    <i className="fas fa-laptop-house ml-2" />
-                  </a>
-                </div>
 
-                <AddPropertyModal
-                  opened={modalOpened}
-                  setOpened={setModalopened}
-                />
-              </div>
               <div className="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                 <div className="header-widget sign-in">
                   <div className="show-reg-form modal-open">

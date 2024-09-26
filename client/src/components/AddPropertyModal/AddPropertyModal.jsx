@@ -2,11 +2,11 @@ import { Container, Modal, Stepper } from "@mantine/core";
 import React, { useState } from "react";
 import AddLocation from "../AddLocation/AddLocation";
 import { useAuth0 } from "@auth0/auth0-react";
-import { createUser } from "../../utils/Api";
 import UploadImage from "../UploadImage/UploadImage";
 import BasicDetails from "../BasicDetails/BasicDetails";
 import Facilities from "../Facilities/Facilities";
 import Amenities from "../Amenities/Amenities";
+import Rooms from "../Rooms/Rooms";
 import UploadMultipleImages from "../UploadMultipleImages/UploadMultipleImages";
 
 const AddPropertyModal = ({ opened, setOpened }) => {
@@ -16,9 +16,18 @@ const AddPropertyModal = ({ opened, setOpened }) => {
     title: "",
     description: "",
     price: 0,
+    type: "",
     country: "",
     city: "",
     address: "",
+    mlsNumber: "",
+    propertyType: "",
+    lotSize: 0,
+    livingSpace: 0,
+    yearBuild: 0,
+    municipalTaxes: 0,
+    schoolTaxes: 0,
+    condoFee: 0,
     image: null,
     images: [],
     facilities: {
@@ -26,16 +35,13 @@ const AddPropertyModal = ({ opened, setOpened }) => {
       bathrooms: 0,
       parking: 0,
     },
-    amenities: {
-      gym: "",
-      pool: "",
-      ac: "",
-      balcony: "",
-    },
+    amenities: [],
+    rooms: [],
+    agentInfo: {},
     userEmail: user?.email,
   });
   const nextStep = () => {
-    setActive((current) => (current < 5 ? current + 1 : current));
+    setActive((current) => (current < 7 ? current + 1 : current));
   };
 
   const prevStep = () => {
@@ -87,6 +93,15 @@ const AddPropertyModal = ({ opened, setOpened }) => {
 
           <Stepper.Step label="Facilities" description="Facilities">
             <Facilities
+              PropertyDetails={PropertyDetails}
+              setPropertyDetails={setPropertyDetails}
+              prevStep={prevStep}
+              nextStep={nextStep}
+            />
+          </Stepper.Step>
+
+          <Stepper.Step label="Rooms" description="Rooms">
+            <Rooms
               PropertyDetails={PropertyDetails}
               setPropertyDetails={setPropertyDetails}
               prevStep={prevStep}

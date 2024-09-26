@@ -1,9 +1,7 @@
-import LogosPage from "../components/LogosPage/LogosPage";
+import React from "react";
 
 const Partners = () => {
-  return (
-    <LogosPage title='Our Partners' imgURL='partners.jpg' />
-  );
+  return <div>Partners</div>;
 };
 
 export default Partners;

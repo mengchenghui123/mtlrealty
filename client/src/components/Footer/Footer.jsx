@@ -10,13 +10,12 @@ export const Footer = () => {
               <div className="col-lg-3 col-md-6">
                 <div className="netabout">
                   <a href="index.html" className="logo">
-                    <img src="images/logo-black.svg" alt="netcom" />
+                    <img
+                      src="https://i.imgur.com/awa2U2i.png"
+                      alt="netcom"
+                      style={{ height: "40%", width: "40%" }}
+                    />
                   </a>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Cum incidunt architecto soluta laboriosam, perspiciatis,
-                    aspernatur officiis esse.
-                  </p>
                 </div>
                 <div className="contactus">
                   <ul>

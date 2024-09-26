@@ -52,7 +52,6 @@ export const createResidency = asyncHandler(async (req, res) => {
         image,
         facilities,
         images,
-        userEmail,
         agentInfo,
         amenities,
         owner: { connect: { email: userEmail } },

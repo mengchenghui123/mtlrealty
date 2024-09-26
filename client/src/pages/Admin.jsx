@@ -9,7 +9,7 @@ import {
 import { toast } from "react-toastify";
 import useProperty from "../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
-import EditPropertyModal from "../components/EditPropertyModal/EditPropertyModal";
+import AddPropertyModal from "../components/AddPropertyModal/AddPropertyModal";
 
 const Admin = () => {
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
@@ -18,11 +18,9 @@ const Admin = () => {
   const { data, isError, isLoading } = useProperty();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const [editModalOpened, setEditModalOpened] = useState(false);
-  const [selectedPropertyId, setSelectedPropertyId] = useState(null);
-  const [selectedPropertyDetails, setSelectedPropertyDetails] = useState(null);
   const [formData, setFormData] = useState({});
   const [editingId, setEditingId] = useState(null);
+  const [modalOpened, setModalopened] = useState(false);
 
   useEffect(() => {
     document.body.classList.add(
@@ -51,7 +49,6 @@ const Admin = () => {
       document.body.classList.remove("int_white_bg", "hd-white");
     };
   }, [isAuthenticated, getAccessTokenSilently]);
-
   useEffect(() => {
     const fetchUsers = async () => {
       if (token) {
@@ -159,6 +156,10 @@ const Admin = () => {
     }));
   };
 
+  const handleAddPropertyClick = () => {
+    setModalopened(true);
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     // 提交表单逻辑
@@ -210,6 +211,22 @@ const Admin = () => {
                           <i className="fa fa-list" aria-hidden="true" />
                           Commercial
                         </a>
+                      </li>
+                      <li>
+                        <a
+                          onClick={(e) => {
+                            e.preventDefault(); // 阻止默认的跳转行为
+                            handleAddPropertyClick(); // 调用点击处理函数
+                          }}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <i className="fa fa-list" aria-hidden="true" />
+                          Add Property
+                        </a>
+                        <AddPropertyModal
+                          opened={modalOpened}
+                          setOpened={setModalopened}
+                        />
                       </li>
                       <li>
                         <a href="payment-method.html">
@@ -511,13 +528,6 @@ const Admin = () => {
           </div>
         </section>
       </div>
-
-      <EditPropertyModal
-        opened={editModalOpened}
-        setOpened={setEditModalOpened}
-        propertyId={selectedPropertyId}
-        propertyDetails={selectedPropertyDetails}
-      />
     </>
   );
 };

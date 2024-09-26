@@ -65,7 +65,7 @@ const Hero = () => {
                           <div className="swiper_imgbox imgbox1">
                             <div className="swipper_img">
                               <h4>
-                                For {property.type} <span>Estate</span>
+                                For {property.type} <span>REALTY</span>
                               </h4>
                               <h2>{property.title}</h2>
                               <h3>
@@ -112,7 +112,7 @@ const Hero = () => {
                                   <i className="fas fa-caret-right" />
                                 </span>
                               </a>
-                              <h1>Real</h1>
+                              <h1>MTL</h1>
                             </div>
                           </div>
                         </div>

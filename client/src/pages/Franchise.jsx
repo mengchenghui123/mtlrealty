@@ -61,6 +61,7 @@ const Franchise = () => {
       );
       if (selectFranchise && !isError && !isLoading) {
         navigate(`/brands/${selectFranchise.id}`);
+        window.scrollTo(0, 0);
       }
     }
   };

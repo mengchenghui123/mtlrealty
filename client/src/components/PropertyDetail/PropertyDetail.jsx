@@ -633,7 +633,7 @@ export const PropertyDetail = () => {
                             type="submit"
                             name="sendmessage"
                             className="multiple-send-message"
-                            defaultValue="Submit Request"
+                            value="Submit Request"
                           />
                         </form>
                       </div>
@@ -647,127 +647,6 @@ export const PropertyDetail = () => {
         {/* START SIMILAR PROPERTIES */}
       </div>
     </section>
-
-    // <div className="property-detail-page">
-    //   <div className="property-detail-container">
-    //     {/* 第一块，大图片 */}
-    //     <div className="property-main-image">
-    //       <div className="like">
-    //         <Heart id={id} />
-    //       </div>
-    //       <img src={batches[currentBatchIndex]?.[0]} alt="Property" />
-    //     </div>
-    //     {/* 第二块，Swiper */}
-    //     {batches.length > 0 && (
-    //       <div className="property-swiper">
-    //         <Swiper
-    //           spaceBetween={10}
-    //           slidesPerView={1}
-    //           autoplay={{ delay: 2000 }}
-    //           onSlideChange={handleSlideChange}
-    //           loop={batches.length > 1}
-    //           modules={[Autoplay]}
-    //         >
-    //           {batches.map((card, i) => (
-    //             <SwiperSlide key={i}>
-    //               <div className="swiper-batch">
-    //                 {card.map((image, idx) => (
-    //                   <img key={idx} src={image} alt="home" />
-    //                 ))}
-    //               </div>
-    //             </SwiperSlide>
-    //           ))}
-    //         </Swiper>
-    //       </div>
-    //     )}
-
-    //     {/*第三块： property介绍 */}
-    //     <div className="property-description">
-    //       <h2>Property Description</h2>
-    //       <p>{property.description}</p>
-
-    //       {bookings?.map((booking) => booking.id).includes(id) ? (
-    //         <>
-    //           <Button
-    //             variant="outline"
-    //             color="red"
-    //             onClick={() => cancelBooking()}
-    //             disabled={cancelling}
-    //           >
-    //             <span>Cancel Booking</span>
-    //           </Button>
-    //           <span>
-    //             Your visit already booked for date{" "}
-    //             {bookings?.filter((booking) => booking?.id === id)[0].date}
-    //           </span>
-    //         </>
-    //       ) : (
-    //         <button
-    //           className="button"
-    //           onClick={() => {
-    //             validateLogin() && setModalOpened(true);
-    //           }}
-    //         >
-    //           Book Your Visit
-    //         </button>
-    //       )}
-
-    //       <BookingModal
-    //         opened={modalOpened}
-    //         setOpened={setModalOpened}
-    //         propertyId={id}
-    //         email={user?.email}
-    //       />
-    //     </div>
-    //     {/* 第四块： property Overview */}
-    //     <div className="property-overview">
-    //       <h2>Proerty Overview</h2>
-    //       <div className="overvew-items">
-    //         <div className="overview-item">
-    //           <i className="fa fa-bed"></i>
-    //           <span>{property.facilities.bedrooms} Bedrooms</span>
-    //         </div>
-    //         <div className="overview-item">
-    //           <i className="fa fa-bath"></i>
-    //           <span>{property.facilities.bathrooms} bathrooms</span>
-    //         </div>
-    //         <div className="overview-item">
-    //           <i className="fa fa-building"></i>
-    //           <span>{property.facilities.parkings} Parkings</span>
-    //         </div>
-    //         {/* add more as need */}
-    //       </div>
-    //     </div>
-
-    //     {/* 第五块：Feature & Amenities */}
-    //     <div className="property-amenities">
-    //       <h2>Feature & Amenities</h2>
-    //       <div className="amenities-items">
-    //         {property.amenities &&
-    //           Object.entries(property.amenities).map(([key, value], index) => (
-    //             <div key={index} className="amenities-item">
-    //               <i className="fa fa-check"></i>
-    //               <span>
-    //                 {key}:{value}
-    //               </span>
-    //             </div>
-    //           ))}
-    //       </div>
-    //     </div>
-    //     {/* 第六块：地图 */}
-    //     <div className="property-map">
-    //       <h2>Location</h2>
-    //       <iframe
-    //         src={`https://www.google.ca/maps?q=${property.address}&output=embed`}
-    //         width="100%"
-    //         height="400%"
-    //         style={{ border: 0 }}
-    //         allowFullScreen=""
-    //         tabIndex="0"
-    //       ></iframe>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
