@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
-  "homepage": "royalblue-coyote-319345.hostingersite.com",
   "type": "module",
   "scripts": {
     "dev": "vite",
