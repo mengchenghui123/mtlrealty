@@ -1,11 +1,8 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "https://mtlrealty.vercel.app/api/$1"
-    },
-    { "source": "/js/(.*)", "destination": "/js/$1" },
-    { "source": "/css/(.*)", "destination": "/css/$1" },
-    { "source": "/(.*)", "destination": "/$1" }
+  "version": 2,
+  "builds": [{ "src": "client/package.json", "use": "@vercel/static-build" }],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/server/index.js" },
+    { "src": "/(.*)", "dest": "/client/public/$1" }
   ]
 }
