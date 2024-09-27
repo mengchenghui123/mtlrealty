@@ -2,9 +2,9 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/" },
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/js/(.*)", "dest": "/client/src/js/$1" },
-    { "source": "/css/(.*)", "dest": "/client/src/css/$1" },
-    { "source": "/(.*)", "dest": "/client/src/$1" },
-    { "source": "/api/(.*)", "dest": "/server/index.js" }
+    { "source": "/js/(.*)", "destination": "/client/src/js/$1" },
+    { "source": "/css/(.*)", "destination": "/client/src/css/$1" },
+    { "source": "/(.*)", "destination": "/client/src/$1" },
+    { "source": "/api/(.*)", "destination": "/server/index.js" }
   ]
 }
