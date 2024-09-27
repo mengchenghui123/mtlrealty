@@ -1,6 +1,6 @@
 {
   "rewrites": [
     { "src": "/api/(.*)", "dest": "/server/index.js" },
-    { "src": "/(.*)", "dest": "/client/public/$1" }
+    { "src": "/(.*)", "dest": "/src/$1" }
   ]
 }
