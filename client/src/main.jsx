@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       domain="dev-htkjk3aua38i5rux.us.auth0.com"
       clientId="nVKAdz4m3HZ9Q3ubiGorXDCerMMfUZoa"
       authorizationParams={{
-        redirect_uri: "https://mtlrealty-two.vercel.app/",
+        redirect_uri: "https://mtlrealty-server.vercel.app",
         audience: "https://api.realEstate.com",
       }}
       scope="openid profile email"
