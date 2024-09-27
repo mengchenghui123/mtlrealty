@@ -1,7 +1,5 @@
 {
-  "version": 2,
-  "builds": [{ "src": "client/package.json", "use": "@vercel/static-build" }],
-  "routes": [
+  "rewrites": [
     { "src": "/api/(.*)", "dest": "/server/index.js" },
     { "src": "/(.*)", "dest": "/client/public/$1" }
   ]
