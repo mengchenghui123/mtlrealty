@@ -11,21 +11,10 @@ const PropertyGrid = ({ properties, title }) => {
   const id = pathname.split("/").slice(-1);
   const handleCardClick = (id) => {
     toast.success(`card with id ${id} clicked`);
-    navigate(`/property/${id}`);
-  };
-  const titleToURL = {
-    Residential: "../../residential",
-    Commercial: "../../commercial",
-    Franchise: "../../franchise",
-  };
-
-  const handleViewMore = () => {
-    const url = titleToURL[title];
-    if (url) {
-      window.scrollTo(0, 0);
-      navigate(url);
-    } else {
-      toast.error("404");
+    if (title === "Residential") {
+      navigate(`/property/${id}`);
+    } else if (title === "Franchise") {
+      navigate(`/brands/${id}`);
     }
   };
 
@@ -93,7 +82,7 @@ const PropertyGrid = ({ properties, title }) => {
       <div className="container-fluid">
         <div className="row">
           <div className="section-title col-md-5 pl-44">
-            <h3>Properties</h3>
+            <h3>Real Estate</h3>
             <h2>{title}</h2>
           </div>
         </div>
@@ -106,45 +95,70 @@ const PropertyGrid = ({ properties, title }) => {
                 data-aos="fade-up"
                 data-aos-delay={150 + index * 100}
               >
-                <Heart id={property.id} />
-                <div className="landscapes listing-item compact thehp-1">
-                  <a
-                    href="#"
-                    className="recent-16"
-                    onClick={() => handleCardClick(property.id)}
-                  >
-                    <div
-                      className="recent-img16 img-fluid img-center"
-                      style={{
-                        backgroundImage: `url(${property.image})`,
-                      }}
-                    />
-                    <div className="recent-content" />
-                    <div className="listing-badges">
-                      <span>{property.type}</span>
+                {title === "Residential" ? (
+                  <>
+                    <Heart id={property.id} />
+                    <div className="landscapes listing-item compact thehp-1">
+                      <a
+                        href="#"
+                        className="recent-16"
+                        onClick={() => handleCardClick(property.id)}
+                      >
+                        <div
+                          className="recent-img16 img-fluid img-center"
+                          style={{
+                            backgroundImage: `url(${property.image})`,
+                          }}
+                        />
+                        <div className="recent-content" />
+                        <div className="listing-badges">
+                          <span>{property.type}</span>
+                        </div>
+                        <div className="recent-details">
+                          <div className="recent-title">
+                            {truncate(property.title, { length: 15 })}
+                          </div>
+                          <div className="recent-price mb-3">
+                            {formatPrice(property.price)}
+                          </div>
+                          <div className="house-details thehp-1">
+                            <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
+                            {property.facilities.bedrooms} Bed <span>|</span>{" "}
+                            <i className="fa fa-bath mr-1" aria-hidden="true" />{" "}
+                            {property.facilities.bathrooms} Bath <span>|</span>{" "}
+                            <i
+                              className="fa fa-object-group mr-1"
+                              aria-hidden="true"
+                            />{" "}
+                            {property.lotSize ? `${property.lotSize}` : "N/A "}
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                    <div className="recent-details">
-                      <div className="recent-title">
-                        {truncate(property.title, { length: 15 })}
-                      </div>
-                      <div className="recent-price mb-3">
-                        {formatPrice(property.price)}
-                      </div>
-                      <div className="house-details thehp-1">
-                        <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
-                        {property.facilities.bedrooms} Bed <span>|</span>{" "}
-                        <i className="fa fa-bath mr-1" aria-hidden="true" />{" "}
-                        {property.facilities.bathrooms} Bath <span>|</span>{" "}
-                        <i
-                          className="fa fa-object-group mr-1"
-                          aria-hidden="true"
-                        />{" "}
-                        {property.lotSize ? `${property.lotSize}` : "N/A "}
-                      </div>
+                  </>
+                ) : title === "Franchise" ? (
+                  <>
+                    <div className="landscapes listing-item compact thehp-1">
+                      <a
+                        href="#"
+                        className="recent-16"
+                        onClick={() => handleCardClick(property.id)}
+                      >
+                        <div
+                          className="recent-img16 img-fluid img-center"
+                          style={{
+                            backgroundImage: `url(${property.image})`,
+                          }}
+                        />
+                        <div className="recent-content" />
+
+                        <div className="recent-details">
+                          <div className="recent-title">{property.title}</div>
+                        </div>
+                      </a>
                     </div>
-                    <div className="view-proper">View Details</div>
-                  </a>
-                </div>
+                  </>
+                ) : null}
               </div>
             ))}
           </div>

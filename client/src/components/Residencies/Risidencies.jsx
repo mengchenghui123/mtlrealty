@@ -4,12 +4,22 @@ import PropertyGrid from "../PropertyGrid/PropertyGrid";
 import PropertyServices from "../PropertyServices/PropertyServices";
 import NewsGrid from "../NewsGrid/NewsGrid";
 import useProperty from "../../Hook/useProperty";
+import useFranchise from "../../Hook/useFranchise";
 import { PuffLoader } from "react-spinners";
 
 export const Risidencies = () => {
   const { data, isError, isLoading } = useProperty();
+  const {
+    data: franchiseData,
+    isError: isFranchiseError,
+    isLoading: isFranchiseLoading,
+  } = useFranchise();
+  const propertyChunks = [];
+  const title = ["Residential", "Franchise"];
+  const chunkSize = 8;
+  const numberOfChunk = 2;
 
-  if (isError) {
+  if (isError || isFranchiseError) {
     return (
       <div className="wrapper">
         <span>Error loading Properties</span>
@@ -17,7 +27,7 @@ export const Risidencies = () => {
     );
   }
 
-  if (isLoading) {
+  if (isLoading || isFranchiseLoading) {
     return (
       <div className="puffloaderStyle" style={{ height: "60vh" }}>
         <PuffLoader
@@ -31,37 +41,29 @@ export const Risidencies = () => {
     );
   }
 
-  const chunkSize = 8;
-  const numberOfChunk = 3;
-  const propertyChunks = [];
-  const title = ["Residential", "Commercial", "Franchise"];
-
-  //将数据分块，每4块房屋信息为一行
-  const limitedData = data.slice(0, chunkSize * numberOfChunk);
-  for (let i = 0; i < limitedData.length; i += chunkSize) {
-    propertyChunks.push(limitedData.slice(i, i + chunkSize));
+  const limitedData = data ? data.slice(0, 8) : [];
+  const limitedFranchiseData = franchiseData ? franchiseData.slice(0, 8) : [];
+  const combineData = [...limitedData, ...limitedFranchiseData];
+  for (let i = 0; i < numberOfChunk; i++) {
+    propertyChunks.push(combineData.slice(i * chunkSize, (i + 1) * chunkSize));
   }
+
   return (
     <section className="r-wrapper">
       {propertyChunks.map((chunk, index) => (
         <React.Fragment key={index}>
           {index === 1 && (
-            <div
-              key="services"
-              className="property-section"
-
-              // style={{ backgroundColor: "#cacaca", margin: "2rem 0" }}
-            >
+            <div key="services" className="property-section">
               <div className="paddings innerwidth r-container">
                 <PropertyServices />
               </div>
             </div>
           )}
-          <div key={title} className="property-section">
+          <div key={title[index]} className="property-section">
             <div className="paddings innerwidth r-container">
               <PropertyGrid
                 properties={chunk}
-                title={title[index % title.length]}
+                title={title[index]} // 使用标题数组
               />
             </div>
           </div>

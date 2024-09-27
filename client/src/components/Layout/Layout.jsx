@@ -33,7 +33,6 @@ const Layout = () => {
           audience: "https://api.realEstate.com", // API 标识符
           scope: "openid profile email",
         });
-        console.log(accessToken);
         localStorage.setItem("access_token", accessToken);
         setUserDetail((prev) => ({ ...prev, token: accessToken }));
         mutate(accessToken);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import { Link } from "react-router-dom";
@@ -37,7 +37,7 @@ const Header = () => {
                 <nav id="navigation" className="style-1">
                   <ul id="responsive">
                     <li>
-                      <Link to="/residential">Residential</Link>
+                      <a>Residential</a>
                       <ul>
                         <li>
                           <Link to="/rent">Rent</Link>
@@ -57,7 +57,7 @@ const Header = () => {
                           <Link to="/#">Commercial Leasing</Link>
                         </li>
                         <li>
-                          <Link to="/partners">Partners</Link>
+                          <Link to="#">Partners</Link>
                         </li>
                         <li>
                           <Link to="#">proprietary</Link>

@@ -11,8 +11,6 @@ import Residiences from "./components/Residencies/Risidencies";
 import About from "./pages/About";
 import Buy from "./pages/Buy";
 import Sell from "./pages/Sell";
-import Residential from "./pages/Residential";
-import Commercial from "./pages/Commercial";
 import Franchise from "./pages/Franchise";
 import Partners from "./pages/Partners";
 import Brands from "./pages/Brands";
@@ -43,8 +41,6 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: "rent", element: <Rent /> },
-        { path: "residential", element: <Residential /> },
-        { path: "commercial", element: <Commercial /> },
         { path: "franchise", element: <Franchise /> },
         { path: "contact", element: <Contact /> },
         { path: "partners", element: <Partners /> },
