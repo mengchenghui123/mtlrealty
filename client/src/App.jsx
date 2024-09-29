@@ -12,7 +12,6 @@ import About from "./pages/About";
 import Buy from "./pages/Buy";
 import Sell from "./pages/Sell";
 import Franchise from "./pages/Franchise";
-import Partners from "./pages/Partners";
 import Brands from "./pages/Brands";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -43,7 +42,6 @@ function App() {
         { path: "rent", element: <Rent /> },
         { path: "franchise", element: <Franchise /> },
         { path: "contact", element: <Contact /> },
-        { path: "partners", element: <Partners /> },
         { path: "brands", element: <Brands /> },
         { path: "property/:id", element: <PropertyDetail /> },
         { path: "/bookings", element: <Bookings /> },

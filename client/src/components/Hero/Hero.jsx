@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-
+import { useEffect } from "react";
 import useProperty from "../../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
-import { property } from "lodash";
 
 const Hero = () => {
   const { data, isError, isLoading } = useProperty();

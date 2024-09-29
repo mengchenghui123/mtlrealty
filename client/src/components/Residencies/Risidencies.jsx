@@ -1,5 +1,4 @@
 import React from "react";
-// import "./Residencies.css";
 import PropertyGrid from "../PropertyGrid/PropertyGrid";
 import PropertyServices from "../PropertyServices/PropertyServices";
 import NewsGrid from "../NewsGrid/NewsGrid";

@@ -10,7 +10,6 @@ import { useMutation } from "react-query";
 import { removeBooking } from "../../utils/Api";
 import { toast } from "react-toastify";
 import emailjs from "emailjs-com";
-import Heart from "../Heart/Heart";
 
 export const PropertyDetail = () => {
   const { data, isError, isLoading } = useProperty();
@@ -187,9 +186,8 @@ export const PropertyDetail = () => {
                     {batches[currentBatchIndex].map((image, index) => (
                       <div
                         key={index}
-                        className={`${
-                          index === 0 ? "active" : ""
-                        } item carousel-item`}
+                        className={`${index === 0 ? "active" : ""
+                          } item carousel-item`}
                         data-slide-number={index}
                       >
                         <img
@@ -220,9 +218,8 @@ export const PropertyDetail = () => {
                     {batches[currentBatchIndex].map((image, index) => (
                       <li
                         key={index}
-                        className={`list-inline-item ${
-                          index === 0 ? "active" : ""
-                        }`}
+                        className={`list-inline-item ${index === 0 ? "active" : ""
+                          }`}
                       >
                         <a
                           id={`carousel-selector-${index}`}
@@ -244,9 +241,8 @@ export const PropertyDetail = () => {
                     {batches.map((_, pageIndex) => (
                       <button
                         key={pageIndex}
-                        className={`page-btn ${
-                          currentBatchIndex === pageIndex ? "active" : ""
-                        }`}
+                        className={`page-btn ${currentBatchIndex === pageIndex ? "active" : ""
+                          }`}
                         onClick={() => handlePageChange(pageIndex)}
                       >
                         {pageIndex + 1}
@@ -347,11 +343,11 @@ export const PropertyDetail = () => {
               <ul className="homes-list clearfix">
                 {property.amenities
                   ? property.amenities.map((facility, index) => (
-                      <li key={index}>
-                        <i className="fa fa-check-square" aria-hidden="true" />
-                        <span>{facility}</span>
-                      </li>
-                    ))
+                    <li key={index}>
+                      <i className="fa fa-check-square" aria-hidden="true" />
+                      <span>{facility}</span>
+                    </li>
+                  ))
                   : "N/A"}
               </ul>
             </div>
