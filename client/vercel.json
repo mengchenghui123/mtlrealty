@@ -1,8 +1,8 @@
 {
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/js/(.*)", "destination": "/client/src/js/$1" },
-    { "source": "/css/(.*)", "destination": "/client/src/css/$1" },
-    { "source": "/(.*)", "destination": "/client/src/$1" }
+    { "source": "/js/(.*)", "destination": "/js/$1" },
+    { "source": "/css/(.*)", "destination": "/css/$1" },
+    { "source": "/(.*)", "destination": "/$1" }
   ]
 }
