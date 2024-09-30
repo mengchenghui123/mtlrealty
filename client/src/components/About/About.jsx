@@ -13,7 +13,7 @@ export const About = () => {
           <div className="container">
             <h1>About Our Company</h1>
             <h2>
-              <a href="index.html">Home</a> &nbsp;/&nbsp; About Us
+              <a href="/">Home</a> &nbsp;/&nbsp; About Us
             </h2>
           </div>
         </div>
