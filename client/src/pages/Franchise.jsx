@@ -69,7 +69,12 @@ const Franchise = () => {
   return (
     <div id="wrapper">
       <div className="clearfix"></div>
-      <section className="headings"></section>
+      <section
+        className="headings"
+        style={{
+          backgroundImage: 'url("https://i.imgur.com/FoE3O6U.png")',
+        }}
+      ></section>
       <section className="about-us fh">
         <div className="container">
           <div className="row">
@@ -95,9 +100,6 @@ const Franchise = () => {
                   are confident that our collaboration will contribute to the
                   brand's sustainable growth and achieve win-win results.
                 </p>
-              </div>
-              <div className="box bg-2">
-                <img src="images/signature.png" className="ml-5" alt="" />
               </div>
             </div>
             <div className="col-lg-6 col-md-12 col-xs-12">
@@ -147,24 +149,13 @@ const Franchise = () => {
                 </div>
               </div>
             </article>
-            <article
-              className="col-lg-4 col-md-6 col-xs-12 serv mb-0 pt"
-              data-aos="fade-up"
-            >
-              <div className="serv-flex arrow">
-                <div className="art-1 img-15">
-                  <img src="https://i.imgur.com/pqrJeWA.png" alt="" />
-                  <h3>Standardization System</h3>
-                </div>
-              </div>
-            </article>
           </div>
         </div>
       </section>
       <section className="counterup">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-md-6 col-xs-12">
+            <div className="col-lg-3 col-md-6 col-xs-12">
               <div className="countr">
                 <i className="fa fa-trophy " aria-hidden="true" />
                 <div className="count-me">
@@ -173,7 +164,7 @@ const Franchise = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-xs-12">
+            <div className="col-lg-3 col-md-6 col-xs-12">
               <div className="countr mb-0">
                 <i className="fa fa-shopping-bag" aria-hidden="true" />
                 <div className="count-me">
@@ -182,12 +173,21 @@ const Franchise = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-xs-12">
+            <div className="col-lg-3 col-md-6 col-xs-12">
               <div className="countr mb-0 last">
                 <i className="fa fa-users" aria-hidden="true" />
                 <div className="count-me">
                   <p className="counter text-left">11</p>
                   <h3>Proprietaries</h3>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-6 col-xs-12">
+              <div className="countr mb-0 last">
+                <i className="fa fa-trophy" aria-hidden="true" />
+                <div className="count-me">
+                  <p className="counter text-left">20</p>
+                  <h3>Award</h3>
                 </div>
               </div>
             </div>

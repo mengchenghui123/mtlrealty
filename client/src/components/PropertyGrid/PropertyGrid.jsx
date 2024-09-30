@@ -140,7 +140,6 @@ const PropertyGrid = ({ properties, title }) => {
                   <>
                     <div className="landscapes listing-item compact thehp-1">
                       <a
-                        href="#"
                         className="recent-16"
                         onClick={() => handleCardClick(property.id)}
                       >

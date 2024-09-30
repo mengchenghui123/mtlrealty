@@ -7,8 +7,6 @@ import userDetailContext from "../../context/userDetailContext";
 import { useMutation } from "react-query";
 import { createUser } from "../../utils/Api";
 import useFavourites from "../../Hook/useFavourites";
-import { toast } from "react-toastify";
-import { PuffLoader } from "react-spinners";
 import useBookings from "../../Hook/useBookings";
 
 const Layout = () => {

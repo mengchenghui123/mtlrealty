@@ -321,18 +321,6 @@ jQuery(document).on(
       });
     }
 
-    /*----------------------------------
-    //------ JQUERY SCROOLTOP ------//
-    -----------------------------------*/
-    var go = $(".go-up");
-    $(window).on("scroll", function () {
-      var scrolltop = $(this).scrollTop();
-      if (scrolltop >= 50) {
-        go.fadeIn();
-      } else {
-        go.fadeOut();
-      }
-    });
 
     /*----------------------------------
     //------ MAGNIFIC POPUP ------//

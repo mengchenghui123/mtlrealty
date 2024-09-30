@@ -1,48 +1,52 @@
 const newsData = [
   {
     id: 1,
-    title: 'The Real Estate News',
-    date: 'Jun 23, 2020',
-    author: 'Admin',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.',
-    image: '/r1.png',
+    title: "The Real Estate News",
+    date: "Jun 23, 2020",
+    author: "Admin",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+    image: "https://i.imgur.com/awa2U2i.png",
     shares: 306,
     comments: 34,
     likes: 122,
   },
   {
     id: 2,
-    title: 'The Real Estate News',
-    date: 'Jun 23, 2020',
-    author: 'Admin',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.',
-    image: '/r2.png',
+    title: "The Real Estate News",
+    date: "Jun 23, 2020",
+    author: "Admin",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+    image: "https://i.imgur.com/awa2U2i.png",
     shares: 306,
     comments: 34,
     likes: 122,
   },
   {
     id: 3,
-    title: 'The Real Estate News',
-    date: 'Jun 23, 2020',
-    author: 'Admin',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.',
-    image: '/r3.png',
+    title: "The Real Estate News",
+    date: "Jun 23, 2020",
+    author: "Admin",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+    image: "https://i.imgur.com/awa2U2i.png",
     shares: 306,
     comments: 34,
     likes: 122,
   },
   {
     id: 4,
-    title: 'The Real Estate News',
-    date: 'Jun 23, 2020',
-    author: 'Admin',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.',
-    image: '/value.png',
+    title: "The Real Estate News",
+    date: "Jun 23, 2020",
+    author: "Admin",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.",
+    image: "https://i.imgur.com/awa2U2i.png",
     shares: 306,
     comments: 34,
     likes: 122,
-  }
+  },
 ];
 
 const NewsGrid = () => {
@@ -60,8 +64,10 @@ const NewsGrid = () => {
               {newsData.map((news, index) => (
                 <div
                   key={news.id}
-                  className={`col-xl-6 col-md-12 col-xs-12 ${index % 2 === 0 ? 'fade-right' : 'fade-left'}`}
-                  data-aos={`fade-${index % 2 === 0 ? 'right' : 'left'}`}
+                  className={`col-xl-6 col-md-12 col-xs-12 ${
+                    index % 2 === 0 ? "fade-right" : "fade-left"
+                  }`}
+                  data-aos={`fade-${index % 2 === 0 ? "right" : "left"}`}
                 >
                   <div className="news-item news-item-sm">
                     <a href="blog-details.html" className="news-img-link">
@@ -89,13 +95,16 @@ const NewsGrid = () => {
                         </a>
                         <ul className="action-list">
                           <li className="action-item">
-                            <i className="fa fa-heart" /> <span>{news.likes}</span>
+                            <i className="fa fa-heart" />{" "}
+                            <span>{news.likes}</span>
                           </li>
                           <li className="action-item">
-                            <i className="fa fa-comment" /> <span>{news.comments}</span>
+                            <i className="fa fa-comment" />{" "}
+                            <span>{news.comments}</span>
                           </li>
                           <li className="action-item">
-                            <i className="fa fa-share-alt" /> <span>{news.shares}</span>
+                            <i className="fa fa-share-alt" />{" "}
+                            <span>{news.shares}</span>
                           </li>
                         </ul>
                       </div>
@@ -110,6 +119,6 @@ const NewsGrid = () => {
       {/* END SECTION BLOG */}
     </>
   );
-}
+};
 
 export default NewsGrid;

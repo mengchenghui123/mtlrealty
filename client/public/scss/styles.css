@@ -2033,12 +2033,12 @@ section.services-home {
       from(rgba(255, 255, 255, 0.8)),
       to(rgba(255, 255, 255, 0.8))
     ),
-    url(../images/bg/bg-counter.jpg) no-repeat center center;
+    url(https://i.imgur.com/awa2U2i.png) no-repeat center center;
   background: linear-gradient(
       rgba(255, 255, 255, 0.8),
       rgba(255, 255, 255, 0.8)
     ),
-    url(../images/bg/bg-counter.jpg) no-repeat center center;
+    url(https://i.imgur.com/awa2U2i.png) no-repeat center center;
   background-attachment: fixed;
 }
 

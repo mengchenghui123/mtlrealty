@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import useProperty from "../../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Hero = () => {
   const { data, isError, isLoading } = useProperty();
+  const navigate = useNavigate();
   useEffect(() => {
     if (!isLoading && !isError && data.length > 0) {
       new Swiper(".swiper-container", {
@@ -46,6 +49,11 @@ const Hero = () => {
   const heroProperty = data
     .filter((property) => property.type === "Sale" || property.type === "Rent")
     .slice(0, 5);
+
+  const handleCardClick = (id) => {
+    toast.success(`card with id ${id} clicked`);
+    navigate(`/property/${id}`);
+  };
 
   return (
     <div className="int_content_wraapper int_content_left">
@@ -102,8 +110,8 @@ const Hero = () => {
                                 </li>
                               </ul>
                               <a
-                                href={`/property/${property.id}`}
                                 className="int_btn"
+                                onClick={() => handleCardClick(property.id)}
                               >
                                 View Property{" "}
                                 <span className="btn_caret">
