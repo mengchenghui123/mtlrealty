@@ -5171,16 +5171,6 @@ element.style {
 /*---------------------------------------*/
 .bg-img3 {
   background-attachment: scroll;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.4)),
-      to(rgba(0, 0, 0, 0.4))
-    ),
-    url(../images/bg/video-poster2.png) no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(../images/bg/video-poster2.png) no-repeat center top;
   border-radius: 8px;
   height: 700px;
   position: relative;
@@ -5217,20 +5207,7 @@ element.style {
 }
 
 .homepage-2 .info-help.h18 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.1)),
-      to(rgba(255, 255, 255, 0.1))
-    ),
-    url(../images/bg/info-service3.png) no-repeat scroll center center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.1)
-    ),
-    url(../images/bg/info-service3.png) no-repeat scroll center center;
-}
+
 
 .homepage-2 .team .team-social li a.facebook,
 .homepage-2 .team .team-social li a.weixin,
@@ -5895,14 +5872,7 @@ a.button,
   background: #8731e8;
 }
 
-.homepage-3 .welcome-area {
-  background: linear-gradient(
-      -36deg,
-      rgba(69, 40, 220, 0.8) 0%,
-      rgba(135, 49, 232, 0.8) 100%
-    ),
-    url(../images/bg/video-poster2.png) no-repeat scroll center center/cover;
-}
+
 
 .homepage-3 .welcome-area {
   height: 840px;
@@ -6321,9 +6291,7 @@ a.button,
   background: #8731e8;
 }
 
-.homepage-3 .info-help.h17 {
-  background: url(../images/bg/bg-home-3.png) no-repeat scroll center center;
-}
+
 
 .homepage-3 .blog-section .action-list .fa-heart,
 .homepage-3 .blog-section .action-list .fa-comment,
@@ -6344,9 +6312,7 @@ a.button,
   background: #8731e8;
 }
 
-.bg-white-3 {
-  background: url(../images/bg/bg-white-3.png) 0 0 repeat !important;
-}
+
 
 .homepage-3 .singleJobClinet,
 .homepage-1 .singleJobClinet {
@@ -6443,7 +6409,6 @@ a.button,
   content: "";
   width: 68px;
   height: 58px;
-  background: url(../images/icons/quoe.png) no-repeat center center/cover;
 }
 
 .homepage-3 .job_clientSlide .owl-nav .owl-prev,
@@ -6961,19 +6926,6 @@ a.button,
 
 .homepage-4 .info-help {
   padding: 4.6rem 0;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.3)),
-      to(rgba(255, 255, 255, 0.3))
-    ),
-    url(../images/bg/bg-info3.jpg) no-repeat scroll center center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.3)
-    ),
-    url(../images/bg/bg-info3.jpg) no-repeat scroll center center;
   background-size: cover;
   position: relative;
   z-index: 3;
@@ -7050,10 +7002,7 @@ a.button,
   background: #ff385c;
 }
 
-.homepage-4 .welcome-area {
-  background: rgba(0, 0, 0, 0) url("../images/bg/bg-demo.jpg") no-repeat scroll
-    center center/cover;
-}
+
 
 .homepage-4 .welcome-area .shape-bottom svg {
   -webkit-transform: scale(1.05);
@@ -7064,7 +7013,6 @@ a.button,
 /*--- 19. HOME 5 IMAGE  ---*/
 /*---------------------------------------*/
 .homepage-5 .parallax-searchs.home17 {
-  background: url(../images/bg/bg-home-5.jpg) no-repeat center top;
   background-size: cover;
   background-attachment: scroll !important;
   width: 100%;
@@ -7251,8 +7199,6 @@ a.button,
 
 .homepage-5 .info-help.h18 {
   padding: 9rem 0;
-  background: url(../images/bg/bg-service-home-5.png) no-repeat scroll center
-    center;
   background-size: cover;
   position: relative;
   z-index: 0 !important;
@@ -7308,7 +7254,6 @@ a.button,
 
 .homepage-5 .info-help.h17 {
   padding: 9rem 0;
-  background: url(../images/bg/bg-2-home-5.png) no-repeat scroll center center;
   background-size: cover;
   position: relative;
   z-index: 0 !important;
@@ -7508,16 +7453,7 @@ html input[disabled] {
 /*---------------------------------------*/
 .parallax-search {
   position: relative;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.5)),
-      to(rgba(0, 0, 0, 0.5))
-    ),
-    url("../images/bg/bg-demo.jpg") no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/bg/bg-demo.jpg") no-repeat center top;
+
   background-size: cover;
   background-attachment: fixed !important;
   width: 100%;
@@ -8024,16 +7960,7 @@ a.button {
 }
 
 .homepage-12 .header-image {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.3)),
-      to(rgba(0, 0, 0, 0.3))
-    ),
-    url(../images/bg/bg-21.jpg) no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(../images/bg/bg-21.jpg) no-repeat center top;
+
   background-size: cover;
   background-attachment: fixed;
   width: 100%;
@@ -8886,9 +8813,7 @@ a.button {
   padding-right: 0 !important;
 }
 
-.th-10 .info-help.h17 {
-  background: url(../images/bg/bg-home-3.png) no-repeat scroll center center;
-}
+
 
 .th-10 .info-help .info-head .info-text .btn-pro {
   background: #6449e7;
@@ -9227,17 +9152,6 @@ a.button {
 
 .int_dark_bg section.services-home {
   padding: 4.6rem 0;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.8)),
-      to(rgba(0, 0, 0, 0.8))
-    ),
-    url(../images/bg/bg-counter.jpg) no-repeat center center;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(../images/bg/bg-counter.jpg) no-repeat center center;
-  background-attachment: fixed;
 }
 
 .int_dark_bg .services-home .bg-base {
@@ -10246,7 +10160,7 @@ body.int_white_bg {
 }
 
 .bg-white-1 {
-  background: url(../../bg-pattern-dot.png) 0 0 repeat !important;
+  background: url(images/bg-pattern-dot.png) 0 0 repeat !important;
 }
 
 .bg-white-2 {
@@ -10688,16 +10602,6 @@ a.button {
 /*--- 27. TYPED IMAGE HOME 15 ---*/
 /*---------------------------------------*/
 .parallax-searchs.home15 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.5)),
-      to(rgba(0, 0, 0, 0.5))
-    ),
-    url("../images/bg/bg-15.jpg") no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/bg/bg-15.jpg") no-repeat center top;
   background-size: cover;
   background-attachment: fixed !important;
   width: 100%;
@@ -10705,16 +10609,6 @@ a.button {
 }
 
 .parallax-searchs.home15.thome-6 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.5)),
-      to(rgba(0, 0, 0, 0.5))
-    ),
-    url(../images/bg/thome-6.png) no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../images/bg/thome-6.png) no-repeat center top;
   background-size: cover;
   background-attachment: fixed !important;
   width: 100%;
@@ -10724,16 +10618,6 @@ a.button {
 }
 
 .parallax-searchs.thome-1 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.3)),
-      to(rgba(0, 0, 0, 0.3))
-    ),
-    url(../images/bg/bg-h-1.png) no-repeat center top !important;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(../images/bg/bg-h-1.png) no-repeat center top !important;
   background-size: cover;
   background-attachment: fixed !important;
   width: 100%;
@@ -10741,16 +10625,6 @@ a.button {
 }
 
 .parallax-searchs.thome-10 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.3)),
-      to(rgba(0, 0, 0, 0.3))
-    ),
-    url(../images/bg/bg-h-10.png) no-repeat center top !important;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(../images/bg/bg-h-10.png) no-repeat center top !important;
   background-size: cover;
   background-attachment: fixed !important;
   width: 100%;
@@ -12099,19 +11973,7 @@ section.featured.home15 {
 /*----------------------------------------------*/
 .info-help {
   padding: 6rem 0;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.3)),
-      to(rgba(255, 255, 255, 0.3))
-    ),
-    url(../images/bg/bg-info3.jpg) no-repeat scroll center center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.3)
-    ),
-    url(../images/bg/bg-info3.jpg) no-repeat scroll center center;
+
   background-size: cover;
   position: relative;
   z-index: 3;
@@ -12487,16 +12349,6 @@ section.visited-cities {
 /*--- 33. PARALLAX HOME 17 ---*/
 /*----------------------------*/
 .parallax-searchs.home17 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.2)),
-      to(rgba(0, 0, 0, 0.2))
-    ),
-    url("../images/bg/home-17-2.jpg") no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../images/bg/home-17-2.jpg") no-repeat center top;
   background-size: cover;
   background-attachment: fixed !important;
   width: 100%;
@@ -12883,19 +12735,7 @@ section.visited-cities {
 /*----------------------------------------------*/
 .info-help.h18 {
   padding: 9rem 0;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.1)),
-      to(rgba(255, 255, 255, 0.1))
-    ),
-    url(../images/bg/info-service4.png) no-repeat scroll center center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.1)
-    ),
-    url(../images/bg/info-service4.png) no-repeat scroll center center;
+
   background-size: cover;
   position: relative;
   z-index: 0 !important;
@@ -12903,7 +12743,6 @@ section.visited-cities {
 
 .info-help.h17 {
   padding: 9rem 0;
-  background: url(../images/bg/info-service6.png) no-repeat scroll center center;
   background-size: cover;
   position: relative;
   z-index: 0 !important;
@@ -13159,16 +12998,6 @@ section.team {
 /*--------- 36. HEADER IMAGE HOME 8 ----------*/
 /*---------------------------------------------*/
 .th-8 .header-image {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0)),
-      to(rgba(0, 0, 0, 0))
-    ),
-    url("../images/bg/bg-home-8.png") no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-    url("../images/bg/bg-home-8.png") no-repeat center top;
   background-attachment: fixed !important;
   width: 100%;
   height: 90vh;
@@ -13860,16 +13689,6 @@ select {
 /*--------- 37. HEADER IMAGE HOME 18 ----------*/
 /*---------------------------------------------*/
 .header-image.home-18 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(0, 0, 0, 0.2)),
-      to(rgba(0, 0, 0, 0.2))
-    ),
-    url("../images/bg/home-18.jpg") no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../images/bg/home-18.jpg") no-repeat center top;
   background-size: cover;
   background-attachment: fixed !important;
   width: 100%;
@@ -14154,16 +13973,7 @@ section.how-it-works {
 /*-------------------------------------------*/
 section.h18.testimonials {
   padding: 6rem 0;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(14, 18, 68, 0.88)),
-      to(rgba(14, 18, 68, 0.88))
-    ),
-    url(../images/bg/bg-testimonials.jpg) no-repeat scroll center center;
-  background: linear-gradient(rgba(14, 18, 68, 0.88), rgba(14, 18, 68, 0.88)),
-    url(../images/bg/bg-testimonials.jpg) no-repeat scroll center center;
+
   background-size: cover;
 }
 
@@ -14725,15 +14535,6 @@ a.button {
 }
 
 .homepage-23 .welcome-area {
-  background: linear-gradient(
-      -36deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0.2) 100%
-    ),
-    url(../images/bg/bg-23.jpg) no-repeat scroll center center/cover;
-}
-
-.homepage-23 .welcome-area {
   height: 100vh;
   position: relative;
   z-index: 99;
@@ -14921,11 +14722,6 @@ a.button {
 /*--------------------------------------------*/
 /*--------- 44. HEADER IMAGE HOME 24 ----------*/
 /*--------------------------------------------*/
-.homepage-24 .header-image {
-  background: url(../images/bg/bg-home-24.jpg) no-repeat center bottom;
-  height: 90vh;
-  border-bottom: 1px solid #e5e5e5;
-}
 
 .homepage-24 #header {
   -webkit-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
@@ -14988,19 +14784,7 @@ a.button {
 
 .homepage-24 section.request {
   padding: 6rem 0;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(255, 255, 255, 0.3)),
-      to(rgba(255, 255, 255, 0.3))
-    ),
-    url(../images/bg/bg-info3.jpg) no-repeat scroll center center;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.3)
-    ),
-    url(../images/bg/bg-info3.jpg) no-repeat scroll center center;
+
   background-size: cover;
   position: relative;
   z-index: 3;
@@ -15057,16 +14841,6 @@ a.button {
 }
 
 .homepage-24 .bgc {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(43, 43, 43, 0.8)),
-      to(rgba(43, 43, 43, 0.8))
-    ),
-    url(../images/bg/bg-testimonials.jpg) no-repeat center center;
-  background: linear-gradient(rgba(43, 43, 43, 0.8), rgba(43, 43, 43, 0.8)),
-    url(../images/bg/bg-testimonials.jpg) no-repeat center center;
   padding: 2rem;
   background-size: cover;
 }
@@ -17796,16 +17570,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 
 section.breadcrumb-outer {
   padding: 12rem 0;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(14, 18, 68, 0.3)),
-      to(rgba(14, 18, 68, 0.3))
-    ),
-    url(../images/bg/home-171.png) no-repeat scroll center center;
-  background: linear-gradient(rgba(14, 18, 68, 0.3), rgba(14, 18, 68, 0.3)),
-    url(../images/bg/home-171.png) no-repeat scroll center center;
+
   background-size: cover;
 }
 
@@ -21089,16 +20854,6 @@ a.btn_1 {
 /*--- 61. INNER PAGE COMING SOON ----*/
 /*-----------------------------------*/
 .headings-7 {
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(58, 44, 95, 0.7)),
-      to(rgba(32, 51, 100, 0.7))
-    ),
-    url(../images/bg/coming-soon.jpg) no-repeat center top;
-  background: linear-gradient(rgba(58, 44, 95, 0.7), rgba(32, 51, 100, 0.7)),
-    url(../images/bg/coming-soon.jpg) no-repeat center top;
   color: #fff;
   background-size: cover;
   background-attachment: fixed !important;
@@ -21166,7 +20921,6 @@ a.btn_1 {
 /*--- 62. INNER PAGE UNDER CONSTRUCTION ----*/
 /*------------------------------------------*/
 .headings-8 {
-  background: url(../images/bg/bg-under.jpg) no-repeat center top;
   color: #fff;
   background-size: cover;
   background-attachment: fixed !important;
@@ -22739,7 +22493,6 @@ form label.error {
 
 #status,
 .status-mes {
-  background-image: url(../images/preloader.gif);
   background-position: center;
   background-repeat: no-repeat;
   height: 200px;
