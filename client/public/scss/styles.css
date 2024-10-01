@@ -6984,7 +6984,7 @@ a.button {
 
 .int_dark_bg section.services-home {
   padding: 6rem 0;
-  
+
   background-attachment: fixed;
 }
 
@@ -7962,7 +7962,7 @@ body.int_white_bg {
 }
 
 .bg-white-1 {
-  background: url(images/bg-pattern-dot.png) 0 0 repeat !important;
+  background: url(../css/images/bg-pattern-dot.png) 0 0 repeat !important;
 }
 
 .bg-white-2 {
