@@ -91,122 +91,156 @@ const CommercialModifier = () => {
   };
 
   return (
-    <div>
-      <h1>Manager Commercial</h1>
-      <ul>
+    <div className="container mt-5">
+      <h1 className="text-center">Manager Commercial</h1>
+      <ul className="list-group mb-4">
         {commercialData.map((commercial) => {
-          <li key={commercial.id}>
+          <li
+            key={commercial.id}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
             {commercial.title}
             <button onClick={() => handleSelect(commercial)}>Edit</button>
           </li>;
         })}
       </ul>
-      <h2>{selectedCommercial ? "Edit Commercial" : "Add Commercial"}</h2>
-      <form onSubmit={selectedCommercial ? handleUpdate : handleAdd}>
-        <input
-          type="text"
-          name="title"
-          value={formData.title || ""}
-          onChange={handleChange}
-          placeholder="Title"
-          required
-        />
-        <input
-          type="text"
-          name="type"
-          value={formData.type || "Rent/Sale/Commercial"}
-          onChange={handleChange}
-          placeholder="Type"
-          required
-        />
-        <textarea
-          name="type"
-          value={formData.description || ""}
-          onChange={handleChange}
-          placeholder="Description"
-          required
-        />
-        <input
-          type="text"
-          name="propertyType"
-          value={formData.propertyType || ""}
-          onChange={handleChange}
-          placeholder="propertyType eg:House/Condo/Restaurant"
-          required
-        />
-        <input
-          type="text"
-          name="livingSpace"
-          value={formData.livingSpace || ""}
-          onChange={handleChange}
-          placeholder="livingSpace sqft"
-          required
-        />
-        <input
-          type="text"
-          name="lotSize"
-          value={formData.lotSize || ""}
-          onChange={handleChange}
-          placeholder="lotSize sqft"
-          required
-        />
-        <input
-          type="text"
-          name="annualRevenue"
-          value={formData.lotSize || ""}
-          onChange={handleChange}
-          placeholder="$annualRevenue"
-          required
-        />
-        <input
-          type="text"
-          name="totalInvestment"
-          value={formData.totalInvestment || ""}
-          onChange={handleChange}
-          placeholder="$totalInvestment"
-          required
-        />
-        <input
-          type="text"
-          name="estimatedProfit"
-          value={formData.estimatedProfit || ""}
-          onChange={handleChange}
-          placeholder="$estimatedProfit"
-          required
-        />
-        <input
-          type="text"
-          name="EstimatedPaybackPeriod"
-          value={formData.EstimatedPaybackPeriod || ""}
-          onChange={handleChange}
-          placeholder="EstimatedPaybackPeriod"
-          required
-        />
-        <input
-          type="text"
-          name="address"
-          value={formData.address || ""}
-          onChange={handleChange}
-          placeholder="address"
-          required
-        />
-        <input
-          type="text"
-          name="mlsNumber"
-          value={formData.mlsNumber || ""}
-          onChange={handleChange}
-          placeholder="mlsNumber"
-          required
-        />
-        <input
-          type="text"
-          name="mlsNumber"
-          value={formData.mlsNumber || ""}
-          onChange={handleChange}
-          placeholder="mlsNumber"
-          required
-        />
-        <div>
+      <h2 className="text-center mb-4">
+        {selectedCommercial ? "Edit Commercial" : "Add Commercial"}
+      </h2>
+      <form
+        onSubmit={selectedCommercial ? handleUpdate : handleAdd}
+        className="border p-4 rounded"
+      >
+        <div className="form-group">
+          <input
+            type="text"
+            name="title"
+            value={formData.title || ""}
+            onChange={handleChange}
+            placeholder="Title"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="type"
+            value={formData.type || "Rent/Sale/Commercial"}
+            onChange={handleChange}
+            placeholder="Type"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <textarea
+            name="type"
+            value={formData.description || ""}
+            onChange={handleChange}
+            placeholder="Description"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="propertyType"
+            value={formData.propertyType || ""}
+            onChange={handleChange}
+            placeholder="propertyType eg:House/Condo/Restaurant"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="livingSpace"
+            value={formData.livingSpace || ""}
+            onChange={handleChange}
+            placeholder="livingSpace sqft"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="lotSize"
+            value={formData.lotSize || ""}
+            onChange={handleChange}
+            placeholder="lotSize sqft"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="annualRevenue"
+            value={formData.lotSize || ""}
+            onChange={handleChange}
+            placeholder="$annualRevenue"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="totalInvestment"
+            value={formData.totalInvestment || ""}
+            onChange={handleChange}
+            placeholder="$totalInvestment"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="estimatedProfit"
+            value={formData.estimatedProfit || ""}
+            onChange={handleChange}
+            placeholder="$estimatedProfit"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="EstimatedPaybackPeriod"
+            value={formData.EstimatedPaybackPeriod || ""}
+            onChange={handleChange}
+            placeholder="EstimatedPaybackPeriod"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="address"
+            value={formData.address || ""}
+            onChange={handleChange}
+            placeholder="address"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="mlsNumber"
+            value={formData.mlsNumber || ""}
+            onChange={handleChange}
+            placeholder="mlsNumber"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            name="mlsNumber"
+            value={formData.mlsNumber || ""}
+            onChange={handleChange}
+            placeholder="mlsNumber"
+            required
+          />
+        </div>
+        <div className="form-group">
           <div onClick={() => multiWidgetRef.current.open()}>
             <AiOutlineCloudUpload size={50} color="grey" />
             <span>Upload Main Image</span>
@@ -218,7 +252,7 @@ const CommercialModifier = () => {
             </div>
           )}
         </div>
-        <div>
+        <div className="form-group">
           <div onClick={() => multiWidgetRef.current.open()}>
             <AiOutlineCloudUpload size={50} color="grey" />
             <span>Upload Additional Images</span>
@@ -232,7 +266,7 @@ const CommercialModifier = () => {
             ))}
           </div>
         </div>
-        <button type="submit">
+        <button type="submit" className="btn btn-primary btn-block">
           {selectedCommercial ? "Update Commercial" : "Add Commercial"}
         </button>
       </form>
