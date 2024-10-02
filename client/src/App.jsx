@@ -22,6 +22,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Admin from "./pages/Admin";
 import BrandPage from "./pages/BrandPage";
+import CommercialLeasing from "./pages/CommercialLeasing";
+import CommercialPartner from "./pages/CommercialPartners";
+import CommercialModifier from "./pages/CommercialModifier";
 
 function App() {
   const queryClient = new QueryClient();
@@ -43,6 +46,8 @@ function App() {
         { path: "franchise", element: <Franchise /> },
         { path: "contact", element: <Contact /> },
         { path: "brands", element: <Brands /> },
+        { path: "CommercialLeasing", element: <CommercialLeasing /> },
+        { path: "CommercialPartner", element: <CommercialPartner /> },
         { path: "property/:id", element: <PropertyDetail /> },
         { path: "/bookings", element: <Bookings /> },
         { path: "/favourites", element: <Favourites /> },
@@ -51,6 +56,7 @@ function App() {
         { path: "/sell", element: <Sell /> },
         { path: "/buy", element: <Buy /> },
         { path: "/brands/:id", element: <BrandPage /> },
+        { path: "/admin/CommercialModifier", element: <CommercialModifier /> },
         {
           path: "/admin",
           element: (

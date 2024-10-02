@@ -51,16 +51,15 @@ const Header = () => {
                       </ul>
                     </li>
                     <li>
-                      <Link to="/#">Commercial</Link>
+                      <a>Commercial</a>
                       <ul>
                         <li>
-                          <Link to="/#">Commercial Leasing</Link>
+                          <Link to="/CommercialLeasing">
+                            Commercial Leasing
+                          </Link>
                         </li>
                         <li>
-                          <Link to="#">Partners</Link>
-                        </li>
-                        <li>
-                          <Link to="#">proprietary</Link>
+                          <Link to="/CommercialPartner">Partners</Link>
                         </li>
                       </ul>
                     </li>

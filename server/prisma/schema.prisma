@@ -67,3 +67,22 @@ model Franchise {
   maps         String[]  
   agentInfo    Json 
 }
+
+model Commercial{
+    id              String    @id @default(auto()) @map("_id") @db.ObjectId
+    title           String? 
+    type            String?
+    description     String?
+    propertyType    String?
+    livingSpace     String?
+    lotSize         String?
+    annualRevenue   String?
+    totalInvestment String?
+    estimatedProfit String?
+    EstimatedPaybackPeriod String?
+    address         String?
+    mlsNumber       String?
+    image           String?
+    images          String[]
+    agentInfo       Json
+}

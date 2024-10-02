@@ -6,6 +6,7 @@ import { userRoute } from "./routes/userRoute.js";
 import { residencyRoute } from "./routes/residencyRoute.js";
 import { adminRoute } from "./routes/adminRoute.js";
 import { franchiseRoute } from "./routes/franchiseRoute.js";
+import { commercialRoute } from "./routes/commercialRoute.js";
 
 dotenv.config();
 
@@ -25,3 +26,4 @@ app.use("/api/admin", adminRoute);
 app.use("/api/user", userRoute);
 app.use("/api/residency", residencyRoute);
 app.use("/api/franchise", franchiseRoute);
+app.use("/api/commercial", commercialRoute);
