@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import useProperty from "../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
 import AddPropertyModal from "../components/AddPropertyModal/AddPropertyModal";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
@@ -207,10 +208,10 @@ const Admin = () => {
                         </a>
                       </li>
                       <li>
-                        <a href="add-property.html">
+                        <Link to="/admin/CommercialModifier">
                           <i className="fa fa-list" aria-hidden="true" />
                           Commercial
-                        </a>
+                        </Link>
                       </li>
                       <li>
                         <a

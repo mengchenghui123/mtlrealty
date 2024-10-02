@@ -193,6 +193,59 @@ export const createResidency = async (data, token) => {
   }
 };
 
+export const createCommercial = async (data, token) => {
+  console.log(data);
+  try {
+    const res = await api.post(
+      `admin/creareCommercial`,
+      {
+        data,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    console.log("error from server:", error);
+    throw error;
+  }
+};
+
+export const updateCommercial = async (id, data, token) => {
+  try {
+    console.log(`API URL: /updateCommercial/${id}`);
+    console.log("Data:", data);
+    const res = await api.put(`/admin/updateCommercial/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("res::", res);
+    return res.data;
+  } catch (error) {
+    console.log("Error updating residency:", error);
+    throw error;
+  }
+};
+
+export const getCommercial = async () => {
+  try {
+    const response = await api.get("/commercial/allComme", {
+      timeout: 10 * 1000,
+    });
+    if (response.status === 400 || response.status === 500) {
+      throw response.data;
+    }
+    return response.data;
+  } catch (error) {
+    toast.error("Something went wrong while getting all property");
+    throw error;
+  }
+};
+
 export const getAllUsers = async (token) => {
   try {
     const res = await api.get(`/admin/users`, {
