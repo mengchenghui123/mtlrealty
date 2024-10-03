@@ -2,8 +2,8 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
-const api = axios.create({
-  baseURL: "https://mtlrealty-server.vercel.app/api",
+export const api = axios.create({
+  baseURL: "http://localhost:8000/api",
 });
 
 export const getAllProperties = async () => {
@@ -218,11 +218,15 @@ export const updateCommercial = async (id, data, token) => {
   try {
     console.log(`API URL: /updateCommercial/${id}`);
     console.log("Data:", data);
-    const res = await api.put(`/admin/updateCommercial/${id}`, data, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await api.put(
+      `/admin/updateCommercial/${id}`,
+      { data },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     console.log("res::", res);
     return res.data;
   } catch (error) {
@@ -242,6 +246,19 @@ export const getCommercial = async () => {
     return response.data;
   } catch (error) {
     toast.error("Something went wrong while getting all property");
+    throw error;
+  }
+};
+
+export const deleteCommercial = async (id, token) => {
+  try {
+    await api.delete(`/admin/deleteCommercial/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.log("Error deleting commercial", error);
     throw error;
   }
 };

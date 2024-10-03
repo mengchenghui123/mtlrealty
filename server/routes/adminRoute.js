@@ -9,6 +9,7 @@ import { getAllUsers, deleteUser } from "../controllers/userCntrl.js";
 import {
   createCommercial,
   updateCommercial,
+  deleteCommercial,
 } from "../controllers/commercialCntrl.js";
 
 const router = express.Router();
@@ -25,8 +26,9 @@ router.delete(
   checkAdminRole,
   deleteResidency
 );
+router.delete("/deleteCommercial/:id", deleteCommercial);
 router.post("/create", jwtCheck, checkAdminRole, createResidency);
 router.post("/creareCommercial", jwtCheck, checkAdminRole, createCommercial);
-router.put("/updateCommercial/:id", jwtCheck, checkAdminRole, updateCommercial);
+router.put("/updateCommercial/:id", updateCommercial);
 
 export { router as adminRoute };

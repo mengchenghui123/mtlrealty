@@ -86,3 +86,14 @@ export const getAllCommercial = asyncHandler(async (req, res) => {
   });
   res.send(commercial);
 });
+
+export const deleteCommercial = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    await prisma.commercial.delete({
+      where: { id },
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
