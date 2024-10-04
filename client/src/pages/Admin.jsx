@@ -196,12 +196,6 @@ const Admin = () => {
                       </li>
 
                       <li>
-                        <a href="my-listings.html">
-                          <i className="fa fa-list" aria-hidden="true" />
-                          Residencial
-                        </a>
-                      </li>
-                      <li>
                         <a href="favorited-listings.html">
                           <i className="fa fa-heart" aria-hidden="true" />
                           Franchise
@@ -214,20 +208,10 @@ const Admin = () => {
                         </Link>
                       </li>
                       <li>
-                        <a
-                          onClick={(e) => {
-                            e.preventDefault(); // 阻止默认的跳转行为
-                            handleAddPropertyClick(); // 调用点击处理函数
-                          }}
-                          style={{ cursor: "pointer" }}
-                        >
+                        <Link to="/admin/PropertyModifier">
                           <i className="fa fa-list" aria-hidden="true" />
-                          Add Property
-                        </a>
-                        <AddPropertyModal
-                          opened={modalOpened}
-                          setOpened={setModalopened}
-                        />
+                          Property
+                        </Link>
                       </li>
                       <li>
                         <a href="payment-method.html">

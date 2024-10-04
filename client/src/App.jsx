@@ -25,6 +25,7 @@ import BrandPage from "./pages/BrandPage";
 import CommercialLeasing from "./pages/CommercialLeasing";
 import CommercialPartner from "./pages/CommercialPartners";
 import CommercialModifier from "./pages/CommercialModifier";
+import PropertyModifier from "./pages/PropertyModifier";
 
 function App() {
   const queryClient = new QueryClient();
@@ -57,6 +58,7 @@ function App() {
         { path: "/buy", element: <Buy /> },
         { path: "/brands/:id", element: <BrandPage /> },
         { path: "/admin/CommercialModifier", element: <CommercialModifier /> },
+        { path: "/admin/PropertyModifier", element: <PropertyModifier /> },
         {
           path: "/admin",
           element: (

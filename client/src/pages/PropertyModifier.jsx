@@ -1,88 +1,50 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
-import useCommercial from "../Hook/useCommercial";
-import userDetailContext from "../context/userDetailContext";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { deleteResidency, updateResidency } from "../utils/Api";
 import { toast } from "react-toastify";
+import useProperty from "../Hook/useProperty";
+import AddPropertyModal from "../components/AddPropertyModal/AddPropertyModal";
+import { Link } from "react-router-dom";
+import userDetailContext from "../context/userDetailContext";
+import { PuffLoader } from "react-spinners";
 
-import {
-  updateCommercial,
-  createCommercial,
-  deleteCommercial,
-} from "../utils/Api";
-
-const CommercialModifier = () => {
-  const { data: commercialData, isError, isLoading } = useCommercial();
+const PropertyModifier = () => {
+  const { data: propertyData, isError, isLoading } = useProperty();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
   const [formData, setFormData] = useState({});
   const [editingId, setEditingId] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const cloudinaryRef = useRef();
-  const multiWidgetRef = useRef();
-  const [imageURL, setImageURL] = useState(""); // 主图像
-  const [imageURLs, setImageURLs] = useState([]); // 附加图像
-  const selectedImageRef = useRef(null); // 用于追踪选中的图片
+  const [modalOpened, setModalopened] = useState(false);
   const {
     userDetails: { token },
   } = useContext(userDetailContext);
 
-  useEffect(() => {
-    cloudinaryRef.current = window.cloudinary;
-    multiWidgetRef.current = cloudinaryRef.current.createUploadWidget(
-      {
-        cloudName: "dbsagqpe3", // 替换为你的 Cloudinary 云名称
-        uploadPreset: "krgglwqe", // 替换为你的上传 preset
-        maxFiles: 10, // 每次只上传一张图片
-      },
-      (err, result) => {
-        if (result.event === "success") {
-          const selected = selectedImageRef.current;
-          if (selected === "main") {
-            setImageURL(result.info.secure_url); // 替换主图
-            setFormData((prevData) => ({
-              ...prevData,
-              image: result.info.secure_url, // 更新 formData 的 image 字段
-            }));
-          } else if (typeof selected === "number") {
-            // 替换附加图像
-            setImageURLs((prevURLs) =>
-              prevURLs.map((url, index) =>
-                index === selected ? result.info.secure_url : url
-              )
-            );
-            setFormData((prevData) => ({
-              ...prevData,
-              images: prevData.images.map((url, index) =>
-                index === selected ? result.info.secure_url : url
-              ),
-            }));
-          } else if (selected === "new") {
-            setImageURLs((prevURLs) => [...prevURLs, result.info.secure_url]);
-            setFormData((prevData) => ({
-              ...prevData,
-              images: [...(prevData.images || []), result.info.secure_url], // 添加新图片的 URL
-            }));
-          }
-          selectedImageRef.current = null; // 重置选中状态
-        }
-      }
-    );
-  }, []);
-  if (isLoading)
+  if (isError) {
     return (
-      <div className="text-center mt-5">
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
+      <div className="wrapper">
+        <span>Error loading Datas</span>
       </div>
     );
-  if (isError)
-    return <p className="text-center text-danger">Error loading data.</p>;
+  }
 
-  const totalPage = Math.ceil(commercialData.length / 5);
-  const currentData = commercialData.slice(
-    (currentPage - 1) * 5,
-    currentPage * 5
+  if (isLoading) {
+    return (
+      <div className="puffloaderStyle" style={{ height: "60vh" }}>
+        <PuffLoader
+          height="80"
+          width="80"
+          radius={1}
+          color="#4066ff"
+          aria-label="puff-loading"
+        />
+      </div>
+    );
+  }
+
+  const totalPage = Math.ceil(propertyData.length / itemsPerPage);
+  const currentData = propertyData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
-
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -99,75 +61,111 @@ const CommercialModifier = () => {
     setCurrentPage(page);
   };
 
-  const handleEditClick = async (id) => {
-    const commercialToEdit = commercialData.find((item) => item.id === id);
-    if (commercialToEdit) {
-      setFormData(commercialToEdit);
-      setEditingId(id);
-      setImageURL(commercialToEdit.image);
-      setImageURLs(commercialToEdit.images);
+  const getMlsNumber = (itemId) => {
+    const match = propertyData.find((item) => item.id === itemId);
+    return match ? match.mlsNumber : "N/A";
+  };
+
+  const handleDeleteResidence = async (id) => {
+    try {
+      await deleteResidency(id, token);
+      toast.success(`User ${id} deleted successfully`);
+    } catch (error) {
+      console.error("Failed to delete residency", error);
     }
   };
 
-  const handleDeleteCommercial = async (id) => {
-    try {
-      await deleteCommercial(id, token);
-      toast.success(`Commercial ${id} deleted successfully`);
-    } catch {
-      console.error("Failed to delete commercial", error);
-      toast.error("Failed to delete commercial");
+  const handleEditClick = async (id) => {
+    const propertyToEdit = propertyData.find((item) => item.id === id);
+    if (propertyToEdit) {
+      console.log(propertyToEdit);
+      setFormData(propertyToEdit);
+      setEditingId(id);
     }
   };
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    const numericFields = [
-      "totalInvestment",
-      "livingSpace",
-      "lotSize",
-      "annualRevenue",
-      "estimatedProfit",
-    ];
-    const agentFields = {
-      agentName: "name",
-      agentPhone: "phone",
-      agentEmail: "email",
-    };
-    setFormData((prevData) => {
-      // 检查当前字段是否是代理人信息字段
-      if (agentFields[name]) {
+
+    if (name.startsWith("rooms.")) {
+      const index = parseInt(name.split(".")[1], 10); // 提取索引
+      const roomKey = name.split(".")[2]; // 提取字段名 (type, level, dimensions, flooring)
+      setFormData((prevData) => {
+        const updatedRooms = [...(prevData.rooms || [])]; // 保持之前的 rooms 数据
+
+        // 更新特定房间的属性
+        if (!updatedRooms[index]) {
+          updatedRooms[index] = {}; // 如果该房间不存在，初始化为一个空对象
+        }
+        updatedRooms[index][roomKey] = value; // 更新特定属性
+
         return {
           ...prevData,
-          agentInfo: {
-            ...prevData.agentInfo,
-            [agentFields[name]]: value, // 更新 agentInfo 的相应字段
-          },
+          rooms: updatedRooms,
         };
-      } else {
-        // 处理数字字段和其他字段
+      });
+    } else if (name.startsWith("facilities.")) {
+      const facilityKey = name.split(".")[1];
+      setFormData((prevData) => ({
+        ...prevData,
+        facilities: {
+          ...prevData.facilities,
+          [facilityKey]: value, // 转换为整数
+        },
+      }));
+    } else if (name.startsWith("agent")) {
+      const agentKey =
+        name === "agentPhoneNumber"
+          ? "phoneNumber"
+          : name.replace("agent", "").toLowerCase();
+      setFormData((prevData) => ({
+        ...prevData,
+        agentInfo: {
+          ...prevData.agentInfo,
+          [agentKey]: value, // 更新 agentInfo 的相应字段
+        },
+      }));
+    } else if (name.startsWith("amenities.")) {
+      const index = parseInt(name.split(".")[1], 10);
+      setFormData((prevData) => {
+        const updatedAmenities = [...(prevData.amenities || [])];
+        updatedAmenities[index] = value;
+
         return {
           ...prevData,
-          [name]: numericFields.includes(name)
-            ? parseFloat(value) || ""
-            : value,
+          amenities: updatedAmenities,
         };
-      }
-    });
+      });
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]:
+          name === "price" || name === "yearBuild"
+            ? value
+              ? parseInt(value, 10)
+              : 0 // 转换为整数，若为空则默认为 0
+            : name === "livingSpace" ||
+              name === "lotSize" ||
+              name === "municipalTaxes" ||
+              name === "schoolTaxes" ||
+              name === "condoFee"
+            ? value
+              ? parseFloat(value)
+              : 0.0 // 转换为浮点数，若为空则默认为 0.0
+            : value, // 其他字段保持为字符串（如有）
+      }));
+    }
   };
 
-  const handleSelectMainImage = () => {
-    selectedImageRef.current = "main"; // 标记为主图
-    multiWidgetRef.current.open(); // 打开上传窗口
+  const handleAddPropertyClick = () => {
+    setModalopened(true);
   };
 
-  const handleSelectOtherImage = (index) => {
-    selectedImageRef.current = index; // 标记为要替换的附加图像的索引
-    multiWidgetRef.current.open(); // 打开上传窗口
-  };
-
-  const handleNewSubImag = () => {
-    selectedImageRef.current = "new";
-    multiWidgetRef.current?.open();
+  const removeRoom = (index) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      rooms: (prevData.rooms || []).filter((_, i) => i !== index),
+    }));
   };
 
   const handleFormSubmit = async (e) => {
@@ -178,7 +176,7 @@ const CommercialModifier = () => {
       console.log("Data:", formData);
       const { id, ...dataToUpdate } = formData;
       try {
-        await updateCommercial(editingId, dataToUpdate, token);
+        await updateResidency(editingId, dataToUpdate, token);
         toast.success("Property updated successfully");
       } catch (error) {
         console.error("Error updating property:", error);
@@ -186,22 +184,6 @@ const CommercialModifier = () => {
       }
     }
   };
-
-  const handleFormAdd = async (e) => {
-    e.preventDefault();
-    if (formData) {
-      try {
-        await createCommercial(formData, token);
-        toast.success("Commercial created successfully!");
-      } catch (err) {
-        console.error("Error creating commercial:", error);
-        toast.error("Failed to create commercial");
-      }
-    } else {
-      return;
-    }
-  };
-
   return (
     <div id="wrapper" className="int_main_wraapper">
       <div className="clearfix" />
@@ -251,7 +233,7 @@ const CommercialModifier = () => {
                 <table className="table-responsive">
                   <thead>
                     <tr>
-                      <th className="pl-2">My Commercials</th>
+                      <th className="pl-2">My Properties</th>
                       <th className="p-0" />
                       <th>Type</th>
                       <th>Price</th>
@@ -295,7 +277,7 @@ const CommercialModifier = () => {
                           <a
                             onClick={(e) => {
                               e.preventDefault();
-                              handleDeleteCommercial(item.id);
+                              handleDeleteResidence(item.id);
                             }}
                             style={{
                               cursor: "pointer",
@@ -380,29 +362,7 @@ const CommercialModifier = () => {
                         name="type"
                         value={formData.type || ""}
                         onChange={handleFormChange}
-                        placeholder="type"
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>totalInvestment</label>
-                      <input
-                        type="number"
-                        name="totalInvestment"
-                        value={formData.totalInvestment || ""}
-                        onChange={handleFormChange}
-                        placeholder="totalInvestment"
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>Address</label>
-                      <input
-                        type="text"
-                        name="address"
-                        value={formData.address || ""}
-                        onChange={handleFormChange}
-                        placeholder="address"
+                        placeholder="Sale, Rent, Commercial, Franchise"
                         className="form-control"
                       />
                     </div>
@@ -417,18 +377,19 @@ const CommercialModifier = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>propertyType</label>
+                      <label>price</label>
                       <input
-                        type="text"
-                        name="propertyType"
-                        value={formData.propertyType || ""}
-                        onChange={handleFormChange}
-                        placeholder="propertyType(eg:restaurant)"
+                        type="number"
+                        name="price"
+                        value={formData.price || ""}
                         className="form-control"
+                        onChange={handleFormChange}
+                        placeholder="price"
+                        step="any"
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>Area</label>
+                      <label>livingSpace</label>
                       <input
                         type="number"
                         name="livingSpace"
@@ -452,51 +413,138 @@ const CommercialModifier = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>annualRevenue</label>
+                      <label>yearBuild</label>
                       <input
                         type="number"
-                        name="annualRevenue"
-                        value={formData.annualRevenue || ""}
+                        name="yearBuild"
+                        value={formData.yearBuild || ""}
                         className="form-control"
                         onChange={handleFormChange}
-                        placeholder="annualRevenue"
+                        placeholder="yearBuild"
                         step="any"
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>estimatedProfit</label>
+                      <label>schoolTaxes</label>
                       <input
                         type="number"
-                        name="estimatedProfit"
-                        value={formData.estimatedProfit || ""}
+                        name="municipalTaxes"
+                        value={formData.schoolTaxes || ""}
                         className="form-control"
                         onChange={handleFormChange}
-                        placeholder="estimatedProfit"
+                        placeholder="municipalTaxes"
                         step="any"
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>EstimatedPaybackPeriod</label>
+                      <label>schoolTaxes</label>
                       <input
-                        type="text"
-                        name="EstimatedPaybackPeriod"
-                        value={formData.EstimatedPaybackPeriod || ""}
+                        type="number"
+                        name="schoolTaxes"
+                        value={formData.schoolTaxes || ""}
                         className="form-control"
                         onChange={handleFormChange}
-                        placeholder="EstimatedPaybackPeriod"
+                        placeholder="schoolTaxes"
+                        step="any"
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>mlsNumber</label>
+                      <label>condoFee</label>
                       <input
-                        type="text"
-                        name="mlsNumber"
-                        value={formData.mlsNumber || ""}
+                        type="number"
+                        name="condoFee"
+                        value={formData.condoFee || ""}
                         className="form-control"
                         onChange={handleFormChange}
-                        placeholder="mlsNumber"
+                        placeholder="condoFee"
+                        step="any"
                       />
                     </div>
+                    <h4>Rooms</h4>
+                    {formData.rooms &&
+                      formData.rooms.map((room, index) => (
+                        <div key={index} className="room">
+                          <div className="form-group mb-3">
+                            <label>Room Type{index}</label>
+                            <input
+                              type="text"
+                              name={`rooms.${index}.type`}
+                              value={room.type || ""}
+                              onChange={handleFormChange}
+                              placeholder="Type"
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group mb-3">
+                            <label>Level</label>
+                            <input
+                              type="text"
+                              name={`rooms.${index}.level`}
+                              value={room.level || ""}
+                              onChange={handleFormChange}
+                              placeholder="Level"
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group mb-3">
+                            <label>Dimensions</label>
+                            <input
+                              type="text"
+                              name={`rooms.${index}.dimensions`}
+                              value={room.dimensions || ""}
+                              onChange={handleFormChange}
+                              placeholder="Dimensions"
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="form-group mb-3">
+                            <label>Flooring</label>
+                            <input
+                              type="text"
+                              name={`rooms.${index}.flooring`}
+                              value={room.flooring || ""}
+                              onChange={handleFormChange}
+                              placeholder="Flooring"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    <div className="form-group mb-3">
+                      <label>Bedrooms</label>
+                      <input
+                        type="text"
+                        name="facilities.bedrooms"
+                        value={formData.facilities?.bedrooms || ""}
+                        onChange={handleFormChange}
+                        className="form-control"
+                        placeholder="Number of bedrooms"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>Bathrooms</label>
+                      <input
+                        type="text"
+                        name="facilities.bathrooms"
+                        value={formData.facilities?.bathrooms || ""}
+                        onChange={handleFormChange}
+                        className="form-control"
+                        placeholder="Number of bathrooms"
+                      />
+                    </div>
+
+                    <div className="form-group mb-3">
+                      <label>Parking</label>
+                      <input
+                        type="text"
+                        name="facilities.parking"
+                        value={formData.facilities?.parking || ""}
+                        onChange={handleFormChange}
+                        className="form-control"
+                        placeholder="Number of parking spaces"
+                      />
+                    </div>
+
                     <h4>Agent Info</h4>
                     <div className="form-group mb-3">
                       <label>Name</label>
@@ -511,23 +559,21 @@ const CommercialModifier = () => {
                         onChange={handleFormChange}
                         className="form-control"
                         placeholder="Agent Name"
-                        required
                       />
                     </div>
                     <div className="form-group mb-3">
                       <label>Phone</label>
                       <input
                         type="text"
-                        name="agentPhone"
+                        name="agentPhoneNumber"
                         value={
                           formData.agentInfo
-                            ? formData.agentInfo.phone || ""
+                            ? formData.agentInfo.phoneNumber || ""
                             : ""
                         }
                         onChange={handleFormChange}
                         className="form-control"
                         placeholder="Agent Phone"
-                        required
                       />
                     </div>
                     <div className="form-group mb-3">
@@ -543,52 +589,40 @@ const CommercialModifier = () => {
                         onChange={handleFormChange}
                         className="form-control"
                         placeholder="Agent Email"
-                        required
                       />
                     </div>
-                    <div className="form-group mb-3">
-                      <label>Main Image</label>
-                      <div className="d-flex align-items-center">
-                        <img
-                          src={formData.image}
-                          alt="Main"
-                          style={{
-                            width: 100,
-                            height: 100,
-                            objectFit: "cover",
-                            cursor: "pointer",
-                          }}
-                          className="mr-2"
-                          onClick={handleSelectMainImage}
+                    <h4>Amenities</h4>
+                    {formData.amenities && formData.amenities.length > 0 ? (
+                      formData.amenities.map((amenity, index) => (
+                        <div className="form-group mb-3" key={index}>
+                          <label>Amenity {index + 1}</label>
+                          <input
+                            type="text"
+                            name={`amenities.${index}`} // 使用数组索引作为字段名
+                            value={amenity}
+                            onChange={handleFormChange}
+                            className="form-control"
+                            placeholder="Amenity"
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <div className="form-group mb-3">
+                        <label>Amenity</label>
+                        <input
+                          type="text"
+                          name={`amenities.0`} // 第一个输入框
+                          value={
+                            formData.amenities
+                              ? formData.amenities[0] || ""
+                              : ""
+                          }
+                          onChange={handleFormChange}
+                          className="form-control"
+                          placeholder="Amenity"
                         />
-                        <button onClick={handleSelectMainImage}>
-                          Main Image
-                        </button>
                       </div>
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>Sub Image</label>
-                      <div className="d-flex flex-wrap">
-                        {formData.images?.map((url, index) => (
-                          <div key={index} className="mr-2 mb-2">
-                            <img
-                              src={url}
-                              alt={`Image ${index}`}
-                              style={{
-                                width: 100,
-                                height: 100,
-                                objectFit: "cover",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => handleSelectOtherImage(index)}
-                            />
-                          </div>
-                        ))}
-                        <button onClick={handleNewSubImag}>
-                          Upload Sub image
-                        </button>
-                      </div>
-                    </div>
+                    )}
 
                     <button type="submit" className="btn btn-success btn-block">
                       Submit
@@ -596,10 +630,17 @@ const CommercialModifier = () => {
                     <button
                       type="Add"
                       className="btn btn-success btn-block"
-                      onClick={handleFormAdd}
+                      onClick={(e) => {
+                        e.preventDefault(); // 阻止默认的跳转行为
+                        handleAddPropertyClick(); // 调用点击处理函数
+                      }}
                     >
-                      Add Commercial
+                      Add Property
                     </button>
+                    <AddPropertyModal
+                      opened={modalOpened}
+                      setOpened={setModalopened}
+                    />
                   </form>
                 </div>
               )}
@@ -611,4 +652,4 @@ const CommercialModifier = () => {
   );
 };
 
-export default CommercialModifier;
+export default PropertyModifier;
