@@ -140,7 +140,11 @@ const Brands = () => {
                     className="item col-lg-6 col-md-6 col-xs-12 people rent"
                     key={item.id}
                   >
-                    <div className="project-single">
+                    <div
+                      className="project-single"
+                      onClick={() => handleCardClick(item.id)}
+                      style={{ cursor: "pointer" }}
+                    >
                       <div className="project-inner project-head">
                         <div className="homes">
                           {/* homes img */}
@@ -158,12 +162,7 @@ const Brands = () => {
                         {/* homes address */}
                         <div className="the-agents">
                           <h3>
-                            <a
-                              onClick={() => handleCardClick(item.id)}
-                              style={{ cursor: "pointer" }}
-                            >
-                              {item.title}
-                            </a>
+                            <a style={{ cursor: "pointer" }}>{item.title}</a>
                           </h3>
                           <ul className="the-agents-details">
                             <li>Size: {item.size}</li>

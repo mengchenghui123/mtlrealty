@@ -11,6 +11,11 @@ import {
   updateCommercial,
   deleteCommercial,
 } from "../controllers/commercialCntrl.js";
+import {
+  createFranchise,
+  updateFranchise,
+  deleteFranchise,
+} from "../controllers/franchiseCntrl.js";
 
 const router = express.Router();
 
@@ -28,7 +33,10 @@ router.delete(
 );
 router.delete("/deleteCommercial/:id", deleteCommercial);
 router.post("/create", jwtCheck, checkAdminRole, createResidency);
-router.post("/creareCommercial", jwtCheck, checkAdminRole, createCommercial);
+router.post("/createCommercial", jwtCheck, checkAdminRole, createCommercial);
 router.put("/updateCommercial/:id", updateCommercial);
+router.put("/updateFranchise/:id", updateFranchise);
+router.delete("/deleteFranchise/:id", deleteFranchise);
+router.post("/createFranchise", jwtCheck, checkAdminRole, createFranchise);
 
 export { router as adminRoute };

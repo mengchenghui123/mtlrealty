@@ -1,48 +1,83 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { deleteResidency, updateResidency } from "../utils/Api";
-import { toast } from "react-toastify";
-import useProperty from "../Hook/useProperty";
-import AddPropertyModal from "../components/AddPropertyModal/AddPropertyModal";
-import { Link } from "react-router-dom";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import userDetailContext from "../context/userDetailContext";
-import { PuffLoader } from "react-spinners";
+import useFranchise from "../Hook/useFranchise";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import {
+  updateFranchise,
+  createFranchise,
+  deleteFranchise,
+} from "../utils/Api";
 
-const PropertyModifier = () => {
-  const { data: propertyData, isError, isLoading } = useProperty();
+const FranchiseModifier = () => {
+  const { data: franchiseData, isError, isLoading } = useFranchise();
+  const [formData, setFormData] = useState({});
+  const [editingId, setEditingId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [imageURL, setImageURL] = useState(""); // 主图像
+  const [imageURLs, setImageURLs] = useState([]); // 附加图像
+  const [mapImageUlr, setMapImageUlr] = useState([]);
   const cloudinaryRef = useRef();
   const multiWidgetRef = useRef();
   const selectedImageRef = useRef(null);
-  const itemsPerPage = 5;
-  const [formData, setFormData] = useState({});
-  const [editingId, setEditingId] = useState(null);
-  const [modalOpened, setModalopened] = useState(false);
   const {
     userDetails: { token },
   } = useContext(userDetailContext);
 
   useEffect(() => {
-    cloudinaryRef.current = window.cloudinary; // 使用 window.cloudinary
+    cloudinaryRef.current = window.cloudinary;
     multiWidgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
         cloudName: "dbsagqpe3", // 替换为你的 Cloudinary 云名称
         uploadPreset: "krgglwqe", // 替换为你的上传 preset
-        maxFiles: 10,
+        maxFiles: 10, // 每次只上传一张图片
       },
       (err, result) => {
         if (result.event === "success") {
           const selected = selectedImageRef.current;
           if (selected === "main") {
+            setImageURL(result.info.secure_url); // 替换主图
             setFormData((prevData) => ({
               ...prevData,
               image: result.info.secure_url, // 更新 formData 的 image 字段
             }));
-          } else if (typeof selected === "number") {
+          } else if (selected.startsWith("map-")) {
+            const mapIndex = parseInt(selected.split("-")[1], 10);
+            setMapImageUlr((prevURLs) =>
+              prevURLs.map((url, index) =>
+                index === mapIndex ? result.info.secure_url : url
+              )
+            );
+            setFormData((prevData) => ({
+              ...prevData,
+              maps: prevData.maps.map((url, index) =>
+                index === mapIndex ? result.info.secure_url : url
+              ),
+            }));
+          } else if (selected.startsWith("sub-")) {
+            const subImage = parseInt(selected.split("-")[1], 10);
+            setImageURLs((prevURLs) =>
+              prevURLs.map((url, index) =>
+                index === subImage ? result.info.secure_url : url
+              )
+            );
             setFormData((prevData) => ({
               ...prevData,
               images: prevData.images.map((url, index) =>
-                index === selected ? result.info.secure_url : url
+                index === subImage ? result.info.secure_url : url
               ),
+            }));
+          } else if (selected === "new") {
+            setImageURLs((prevURLs) => [...prevURLs, result.info.secure_url]);
+            setFormData((prevData) => ({
+              ...prevData,
+              images: [...(prevData.images || []), result.info.secure_url], // 添加新图片的 URL
+            }));
+          } else if (selected === "newMap") {
+            setMapImageUlr((prevURLs) => [...prevURLs, result.info.secure_url]);
+            setFormData((prevData) => ({
+              ...prevData,
+              maps: [...(prevData.maps || []), result.info.secure_url], // 添加新图片的 URL
             }));
           }
           selectedImageRef.current = null;
@@ -51,33 +86,23 @@ const PropertyModifier = () => {
     );
   }, []);
 
-  if (isError) {
+  if (isLoading)
     return (
-      <div className="wrapper">
-        <span>Error loading Datas</span>
+      <div className="text-center mt-5">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
       </div>
     );
-  }
+  if (isError)
+    return <p className="text-center text-danger">Error loading data.</p>;
 
-  if (isLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
-  }
-
-  const totalPage = Math.ceil(propertyData.length / itemsPerPage);
-  const currentData = propertyData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+  const totalPage = Math.ceil(franchiseData.length / 5);
+  const currentData = franchiseData.slice(
+    (currentPage - 1) * 5,
+    currentPage * 5
   );
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -94,120 +119,68 @@ const PropertyModifier = () => {
     setCurrentPage(page);
   };
 
-  const getMlsNumber = (itemId) => {
-    const match = propertyData.find((item) => item.id === itemId);
-    return match ? match.mlsNumber : "N/A";
-  };
-
-  const handleDeleteResidence = async (id) => {
-    try {
-      await deleteResidency(id, token);
-      toast.success(`User ${id} deleted successfully`);
-    } catch (error) {
-      console.error("Failed to delete residency", error);
+  const handleEditClick = async (id) => {
+    const franchiseToEdit = franchiseData.find((item) => item.id === id);
+    if (franchiseToEdit) {
+      setFormData(franchiseToEdit);
+      setEditingId(id);
+      setMapImageUlr(franchiseToEdit.maps);
+      setImageURL(franchiseToEdit.image);
+      setImageURLs(franchiseToEdit.images);
     }
   };
-
-  const handleEditClick = async (id) => {
-    const propertyToEdit = propertyData.find((item) => item.id === id);
-    if (propertyToEdit) {
-      console.log(propertyToEdit);
-      setFormData(propertyToEdit);
-      setEditingId(id);
+  const handleDeleteFranchise = async (id) => {
+    try {
+      await deleteFranchise(id, token);
+      toast.success(`franchise ${id} deleted successfully`);
+    } catch (error) {
+      console.error("Failed to delete franchise", error);
+      toast.error("Failed to delete franchise");
     }
   };
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-
-    if (name.startsWith("rooms.")) {
-      const index = parseInt(name.split(".")[1], 10); // 提取索引
-      const roomKey = name.split(".")[2]; // 提取字段名 (type, level, dimensions, flooring)
-      setFormData((prevData) => {
-        const updatedRooms = [...(prevData.rooms || [])]; // 保持之前的 rooms 数据
-
-        // 更新特定房间的属性
-        if (!updatedRooms[index]) {
-          updatedRooms[index] = {}; // 如果该房间不存在，初始化为一个空对象
-        }
-        updatedRooms[index][roomKey] = value; // 更新特定属性
-
+    const agentFields = {
+      agentName: "name",
+      agentPhone: "phone",
+      agentEmail: "email",
+    };
+    setFormData((prevData) => {
+      if (agentFields[name]) {
         return {
           ...prevData,
-          rooms: updatedRooms,
+          agentInfo: {
+            ...prevData.agentInfo,
+            [agentFields[name]]: value,
+          },
         };
-      });
-    } else if (name.startsWith("facilities.")) {
-      const facilityKey = name.split(".")[1];
-      setFormData((prevData) => ({
-        ...prevData,
-        facilities: {
-          ...prevData.facilities,
-          [facilityKey]: value, // 转换为整数
-        },
-      }));
-    } else if (name.startsWith("agent")) {
-      const agentKey =
-        name === "agentPhoneNumber"
-          ? "phoneNumber"
-          : name.replace("agent", "").toLowerCase();
-      setFormData((prevData) => ({
-        ...prevData,
-        agentInfo: {
-          ...prevData.agentInfo,
-          [agentKey]: value, // 更新 agentInfo 的相应字段
-        },
-      }));
-    } else if (name.startsWith("amenities.")) {
-      const index = parseInt(name.split(".")[1], 10);
-      setFormData((prevData) => {
-        const updatedAmenities = [...(prevData.amenities || [])];
-        updatedAmenities[index] = value;
-
+      } else if (name === "franchiseFee") {
         return {
           ...prevData,
-          amenities: updatedAmenities,
+          [name]: value ? parseFloat(value) : 0.0,
         };
-      });
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]:
-          name === "price" || name === "yearBuild"
-            ? value
-              ? parseInt(value, 10)
-              : 0 // 转换为整数，若为空则默认为 0
-            : name === "livingSpace" ||
-              name === "lotSize" ||
-              name === "municipalTaxes" ||
-              name === "schoolTaxes" ||
-              name === "condoFee"
-            ? value
-              ? parseFloat(value)
-              : 0.0 // 转换为浮点数，若为空则默认为 0.0
-            : value, // 其他字段保持为字符串（如有）
-      }));
-    }
+      } else {
+        return {
+          ...prevData,
+          [name]: value,
+        };
+      }
+    });
   };
 
-  const handleAddPropertyClick = () => {
-    setModalopened(true);
-  };
   const handleSelectMainImage = () => {
     selectedImageRef.current = "main"; // 标记为主图
     multiWidgetRef.current.open(); // 打开上传窗口
   };
-
-  const handleSelectOtherImage = (index) => {
-    selectedImageRef.current = index; // 标记为要替换的附加图像的索引
+  const handleSelectMapImage = (mapIndex) => {
+    selectedImageRef.current = `map-${mapIndex}`; // 标记为主图
     multiWidgetRef.current.open(); // 打开上传窗口
   };
 
-  const removeRoom = (index) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      rooms: (prevData.rooms || []).filter((_, i) => i !== index),
-    }));
+  const handleSelectOtherImage = (index) => {
+    selectedImageRef.current = `sub-${index}`; // 标记为要替换的附加图像的索引
+    multiWidgetRef.current.open(); // 打开上传窗口
   };
 
   const handleFormSubmit = async (e) => {
@@ -218,13 +191,37 @@ const PropertyModifier = () => {
       console.log("Data:", formData);
       const { id, ...dataToUpdate } = formData;
       try {
-        await updateResidency(editingId, dataToUpdate, token);
-        toast.success("Property updated successfully");
+        await updateFranchise(editingId, dataToUpdate, token);
+        toast.success("Franchise updated successfully");
       } catch (error) {
-        console.error("Error updating property:", error);
-        toast.error("Failed to update property");
+        console.error("Error updating Franchise:", error);
+        toast.error("Failed to update Franchise");
       }
     }
+  };
+
+  const handleFormAdd = async (e) => {
+    e.preventDefault();
+    if (formData) {
+      try {
+        await createFranchise(formData, token);
+        toast.success("Franchise created successfully!");
+      } catch (err) {
+        console.error("Error creating Franchise:", error);
+        toast.error("Failed to create Franchise");
+      }
+    } else {
+      return;
+    }
+  };
+
+  const handleNewImage = () => {
+    selectedImageRef.current = "new";
+    multiWidgetRef.current?.open();
+  };
+  const handleNewMap = () => {
+    selectedImageRef.current = "newMap";
+    multiWidgetRef.current?.open();
   };
   return (
     <div id="wrapper" className="int_main_wraapper">
@@ -275,9 +272,9 @@ const PropertyModifier = () => {
                 <table className="table-responsive">
                   <thead>
                     <tr>
-                      <th className="pl-2">My Properties</th>
+                      <th className="pl-2">My Franchise</th>
                       <th className="p-0" />
-                      <th>Type</th>
+                      <th>Size</th>
                       <th>Price</th>
                       <th>Actions</th>
                     </tr>
@@ -286,7 +283,7 @@ const PropertyModifier = () => {
                     <tbody key={item.id}>
                       <tr>
                         <td className="image myelist">
-                          <a href="single-property-1.html">
+                          <a>
                             <img
                               alt="my-properties-3"
                               src={item.image}
@@ -297,16 +294,16 @@ const PropertyModifier = () => {
 
                         <td>
                           <div className="inner">
-                            <a href="single-property-1.html">
+                            <a>
                               <h2>{item.title}</h2>
                             </a>
                             <figure>
-                              <i className="lni-map-marker" /> {item.address}
+                              <i className="lni-map-marker" /> {item.size}
                             </figure>
                           </div>
                         </td>
-                        <td>{item.type}</td>
-                        <td>{item.totalInvestment}</td>
+                        <td>{item.franchiseFee}</td>
+                        <td>{item.investment}</td>
                         <td className="actions">
                           <a
                             onClick={() => handleEditClick(item.id)}
@@ -319,7 +316,7 @@ const PropertyModifier = () => {
                           <a
                             onClick={(e) => {
                               e.preventDefault();
-                              handleDeleteResidence(item.id);
+                              handleDeleteFranchise(item.id);
                             }}
                             style={{
                               cursor: "pointer",
@@ -378,13 +375,12 @@ const PropertyModifier = () => {
                   </nav>
                 </div>
               </div>
-
               {formData && (
                 <div className="edit-form">
                   <h3 className="text-center mb-4">Edit {formData.title}</h3>
                   <form
-                    onSubmit={handleFormSubmit}
                     className="border p-4 rounded"
+                    onSubmit={handleFormSubmit}
                   >
                     <div className="form-group mb-3">
                       <label>Title</label>
@@ -394,17 +390,6 @@ const PropertyModifier = () => {
                         value={formData.title || ""}
                         onChange={handleFormChange}
                         placeholder="Title"
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>Type</label>
-                      <input
-                        type="text"
-                        name="type"
-                        value={formData.type || ""}
-                        onChange={handleFormChange}
-                        placeholder="Sale, Rent, Commercial, Franchise"
                         className="form-control"
                       />
                     </div>
@@ -419,175 +404,72 @@ const PropertyModifier = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>price</label>
-                      <input
-                        type="number"
-                        name="price"
-                        value={formData.price || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="price"
-                        step="any"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>livingSpace</label>
-                      <input
-                        type="number"
-                        name="livingSpace"
-                        value={formData.livingSpace || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="livingSpace"
-                        step="any"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>lotSize</label>
-                      <input
-                        type="number"
-                        name="lotSize"
-                        value={formData.lotSize || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="lotSize"
-                        step="any"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>yearBuild</label>
-                      <input
-                        type="number"
-                        name="yearBuild"
-                        value={formData.yearBuild || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="yearBuild"
-                        step="any"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>schoolTaxes</label>
-                      <input
-                        type="number"
-                        name="municipalTaxes"
-                        value={formData.schoolTaxes || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="municipalTaxes"
-                        step="any"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>schoolTaxes</label>
-                      <input
-                        type="number"
-                        name="schoolTaxes"
-                        value={formData.schoolTaxes || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="schoolTaxes"
-                        step="any"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>condoFee</label>
-                      <input
-                        type="number"
-                        name="condoFee"
-                        value={formData.condoFee || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="condoFee"
-                        step="any"
-                      />
-                    </div>
-                    <h4>Rooms</h4>
-                    {formData.rooms &&
-                      formData.rooms.map((room, index) => (
-                        <div key={index} className="room">
-                          <div className="form-group mb-3">
-                            <label>Room Type{index}</label>
-                            <input
-                              type="text"
-                              name={`rooms.${index}.type`}
-                              value={room.type || ""}
-                              onChange={handleFormChange}
-                              placeholder="Type"
-                              className="form-control"
-                            />
-                          </div>
-                          <div className="form-group mb-3">
-                            <label>Level</label>
-                            <input
-                              type="text"
-                              name={`rooms.${index}.level`}
-                              value={room.level || ""}
-                              onChange={handleFormChange}
-                              placeholder="Level"
-                              className="form-control"
-                            />
-                          </div>
-                          <div className="form-group mb-3">
-                            <label>Dimensions</label>
-                            <input
-                              type="text"
-                              name={`rooms.${index}.dimensions`}
-                              value={room.dimensions || ""}
-                              onChange={handleFormChange}
-                              placeholder="Dimensions"
-                              className="form-control"
-                            />
-                          </div>
-                          <div className="form-group mb-3">
-                            <label>Flooring</label>
-                            <input
-                              type="text"
-                              name={`rooms.${index}.flooring`}
-                              value={room.flooring || ""}
-                              onChange={handleFormChange}
-                              placeholder="Flooring"
-                              className="form-control"
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    <h4>Facilities</h4>
-                    <div className="form-group mb-3">
-                      <label>Bedrooms</label>
+                      <label>Size</label>
                       <input
                         type="text"
-                        name="facilities.bedrooms"
-                        value={formData.facilities?.bedrooms || ""}
+                        name="size"
+                        value={formData.size || ""}
                         onChange={handleFormChange}
+                        placeholder="size"
                         className="form-control"
-                        placeholder="Number of bedrooms"
                       />
                     </div>
                     <div className="form-group mb-3">
-                      <label>Bathrooms</label>
+                      <label>Rent</label>
                       <input
                         type="text"
-                        name="facilities.bathrooms"
-                        value={formData.facilities?.bathrooms || ""}
+                        name="rent"
+                        value={formData.rent || ""}
                         onChange={handleFormChange}
+                        placeholder="rent"
                         className="form-control"
-                        placeholder="Number of bathrooms"
                       />
                     </div>
-
                     <div className="form-group mb-3">
-                      <label>Parking</label>
+                      <label>Investment</label>
                       <input
                         type="text"
-                        name="facilities.parking"
-                        value={formData.facilities?.parking || ""}
+                        name="investment"
+                        value={formData.investment || ""}
                         onChange={handleFormChange}
+                        placeholder="investment"
                         className="form-control"
-                        placeholder="Number of parking spaces"
                       />
                     </div>
-
+                    <div className="form-group mb-3">
+                      <label>Franchise Fee</label>
+                      <input
+                        type="number"
+                        name="franchiseFee"
+                        value={formData.franchiseFee || ""}
+                        onChange={handleFormChange}
+                        placeholder="franchiseFee"
+                        className="form-control"
+                        step={1}
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>Sales</label>
+                      <input
+                        type="text"
+                        name="sales"
+                        value={formData.sales || ""}
+                        onChange={handleFormChange}
+                        placeholder="sales"
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>target People</label>
+                      <input
+                        type="text"
+                        name="targetPeople"
+                        value={formData.targetPeople || ""}
+                        onChange={handleFormChange}
+                        placeholder="targetPeople"
+                        className="form-control"
+                      />
+                    </div>
                     <h4>Agent Info</h4>
                     <div className="form-group mb-3">
                       <label>Name</label>
@@ -608,10 +490,10 @@ const PropertyModifier = () => {
                       <label>Phone</label>
                       <input
                         type="text"
-                        name="agentPhoneNumber"
+                        name="agentPhone"
                         value={
                           formData.agentInfo
-                            ? formData.agentInfo.phoneNumber || ""
+                            ? formData.agentInfo.phone || ""
                             : ""
                         }
                         onChange={handleFormChange}
@@ -634,39 +516,6 @@ const PropertyModifier = () => {
                         placeholder="Agent Email"
                       />
                     </div>
-                    <h4>Amenities</h4>
-                    {formData.amenities && formData.amenities.length > 0 ? (
-                      formData.amenities.map((amenity, index) => (
-                        <div className="form-group mb-3" key={index}>
-                          <label>Amenity {index + 1}</label>
-                          <input
-                            type="text"
-                            name={`amenities.${index}`} // 使用数组索引作为字段名
-                            value={amenity}
-                            onChange={handleFormChange}
-                            className="form-control"
-                            placeholder="Amenity"
-                          />
-                        </div>
-                      ))
-                    ) : (
-                      <div className="form-group mb-3">
-                        <label>Amenity</label>
-                        <input
-                          type="text"
-                          name={`amenities.0`} // 第一个输入框
-                          value={
-                            formData.amenities
-                              ? formData.amenities[0] || ""
-                              : ""
-                          }
-                          onChange={handleFormChange}
-                          className="form-control"
-                          placeholder="Amenity"
-                        />
-                      </div>
-                    )}
-
                     <div className="form-group mb-3">
                       <label>Main Image</label>
                       <div className="d-flex align-items-center">
@@ -682,9 +531,32 @@ const PropertyModifier = () => {
                           className="mr-2"
                           onClick={handleSelectMainImage}
                         />
+                        <button onClick={handleSelectMainImage}>
+                          Main Image
+                        </button>
                       </div>
                     </div>
-
+                    <div className="form-group mb-3">
+                      <label>Map Image</label>
+                      <div className="d-flex flex-wrap">
+                        {formData.maps?.map((url, index) => (
+                          <div key={index} className="mr-2 mb-2">
+                            <img
+                              src={url}
+                              alt={`Map${index}`}
+                              style={{
+                                width: 100,
+                                height: 100,
+                                objectFit: "cover",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => handleSelectMapImage(index)}
+                            />
+                          </div>
+                        ))}
+                        <button onClick={handleNewMap}>Upload map image</button>
+                      </div>
+                    </div>
                     <div className="form-group mb-3">
                       <label>Sub Image</label>
                       <div className="d-flex flex-wrap">
@@ -692,7 +564,7 @@ const PropertyModifier = () => {
                           <div key={index} className="mr-2 mb-2">
                             <img
                               src={url}
-                              alt={`Image ${index}`}
+                              alt={`Image${index}`}
                               style={{
                                 width: 100,
                                 height: 100,
@@ -703,26 +575,21 @@ const PropertyModifier = () => {
                             />
                           </div>
                         ))}
+                        <button onClick={handleNewImage}>
+                          Upload Sub image
+                        </button>
                       </div>
                     </div>
-
                     <button type="submit" className="btn btn-success btn-block">
                       Submit
                     </button>
                     <button
-                      type="Add"
+                      type="submit"
                       className="btn btn-success btn-block"
-                      onClick={(e) => {
-                        e.preventDefault(); // 阻止默认的跳转行为
-                        handleAddPropertyClick(); // 调用点击处理函数
-                      }}
+                      onClick={handleFormAdd}
                     >
-                      Add Property
+                      Add
                     </button>
-                    <AddPropertyModal
-                      opened={modalOpened}
-                      setOpened={setModalopened}
-                    />
                   </form>
                 </div>
               )}
@@ -734,4 +601,4 @@ const PropertyModifier = () => {
   );
 };
 
-export default PropertyModifier;
+export default FranchiseModifier;

@@ -219,10 +219,10 @@ const CommercialModifier = () => {
                     </li>
 
                     <li>
-                      <a href="#">
+                      <Link to="/admin/FranchiseModifier">
                         <i className="fa fa-heart" aria-hidden="true" />
                         Franchise
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <Link to="/admin/CommercialModifier">

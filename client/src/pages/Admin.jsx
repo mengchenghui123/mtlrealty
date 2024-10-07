@@ -196,10 +196,10 @@ const Admin = () => {
                       </li>
 
                       <li>
-                        <a href="favorited-listings.html">
+                        <Link to="/admin/FranchiseModifier">
                           <i className="fa fa-heart" aria-hidden="true" />
                           Franchise
-                        </a>
+                        </Link>
                       </li>
                       <li>
                         <Link to="/admin/CommercialModifier">

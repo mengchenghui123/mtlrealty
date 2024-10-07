@@ -197,7 +197,7 @@ export const createCommercial = async (data, token) => {
   console.log(data);
   try {
     const res = await api.post(
-      `admin/creareCommercial`,
+      `admin/createCommercial`,
       {
         data,
       },
@@ -231,6 +231,60 @@ export const updateCommercial = async (id, data, token) => {
     return res.data;
   } catch (error) {
     console.log("Error updating residency:", error);
+    throw error;
+  }
+};
+export const updateFranchise = async (id, data, token) => {
+  try {
+    console.log(`API URL: /updateFranchise/${id}`);
+    console.log("Data:", data);
+    const res = await api.put(
+      `/admin/updateFranchise/${id}`,
+      { data },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("res::", res);
+    return res.data;
+  } catch (error) {
+    console.log("Error updating Franchise:", error);
+    throw error;
+  }
+};
+
+export const createFranchise = async (data, token) => {
+  console.log(data);
+  try {
+    const res = await api.post(
+      `admin/createFranchise`,
+      {
+        data,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res.data;
+  } catch (error) {
+    console.log("error from server:", error);
+    throw error;
+  }
+};
+
+export const deleteFranchise = async (id, token) => {
+  try {
+    await api.delete(`/admin/deleteFranchise/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.log("Error deleting franchise", error);
     throw error;
   }
 };

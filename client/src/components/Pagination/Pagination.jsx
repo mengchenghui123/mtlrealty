@@ -9,11 +9,10 @@ const Pagination = ({ currentPage, totalPage, handlePageChange }) => {
           <li
             className={`page-item ${i === currentPage ? "active" : ""}`}
             key={i}
-            onClick={() => handlePageChange(i)}
           >
-            <a className="page-link" href="#">
+            <button className="page-link" onClick={() => handlePageChange(i)}>
               {i + 1}
-            </a>
+            </button>
           </li>
         );
       }
@@ -25,11 +24,10 @@ const Pagination = ({ currentPage, totalPage, handlePageChange }) => {
             <li
               className={`page-item ${i === currentPage ? "active" : ""}`}
               key={i}
-              onClick={() => handlePageChange(i)}
             >
-              <a className="page-link" href="#">
+              <button className="page-link" onClick={() => handlePageChange(i)}>
                 {i + 1}
-              </a>
+              </button>
             </li>
           );
         }
@@ -49,11 +47,10 @@ const Pagination = ({ currentPage, totalPage, handlePageChange }) => {
             <li
               className={`page-item ${i === currentPage ? "active" : ""}`}
               key={i}
-              onClick={() => handlePageChange(i)}
             >
-              <a className="page-link" href="#">
+              <button className="page-link" onClick={() => handlePageChange(i)}>
                 {i + 1}
-              </a>
+              </button>
             </li>
           );
         }
@@ -73,11 +70,10 @@ const Pagination = ({ currentPage, totalPage, handlePageChange }) => {
             <li
               className={`page-item ${i === currentPage ? "active" : ""}`}
               key={i}
-              onClick={() => handlePageChange(i)}
             >
-              <a className="page-link" href="#">
+              <button className="page-link" onClick={() => handlePageChange(i)}>
                 {i + 1}
-              </a>
+              </button>
             </li>
           );
         }
@@ -90,13 +86,12 @@ const Pagination = ({ currentPage, totalPage, handlePageChange }) => {
     <nav aria-label="Page navigation">
       <ul className="pagination lis-view">
         <li className={`page-item ${currentPage === 0 ? "disabled" : ""}`}>
-          <a
+          <button
             className="page-link"
-            href="#"
             onClick={() => handlePageChange(currentPage - 1)}
           >
             Previous
-          </a>
+          </button>
         </li>
         {renderPagination()}
         <li
@@ -104,13 +99,12 @@ const Pagination = ({ currentPage, totalPage, handlePageChange }) => {
             currentPage === totalPage - 1 ? "disabled" : ""
           }`}
         >
-          <a
+          <button
             className="page-link"
-            href="#"
             onClick={() => handlePageChange(currentPage + 1)}
           >
             Next
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
