@@ -273,23 +273,6 @@ export const About = () => {
       </section>
 
       {/* Section Partners */}
-      <div className="partners bg-white-2">
-        <div className="container">
-          <div className="sec-title">
-            <h2>
-              <span>Our </span>Partners
-            </h2>
-            <p>The Companies That Represent Us.</p>
-          </div>
-          <div className="owl-carousel style4">
-            {["11.jpg", "12.jpg", "13.jpg"].map((partner, index) => (
-              <div key={index} className="owl-item">
-                <img src={partner} alt="partner" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </>
   );
 };

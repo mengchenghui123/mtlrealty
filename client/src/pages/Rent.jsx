@@ -168,7 +168,10 @@ const Rent = () => {
           <div className="page-container">
             <div className="container">
               {currentPageData.map((property) => (
-                <div className="row featured portfolio-items" key={property.id}>
+                <div
+                  className="row featured portfolio-items mb-4"
+                  key={property.id}
+                >
                   <div
                     className="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
                     data-aos="fade-up"

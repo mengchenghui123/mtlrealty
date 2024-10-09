@@ -121,13 +121,6 @@ const CommercialModifier = () => {
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    const numericFields = [
-      "totalInvestment",
-      "livingSpace",
-      "lotSize",
-      "annualRevenue",
-      "estimatedProfit",
-    ];
     const agentFields = {
       agentName: "name",
       agentPhone: "phone",
@@ -147,9 +140,7 @@ const CommercialModifier = () => {
         // 处理数字字段和其他字段
         return {
           ...prevData,
-          [name]: numericFields.includes(name)
-            ? parseFloat(value) || ""
-            : value,
+          [name]: value,
         };
       }
     });
@@ -387,7 +378,7 @@ const CommercialModifier = () => {
                     <div className="form-group mb-3">
                       <label>totalInvestment</label>
                       <input
-                        type="number"
+                        type="text"
                         name="totalInvestment"
                         value={formData.totalInvestment || ""}
                         onChange={handleFormChange}
@@ -416,57 +407,33 @@ const CommercialModifier = () => {
                         className="form-control"
                       />
                     </div>
-                    <div className="form-group mb-3">
-                      <label>propertyType</label>
-                      <input
-                        type="text"
-                        name="propertyType"
-                        value={formData.propertyType || ""}
-                        onChange={handleFormChange}
-                        placeholder="propertyType(eg:restaurant)"
-                        className="form-control"
-                      />
-                    </div>
+
                     <div className="form-group mb-3">
                       <label>Area</label>
                       <input
-                        type="number"
-                        name="livingSpace"
-                        value={formData.livingSpace || ""}
+                        type="text"
+                        name="Area"
+                        value={formData.Area || ""}
                         className="form-control"
                         onChange={handleFormChange}
-                        placeholder="livingSpace"
-                        step="any"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label>lotSize</label>
-                      <input
-                        type="number"
-                        name="lotSize"
-                        value={formData.lotSize || ""}
-                        className="form-control"
-                        onChange={handleFormChange}
-                        placeholder="lotSize"
-                        step="any"
+                        placeholder="Area"
                       />
                     </div>
                     <div className="form-group mb-3">
                       <label>annualRevenue</label>
                       <input
-                        type="number"
+                        type="text"
                         name="annualRevenue"
                         value={formData.annualRevenue || ""}
                         className="form-control"
                         onChange={handleFormChange}
                         placeholder="annualRevenue"
-                        step="any"
                       />
                     </div>
                     <div className="form-group mb-3">
                       <label>estimatedProfit</label>
                       <input
-                        type="number"
+                        type="text"
                         name="estimatedProfit"
                         value={formData.estimatedProfit || ""}
                         className="form-control"

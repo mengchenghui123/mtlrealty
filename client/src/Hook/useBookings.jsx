@@ -16,6 +16,11 @@ const useBookings = () => {
       if (!Array.isArray(data)) {
         throw new Error("Data format is incorrect", data);
       }
+      if (data.length === 0) {
+        console.warn("No bookings found.");
+        setUserDetail((prev) => ({ ...prev, bookings: [] }));
+        return;
+      }
       setUserDetail((prev) => ({ ...prev, bookings: data }));
     },
     enabled: !!user?.email && !!userDetails?.token,

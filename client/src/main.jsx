@@ -7,11 +7,11 @@ import { MantineProvider } from "@mantine/core";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-htkjk3aua38i5rux.us.auth0.com"
-      clientId="nVKAdz4m3HZ9Q3ubiGorXDCerMMfUZoa"
+      domain="dev-p41ki7qocbxnmh20.us.auth0.com"
+      clientId="km4spGnGWYurDHkAh1BpC2NxoK4rHfOe"
       authorizationParams={{
         redirect_uri: "http://localhost:5173",
-        audience: "https://api.realEstate.com",
+        audience: "http://api.realEstate.com",
       }}
       scope="openid profile email"
     >

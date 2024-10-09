@@ -109,7 +109,7 @@ const BrandPage = () => {
               <div className="row m0">
                 <div className="col-lg-12 p0">
                   <div className="popup-images">
-                    <a className="popup-img" href={franchise.image}>
+                    <a className="popup-img">
                       <img
                         className="img-fluid w100"
                         src={franchise.image}
@@ -124,7 +124,7 @@ const BrandPage = () => {
               <div className="row m0">
                 <div className="col-sm-6 col-lg-6 p0">
                   <div className="popup-images">
-                    <a className="popup-img" href="images/interior/p-2.png">
+                    <a className="popup-img">
                       <img
                         className="img-fluid w100"
                         src={franchise.images[0]}
@@ -135,7 +135,7 @@ const BrandPage = () => {
                 </div>
                 <div className="col-sm-6 col-lg-6 p0">
                   <div className="popup-images">
-                    <a className="popup-img" href="images/interior/p-3.png">
+                    <a className="popup-img">
                       <img
                         className="img-fluid w100"
                         src={franchise.images[1]}
@@ -146,7 +146,7 @@ const BrandPage = () => {
                 </div>
                 <div className="col-sm-6 col-lg-6 p0">
                   <div className="popup-images">
-                    <a className="popup-img" href="images/interior/p-4.png">
+                    <a className="popup-img">
                       <img
                         className="img-fluid w100"
                         src={franchise.images[2]}
@@ -157,7 +157,7 @@ const BrandPage = () => {
                 </div>
                 <div className="col-sm-6 col-lg-6 p0">
                   <div className="popup-images">
-                    <a className="popup-img" href="images/interior/p-5.png">
+                    <a className="popup-img">
                       <img
                         className="img-fluid w100"
                         src={franchise.images[3]}

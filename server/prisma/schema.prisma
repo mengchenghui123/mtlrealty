@@ -73,12 +73,11 @@ model Commercial{
     title           String? 
     type            String?
     description     String?
-    propertyType    String?
-    livingSpace     Float?
-    lotSize         Float?
-    annualRevenue   Float?
-    totalInvestment Float?
-    estimatedProfit Float?
+    Area            String?
+    price           String
+    annualRevenue   String?
+    totalInvestment String?
+    estimatedProfit String?
     EstimatedPaybackPeriod String?
     address         String?
     mlsNumber       String?

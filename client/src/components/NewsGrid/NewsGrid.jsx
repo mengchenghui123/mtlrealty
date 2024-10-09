@@ -93,20 +93,6 @@ const NewsGrid = () => {
                         <a href="blog-details.html" className="news-link">
                           Read more...
                         </a>
-                        <ul className="action-list">
-                          <li className="action-item">
-                            <i className="fa fa-heart" />{" "}
-                            <span>{news.likes}</span>
-                          </li>
-                          <li className="action-item">
-                            <i className="fa fa-comment" />{" "}
-                            <span>{news.comments}</span>
-                          </li>
-                          <li className="action-item">
-                            <i className="fa fa-share-alt" />{" "}
-                            <span>{news.shares}</span>
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>

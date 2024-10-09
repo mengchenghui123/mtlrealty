@@ -63,16 +63,16 @@ export const Footer = () => {
                     </ul>
                     <ul className="nav-right">
                       <li>
-                        <a href="agent-details.html">Agents Details</a>
+                        <a href="CommercialLeasing">Commercial Leasing</a>
                       </li>
                       <li>
-                        <a href="/about">About Us</a>
+                        <a href="CommercialPartner">Commercial Partner</a>
                       </li>
                       <li>
-                        <a href="blog.html">Blog Default</a>
+                        <a href="about">about</a>
                       </li>
                       <li>
-                        <a href="blog-details.html">Blog Details</a>
+                        <a href="brands">Franchise Brands</a>
                       </li>
                       <li className="no-mgb">
                         <a href="contact">Contact Us</a>
@@ -83,19 +83,16 @@ export const Footer = () => {
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="widget">
-                  <h3>Twitter Feeds</h3>
+                  <h3>Get In Touch</h3>
                   <div className="twitter-widget contuct">
                     <div className="twitter-area">
                       <div className="single-item">
-                        <div className="icon-holder">
-                          <i className="fa fa-twitter" aria-hidden="true"></i>
-                        </div>
                         <div className="text">
-                          <h5>
-                            <a href="#">@findhouses</a> all share them with me
-                            baby said inspet.
-                          </h5>
-                          <h4>about 5 days ago</h4>
+                          <p>
+                            We provide the latest listing for buying, selling,
+                            renting properties, as well as information on
+                            business sales and franchise opportunities.
+                          </p>
                         </div>
                       </div>
                     </div>

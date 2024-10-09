@@ -60,12 +60,6 @@ const PropertyServices = () => {
                       {service.title}
                     </h4>
                     <p>{service.description}</p>
-                    <a
-                      className="text-base text-base-dark-hover text-size-13"
-                      href="properties-full-list.html"
-                    >
-                      Read More <i className="fa fa-long-arrow-right ml-2" />
-                    </a>
                   </div>
                 </div>
               </div>

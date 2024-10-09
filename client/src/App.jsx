@@ -27,6 +27,7 @@ import CommercialPartner from "./pages/CommercialPartners";
 import CommercialModifier from "./pages/CommercialModifier";
 import PropertyModifier from "./pages/PropertyModifier";
 import FranchiseModifier from "./pages/FranchiseModifier";
+import CommercialDetail from "./pages/CommercialDetail";
 
 function App() {
   const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ function App() {
         { path: "CommercialLeasing", element: <CommercialLeasing /> },
         { path: "CommercialPartner", element: <CommercialPartner /> },
         { path: "property/:id", element: <PropertyDetail /> },
+        { path: "commercial/:id", element: <CommercialDetail /> },
         { path: "/bookings", element: <Bookings /> },
         { path: "/favourites", element: <Favourites /> },
         { path: "/residencies/:id", element: <Residiences /> },
