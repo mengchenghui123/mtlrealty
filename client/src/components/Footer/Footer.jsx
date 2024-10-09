@@ -129,7 +129,7 @@ export const Footer = () => {
         </div>
         <div className="second-footer bg-white-1 rec-pro">
           <div className="container-fluid sd-f">
-            <p>2021 © Copyright - All Rights Reserved.</p>
+            <p>2024 © Copyright - All Rights Reserved.</p>
             <ul className="netsocials">
               <li>
                 <a href="#">
