@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       clientId="km4spGnGWYurDHkAh1BpC2NxoK4rHfOe"
       authorizationParams={{
         redirect_uri:
-          "https://real-estate-ptfvbgv08-baiyangs-projects-f8066304.vercel.app/",
+          "https://real-estate-ptfvbgv08-baiyangs-projects-f8066304.vercel.app",
         audience: "http://api.realEstate.com",
       }}
       scope="openid profile email"
