@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div id="wrapper">
       <div className="header-container">
-        <header id="header-container">
+        <header>
           {/* Header */}
           <div id="header">
             <div className="container container-header">

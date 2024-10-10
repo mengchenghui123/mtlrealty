@@ -71,6 +71,7 @@ const Rent = () => {
         property.city.toLowerCase().includes(filter.toLowerCase()) ||
         property.country.toLowerCase().includes(filter.toLowerCase())
     );
+
   const totalPage = Math.ceil(propertyForRent.length / itemsPerPage);
   const offset = currentPage * itemsPerPage;
   const currentPageData = propertyForRent.slice(offset, offset + itemsPerPage);

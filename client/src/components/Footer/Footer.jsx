@@ -9,7 +9,7 @@ export const Footer = () => {
             <div className="row">
               <div className="col-lg-3 col-md-6">
                 <div className="netabout">
-                  <a href="index.html" className="logo">
+                  <a className="logo">
                     <img
                       src="https://i.imgur.com/awa2U2i.png"
                       alt="netcom"
@@ -34,7 +34,7 @@ export const Footer = () => {
                     <li>
                       <div className="info">
                         <i className="fa fa-envelope" aria-hidden="true" />
-                        <p className="in-p ti">richard@mengchenghui.com</p>
+                        <p className="in-p ti">jzhou@sothebysrealty.ca</p>
                       </div>
                     </li>
                   </ul>
@@ -69,7 +69,7 @@ export const Footer = () => {
                         <a href="CommercialPartner">Commercial Partner</a>
                       </li>
                       <li>
-                        <a href="about">about</a>
+                        <a href="about">About Us</a>
                       </li>
                       <li>
                         <a href="brands">Franchise Brands</a>

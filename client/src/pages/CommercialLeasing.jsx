@@ -63,13 +63,10 @@ const CommercialLeasing = () => {
     );
   }
 
-  const commercialForRent = data;
-  const totalPage = Math.ceil(commercialForRent.length / itemsPerPage);
+  const commercialData = data;
+  const totalPage = Math.ceil(commercialData.length / itemsPerPage);
   const offset = currentPage * itemsPerPage;
-  const currentPageData = commercialForRent.slice(
-    offset,
-    offset + itemsPerPage
-  );
+  const currentPageData = commercialData.slice(offset, offset + itemsPerPage);
   const handleCardClick = (id) => {
     toast.success(`card with id ${id} clicked`);
     navigate(`/commercial/${id}`);
@@ -107,7 +104,7 @@ const CommercialLeasing = () => {
                 <div className="listing-title-bar">
                   <div className="text-heading text-left">
                     <p className="font-weight-bold mb-0 mt-3">
-                      {commercialForRent.length} Search results
+                      {commercialData.length} Search results
                     </p>
                   </div>
                 </div>
@@ -142,7 +139,7 @@ const CommercialLeasing = () => {
                               ${commercial.price.toLocaleString("en-CA")}
                             </div>
                             <div className="homes-tag button alt sale">
-                              For Rent
+                              Retail
                             </div>
 
                             <img
@@ -186,7 +183,7 @@ const CommercialLeasing = () => {
                     <ul className="homes-list clearfix pb-3">
                       <li className="the-icons">
                         <i className="flaticon-bed mr-2" aria-hidden="true" />
-                        <span>{commercial.annualRevenue} Annual Revenue</span>
+                        <span> ${commercial.annualRevenue} Annual Revenue</span>
                       </li>
                       <li className="the-icons">
                         <i
@@ -194,7 +191,7 @@ const CommercialLeasing = () => {
                           aria-hidden="true"
                         />
                         <span>
-                          {commercial.totalInvestment} Total Investment
+                          ${commercial.totalInvestment} Total Investment
                         </span>
                       </li>
                       <li className="the-icons">

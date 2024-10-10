@@ -18,6 +18,10 @@ export const Contact = () => {
     }
     return () => {
       document.body.classList.remove("inner-pages", "hd-white", "int_white_bg");
+      if (window.map && window.map.remove) {
+        window.map.remove(); // Leaflet 提供的销毁方法
+        window.map = null; // 清除 map 变量
+      }
     };
   }, []);
 
@@ -65,7 +69,10 @@ export const Contact = () => {
           <div className="container">
             <h1>Contact Us</h1>
             <h2>
-              <a href="/">Home </a> &nbsp;/&nbsp; Contact Us
+              <a href="/" style={{ color: "pink" }}>
+                Home{" "}
+              </a>{" "}
+              &nbsp;/&nbsp; Contact Us
             </h2>
           </div>
         </div>
@@ -164,13 +171,7 @@ export const Contact = () => {
                   <li>
                     <div className="info">
                       <i className="fa fa-envelope" aria-hidden="true" />
-                      <p className="in-p ti">richard@mengchenghui.com</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="info cll">
-                      <i className="fa fa-clock-o" aria-hidden="true" />
-                      <p className="in-p ti">8:00 a.m - 9:00 p.m</p>
+                      <p className="in-p ti">jzhou@sothebysrealty.ca</p>
                     </div>
                   </li>
                 </ul>

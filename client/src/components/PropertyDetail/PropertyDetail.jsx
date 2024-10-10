@@ -59,10 +59,18 @@ export const PropertyDetail = () => {
     } else {
       console.log("Loading page");
     }
+
+    const property = data?.find((p) => p.id === id);
+    if (property?.address && window.loadMapWithAddress) {
+      window.loadMapWithAddress(property.address.split(",")[0]);
+    }
     return () => {
       document.body.classList.remove("inner-pages", "int_white_bg", "hd-white");
+      if (window.destroyMap) {
+        window.destroyMap();
+      }
     };
-  }, [id, bookings]);
+  }, [id, data, bookings, isLoading]);
 
   if (isError) {
     return (
@@ -108,10 +116,6 @@ export const PropertyDetail = () => {
   const handlePageChange = (index) => {
     setCurrentBatchIndex(index);
   };
-
-  if (window.loadMapWithAddress && property.address) {
-    window.loadMapWithAddress(property.address.split(",")[0]);
-  }
 
   const handleFormChange = (e) => {
     setFormData({
@@ -186,8 +190,9 @@ export const PropertyDetail = () => {
                     {batches[currentBatchIndex].map((image, index) => (
                       <div
                         key={index}
-                        className={`${index === 0 ? "active" : ""
-                          } item carousel-item`}
+                        className={`${
+                          index === 0 ? "active" : ""
+                        } item carousel-item`}
                         data-slide-number={index}
                       >
                         <img
@@ -218,8 +223,9 @@ export const PropertyDetail = () => {
                     {batches[currentBatchIndex].map((image, index) => (
                       <li
                         key={index}
-                        className={`list-inline-item ${index === 0 ? "active" : ""
-                          }`}
+                        className={`list-inline-item ${
+                          index === 0 ? "active" : ""
+                        }`}
                       >
                         <a
                           id={`carousel-selector-${index}`}
@@ -241,8 +247,9 @@ export const PropertyDetail = () => {
                     {batches.map((_, pageIndex) => (
                       <button
                         key={pageIndex}
-                        className={`page-btn ${currentBatchIndex === pageIndex ? "active" : ""
-                          }`}
+                        className={`page-btn ${
+                          currentBatchIndex === pageIndex ? "active" : ""
+                        }`}
                         onClick={() => handlePageChange(pageIndex)}
                       >
                         {pageIndex + 1}
@@ -343,11 +350,11 @@ export const PropertyDetail = () => {
               <ul className="homes-list clearfix">
                 {property.amenities
                   ? property.amenities.map((facility, index) => (
-                    <li key={index}>
-                      <i className="fa fa-check-square" aria-hidden="true" />
-                      <span>{facility}</span>
-                    </li>
-                  ))
+                      <li key={index}>
+                        <i className="fa fa-check-square" aria-hidden="true" />
+                        <span>{facility}</span>
+                      </li>
+                    ))
                   : "N/A"}
               </ul>
             </div>

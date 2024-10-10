@@ -64,7 +64,7 @@ const Sell = () => {
   }
 
   const propertyForSale = data
-    .filter((item) => item.type === "Rent")
+    .filter((item) => item.type === "Sale")
     .filter(
       (property) =>
         property.title.toLowerCase().includes(filter.toLowerCase()) ||
@@ -185,7 +185,7 @@ const Sell = () => {
                           >
                             <div
                               className="homes-tag button alt featured"
-                              style={{ fontSize: "120%" }}
+                              style={{ fontSize: "90%" }}
                             >
                               ${property.price.toLocaleString("en-CA")}
                             </div>

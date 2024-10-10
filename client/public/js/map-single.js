@@ -1,9 +1,9 @@
-let map;
+window.map = null; // 确保 map 是全局变量
 
 window.initializeMap = function (lat, lon) {
   // 确保只初始化一次
-  if (!map && $("#map-contact").length) {
-    map = L.map("map-contact", {
+  if (!window.map && $("#map-contact").length) {
+    window.map = L.map("map-contact", {
       zoom: 12,
       maxZoom: 20,
       minZoom: 5,
@@ -12,7 +12,7 @@ window.initializeMap = function (lat, lon) {
       center: [lat, lon], // 使用传递的经纬度
     });
 
-    map.scrollWheelZoom.disable();
+    window.map.scrollWheelZoom.disable();
 
     L.tileLayer(
       "https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png",
@@ -21,7 +21,7 @@ window.initializeMap = function (lat, lon) {
         attribution:
           '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       }
-    ).addTo(map);
+    ).addTo(window.map);
 
     var icon = L.divIcon({
       html: '<i class="fa fa-building"></i>',
@@ -32,10 +32,10 @@ window.initializeMap = function (lat, lon) {
 
     L.marker([lat, lon], {
       icon: icon,
-    }).addTo(map);
-  } else if (map) {
+    }).addTo(window.map);
+  } else if (window.map) {
     // 如果地图已存在，更新中心位置
-    map.setView([lat, lon]);
+    window.map.setView([lat, lon]);
   }
 };
 
@@ -56,5 +56,13 @@ window.loadMapWithAddress = async function (address) {
     }
   } catch (error) {
     console.error("Error fetching coordinates:", error);
+  }
+};
+
+// 添加销毁地图的函数
+window.destroyMap = function () {
+  if (window.map && window.map.remove) {
+    window.map.remove(); // 销毁 Leaflet 地图实例
+    window.map = null; // 重置全局 map 变量
   }
 };
