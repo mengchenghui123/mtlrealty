@@ -51,7 +51,6 @@ const Hero = () => {
     .slice(0, 5);
 
   const handleCardClick = (id) => {
-    toast.success(`card with id ${id} clicked`);
     navigate(`/property/${id}`);
   };
 
@@ -76,6 +75,7 @@ const Hero = () => {
                               <h2>{property.title}</h2>
                               <h3>
                                 ${property.price.toLocaleString("en-US")}
+                                {property.type === "Rent" ? " Per Month" : ""}
                                 <span className="banner_span1" />
                               </h3>
                               <p>

@@ -3,13 +3,14 @@ import Pagination from "../components/Pagination/Pagination";
 import useProperty from "../Hook/useProperty";
 import { PuffLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Rent = () => {
   const { data, isError, isLoading } = useProperty();
   const [currentPage, setCurrentPage] = useState(0);
   const [filter, setFilter] = useState("");
-  const itemsPerPage = 4; // Show one item per page
+  const [propertyType, setPropertyType] = useState(""); // 新增状态
+  const [priceRange, setPriceRange] = useState("");
+  const itemsPerPage = 10; // Show one item per page
 
   const navigate = useNavigate();
 
@@ -70,13 +71,32 @@ const Rent = () => {
         property.title.toLowerCase().includes(filter.toLowerCase()) ||
         property.city.toLowerCase().includes(filter.toLowerCase()) ||
         property.country.toLowerCase().includes(filter.toLowerCase())
-    );
+    )
+    .filter((property) => {
+      // 确保返回布尔值
+      if (propertyType) {
+        return property.propertyType
+          .toLowerCase()
+          .includes(propertyType.toLowerCase());
+      }
+      return true; // 如果没有选择类型，则不过滤
+    })
+    .filter((property) => {
+      const price = property.price; // 确保你的数据模型中有 price 字段
+      if (priceRange === "under_1400") {
+        return price < 1400;
+      } else if (priceRange === "1400_to_2000") {
+        return price >= 1400 && price <= 2000;
+      } else if (priceRange === "over_2000") {
+        return price > 2000;
+      }
+      return true; // 如果没有选择价格范围，则不过滤
+    });
 
   const totalPage = Math.ceil(propertyForRent.length / itemsPerPage);
   const offset = currentPage * itemsPerPage;
   const currentPageData = propertyForRent.slice(offset, offset + itemsPerPage);
   const handleCardClick = (id) => {
-    toast.success(`card with id ${id} clicked`);
     navigate(`/property/${id}`);
   };
 
@@ -120,30 +140,28 @@ const Rent = () => {
                         />
                       </div>
                       <div className="rld-single-select ml-22">
-                        <select className="select single-select">
-                          <option value={1}>Property Type</option>
-                          <option value={2}>Single Family</option>
-                          <option value={3}>Apartment</option>
-                          <option value={3}>Condo</option>
+                        <select
+                          className="select single-select"
+                          value={propertyType}
+                          onChange={(e) => setPropertyType(e.target.value)}
+                        >
+                          <option value="">Property Type</option>
+                          <option value="House">House</option>
+                          <option value="Apartment">Apartment</option>
+                          <option value="Condo">Condo</option>
                         </select>
                       </div>
                       <div className="rld-single-select">
-                        <select className="select single-select mr-0">
-                          <option value={1}>Location</option>
-                          <option value={2}>Ville-Marie</option>
-                          <option value={3}>Brossard</option>
-                          <option value={3}>Le Sud-Ouest</option>
-                          <option value={3}>La Prairie</option>
+                        <select
+                          className="select single-select"
+                          value={priceRange}
+                          onChange={(e) => setPriceRange(e.target.value)}
+                        >
+                          <option value="">Select Price Range</option>
+                          <option value="under_1400">Under $1400</option>
+                          <option value="1400_to_2000">$1400 - $2000</option>
+                          <option value="over_2000">Over $2000</option>
                         </select>
-                      </div>
-                      {/* waiting for more option */}
-                      <div className="dropdown-filter">
-                        <span></span>
-                      </div>
-                      <div className="col-xl-2 col-lg-2 col-md-4 pl-0">
-                        <a className="btn btn-yellow" href="#">
-                          Search Now
-                        </a>
                       </div>
                     </div>
                   </div>
@@ -185,34 +203,15 @@ const Rent = () => {
                       <div className="project-inner project-head">
                         <div className="homes">
                           {/* homes img */}
-                          <a className="homes-img">
-                            <div
-                              className="homes-tag button alt featured"
-                              style={{ fontSize: "120%" }}
-                            >
-                              ${property.price.toLocaleString("en-CA")}
-                            </div>
-                            <div className="homes-tag button alt sale">
-                              For Rent
-                            </div>
-
+                          <a
+                            className="homes-img"
+                            onClick={() => handleCardClick(property.id)}
+                          >
                             <img
                               src={property.image}
                               alt={`home-${property.id}`}
                               className="img-responsive"
                             />
-                          </a>
-                        </div>
-                        <div className="button-effect">
-                          <a
-                            className="btn"
-                            onClick={() => handleCardClick(property.id)}
-                          >
-                            <i className="fa fa-link" />
-                          </a>
-
-                          <a className="img-poppu btn">
-                            <i className="fa fa-photo" />
                           </a>
                         </div>
                       </div>
@@ -224,10 +223,19 @@ const Rent = () => {
                     data-aos="fade-up"
                   >
                     {/* homes address */}
-                    <h3 style={{ cursor: "pointer" }}>
+                    <h3
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
                       <a onClick={() => handleCardClick(property.id)}>
                         {property.title}
                       </a>
+                      <span style={{ marginLeft: "auto", fontWeight: "bold" }}>
+                        ${property.price.toLocaleString("en-CA")} Per Month
+                      </span>
                     </h3>
                     <p className="homes-address mb-3">
                       <i className="fa fa-map-marker" />
@@ -277,7 +285,7 @@ const Rent = () => {
                       </li>
                     </ul>
                     <div className="footer">
-                      <a href="contact">JieSi Zhou</a>
+                      <a href="contact">Jiesi Zhou</a>
                     </div>
                   </div>
                 </div>

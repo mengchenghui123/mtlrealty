@@ -8,7 +8,7 @@ import { toFav } from "../../utils/Api";
 import { checkFavourites, updateFavourites } from "../../utils/Common";
 
 const Heart = ({ id }) => {
-  const [heartColor, setHeartColor] = useState("black");
+  const [heartColor, setHeartColor] = useState("white");
   const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
 
@@ -19,6 +19,7 @@ const Heart = ({ id }) => {
 
   useEffect(() => {
     setHeartColor(() => checkFavourites(id, favourites));
+    console.log("Current heart color:", heartColor);
   }, [favourites]);
 
   const { mutate } = useMutation({
@@ -34,7 +35,7 @@ const Heart = ({ id }) => {
   const handleLike = () => {
     if (validateLogin()) {
       mutate();
-      setHeartColor((prev) => (prev === "#fa3e5f" ? "black" : "#fa3e5f"));
+      setHeartColor((prev) => (prev === "#fa3e5f" ? "white" : "#fa3e5f"));
     }
   };
 
@@ -42,7 +43,10 @@ const Heart = ({ id }) => {
     <AiFillHeart
       size={24}
       color={heartColor}
+      onMouseEnter={() => setHeartColor("#fa3e5f")} // 鼠标悬停时变红
+      onMouseLeave={() => setHeartColor(checkFavourites(id, favourites))} // 鼠标离开时恢复颜色
       onClick={(e) => {
+        console.log("like");
         e.stopPropagation();
         handleLike();
       }}

@@ -64,7 +64,6 @@ const Brands = () => {
   const offset = currentPage * itemsPerPage;
   const currentPageData = data.slice(offset, offset + itemsPerPage);
   const handleCardClick = (id) => {
-    toast.success(`card with id ${id} clicked`);
     navigate(`/brands/${id}`);
   };
 
@@ -192,7 +191,7 @@ const Brands = () => {
                       <div className="sidebar-widget author-widget2">
                         <div className="author-box clearfix">
                           <h4 className="author__title">Jiesi Zhou</h4>
-                          <p className="author__meta">Agent of Property</p>
+                          <p className="author__meta">Real Estate Broker</p>
                         </div>
                         <ul className="author__contact">
                           <li>

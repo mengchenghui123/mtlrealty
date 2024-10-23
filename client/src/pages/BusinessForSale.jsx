@@ -5,7 +5,7 @@ import { PuffLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const CommercialLeasing = () => {
+const BusinessForSale = () => {
   const { data, isError, isLoading } = useCommercial();
   const [currentPage, setCurrentPage] = useState(0);
   const [filter, setFilter] = useState("");
@@ -64,11 +64,13 @@ const CommercialLeasing = () => {
   }
 
   const commercialData = data;
-  const totalPage = Math.ceil(commercialData.length / itemsPerPage);
+  const filteredData = commercialData.filter(
+    (item) => item.type === "Business for Sale"
+  );
+  const totalPage = Math.ceil(filteredData.length / itemsPerPage);
   const offset = currentPage * itemsPerPage;
-  const currentPageData = commercialData.slice(offset, offset + itemsPerPage);
+  const currentPageData = filteredData.slice(offset, offset + itemsPerPage);
   const handleCardClick = (id) => {
-    toast.success(`card with id ${id} clicked`);
     navigate(`/commercial/${id}`);
   };
 
@@ -88,7 +90,7 @@ const CommercialLeasing = () => {
                   <div className="text-heading text-left">
                     <p>
                       <a href="/">Home </a> &nbsp;/&nbsp;{" "}
-                      <span>Commercial Listings</span>
+                      <span>Business For Sale</span>
                     </p>
                   </div>
                   <h3>List View</h3>
@@ -132,33 +134,11 @@ const CommercialLeasing = () => {
                         <div className="homes">
                           {/* homes img */}
                           <a className="homes-img">
-                            <div
-                              className="homes-tag button alt featured"
-                              style={{ fontSize: "120%" }}
-                            >
-                              ${commercial.price.toLocaleString("en-CA")}
-                            </div>
-                            <div className="homes-tag button alt sale">
-                              Retail
-                            </div>
-
                             <img
                               src={commercial.image}
                               alt={`home-${commercial.id}`}
                               className="img-responsive"
                             />
-                          </a>
-                        </div>
-                        <div className="button-effect">
-                          <a
-                            className="btn"
-                            onClick={() => handleCardClick(commercial.id)}
-                          >
-                            <i className="fa fa-link" />
-                          </a>
-
-                          <a className="img-poppu btn">
-                            <i className="fa fa-photo" />
                           </a>
                         </div>
                       </div>
@@ -170,10 +150,20 @@ const CommercialLeasing = () => {
                     data-aos="fade-up"
                   >
                     {/* homes address */}
-                    <h3 style={{ cursor: "pointer" }}>
+                    <h3
+                      style={{
+                        cursor: "pointer",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
                       <a onClick={() => handleCardClick(commercial.id)}>
                         {commercial.title}
                       </a>
+                      <span style={{ marginLeft: "auto", fontWeight: "bold" }}>
+                        ${commercial.price.toLocaleString("en-CA")}
+                      </span>
                     </h3>
                     <p className="homes-address mb-3">
                       <i className="fa fa-map-marker" />
@@ -225,4 +215,4 @@ const CommercialLeasing = () => {
   );
 };
 
-export default CommercialLeasing;
+export default BusinessForSale;

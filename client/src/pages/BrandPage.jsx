@@ -260,7 +260,7 @@ const BrandPage = () => {
                           <h4 className="author__title">
                             {franchise.agentInfo.name}
                           </h4>
-                          <p className="author__meta">Agent of Property</p>
+                          <p className="author__meta">Real Estate Broker</p>
                         </div>
                         <ul className="author__contact">
                           <li>

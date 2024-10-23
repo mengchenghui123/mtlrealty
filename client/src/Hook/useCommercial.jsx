@@ -5,7 +5,7 @@ const useCommercial = () => {
   const { data, isLoading, isError, refetch } = useQuery(
     "allCommercial",
     getCommercial,
-    { refetchOnWindowFocus: false }
+    { refetchOnWindowFocus: false, staleTime: 30000, cacheTime: 30000 }
   );
   return { data, isError, isLoading, refetch };
 };

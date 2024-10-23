@@ -2717,8 +2717,16 @@ section.portfolio {
 }
 
 .homes-tag.featured {
-  width: 84px !important;
-  background: #18ba60 !important;
+  width: auto; /* 自动宽度 */
+  max-width: 84px; /* 最大宽度 */
+  background: #18ba60 !important; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  position: absolute; 
+  left: 15px; 
+  margin-top: 15px; 
+  z-index: 99; 
 }
 
 .portfolio .homes .button {

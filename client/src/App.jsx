@@ -22,7 +22,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Admin from "./pages/Admin";
 import BrandPage from "./pages/BrandPage";
-import CommercialLeasing from "./pages/CommercialLeasing";
+import BusinessForSale from "./pages/BusinessForSale";
 import CommercialPartner from "./pages/CommercialPartners";
 import CommercialModifier from "./pages/CommercialModifier";
 import PropertyModifier from "./pages/PropertyModifier";
@@ -49,7 +49,7 @@ function App() {
         { path: "franchise", element: <Franchise /> },
         { path: "contact", element: <Contact /> },
         { path: "brands", element: <Brands /> },
-        { path: "CommercialLeasing", element: <CommercialLeasing /> },
+        { path: "BusinessForSale", element: <BusinessForSale /> },
         { path: "CommercialPartner", element: <CommercialPartner /> },
         { path: "property/:id", element: <PropertyDetail /> },
         { path: "commercial/:id", element: <CommercialDetail /> },

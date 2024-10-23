@@ -10,11 +10,12 @@ const PropertyGrid = ({ properties, title }) => {
   const { pathname } = useLocation();
   const id = pathname.split("/").slice(-1);
   const handleCardClick = (id) => {
-    toast.success(`card with id ${id} clicked`);
     if (title === "Residential") {
       navigate(`/property/${id}`);
     } else if (title === "Franchise") {
       navigate(`/brands/${id}`);
+    } else if (title === "Franchise") {
+      navigate(`/commercial/${id}`);
     }
   };
 
@@ -82,7 +83,6 @@ const PropertyGrid = ({ properties, title }) => {
       <div className="container-fluid">
         <div className="row">
           <div className="section-title col-md-5 pl-44">
-            <h3>Real Estate</h3>
             <h2>{title}</h2>
           </div>
         </div>
@@ -96,67 +96,138 @@ const PropertyGrid = ({ properties, title }) => {
                 data-aos-delay={150 + index * 100}
               >
                 {title === "Residential" ? (
-                  <>
-                    <Heart id={property.id} />
-                    <div className="landscapes listing-item compact thehp-1">
-                      <a
-                        href="#"
-                        className="recent-16"
+                  <div className="landscapes listing-item compact thehp-1">
+                    <div className="recent-16" style={{ cursor: "pointer" }}>
+                      <div
+                        className="recent-img16 img-fluid img-center"
+                        style={{
+                          backgroundImage: `url(${property.image})`,
+                          backgroundSize: "cover",
+                          backgroundRepeat: "no-repeat", // 防止图片重复
+                          backgroundPosition: "center", // 图片居中显示
+                          height: "100%", // 设置容器高度，可以根据需求调整
+                          width: "100%", // 设置宽度为100%，适应容器
+                          position: "relative", // 设置为相对定位
+                        }}
                         onClick={() => handleCardClick(property.id)}
-                      >
-                        <div
-                          className="recent-img16 img-fluid img-center"
-                          style={{
-                            backgroundImage: `url(${property.image})`,
-                          }}
-                        />
-                        <div className="recent-content" />
-                        <div className="listing-badges">
-                          <span>{property.type}</span>
-                        </div>
-                        <div className="recent-details">
-                          <div className="recent-title">
-                            {truncate(property.title, { length: 15 })}
-                          </div>
-                          <div className="recent-price mb-3">
-                            {formatPrice(property.price)}
-                          </div>
-                          <div className="house-details thehp-1">
-                            <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
-                            {property.facilities.bedrooms} Bed <span>|</span>{" "}
-                            <i className="fa fa-bath mr-1" aria-hidden="true" />{" "}
-                            {property.facilities.bathrooms} Bath <span>|</span>{" "}
-                            <i
-                              className="fa fa-object-group mr-1"
-                              aria-hidden="true"
-                            />{" "}
-                            {property.lotSize ? `${property.lotSize}` : "N/A "}
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                  </>
-                ) : title === "Franchise" ? (
-                  <>
-                    <div className="landscapes listing-item compact thehp-1">
-                      <a
-                        className="recent-16"
-                        onClick={() => handleCardClick(property.id)}
-                      >
-                        <div
-                          className="recent-img16 img-fluid img-center"
-                          style={{
-                            backgroundImage: `url(${property.image})`,
-                          }}
-                        />
-                        <div className="recent-content" />
+                      ></div>
 
-                        <div className="recent-details">
-                          <div className="recent-title">{property.title}</div>
+                      <div className="recent-content" />
+                      <div className="listing-badges">
+                        <span>{property.type}</span>
+                        <div
+                          style={{
+                            position: "absolute", // 绝对定位确保在图片上层
+                            top: "10px", // 距离顶部 10px
+                            right: "10px", // 距离右边 10px
+                            zIndex: 2, // 确保按钮在图片上方
+                          }}
+                        >
+                          <Heart id={property.id} />
                         </div>
-                      </a>
+                      </div>
+                      <div className="recent-details">
+                        <div className="recent-title">
+                          {truncate(property.title, { length: 15 })}
+                        </div>
+                        <div className="recent-price mb-3">
+                          {formatPrice(property.price)}
+                          {property.type === "Rent" ? " Per Month" : ""}
+                        </div>
+                        <div className="house-details thehp-1">
+                          <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
+                          {property.facilities.bedrooms} Bed <span>|</span>{" "}
+                          <i className="fa fa-bath mr-1" aria-hidden="true" />{" "}
+                          {property.facilities.bathrooms} Bath <span>|</span>{" "}
+                          <i
+                            className="fa fa-object-group mr-1"
+                            aria-hidden="true"
+                          />{" "}
+                          {property.lotSize ? `${property.lotSize}` : "N/A "}
+                        </div>
+                      </div>
                     </div>
-                  </>
+                  </div>
+                ) : title === "Franchise" ? (
+                  <div className="landscapes listing-item compact thehp-1">
+                    <div className="recent-16" style={{ cursor: "pointer" }}>
+                      <div
+                        className="recent-img16 img-fluid img-center"
+                        style={{
+                          backgroundImage: `url(${property.image})`,
+                          backgroundSize: "cover",
+                          backgroundRepeat: "no-repeat", // 防止图片重复
+                          backgroundPosition: "center", // 图片居中显示
+                          height: "100%", // 设置容器高度，可以根据需求调整
+                          width: "100%", // 设置宽度为100%，适应容器
+                          position: "relative", // 设置为相对定位
+                        }}
+                        onClick={() => handleCardClick(property.id)}
+                      ></div>
+                      <div
+                        style={{
+                          position: "absolute", // 绝对定位确保在图片上层
+                          top: "10px", // 距离顶部 10px
+                          right: "10px", // 距离右边 10px
+                          zIndex: 2, // 确保按钮在图片上方
+                        }}
+                      >
+                        <Heart id={property.id} />
+                      </div>
+                      <div
+                        className="recent-img16 img-fluid img-center"
+                        style={{
+                          backgroundImage: `url(${property.image})`,
+                        }}
+                      />
+                      <div className="recent-content" />
+                      <div className="recent-details">
+                        <div className="recent-title">{property.title}</div>
+                      </div>
+                    </div>
+                  </div>
+                ) : title === "Commercial" ? (
+                  <div className="landscapes listing-item compact thehp-1">
+                    <div className="recent-16" style={{ cursor: "pointer" }}>
+                      <div
+                        className="recent-img16 img-fluid img-center"
+                        style={{
+                          backgroundImage: `url(${property.image})`,
+                          backgroundSize: "cover",
+                          backgroundRepeat: "no-repeat", // 防止图片重复
+                          backgroundPosition: "center", // 图片居中显示
+                          height: "100%", // 设置容器高度，可以根据需求调整
+                          width: "100%", // 设置宽度为100%，适应容器
+                          position: "relative", // 设置为相对定位
+                        }}
+                        onClick={() => handleCardClick(property.id)}
+                      ></div>
+                      <div
+                        style={{
+                          position: "absolute", // 绝对定位确保在图片上层
+                          top: "10px", // 距离顶部 10px
+                          right: "10px", // 距离右边 10px
+                          zIndex: 2, // 确保按钮在图片上方
+                        }}
+                      >
+                        <Heart id={property.id} />
+                      </div>
+                      <div
+                        className="recent-img16 img-fluid img-center"
+                        style={{
+                          backgroundImage: `url(${property.image})`,
+                        }}
+                      />
+                      <div className="recent-content" />
+                      <div className="recent-details">
+                        <div className="recent-title">{property.title}</div>
+                        <div className="recent-price mb-3">
+                          {formatPrice(property.price)}
+                          {property.type === "Rent" ? " Per Month" : ""}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ) : null}
               </div>
             ))}

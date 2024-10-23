@@ -5,7 +5,7 @@ const useFranchise = () => {
   const { data, isLoading, isError, refetch } = useQuery(
     "allFranchise",
     getAllFranchise,
-    { refetchOnWindowFocus: false }
+    { refetchOnWindowFocus: false, staleTime: 30000, cacheTime: 30000 }
   );
 
   return { data, isError, isLoading, refetch };

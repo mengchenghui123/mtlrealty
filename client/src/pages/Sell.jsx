@@ -8,8 +8,10 @@ import { toast } from "react-toastify";
 const Sell = () => {
   const { data, isError, isLoading } = useProperty();
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 4; // Show one item per page
+  const itemsPerPage = 10; // Show one item per page
   const [filter, setFilter] = useState("");
+  const [propertyType, setPropertyType] = useState(""); // 新增状态
+  const [priceRange, setPriceRange] = useState("");
 
   const navigate = useNavigate();
 
@@ -70,12 +72,31 @@ const Sell = () => {
         property.title.toLowerCase().includes(filter.toLowerCase()) ||
         property.city.toLowerCase().includes(filter.toLowerCase()) ||
         property.country.toLowerCase().includes(filter.toLowerCase())
-    );
+    )
+    .filter((property) => {
+      // 确保返回布尔值
+      if (propertyType) {
+        return property.propertyType
+          .toLowerCase()
+          .includes(propertyType.toLowerCase());
+      }
+      return true; // 如果没有选择类型，则不过滤
+    })
+    .filter((property) => {
+      const price = property.price; // 确保你的数据模型中有 price 字段
+      if (priceRange === "under_400000") {
+        return price < 400000;
+      } else if (priceRange === "400000_to_600000") {
+        return price >= 400000 && price <= 600000;
+      } else if (priceRange === "over_600000") {
+        return price > 600000;
+      }
+      return true; // 如果没有选择价格范围，则不过滤
+    });
   const totalPage = Math.ceil(propertyForSale.length / itemsPerPage);
   const offset = currentPage * itemsPerPage;
   const currentPageData = propertyForSale.slice(offset, offset + itemsPerPage);
   const handleCardClick = (id) => {
-    toast.success(`card with id ${id} clicked`);
     navigate(`/property/${id}`);
   };
 
@@ -119,33 +140,32 @@ const Sell = () => {
                         />
                       </div>
                       <div className="rld-single-select ml-22">
-                        <select className="select single-select">
-                          <option value={1}>Property Type</option>
-                          <option value={2}>Single Family</option>
-                          <option value={3}>Apartment</option>
-                          <option value={3}>Condo</option>
+                        <select
+                          className="select single-select"
+                          value={propertyType}
+                          onChange={(e) => setPropertyType(e.target.value)}
+                        >
+                          <option value="">Property Type</option>
+                          <option value="House">House</option>
+                          <option value="Apartment">Apartment</option>
+                          <option value="Condo">Condo</option>
                         </select>
                       </div>
-                      <div className="rld-single-select">
-                        <select className="select single-select mr-0">
-                          <option value={1}>Location</option>
-                          <option value={2}>Ville-Marie</option>
-                          <option value={3}>La Prairie</option>
-                          <option value={3}>Westmount</option>
-                          <option value={3}>Montréal</option>
-                          <option value={3}>Brossard</option>
-                          <option value={3}>Other</option>
+                      <div className="rld-single-select ml-22">
+                        <select
+                          className="select single-select"
+                          value={priceRange}
+                          onChange={(e) => setPriceRange(e.target.value)}
+                        >
+                          <option value="">Select Price Range</option>
+                          <option value="under_400000">Under $400,000</option>
+                          <option value="400000_to_600000">
+                            $400,000 - $600,000
+                          </option>
+                          <option value="over_600000">Over $600,000</option>
                         </select>
                       </div>
                       {/* waiting for more option */}
-                      <div className="dropdown-filter">
-                        <span></span>
-                      </div>
-                      <div className="col-xl-2 col-lg-2 col-md-4 pl-0">
-                        <a className="btn btn-yellow" href="#">
-                          Search Now
-                        </a>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -175,7 +195,11 @@ const Sell = () => {
                     className="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0"
                     data-aos="fade-up"
                   >
-                    <div className="project-single mb-0 bb-0">
+                    <div
+                      className="project-single mb-0 bb-0"
+                      onClick={() => handleCardClick(property.id)}
+                      style={{ cursor: "pointer" }}
+                    >
                       <div className="project-inner project-head">
                         <div className="homes">
                           {/* homes img */}
@@ -183,36 +207,11 @@ const Sell = () => {
                             className="homes-img"
                             onClick={() => handleCardClick(property.id)}
                           >
-                            <div
-                              className="homes-tag button alt featured"
-                              style={{ fontSize: "90%" }}
-                            >
-                              ${property.price.toLocaleString("en-CA")}
-                            </div>
-                            <div className="homes-tag button alt sale">
-                              For Sale
-                            </div>
-
                             <img
                               src={property.image}
                               alt={`home-${property.id}`}
                               className="img-responsive"
                             />
-                          </a>
-                        </div>
-                        <div className="button-effect">
-                          <a
-                            className="btn"
-                            onClick={() => handleCardClick(property.id)}
-                          >
-                            <i className="fa fa-link" />
-                          </a>
-
-                          <a
-                            href="single-property-2.html"
-                            className="img-poppu btn"
-                          >
-                            <i className="fa fa-photo" />
                           </a>
                         </div>
                       </div>
@@ -224,11 +223,21 @@ const Sell = () => {
                     data-aos="fade-up"
                   >
                     {/* homes address */}
-                    <h3>
+                    <h3
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
                       <a onClick={() => handleCardClick(property.id)}>
                         {property.title}
                       </a>
+                      <span style={{ marginLeft: "auto", fontWeight: "bold" }}>
+                        ${property.price.toLocaleString("en-CA")}
+                      </span>
                     </h3>
+
                     <p className="homes-address mb-3">
                       <i className="fa fa-map-marker" />
                       <span>{property.address}</span>
@@ -277,7 +286,7 @@ const Sell = () => {
                       </li>
                     </ul>
                     <div className="footer">
-                      <a href="agent-details.html">JieSi Zhou</a>
+                      <a href="agent-details.html">Jiesi Zhou</a>
                     </div>
                   </div>
                 </div>

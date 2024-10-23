@@ -36,7 +36,6 @@ const PropertyServices = () => {
       <section className="services-home rec-pro">
         <div className="container-fluid">
           <div className="section-title">
-            <h3>Property</h3>
             <h2>Services</h2>
           </div>
           <div className="row">

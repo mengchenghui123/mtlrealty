@@ -1,9 +1,9 @@
 import React from "react";
 import PropertyGrid from "../PropertyGrid/PropertyGrid";
 import PropertyServices from "../PropertyServices/PropertyServices";
-import NewsGrid from "../NewsGrid/NewsGrid";
 import useProperty from "../../Hook/useProperty";
 import useFranchise from "../../Hook/useFranchise";
+import useCommercial from "../../Hook/useCommercial";
 import { PuffLoader } from "react-spinners";
 
 export const Risidencies = () => {
@@ -13,12 +13,16 @@ export const Risidencies = () => {
     isError: isFranchiseError,
     isLoading: isFranchiseLoading,
   } = useFranchise();
+  const {
+    data: commercialData,
+    isError: iscommercialError,
+    isLoading: isCommercialLoading,
+  } = useCommercial();
   const propertyChunks = [];
-  const title = ["Residential", "Franchise"];
-  const chunkSize = 8;
-  const numberOfChunk = 2;
+  const title = ["Residential", "Franchise", "Commercial"];
+  const chunkSize = 6;
 
-  if (isError || isFranchiseError) {
+  if (isError || isFranchiseError || iscommercialError) {
     return (
       <div className="wrapper">
         <span>Error loading Properties</span>
@@ -26,7 +30,7 @@ export const Risidencies = () => {
     );
   }
 
-  if (isLoading || isFranchiseLoading) {
+  if (isLoading || isFranchiseLoading || isCommercialLoading) {
     return (
       <div className="puffloaderStyle" style={{ height: "60vh" }}>
         <PuffLoader
@@ -40,12 +44,27 @@ export const Risidencies = () => {
     );
   }
 
-  const limitedData = data ? data.slice(0, 8) : [];
-  const limitedFranchiseData = franchiseData ? franchiseData.slice(0, 8) : [];
-  const combineData = [...limitedData, ...limitedFranchiseData];
-  for (let i = 0; i < numberOfChunk; i++) {
-    propertyChunks.push(combineData.slice(i * chunkSize, (i + 1) * chunkSize));
+  const limitedData = data ? data.slice(0, 6) : [];
+  const limitedFranchiseData = franchiseData ? franchiseData.slice(0, 6) : [];
+  const limitedCommercialData = commercialData
+    ? commercialData.slice(0, 6)
+    : [];
+  const combineData = [
+    ...limitedData,
+    ...limitedFranchiseData,
+    ...limitedCommercialData,
+  ];
+
+  const totalProperties =
+    limitedData.length +
+    limitedFranchiseData.length +
+    limitedCommercialData.length;
+
+  for (let i = 0; i < totalProperties; i += chunkSize) {
+    propertyChunks.push(combineData.slice(i, i + chunkSize));
   }
+
+  console.log(propertyChunks);
 
   return (
     <section className="r-wrapper">
@@ -68,12 +87,6 @@ export const Risidencies = () => {
           </div>
         </React.Fragment>
       ))}
-
-      <div className="property-section">
-        <div className="paddings innerwidth r-container">
-          <NewsGrid />
-        </div>
-      </div>
     </section>
   );
 };

@@ -54,9 +54,7 @@ const Header = () => {
                       <a>Commercial</a>
                       <ul>
                         <li>
-                          <Link to="/CommercialLeasing">
-                            Commercial Leasing
-                          </Link>
+                          <Link to="/BusinessForSale">Business for Sale</Link>
                         </li>
                         <li>
                           <Link to="/CommercialPartner">Partners</Link>
