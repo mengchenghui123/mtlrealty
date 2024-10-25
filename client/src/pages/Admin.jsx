@@ -75,7 +75,7 @@ const Admin = () => {
     );
   }
 
-  if (isLoading && commercialError && commercialError) {
+  if (isLoading && commercialLoading && franchiseLoading) {
     return <div style={{ height: "60vh" }} />;
   }
   const totalPage = Math.ceil(data.length / itemsPerPage);
