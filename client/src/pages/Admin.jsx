@@ -186,7 +186,7 @@ const Admin = () => {
                             <i className="fa fa-list" aria-hidden="true" />
                           </div>
                           <div className="info">
-                            <h6 className="number">{data.length}</h6>
+                            <h6 className="number">123</h6>
                             <p className="type ml-1">Residencial Properties</p>
                           </div>
                         </div>
@@ -197,7 +197,7 @@ const Admin = () => {
                             <i className="fa fa-list" />
                           </div>
                           <div className="info">
-                            <h6 className="number">{users.length}</h6>
+                            <h6 className="number">123</h6>
                             <p className="type ml-1">Users</p>
                           </div>
                         </div>
