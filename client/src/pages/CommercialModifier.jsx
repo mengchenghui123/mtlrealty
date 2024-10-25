@@ -398,6 +398,17 @@ const CommercialModifier = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
+                      <label>Price</label>
+                      <input
+                        type="text"
+                        name="price"
+                        value={formData.price || ""}
+                        onChange={handleFormChange}
+                        placeholder="price"
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
                       <label>description</label>
                       <textarea
                         name="description"
