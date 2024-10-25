@@ -89,6 +89,19 @@ const BrandPage = () => {
       );
   };
 
+  const convertToDownloadLink = (shareLink) => {
+    console.log(shareLink);
+    const regex = /\/d\/(.*?)(\/|$)/;
+    const match = shareLink.match(regex);
+
+    if (match && match[1]) {
+      const fileId = match[1];
+      return `https://drive.google.com/uc?export=download&id=${fileId}`;
+    }
+
+    return shareLink;
+  };
+
   return (
     <div id="wrapper">
       <div className="clearfix"></div>
@@ -173,8 +186,17 @@ const BrandPage = () => {
                         <div className="listing-title-bar">
                           <h3>
                             {franchise.title}{" "}
-                            <span className="mrg-l-5 category-tag">
-                              Franchise
+                            <span
+                              onClick={() => {
+                                const downloadLink = convertToDownloadLink(
+                                  franchise.manual
+                                );
+                                window.open(downloadLink, "_blank");
+                              }}
+                              className="mrg-l-5 category-tag"
+                              style={{ cursor: "pointer" }} // 添加指针样式，表示可以点击
+                            >
+                              Download Manual
                             </span>
                           </h3>
                         </div>

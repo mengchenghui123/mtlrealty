@@ -78,6 +78,7 @@ model Franchise {
   size         String
   targetPeople String
   title        String
+  manual       String
 }
 
 model Residency {

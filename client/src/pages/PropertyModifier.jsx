@@ -24,8 +24,8 @@ const PropertyModifier = () => {
     cloudinaryRef.current = window.cloudinary; // 使用 window.cloudinary
     multiWidgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: "dbsagqpe3", // 替换为你的 Cloudinary 云名称
-        uploadPreset: "krgglwqe", // 替换为你的上传 preset
+        cloudName: "dqvrf3bmz", // 替换为你的 Cloudinary 云名称
+        uploadPreset: "jml3yeuq", // 替换为你的上传 preset
         maxFiles: 10,
       },
       (err, result) => {

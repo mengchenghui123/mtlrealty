@@ -28,8 +28,8 @@ const FranchiseModifier = () => {
     cloudinaryRef.current = window.cloudinary;
     multiWidgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: "dbsagqpe3", // 替换为你的 Cloudinary 云名称
-        uploadPreset: "krgglwqe", // 替换为你的上传 preset
+        cloudName: "dqvrf3bmz", // 替换为你的 Cloudinary 云名称
+        uploadPreset: "jml3yeuq", // 替换为你的上传 preset
         maxFiles: 10, // 每次只上传一张图片
       },
       (err, result) => {
@@ -514,6 +514,17 @@ const FranchiseModifier = () => {
                         onChange={handleFormChange}
                         className="form-control"
                         placeholder="Agent Email"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>Manul Link</label>
+                      <input
+                        type="text"
+                        name="manual"
+                        value={formData.manual || ""}
+                        onChange={handleFormChange}
+                        placeholder="manual"
+                        className="form-control"
                       />
                     </div>
                     <div className="form-group mb-3">

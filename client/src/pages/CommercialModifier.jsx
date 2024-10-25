@@ -28,8 +28,8 @@ const CommercialModifier = () => {
     cloudinaryRef.current = window.cloudinary;
     multiWidgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: "dbsagqpe3", // 替换为你的 Cloudinary 云名称
-        uploadPreset: "krgglwqe", // 替换为你的上传 preset
+        cloudName: "dqvrf3bmz", // 替换为你的 Cloudinary 云名称
+        uploadPreset: "jml3yeuq", // 替换为你的上传 preset
         maxFiles: 10, // 每次只上传一张图片
       },
       (err, result) => {
@@ -113,7 +113,7 @@ const CommercialModifier = () => {
     try {
       await deleteCommercial(id, token);
       toast.success(`Commercial ${id} deleted successfully`);
-    } catch {
+    } catch (error) {
       console.error("Failed to delete commercial", error);
       toast.error("Failed to delete commercial");
     }
@@ -268,7 +268,7 @@ const CommercialModifier = () => {
                               <h2>{item.title}</h2>
                             </a>
                             <figure>
-                              <i className="lni-map-marker" /> {item.address}
+                              <i className="lni-map-marker" /> {item.id}
                             </figure>
                           </div>
                         </td>

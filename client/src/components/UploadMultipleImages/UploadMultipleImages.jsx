@@ -22,8 +22,8 @@ const UploadMultipleImages = ({
     cloudinaryRef.current = window.cloudinary;
     multiWidgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: "dbsagqpe3",
-        uploadPreset: "krgglwqe",
+        cloudName: "dqvrf3bmz",
+        uploadPreset: "jml3yeuq",
         maxFiles: 10,
       },
       (err, result) => {
