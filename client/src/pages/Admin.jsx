@@ -67,7 +67,7 @@ const Admin = () => {
     fetchUsers();
   }, [token]);
 
-  if (isError) {
+  if (isError && franchiseError && commercialError) {
     return (
       <div className="wrapper">
         <span>Error loading Datas</span>
@@ -75,7 +75,7 @@ const Admin = () => {
     );
   }
 
-  if (isLoading) {
+  if (isLoading && commercialError && commercialError) {
     return <div style={{ height: "60vh" }} />;
   }
   const totalPage = Math.ceil(data.length / itemsPerPage);
@@ -238,7 +238,6 @@ const Admin = () => {
                             <th>User Email</th>
                             <th>Booked Visit</th>
                             <th>Favourites</th>
-                            <th>Delete</th>
                           </tr>
                         </thead>
 
