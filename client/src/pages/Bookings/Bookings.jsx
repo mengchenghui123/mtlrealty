@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import useProperty from "../../Hook/useProperty";
 import "./Bookings.css";
-import { PuffLoader } from "react-spinners";
 import Pagination from "../../components/Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
 import Heart from "../../components/Heart/Heart";
@@ -33,17 +32,7 @@ const Bookings = () => {
   }
 
   if (isLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }} />;
   }
 
   //信息过滤

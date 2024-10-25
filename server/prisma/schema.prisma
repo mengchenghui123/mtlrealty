@@ -1,87 +1,126 @@
 generator client {
-    provider      = "prisma-client-js"
-    binaryTargets = ["native", "darwin-arm64"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin-arm64"]
 }
 
 datasource db {
-    provider = "mongodb"
-    url      = env("DATABASE_URL")
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
-model User {
-    id               String      @id @default(auto()) @map("_id") @db.ObjectId
-    name             String?
-    email            String      @unique
-    image            String?
-    bookedVisits     Json[]
-    favResidenciesID String[]    @db.ObjectId
-    ownedResidencies Residency[] @relation("Owner")
-
-    // 一个名为User的模型，这个模型会映射到MongoDB数据库的一个集合。这个模型包括了一个id字段，其类型为String，@id代表这是主键（key），其默认值由数据库自动生成，
-    // @map（“_id”）将其映射到MongoDB中的_idziduan ,@db.object将其类型定义为MongoDB的ObjectID
+type CommercialAgentInfo {
+  email String
+  name  String
+  phone String
 }
 
-model Residency {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    title       String?
-    type        String?
-    description String?
-    price       Int?
-    address     String?
-    mlsNumber   String?
-    propertyType String?
-    livingSpace Float?
-    lotSize     Float?
-    yearBuild   Int?
-    city        String?
-    country     String?
-    municipalTaxes  Float?
-    schoolTaxes Float?
-    condoFee    Float?
-    rooms       Json?
-    image       String?
-    facilities  Json
-    images      Json
-    userEmail   String
-    agentInfo   Json
-    owner       User     @relation("Owner", fields: [userEmail], references: [email])
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    amenities   String[]
+type FranchiseAgentInfo {
+  email String
+  name  String
+  phone String
+}
 
-    @@unique(fields: [mlsNumber, userEmail])
+type ResidencyAgentInfo {
+  email       String
+  name        String
+  phoneNumber String
+}
+
+type ResidencyFacilities {
+  bathrooms String
+  bedrooms  String
+  parking   String
+}
+
+type ResidencyRooms {
+  dimensions String
+  flooring   String
+  level      String
+  type       String
+}
+
+type UserBookedVisits {
+  date String
+  id   String
+}
+
+model Commercial {
+  id                     String              @id @default(auto()) @map("_id") @db.ObjectId
+  Area                   String
+  EstimatedPaybackPeriod String
+  address                String
+  agentInfo              CommercialAgentInfo
+  annualRevenue          String
+  city                   String
+  commercialType         String
+  description            String
+  estimatedProfit        String
+  image                  String
+  images                 String[]
+  mlsNumber              String
+  price                  String
+  title                  String
+  totalInvestment        String
+  type                   String
 }
 
 model Franchise {
-  id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  title        String?   
-  description  String?   
-  size         String?    
-  rent         String?    
-  investment   String?    
-  franchiseFee Float?    
-  sales        String?    
-  targetPeople String?   
-  image        String?   
-  images       String[]  
-  maps         String[]  
-  agentInfo    Json 
+  id           String             @id @default(auto()) @map("_id") @db.ObjectId
+  agentInfo    FranchiseAgentInfo
+  description  String
+  franchiseFee Float
+  image        String
+  images       String[]
+  investment   String
+  maps         String[]
+  rent         String
+  sales        String
+  size         String
+  targetPeople String
+  title        String
 }
 
-model Commercial{
-    id              String    @id @default(auto()) @map("_id") @db.ObjectId
-    title           String? 
-    type            String?
-    description     String?
-    Area            String?
-    price           String
-    annualRevenue   String?
-    totalInvestment String?
-    estimatedProfit String?
-    EstimatedPaybackPeriod String?
-    address         String?
-    mlsNumber       String?
-    image           String?
-    images          String[]
-    agentInfo       Json
+model Residency {
+  id             String              @id @default(auto()) @map("_id") @db.ObjectId
+  address        String
+  agentInfo      ResidencyAgentInfo
+  amenities      String[]
+  city           String
+  /// Multiple data types found: Float: 20%, Int: 80% out of 5 sampled entries
+  condoFee       Json?
+  country        String
+  createdAt      DateTime            @db.Date
+  description    String
+  facilities     ResidencyFacilities
+  image          String
+  images         String[]
+  /// Multiple data types found: Float: 35.3%, Int: 64.7% out of 17 sampled entries
+  livingSpace    Json?
+  location       String?
+  /// Multiple data types found: Float: 66.7%, Int: 33.3% out of 4 sampled entries
+  lotSize        Json?
+  mlsNumber      String
+  /// Multiple data types found: Float: 14.3%, Int: 85.7% out of 7 sampled entries
+  municipalTaxes Json?
+  /// Multiple data types found: Int: 94.7%, BigInt: 5.3% out of 19 sampled entries
+  price          Json
+  propertyType   String
+  rooms          ResidencyRooms[]
+  /// Multiple data types found: Float: 14.3%, Int: 85.7% out of 7 sampled entries
+  schoolTaxes    Json?
+  title          String
+  type           String
+  updatedAt      DateTime            @db.Date
+  userEmail      String
+  /// Multiple data types found: Int: 94.7%, BigInt: 5.3% out of 19 sampled entries
+  yearBuild      Json
+
+  @@unique([mlsNumber, userEmail])
+}
+
+model User {
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  bookedVisits     UserBookedVisits[]
+  email            String             @unique
+  favResidenciesID String[]
 }

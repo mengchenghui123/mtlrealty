@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import useProperty from "../../Hook/useProperty";
-import { PuffLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Hero = () => {
   const { data, isError, isLoading } = useProperty();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!isLoading && !isError && data.length > 0) {
       new Swiper(".swiper-container", {
@@ -32,23 +31,13 @@ const Hero = () => {
     );
   }
 
-  if (isLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
-  }
-
   const heroProperty = data
-    .filter((property) => property.type === "Sale" || property.type === "Rent")
-    .slice(0, 5);
+    ? data
+        .filter(
+          (property) => property.type === "Sale" || property.type === "Rent"
+        )
+        .slice(0, 5)
+    : [];
 
   const handleCardClick = (id) => {
     navigate(`/property/${id}`);
@@ -65,64 +54,73 @@ const Hero = () => {
                 <div className="main_contentblock">
                   <div className="swiper-container" data-aos="fade-right">
                     <div className="swiper-wrapper">
-                      {heroProperty.map((property) => (
-                        <div className="swiper-slide" key={property.id}>
-                          <div className="swiper_imgbox imgbox1">
-                            <div className="swipper_img">
-                              <h4>
-                                For {property.type} <span>REALTY</span>
-                              </h4>
-                              <h2>{property.title}</h2>
-                              <h3>
-                                ${property.price.toLocaleString("en-US")}
-                                {property.type === "Rent" ? " Per Month" : ""}
-                                <span className="banner_span1" />
-                              </h3>
-                              <p>
-                                <i className="fa fa-map-marker mr-3" />
-                                {property.address}
-                              </p>
-                              <ul className="homes-list clearfix">
-                                <li>
-                                  <i className="fa fa-bed" aria-hidden="true" />
-                                  <span>{property.facilities.bedrooms}</span>
-                                </li>
-                                <li>
-                                  <i
-                                    className="fa fa-bath"
-                                    aria-hidden="true"
-                                  />
-                                  <span>{property.facilities.bathrooms}</span>
-                                </li>
-                                <li>
-                                  <i
-                                    className="fa fa-object-group"
-                                    aria-hidden="true"
-                                  />
-                                  <span>{property.livingSpace} sq ft</span>
-                                </li>
-                                <li>
-                                  <i
-                                    className="fas fa-warehouse"
-                                    aria-hidden="true"
-                                  />
-                                  <span>{property.parking || 0}</span>
-                                </li>
-                              </ul>
-                              <a
-                                className="int_btn"
-                                onClick={() => handleCardClick(property.id)}
-                              >
-                                View Property{" "}
-                                <span className="btn_caret">
-                                  <i className="fas fa-caret-right" />
-                                </span>
-                              </a>
-                              <h1>MTL</h1>
+                      {isLoading
+                        ? Array(5).fill(null)
+                        : heroProperty.map((property) => (
+                            <div className="swiper-slide" key={property.id}>
+                              <div className="swiper_imgbox imgbox1">
+                                <div className="swipper_img">
+                                  <h4>
+                                    For {property.type} <span>REALTY</span>
+                                  </h4>
+                                  <h2>{property.title}</h2>
+                                  <h3>
+                                    ${property.price.toLocaleString("en-US")}
+                                    {property.type === "Rent" ? " / Month" : ""}
+                                    <span className="banner_span1" />
+                                  </h3>
+                                  <p>
+                                    <i className="fa fa-map-marker mr-3" />
+                                    {property.address}
+                                  </p>
+                                  <ul className="homes-list clearfix">
+                                    <li>
+                                      <i
+                                        className="fa fa-bed"
+                                        aria-hidden="true"
+                                      />
+                                      <span>
+                                        {property.facilities.bedrooms}
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <i
+                                        className="fa fa-bath"
+                                        aria-hidden="true"
+                                      />
+                                      <span>
+                                        {property.facilities.bathrooms}
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <i
+                                        className="fa fa-object-group"
+                                        aria-hidden="true"
+                                      />
+                                      <span>{property.livingSpace} sq ft</span>
+                                    </li>
+                                    <li>
+                                      <i
+                                        className="fas fa-warehouse"
+                                        aria-hidden="true"
+                                      />
+                                      <span>{property.parking || 0}</span>
+                                    </li>
+                                  </ul>
+                                  <a
+                                    className="int_btn"
+                                    onClick={() => handleCardClick(property.id)}
+                                  >
+                                    View Property{" "}
+                                    <span className="btn_caret">
+                                      <i className="fas fa-caret-right" />
+                                    </span>
+                                  </a>
+                                  <h1>MTL</h1>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      ))}
+                          ))}
                     </div>
                   </div>
                 </div>
@@ -132,19 +130,21 @@ const Hero = () => {
                 <div className="main_imgblock">
                   <div className="swiper-container" data-aos="fade-left">
                     <div className="swiper-wrapper">
-                      {heroProperty.map((property) => (
-                        <div className="swiper-slide" key={property.id}>
-                          <div className="swiper_contbox">
-                            <div className="swipper_conntent">
-                              <img
-                                src={property.image || "error"}
-                                className="img-fluid "
-                                alt="images"
-                              />
+                      {isLoading
+                        ? Array(5).fill(null)
+                        : heroProperty.map((property) => (
+                            <div className="swiper-slide" key={property.id}>
+                              <div className="swiper_contbox">
+                                <div className="swipper_conntent">
+                                  <img
+                                    src={property.image || "error"}
+                                    className="img-fluid "
+                                    alt="images"
+                                  />
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      ))}
+                          ))}
                     </div>
                   </div>
                 </div>
@@ -152,8 +152,12 @@ const Hero = () => {
             </div>
             {/*=== Add Arrows ===*/}
             <div className="banner_navi">
-              <div className="swiper-button-next">Next</div>
-              <div className="swiper-button-prev">Prev</div>
+              {!isLoading && (
+                <>
+                  <div className="swiper-button-next">Next</div>
+                  <div className="swiper-button-prev">Prev</div>
+                </>
+              )}
             </div>
           </div>
         </div>

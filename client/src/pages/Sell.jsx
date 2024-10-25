@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination/Pagination";
 import useProperty from "../Hook/useProperty";
-import { PuffLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Sell = () => {
   const { data, isError, isLoading } = useProperty();
@@ -52,17 +50,7 @@ const Sell = () => {
   }
 
   if (isLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }} />;
   }
 
   const propertyForSale = data
@@ -84,12 +72,24 @@ const Sell = () => {
     })
     .filter((property) => {
       const price = property.price; // 确保你的数据模型中有 price 字段
-      if (priceRange === "under_400000") {
-        return price < 400000;
-      } else if (priceRange === "400000_to_600000") {
-        return price >= 400000 && price <= 600000;
-      } else if (priceRange === "over_600000") {
-        return price > 600000;
+      if (priceRange === "under_300000") {
+        return price < 300000;
+      } else if (priceRange === "300000_to_400000") {
+        return price >= 300000 && price <= 400000;
+      } else if (priceRange === "400000_to_500000") {
+        return price >= 400000 && price <= 500000;
+      } else if (priceRange === "500000_to_600000") {
+        return price >= 500000 && price <= 600000;
+      } else if (priceRange === "600000_to_700000") {
+        return price >= 600000 && price <= 700000;
+      } else if (priceRange === "700000_to_800000") {
+        return price >= 700000 && price <= 800000;
+      } else if (priceRange === "800000_to_900000") {
+        return price >= 700000 && price <= 800000;
+      } else if (priceRange === "900000_to_1000000") {
+        return price >= 700000 && price <= 800000;
+      } else if (priceRange === "over_1000000") {
+        return price > 1000000;
       }
       return true; // 如果没有选择价格范围，则不过滤
     });
@@ -158,11 +158,29 @@ const Sell = () => {
                           onChange={(e) => setPriceRange(e.target.value)}
                         >
                           <option value="">Select Price Range</option>
-                          <option value="under_400000">Under $400,000</option>
-                          <option value="400000_to_600000">
-                            $400,000 - $600,000
+                          <option value="under_300000">Under $300,000</option>
+                          <option value="300000_to_400000">
+                            $300,000 - $400,000
                           </option>
-                          <option value="over_600000">Over $600,000</option>
+                          <option value="400000_to_500000">
+                            $400,000 - $500,000
+                          </option>
+                          <option value="500000_to_600000">
+                            $500,000 - $600,000
+                          </option>
+                          <option value="600000_to_700000">
+                            $600,000 - $700,000
+                          </option>
+                          <option value="700000_to_800000">
+                            $700,000 - $800,000
+                          </option>
+                          <option value="800000_to_900000">
+                            $800,000 - $900,000
+                          </option>
+                          <option value="900000_to_1000000">
+                            $900,000 - $1000,000
+                          </option>
+                          <option value="over_1000000">Over $1,000,000</option>
                         </select>
                       </div>
                       {/* waiting for more option */}

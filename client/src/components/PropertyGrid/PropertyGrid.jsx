@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import { toast } from "react-toastify";
-import { truncate } from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatPrice } from "../../utils/Common";
 import Heart from "../Heart/Heart";
@@ -77,6 +75,10 @@ const PropertyGrid = ({ properties, title }) => {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  const getFirstThreeWords = (title) => {
+    return title.split(" ").slice(0, 3).join(" ");
+  };
+
   return (
     // <!-- START SECTION PROPERTIES FOR SALE -->
     <section className="recently portfolio featured bg-white-1 rec-pro">
@@ -128,11 +130,11 @@ const PropertyGrid = ({ properties, title }) => {
                       </div>
                       <div className="recent-details">
                         <div className="recent-title">
-                          {truncate(property.title, { length: 15 })}
+                          {getFirstThreeWords(property.title)}
                         </div>
                         <div className="recent-price mb-3">
                           {formatPrice(property.price)}
-                          {property.type === "Rent" ? " Per Month" : ""}
+                          {property.type === "Rent" ? " / Month" : ""}
                         </div>
                         <div className="house-details thehp-1">
                           <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
@@ -182,7 +184,9 @@ const PropertyGrid = ({ properties, title }) => {
                       />
                       <div className="recent-content" />
                       <div className="recent-details">
-                        <div className="recent-title">{property.title}</div>
+                        <div className="recent-title">
+                          {getFirstThreeWords(property.title)}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -220,7 +224,9 @@ const PropertyGrid = ({ properties, title }) => {
                       />
                       <div className="recent-content" />
                       <div className="recent-details">
-                        <div className="recent-title">{property.title}</div>
+                        <div className="recent-title">
+                          {getFirstThreeWords(property.title)}
+                        </div>
                         <div className="recent-price mb-3">
                           {formatPrice(property.price)}
                           {property.type === "Rent" ? " Per Month" : ""}

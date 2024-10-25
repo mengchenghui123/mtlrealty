@@ -57,6 +57,11 @@ const Header = () => {
                           <Link to="/BusinessForSale">Business for Sale</Link>
                         </li>
                         <li>
+                          <Link to="/CommercialLeasing">
+                            Commercial Leasing
+                          </Link>
+                        </li>
+                        <li>
                           <Link to="/CommercialPartner">Partners</Link>
                         </li>
                       </ul>
@@ -100,39 +105,6 @@ const Header = () => {
                 </div>
               </div>
 
-              <div className="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
-                <div className="lang-wrap">
-                  <div className="show-lang">
-                    <span>
-                      <i className="fas fa-globe-americas"></i>
-                      <strong>ENG</strong>
-                    </span>
-                    <i className="fa fa-caret-down arrlan"></i>
-                  </div>
-                  <ul className="lang-tooltip lang-action no-list-style">
-                    <li>
-                      <a href="#" className="current-lan" data-lantext="En">
-                        English
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" data-lantext="Fr">
-                        Francais
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" data-lantext="Es">
-                        Espanol
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" data-lantext="De">
-                        Deutsch
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
               {/* Right Side Content / End */}
             </div>
           </div>

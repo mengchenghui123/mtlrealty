@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFranchise from "../Hook/useFranchise";
-import { PuffLoader } from "react-spinners";
+
 import emailjs from "emailjs-com";
 
 const BrandPage = () => {
@@ -49,17 +49,7 @@ const BrandPage = () => {
   }
 
   if (isLoading || !data) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }} />;
   }
 
   const franchise = data.find((p) => p.id === id);

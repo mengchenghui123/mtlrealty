@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useFranchise from "../Hook/useFranchise";
-import { PuffLoader } from "react-spinners";
 import Pagination from "../components/Pagination/Pagination";
 import emailjs from "emailjs-com";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Brands = () => {
@@ -11,6 +9,8 @@ const Brands = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 4; // Show one item per page
   const navigate = useNavigate();
+  const [filter, setFilter] = useState("");
+  const [franchiseRange, setFranchiseRange] = useState("");
   const [formData, setFormData] = useState({
     full_name: "",
     email_address: "",
@@ -47,22 +47,39 @@ const Brands = () => {
   }
 
   if (isLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }} />;
   }
 
-  const totalPage = Math.ceil(data.length / itemsPerPage);
+  const filteredData = data
+    .filter((item) => item.title.toLowerCase().includes(filter.toLowerCase()))
+    .filter((item) => {
+      if (item.franchiseFee) {
+        if (franchiseRange === "under_100000") {
+          return item.franchiseFee < 100000;
+        } else if (franchiseRange === "100000_to_200000") {
+          return item.franchiseFee > 100000 && item.franchiseFee < 200000;
+        } else if (franchiseRange === "200000_to_300000") {
+          return item.franchiseFee > 200000 && item.franchiseFee < 300000;
+        } else if (franchiseRange === "300000_to_400000") {
+          return item.franchiseFee > 400000 && item.franchiseFee < 500000;
+        } else if (franchiseRange === "400000_to_500000") {
+          return item.franchiseFee > 400000 && item.franchiseFee < 500000;
+        } else if (franchiseRange === "500000_to_600000") {
+          return item.franchiseFee > 500000 && item.franchiseFee < 600000;
+        } else if (franchiseRange === "600000_to_700000") {
+          return item.franchiseFee > 600000 && item.franchiseFee < 700000;
+        } else if (franchiseRange === "700000_to_800000") {
+          return item.franchiseFee > 700000 && item.franchiseFee < 800000;
+        } else if (franchiseRange === "over_800000") {
+          return item.franchiseFee > 800000;
+        }
+      }
+      return true;
+    });
+
+  const totalPage = Math.ceil(filteredData.length / itemsPerPage);
   const offset = currentPage * itemsPerPage;
-  const currentPageData = data.slice(offset, offset + itemsPerPage);
+  const currentPageData = filteredData.slice(offset, offset + itemsPerPage);
   const handleCardClick = (id) => {
     navigate(`/brands/${id}`);
   };
@@ -113,11 +130,67 @@ const Brands = () => {
                       <a href="/">Home </a> &nbsp;/&nbsp; <span>Brands</span>
                     </p>
                   </div>
-                  <h3>Our Agencies</h3>
+                  <h3>Franchise Listing</h3>
                 </div>
               </div>
             </div>
           </section>
+
+          {/*/ Search Form */}
+          <div className="col-12 px-0 parallax-searchs">
+            <div className="banner-search-wrap">
+              <div className="tab-content">
+                <div className="tab-pane fade show active" id="tabs_1">
+                  <div className="row">
+                    <div className="rld-single-input">
+                      <input
+                        type="text"
+                        placeholder="Search by title/city"
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="rld-single-select ml-22">
+                      <select
+                        className="select single-select"
+                        value={franchiseRange}
+                        onChange={(e) => setFranchiseRange(e.target.value)}
+                      >
+                        <option value="">Franchise Fee</option>
+                        <option value="under_100000">Under $100000</option>
+                        <option value="100000_to_200000">
+                          $100000 - $200000
+                        </option>
+                        <option value="200000_to_300000">
+                          $200000 - $300000
+                        </option>
+                        <option value="300000_to_400000">
+                          $300000 - $400000
+                        </option>
+                        <option value="400000_to_500000">
+                          $400000 - $500000
+                        </option>
+                        <option value="500000_to_600000">
+                          $500000 - $600000
+                        </option>
+                        <option value="600000_to_700000">
+                          $600000 - $700000
+                        </option>
+                        <option value="700000_to_800000">
+                          $700000 - $800000
+                        </option>
+                        <option value="over_800000">Over $800000</option>
+                      </select>
+                    </div>
+
+                    {/* waiting for more option */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/*/ End Search Form */}
           <div className="row">
             <div className="col-lg-8 col-md-12 blog-pots">
               <section className="headings-2 pt-0">
@@ -126,7 +199,7 @@ const Brands = () => {
                     <div className="listing-title-bar">
                       <div className="text-heading text-left">
                         <p className="font-weight-bold mb-0 mt-3">
-                          {data.length} Search results
+                          {filteredData.length} Search results
                         </p>
                       </div>
                     </div>
@@ -166,7 +239,7 @@ const Brands = () => {
                           <ul className="the-agents-details">
                             <li>Size: {item.size}</li>
                             <li>Rent: {item.rent}</li>
-                            <li>Investment {item.investment}</li>
+                            <li>Franchise Fee: ${item.franchiseFee}</li>
                           </ul>
                         </div>
                       </div>

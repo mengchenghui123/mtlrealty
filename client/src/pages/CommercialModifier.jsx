@@ -407,7 +407,28 @@ const CommercialModifier = () => {
                         className="form-control"
                       />
                     </div>
-
+                    <div className="form-group mb-3">
+                      <label>City</label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={formData.city || ""}
+                        className="form-control"
+                        onChange={handleFormChange}
+                        placeholder="city"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>Commercial Type</label>
+                      <input
+                        type="text"
+                        name="commercialType"
+                        value={formData.commercialType || ""}
+                        className="form-control"
+                        onChange={handleFormChange}
+                        placeholder="Commercial Type"
+                      />
+                    </div>
                     <div className="form-group mb-3">
                       <label>Area</label>
                       <input

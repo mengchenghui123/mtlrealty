@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useCommercial from "../Hook/useCommercial";
-import { PuffLoader } from "react-spinners";
-import { toast } from "react-toastify";
 import emailjs from "emailjs-com";
 
 const CommercialDetail = () => {
@@ -27,17 +25,7 @@ const CommercialDetail = () => {
   }, [id]);
 
   if (isLoading || !data) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }} />;
   }
 
   const commercial = data.find((p) => p.id === id);

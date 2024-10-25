@@ -4,7 +4,6 @@ import PropertyServices from "../PropertyServices/PropertyServices";
 import useProperty from "../../Hook/useProperty";
 import useFranchise from "../../Hook/useFranchise";
 import useCommercial from "../../Hook/useCommercial";
-import { PuffLoader } from "react-spinners";
 
 export const Risidencies = () => {
   const { data, isError, isLoading } = useProperty();
@@ -31,17 +30,7 @@ export const Risidencies = () => {
   }
 
   if (isLoading || isFranchiseLoading || isCommercialLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }}></div>;
   }
 
   const limitedData = data ? data.slice(0, 6) : [];

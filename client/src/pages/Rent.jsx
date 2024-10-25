@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination/Pagination";
 import useProperty from "../Hook/useProperty";
-import { PuffLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 
 const Rent = () => {
@@ -51,17 +50,7 @@ const Rent = () => {
   }
 
   if (isLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }} />;
   }
 
   const propertyForRent = data
@@ -83,12 +72,14 @@ const Rent = () => {
     })
     .filter((property) => {
       const price = property.price; // 确保你的数据模型中有 price 字段
-      if (priceRange === "under_1400") {
-        return price < 1400;
-      } else if (priceRange === "1400_to_2000") {
-        return price >= 1400 && price <= 2000;
-      } else if (priceRange === "over_2000") {
-        return price > 2000;
+      if (priceRange === "under_1000") {
+        return price < 1000;
+      } else if (priceRange === "1000_to_2000") {
+        return price >= 1000 && price <= 2000;
+      } else if (priceRange === "2000_to_3000") {
+        return price >= 2000 && price <= 3000;
+      } else if (priceRange === "over_3000") {
+        return price > 3000;
       }
       return true; // 如果没有选择价格范围，则不过滤
     });
@@ -116,7 +107,7 @@ const Rent = () => {
                   <div className="text-heading text-left">
                     <p>
                       <a href="/">Home </a> &nbsp;/&nbsp;{" "}
-                      <span>Buy Listings</span>
+                      <span>Rent Listings</span>
                     </p>
                   </div>
                   <h3>List View</h3>
@@ -158,9 +149,10 @@ const Rent = () => {
                           onChange={(e) => setPriceRange(e.target.value)}
                         >
                           <option value="">Select Price Range</option>
-                          <option value="under_1400">Under $1400</option>
-                          <option value="1400_to_2000">$1400 - $2000</option>
-                          <option value="over_2000">Over $2000</option>
+                          <option value="under_1000">Under $1000</option>
+                          <option value="1000_to_2000">$1000 - $2000</option>
+                          <option value="2000_to_3000">$2000 - $3000</option>
+                          <option value="over_3000">Over $3000</option>
                         </select>
                       </div>
                     </div>
@@ -234,7 +226,7 @@ const Rent = () => {
                         {property.title}
                       </a>
                       <span style={{ marginLeft: "auto", fontWeight: "bold" }}>
-                        ${property.price.toLocaleString("en-CA")} Per Month
+                        ${property.price.toLocaleString("en-CA")} / Month
                       </span>
                     </h3>
                     <p className="homes-address mb-3">

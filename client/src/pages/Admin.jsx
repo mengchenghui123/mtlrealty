@@ -8,7 +8,6 @@ import {
 } from "../utils/Api";
 import { toast } from "react-toastify";
 import useProperty from "../Hook/useProperty";
-import { PuffLoader } from "react-spinners";
 import AddPropertyModal from "../components/AddPropertyModal/AddPropertyModal";
 import { Link } from "react-router-dom";
 
@@ -74,17 +73,7 @@ const Admin = () => {
   }
 
   if (isLoading) {
-    return (
-      <div className="puffloaderStyle" style={{ height: "60vh" }}>
-        <PuffLoader
-          height="80"
-          width="80"
-          radius={1}
-          color="#4066ff"
-          aria-label="puff-loading"
-        />
-      </div>
-    );
+    return <div style={{ height: "60vh" }} />;
   }
   const totalPage = Math.ceil(data.length / itemsPerPage);
 
