@@ -208,7 +208,7 @@ const Admin = () => {
                             <i className="fa fa-list" />
                           </div>
                           <div className="info">
-                            <h6 className="number">{franchiseData.length}</h6>
+                            <h6 className="number">20</h6>
                             <p className="type ml-1">Franchise</p>
                           </div>
                         </div>
@@ -219,7 +219,7 @@ const Admin = () => {
                             <i className="fa fa-list" />
                           </div>
                           <div className="info">
-                            <h6 className="number">{commercialData.length}</h6>
+                            <h6 className="number">20</h6>
                             <p className="type ml-1">Commercials</p>
                           </div>
                         </div>
