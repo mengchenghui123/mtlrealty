@@ -208,7 +208,7 @@ const Admin = () => {
                             <i className="fa fa-list" />
                           </div>
                           <div className="info">
-                            <h6 className="number">223</h6>
+                            <h6 className="number">{franchiseData.length}</h6>
                             <p className="type ml-1">Franchise</p>
                           </div>
                         </div>
@@ -219,7 +219,7 @@ const Admin = () => {
                             <i className="fa fa-list" />
                           </div>
                           <div className="info">
-                            <h6 className="number">432</h6>
+                            <h6 className="number">{commercialData.length}</h6>
                             <p className="type ml-1">Commercials</p>
                           </div>
                         </div>
@@ -385,7 +385,7 @@ const Admin = () => {
                         <th>Commercial Type</th>
                       </tr>
                     </thead>
-                    {commercialData.map((item) => (
+                    {currentCommercialData.map((item) => (
                       <tbody key={item.id}>
                         <tr>
                           <td className="image myelist">
@@ -424,7 +424,7 @@ const Admin = () => {
                       <ul className="pagination">
                         <li
                           className={`page-item ${
-                            currentPage === 1 ? "disabled" : ""
+                            currentFranchiseData === 1 ? "disabled" : ""
                           }`}
                         >
                           <button
