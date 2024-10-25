@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  getAllUsers,
-  deleteUser,
-  deleteResidency,
-  updateResidency,
-} from "../utils/Api";
+import { getAllUsers } from "../utils/Api";
 import { toast } from "react-toastify";
 import useProperty from "../Hook/useProperty";
-import AddPropertyModal from "../components/AddPropertyModal/AddPropertyModal";
+import useCommercial from "../Hook/useCommercial";
+import useFranchise from "../Hook/useFranchise";
 import { Link } from "react-router-dom";
 
 const Admin = () => {
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
   const [users, setUsers] = useState([]);
   const [token, setToken] = useState("");
+  const {
+    data: commercialData,
+    isError: commercialError,
+    isLoading: commercialLoading,
+  } = useCommercial();
   const { data, isError, isLoading } = useProperty();
+  const {
+    data: franchiseData,
+    isError: franchiseError,
+    isLoading: franchiseLoading,
+  } = useFranchise();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const [formData, setFormData] = useState({});
-  const [editingId, setEditingId] = useState(null);
-  const [modalOpened, setModalopened] = useState(false);
 
   useEffect(() => {
     document.body.classList.add(
@@ -90,6 +93,16 @@ const Admin = () => {
     currentPage * itemsPerPage
   );
 
+  const currentCommercialData = commercialData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const currentFranchiseData = franchiseData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -109,62 +122,6 @@ const Admin = () => {
   const getMlsNumber = (itemId) => {
     const match = data.find((item) => item.id === itemId);
     return match ? match.mlsNumber : "N/A";
-  };
-
-  const handleDelectUser = async (email) => {
-    try {
-      await deleteUser(email, token);
-      toast.success(`User ${email} deleted successfully`);
-      setUsers(users.filter((user) => user.email !== email));
-    } catch (error) {
-      toast.error("Failed to delete user");
-    }
-  };
-
-  const handleDeleteResidence = async (id) => {
-    try {
-      await deleteResidency(id, token);
-      toast.success(`User ${id} deleted successfully`);
-    } catch (error) {
-      console.error("Failed to delete residency", error);
-    }
-  };
-
-  const handleEditClick = async (id) => {
-    const propertyToEdit = data.find((item) => item.id === id);
-    if (propertyToEdit) {
-      setFormData(propertyToEdit);
-      setEditingId(id);
-    }
-  };
-
-  const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleAddPropertyClick = () => {
-    setModalopened(true);
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    // 提交表单逻辑
-    if (formData && editingId) {
-      console.log("Submitting data for ID:", editingId);
-      console.log("Data:", formData);
-      const { id, ...dataToUpdate } = formData;
-      try {
-        await updateResidency(editingId, dataToUpdate, token);
-        toast.success("Property updated successfully");
-      } catch (error) {
-        console.error("Error updating property:", error);
-        toast.error("Failed to update property");
-      }
-    }
   };
 
   return (
@@ -322,17 +279,6 @@ const Admin = () => {
                                     })
                                   : "N/A"}
                               </td>
-                              <td className="edit">
-                                <a
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    handleDelectUser(user.email);
-                                  }}
-                                  style={{ cursor: "pointer" }}
-                                >
-                                  <i className="far fa-trash-alt" />
-                                </a>
-                              </td>
                             </tr>
                           ))}
                         </tbody>
@@ -344,11 +290,10 @@ const Admin = () => {
                   <table className="table-responsive">
                     <thead>
                       <tr>
-                        <th className="pl-2">My Properties</th>
+                        <th className="pl-2">Properties</th>
                         <th className="p-0" />
                         <th>Type</th>
                         <th>Price</th>
-                        <th>Actions</th>
                       </tr>
                     </thead>
                     {currentData.map((item) => (
@@ -380,27 +325,6 @@ const Admin = () => {
                           </td>
                           <td>{item.type}</td>
                           <td>{item.price}</td>
-                          <td className="actions">
-                            <a
-                              onClick={() => handleEditClick(item.id)}
-                              className="edit"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <i className="lni-pencil" />
-                              Edit
-                            </a>
-                            <a
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleDeleteResidence(item.id);
-                              }}
-                              style={{
-                                cursor: "pointer",
-                              }}
-                            >
-                              <i className="far fa-trash-alt" />
-                            </a>
-                          </td>
                         </tr>
                       </tbody>
                     ))}
@@ -451,52 +375,186 @@ const Admin = () => {
                     </nav>
                   </div>
                 </div>
+                <div className="my-properties">
+                  <table className="table-responsive">
+                    <thead>
+                      <tr>
+                        <th className="pl-2">Commercial</th>
+                        <th className="p-0" />
+                        <th>Type</th>
+                        <th>Commercial Type</th>
+                      </tr>
+                    </thead>
+                    {commercialData.map((item) => (
+                      <tbody key={item.id}>
+                        <tr>
+                          <td className="image myelist">
+                            <a href="single-property-1.html">
+                              <img
+                                alt="my-properties-3"
+                                src={item.image}
+                                className="img-fluid"
+                              />
+                            </a>
+                          </td>
 
-                {formData && (
-                  <div className="edit-form">
-                    <h3>Edit {formData.title}</h3>
-                    <form onSubmit={handleFormSubmit}>
-                      <div>
-                        <label>Title</label>
-                        <input
-                          type="text"
-                          name="title"
-                          value={formData.title || ""}
-                          onChange={handleFormChange}
-                        />
-                      </div>
-                      <div>
-                        <label>Type</label>
-                        <input
-                          type="text"
-                          name="type"
-                          value={formData.type || ""}
-                          onChange={handleFormChange}
-                        />
-                      </div>
-                      <div>
-                        <label>Price</label>
-                        <input
-                          type="number"
-                          name="price"
-                          value={formData.price || ""}
-                          onChange={handleFormChange}
-                        />
-                      </div>
-                      <div>
-                        <label>Address</label>
-                        <input
-                          type="text"
-                          name="address"
-                          value={formData.address || ""}
-                          onChange={handleFormChange}
-                        />
-                      </div>
-                      {/* 继续添加其他字段 */}
-                      <button type="submit">Save Changes</button>
-                    </form>
+                          <td>
+                            <div className="inner">
+                              <a href="single-property-1.html">
+                                <h2>{item.title}</h2>
+                              </a>
+                              <figure>
+                                <i className="lni-map-marker" /> {item.address}
+                              </figure>
+                              <figure>
+                                <i className="lni-map-marker" /> Price/total
+                                investment:
+                                {item.price ? item.price : item.totalInvestment}
+                              </figure>
+                            </div>
+                          </td>
+                          <td>{item.type}</td>
+                          <td>{item.commercialType}</td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                  <div className="pagination-container">
+                    <nav>
+                      <ul className="pagination">
+                        <li
+                          className={`page-item ${
+                            currentPage === 1 ? "disabled" : ""
+                          }`}
+                        >
+                          <button
+                            className="btn btn-common"
+                            onClick={handlePrevPage}
+                          >
+                            <i className="lni-chevron-left" /> Previous{" "}
+                          </button>
+                        </li>
+                        {Array.from({ length: totalPage }, (_, index) => (
+                          <li
+                            key={index + 1}
+                            className={`page-item ${
+                              currentPage === index + 1 ? "active" : ""
+                            }`}
+                          >
+                            <button
+                              className="page-link"
+                              onClick={() => handlePageClick(index + 1)}
+                            >
+                              {index + 1}
+                            </button>
+                          </li>
+                        ))}
+                        <li
+                          className={`page-item ${
+                            currentPage === totalPage ? "disabled" : ""
+                          }`}
+                        >
+                          <button
+                            className="btn btn-common"
+                            onClick={handleNextPage}
+                          >
+                            Next <i className="lni-chevron-right" />
+                          </button>
+                        </li>
+                      </ul>
+                    </nav>
                   </div>
-                )}
+                </div>
+                <div className="my-properties">
+                  <table className="table-responsive">
+                    <thead>
+                      <tr>
+                        <th className="pl-2">Franchise</th>
+                        <th className="p-0" />
+                        <th>Rent</th>
+                        <th>Sales</th>
+                      </tr>
+                    </thead>
+                    {franchiseData.map((item) => (
+                      <tbody key={item.id}>
+                        <tr>
+                          <td className="image myelist">
+                            <a href="single-property-1.html">
+                              <img
+                                alt="my-properties-3"
+                                src={item.image}
+                                className="img-fluid"
+                              />
+                            </a>
+                          </td>
+
+                          <td>
+                            <div className="inner">
+                              <a href="single-property-1.html">
+                                <h2>{item.title}</h2>
+                              </a>
+
+                              <figure>
+                                <i className="lni-map-marker" />{" "}
+                                investment/FranchiseFee:
+                                {item.investment
+                                  ? item.price
+                                  : item.franchiseFee}
+                              </figure>
+                            </div>
+                          </td>
+                          <td>{item.rent}</td>
+                          <td>{item.sales}</td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                  <div className="pagination-container">
+                    <nav>
+                      <ul className="pagination">
+                        <li
+                          className={`page-item ${
+                            currentPage === 1 ? "disabled" : ""
+                          }`}
+                        >
+                          <button
+                            className="btn btn-common"
+                            onClick={handlePrevPage}
+                          >
+                            <i className="lni-chevron-left" /> Previous{" "}
+                          </button>
+                        </li>
+                        {Array.from({ length: totalPage }, (_, index) => (
+                          <li
+                            key={index + 1}
+                            className={`page-item ${
+                              currentPage === index + 1 ? "active" : ""
+                            }`}
+                          >
+                            <button
+                              className="page-link"
+                              onClick={() => handlePageClick(index + 1)}
+                            >
+                              {index + 1}
+                            </button>
+                          </li>
+                        ))}
+                        <li
+                          className={`page-item ${
+                            currentPage === totalPage ? "disabled" : ""
+                          }`}
+                        >
+                          <button
+                            className="btn btn-common"
+                            onClick={handleNextPage}
+                          >
+                            Next <i className="lni-chevron-right" />
+                          </button>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
