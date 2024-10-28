@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers } from "../utils/Api";
+import { getAllUsers, deleteUser } from "../utils/Api";
 import { toast } from "react-toastify";
 import useProperty from "../Hook/useProperty";
 import useCommercial from "../Hook/useCommercial";
@@ -122,6 +122,15 @@ const Admin = () => {
   const getMlsNumber = (itemId) => {
     const match = data.find((item) => item.id === itemId);
     return match ? match.mlsNumber : "N/A";
+  };
+
+  const handleDelete = async () => {
+    try {
+      await deleteUser(email, token);
+      onUserDeleted(email);
+    } catch (error) {
+      console.error("Failed to delete user:", error);
+    }
   };
 
   return (
@@ -277,6 +286,14 @@ const Admin = () => {
                                       );
                                     })
                                   : "N/A"}
+                              </td>
+                              <td>
+                                <a
+                                  onClick={handleDelete}
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <i class="far fa-trash-alt"></i>
+                                </a>
                               </td>
                             </tr>
                           ))}

@@ -7,7 +7,6 @@ import useProperties from "../../Hook/useProperty.jsx";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
 import { createResidency } from "../../utils/Api.js";
-import { validateString } from "../../utils/Common";
 
 const Amenities = ({
   PropertyDetails,

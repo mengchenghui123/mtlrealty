@@ -26,7 +26,7 @@ const PropertyModifier = () => {
       {
         cloudName: "dqvrf3bmz", // 替换为你的 Cloudinary 云名称
         uploadPreset: "jml3yeuq", // 替换为你的上传 preset
-        maxFiles: 10,
+        maxFiles: 20,
       },
       (err, result) => {
         if (result.event === "success") {
