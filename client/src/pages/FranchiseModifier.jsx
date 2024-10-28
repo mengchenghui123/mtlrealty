@@ -14,8 +14,8 @@ const FranchiseModifier = () => {
   const [formData, setFormData] = useState({});
   const [editingId, setEditingId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [imageURL, setImageURL] = useState(""); // 主图像
-  const [imageURLs, setImageURLs] = useState([]); // 附加图像
+  const [imageURL, setImageURL] = useState("");
+  const [imageURLs, setImageURLs] = useState([]);
   const [mapImageUlr, setMapImageUlr] = useState([]);
   const cloudinaryRef = useRef();
   const multiWidgetRef = useRef();
@@ -30,7 +30,7 @@ const FranchiseModifier = () => {
       {
         cloudName: "dqvrf3bmz", // 替换为你的 Cloudinary 云名称
         uploadPreset: "jml3yeuq", // 替换为你的上传 preset
-        maxFiles: 10, // 每次只上传一张图片
+        maxFiles: 50, // 每次只上传一张图片
       },
       (err, result) => {
         if (result.event === "success") {

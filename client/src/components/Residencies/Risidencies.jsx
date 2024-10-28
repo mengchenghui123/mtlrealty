@@ -18,7 +18,7 @@ export const Risidencies = () => {
     isLoading: isCommercialLoading,
   } = useCommercial();
   const propertyChunks = [];
-  const title = ["Residential", "Franchise", "Commercial"];
+  const title = ["Residential", "Commercial", "Franchise"];
   const chunkSize = 6;
 
   if (isError || isFranchiseError || iscommercialError) {
@@ -53,19 +53,10 @@ export const Risidencies = () => {
     propertyChunks.push(combineData.slice(i, i + chunkSize));
   }
 
-  console.log(propertyChunks);
-
   return (
     <section className="r-wrapper">
       {propertyChunks.map((chunk, index) => (
         <React.Fragment key={index}>
-          {index === 1 && (
-            <div key="services" className="property-section">
-              <div className="paddings innerwidth r-container">
-                <PropertyServices />
-              </div>
-            </div>
-          )}
           <div key={title[index]} className="property-section">
             <div className="paddings innerwidth r-container">
               <PropertyGrid
@@ -76,6 +67,13 @@ export const Risidencies = () => {
           </div>
         </React.Fragment>
       ))}
+
+      {/* 将 PropertyServices 移到 propertyChunks 循环之后 */}
+      <div key="services" className="property-section">
+        <div className="paddings innerwidth r-container">
+          <PropertyServices />
+        </div>
+      </div>
     </section>
   );
 };

@@ -46,7 +46,6 @@ const Heart = ({ id }) => {
       onMouseEnter={() => setHeartColor("#fa3e5f")} // 鼠标悬停时变红
       onMouseLeave={() => setHeartColor(checkFavourites(id, favourites))} // 鼠标离开时恢复颜色
       onClick={(e) => {
-        console.log("like");
         e.stopPropagation();
         handleLike();
       }}
