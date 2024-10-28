@@ -11,9 +11,9 @@ const PropertyGrid = ({ properties, title }) => {
     if (title === "Residential") {
       navigate(`/property/${id}`);
     } else if (title === "Franchise") {
-      navigate(`/commercial/${id}`);
-    } else if (title === "Franchise") {
       navigate(`/brands/${id}`);
+    } else if (title === "Franchise") {
+      navigate(`/commercial/${id}`);
     }
   };
 
@@ -116,9 +116,7 @@ const PropertyGrid = ({ properties, title }) => {
 
                       <div className="recent-content" />
                       <div className="listing-badges">
-                        <span style={{ fontSize: "18px" }}>
-                          {property.type}
-                        </span>
+                        <span>{property.type}</span>
                         <div
                           style={{
                             position: "absolute", // 绝对定位确保在图片上层

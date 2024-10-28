@@ -2,30 +2,30 @@ const PropertyServices = () => {
   const services = [
     {
       iconClass: "fa fa-home",
-      title: "Residential",
+      title: "Houses",
       description:
-        "Our residential team is dedicated to helping clients discover their ideal home. Whether you are looking to buy, sell, or rent, we offer personalized consultations, extensive property listings, and expert guidance throughout the process. Our goal is to ensure that your home-buying or renting journey is smooth and enjoyable from start to finish.",
+        "Nonec pede justo fringilla vel aliquet nec vulputate eget arcu in enim justo rhoncus ut imperdiet venenatis vitae justo.",
       delay: 150,
     },
     {
       iconClass: "fas fa-building",
-      title: "Commercial",
+      title: "Apartments",
       description:
-        "For businesses in search of the perfect location, MTLRealty delivers comprehensive commercial real estate solutions. We assist clients in finding and securing retail spaces, office buildings, and industrial properties. Our team is equipped with the market knowledge and expertise to help you identify and secure the ideal location.",
+        "Nonec pede justo fringilla vel aliquet nec vulputate eget arcu in enim justo rhoncus ut imperdiet venenatis vitae justo.",
       delay: 250,
     },
     {
       iconClass: "fas fa-warehouse",
-      title: "Franchise",
+      title: "Commercial",
       description:
-        "MTLRealty serves as a trusted partner for aspiring franchise owners. We connect you with established brands and provide expert advice on site selection, lease negotiations, and operational strategies. Our mission is to help you successfully establish a franchise that thrives in today's competitive marketplace, ensuring long-term success.",
+        "Nonec pede justo fringilla vel aliquet nec vulputate eget arcu in enim justo rhoncus ut imperdiet venenatis vitae justo.",
       delay: 350,
     },
     {
       iconClass: "fas fa-calculator",
-      title: "Investment",
+      title: "Hotels",
       description:
-        "For investors looking to venture into real estate, we offer strategic investment services, including thorough market analysis and comprehensive property evaluations. Our team works to identify profitable opportunities, manage your real estate portfolio effectively, and maximize your returns to help you achieve your investment goals.",
+        "Nonec pede justo fringilla vel aliquet nec vulputate eget arcu in enim justo rhoncus ut imperdiet venenatis vitae justo.",
       delay: 450,
     },
   ];

@@ -187,7 +187,6 @@ export const createResidency = async (data, token) => {
         },
       }
     );
-    console.log("Response from server:", res.data);
     return res.data;
   } catch (error) {
     console.log("error from server:", error);
