@@ -20,7 +20,7 @@ Make sure you have the following software installed on your machine:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/BaiyangChen/RealEstate.git
+    git clone https://github.com/mengchenghui123/mtlrealty.git
     cd client and cd server
     ```
 
