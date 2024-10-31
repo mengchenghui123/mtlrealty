@@ -29,7 +29,7 @@ const CommercialDetail = () => {
   }
 
   const commercial = data.find((p) => p.id === id);
-  if (!commercial) {
+  if (isError) {
     return (
       <div className="container mt-5">
         <h2>commercial Not Found</h2>
@@ -102,7 +102,10 @@ const CommercialDetail = () => {
                     <div className="single detail-wrapper mr-2">
                       <div className="detail-wrapper-body">
                         <div className="listing-title-bar">
-                          <h4>${commercial.price.toLocaleString("en-US")}</h4>
+                          <h4>
+                            ${Number(commercial.price).toLocaleString("en-US")}
+                            {commercial.taxed === false ? "+ tax" : ""}
+                          </h4>
                           <div className="mt-0"></div>
                         </div>
                       </div>

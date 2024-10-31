@@ -215,6 +215,15 @@ const FranchiseModifier = () => {
     }
   };
 
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    console.log(`${name} changed to:`, checked);
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: checked, // 更新 taxed 属性为 true 或 false
+    }));
+  };
+
   const handleNewImage = () => {
     selectedImageRef.current = "new";
     multiWidgetRef.current?.open();
@@ -234,11 +243,16 @@ const FranchiseModifier = () => {
                 <div className="detail clearfix">
                   <ul className="mb-0">
                     <li>
-                      <a>
+                      <Link to="/admin">
                         <i className="fa fa-map-marker" /> Dashboard
-                      </a>
+                      </Link>
                     </li>
-
+                    <li>
+                      <Link to="/admin/FeaturedModifier">
+                        <i className="fa fa-list" aria-hidden="true" />
+                        Featured
+                      </Link>
+                    </li>
                     <li>
                       <Link to="/admin/FranchiseModifier">
                         <i className="fa fa-heart" aria-hidden="true" />
@@ -402,6 +416,17 @@ const FranchiseModifier = () => {
                         placeholder="Description"
                         className="form-control"
                       />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>
+                        <input
+                          type="checkbox"
+                          name="isFeature"
+                          checked={formData.isFeature} // 绑定到 formData 中的 isFeature 属性
+                          onChange={handleCheckboxChange}
+                        />
+                        Make it Feature
+                      </label>
                     </div>
                     <div className="form-group mb-3">
                       <label>Size</label>

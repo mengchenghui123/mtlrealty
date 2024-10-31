@@ -62,6 +62,8 @@ model Commercial {
   title                  String
   totalInvestment        String
   type                   String
+  taxed                  Boolean
+  isFeature             Boolean?
 }
 
 model Franchise {
@@ -78,7 +80,8 @@ model Franchise {
   size         String
   targetPeople String
   title        String
-  manual       String
+  manual       String?
+  isFeature    Boolean?
 }
 
 model Residency {
@@ -87,10 +90,12 @@ model Residency {
   agentInfo      ResidencyAgentInfo
   amenities      String[]
   city           String
+  taxed          Boolean
+  isFeature     Boolean?
   /// Multiple data types found: Float: 20%, Int: 80% out of 5 sampled entries
   condoFee       Json?
   country        String
-  createdAt      DateTime            @db.Date
+  createdAt      DateTime            @default(now())
   description    String
   facilities     ResidencyFacilities
   image          String
@@ -111,8 +116,9 @@ model Residency {
   schoolTaxes    Json?
   title          String
   type           String
-  updatedAt      DateTime            @db.Date
+  updatedAt      DateTime            @updatedAt
   userEmail      String
+  owner       User     @relation("Owner", fields: [userEmail], references: [email])
   /// Multiple data types found: Int: 94.7%, BigInt: 5.3% out of 19 sampled entries
   yearBuild      Json
 
@@ -123,5 +129,6 @@ model User {
   id               String             @id @default(auto()) @map("_id") @db.ObjectId
   bookedVisits     UserBookedVisits[]
   email            String             @unique
-  favResidenciesID String[]
+  favResidenciesID String[]           @db.ObjectId
+  ownedResidencies Residency[] @relation("Owner")
 }

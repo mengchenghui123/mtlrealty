@@ -17,6 +17,8 @@ export const createFranchise = asyncHandler(async (req, res) => {
     maps,
     agentInfo,
     manual,
+    taxed,
+    isFeature,
   } = req.body.data;
 
   console.log(req.body.data);
@@ -36,6 +38,8 @@ export const createFranchise = asyncHandler(async (req, res) => {
         maps,
         agentInfo,
         manual,
+        taxed,
+        isFeature,
       },
     });
     res.send({ message: "Franchise created successfully", franchise });

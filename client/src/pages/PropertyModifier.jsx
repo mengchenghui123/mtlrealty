@@ -9,17 +9,50 @@ import useProperty from "../Hook/useProperty";
 import AddPropertyModal from "../components/AddPropertyModal/AddPropertyModal";
 import { Link } from "react-router-dom";
 import userDetailContext from "../context/userDetailContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const PropertyModifier = () => {
   const { data: propertyData, isError, isLoading } = useProperty();
+  const { user, isUserLoading } = useAuth0();
   const [currentPage, setCurrentPage] = useState(1);
   const cloudinaryRef = useRef();
   const multiWidgetRef = useRef();
   const [imageURL, setImageURL] = useState("");
   const [imageURLs, setImageURLs] = useState([]);
   const itemsPerPage = 5;
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    title: "",
+    type: "",
+    description: "",
+    price: "",
+    livingSpace: "",
+    lotSize: "",
+    yearBuild: "",
+    municipalTaxes: "",
+    schoolTaxes: "",
+    condoFee: "",
+    rooms: [], // 确保这里是一个数组
+    taxed: false,
+    isFeature: false,
+    facilities: {
+      bedrooms: "",
+      bathrooms: "",
+      parking: "",
+    },
+    agentInfo: {
+      name: "",
+      phoneNumber: "",
+      email: "",
+    },
+    amenities: [],
+    image: "",
+    images: [],
+    userEmail: "",
+  });
+  const [currentAmenity, setCurrentAmenity] = useState("");
+  const [amenityToEdit, setAmenityToEdit] = useState([]);
   const [editingId, setEditingId] = useState(null);
+  const [editMode, setEditMode] = useState(false);
   const [newRooms, setNewRooms] = useState([]);
   const [roomData, setRoomData] = useState({
     type: "",
@@ -31,6 +64,16 @@ const PropertyModifier = () => {
   const {
     userDetails: { token },
   } = useContext(userDetailContext);
+
+  useEffect(() => {
+    if (!isUserLoading && user) {
+      // 确保加载完成且 user 有数据
+      setFormData((prevData) => ({
+        ...prevData,
+        userEmail: user.email, // 更新 userEmail
+      }));
+    }
+  }, [isUserLoading, user]);
 
   useEffect(() => {
     cloudinaryRef.current = window.cloudinary; // 使用 window.cloudinary
@@ -90,7 +133,7 @@ const PropertyModifier = () => {
     );
   }
 
-  if (isLoading) {
+  if (isLoading || isUserLoading) {
     return <div style={{ height: "60vh" }} />;
   }
 
@@ -118,18 +161,158 @@ const PropertyModifier = () => {
   const handleDeleteResidence = async (id) => {
     try {
       await deleteResidency(id, token);
+      console.log("deleted");
       toast.success(`User ${id} deleted successfully`);
     } catch (error) {
       console.error("Failed to delete residency", error);
+      toast.error("Failed to delete residency");
     }
   };
 
   const handleEditClick = async (id) => {
     const propertyToEdit = propertyData.find((item) => item.id === id);
     if (propertyToEdit) {
-      setFormData(propertyToEdit);
+      const updatedFormData = {
+        title: propertyToEdit.title || "",
+        type: propertyToEdit.type || "",
+        description: propertyToEdit.description || "",
+        price: propertyToEdit.price || "",
+        livingSpace: propertyToEdit.livingSpace || "",
+        lotSize: propertyToEdit.lotSize || "",
+        yearBuild: propertyToEdit.yearBuild || "",
+        municipalTaxes: propertyToEdit.municipalTaxes || "",
+        schoolTaxes: propertyToEdit.schoolTaxes || "",
+        condoFee: propertyToEdit.condoFee || "",
+        rooms: propertyToEdit.rooms || [],
+        taxed: propertyToEdit.taxed ?? false,
+        facilities: {
+          bedrooms: propertyToEdit.facilities?.bedrooms || "",
+          bathrooms: propertyToEdit.facilities?.bathrooms || "",
+          parking: propertyToEdit.facilities?.parking || "",
+        },
+        agentInfo: {
+          name: propertyToEdit.agentInfo?.name || "",
+          phoneNumber: propertyToEdit.agentInfo?.phoneNumber || "",
+          email: propertyToEdit.agentInfo?.email || "",
+        },
+        amenities: propertyToEdit.amenities || [],
+        image: propertyToEdit.image || "",
+        images: propertyToEdit.images || [],
+        userEmail: propertyToEdit.userEmail || "",
+      };
+      setFormData(updatedFormData);
       setEditingId(id);
+      setNewRooms(updatedFormData.rooms);
+      setAmenityToEdit(updatedFormData.amenities);
+      setEditMode(true);
     }
+  };
+
+  const handleRoomEditChange = (e, index) => {
+    const { name, value } = e.target;
+    if (editMode) {
+      setNewRooms((prevRooms) => {
+        const updatedRooms = [...prevRooms];
+        updatedRooms[index] = { ...updatedRooms[index], [name]: value };
+        return updatedRooms;
+      });
+    }
+  };
+  const saveRooms = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      rooms: newRooms,
+    }));
+    setEditMode(false);
+  };
+
+  const handleRoomAddChange = (e) => {
+    const { name, value } = e.target;
+    setRoomData((prevRoom) => ({
+      ...prevRoom,
+      [name]: value,
+    }));
+  };
+
+  const AddRoom = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      rooms: [...prevData.rooms, roomData], // 将 roomData 添加到 formData 的 rooms 数组中
+    }));
+
+    // 清空 roomData
+    setRoomData({
+      type: "",
+      level: "",
+      dimensions: "",
+      flooring: "",
+    });
+  };
+
+  const removeRoom = (index) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      rooms: prevData.rooms.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleAmenityChange = (e) => {
+    setCurrentAmenity(e.target.value);
+  };
+
+  const handleAddAmenity = () => {
+    if (currentAmenity.trim()) {
+      // 检查输入是否为空
+      setFormData((prevData) => ({
+        ...prevData,
+        amenities: [...prevData.amenities, currentAmenity],
+      }));
+    }
+    setCurrentAmenity("");
+  };
+
+  const handleAmenityEditChange = (e, index) => {
+    const updateAmenities = [...amenityToEdit];
+    updateAmenities[index] = e.target.value;
+    setAmenityToEdit(updateAmenities);
+  };
+
+  const handleEditAmenity = (index) => {
+    // 检查 `amenityToEdit` 和索引
+    console.log("Current amenities to edit:", amenityToEdit); // 打印当前的 amenities
+    console.log("Editing index:", index); // 打印正在编辑的索引
+
+    if (amenityToEdit.length > 0 && index < amenityToEdit.length) {
+      setFormData((prevData) => {
+        const updatedAmenities = [...prevData.amenities];
+        updatedAmenities[index] = amenityToEdit[index]; // 更新特定的 amenity
+        console.log("Updated amenities:", updatedAmenities); // 打印更新后的值
+        return {
+          ...prevData,
+          amenities: updatedAmenities,
+        };
+      });
+    } else {
+      console.warn("No amenities to update or index is out of bounds."); // 警告信息
+    }
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: checked, // 更新 taxed 属性为 true 或 false
+    }));
+  };
+
+  const handleSelectMainImage = () => {
+    selectedImageRef.current = "main"; // 标记为主图
+    multiWidgetRef.current.open(); // 打开上传窗口
+  };
+
+  const handleSelectOtherImage = (index) => {
+    selectedImageRef.current = `sub-${index}`; // 标记为要替换的附加图像的索引
+    multiWidgetRef.current.open(); // 打开上传窗口
   };
 
   const handleFormChange = (e) => {
@@ -156,17 +339,6 @@ const PropertyModifier = () => {
           [agentKey]: value, // 更新 agentInfo 的相应字段
         },
       }));
-    } else if (name.startsWith("amenities.")) {
-      const index = parseInt(name.split(".")[1], 10);
-      setFormData((prevData) => {
-        const updatedAmenities = [...(prevData.amenities || [])];
-        updatedAmenities[index] = value;
-
-        return {
-          ...prevData,
-          amenities: updatedAmenities,
-        };
-      });
     } else {
       setFormData((prevData) => ({
         ...prevData,
@@ -187,38 +359,6 @@ const PropertyModifier = () => {
             : value, // 其他字段保持为字符串（如有）
       }));
     }
-  };
-
-  const AddRoom = () => {
-    setFormData((prev) => ({
-      ...prev,
-      rooms: prev.rooms
-        ? [...prev.rooms, { type: "", level: "", dimensions: "", flooring: "" }]
-        : [{ type: "", level: "", dimensions: "", flooring: "" }],
-    }));
-    setNewRoom({
-      type: "",
-      level: "",
-      dimensions: "",
-      flooring: "",
-    });
-  };
-
-  const removeRoom = (index) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      rooms: prevData.rooms.filter((_, i) => i !== index),
-    }));
-  };
-
-  const handleSelectMainImage = () => {
-    selectedImageRef.current = "main"; // 标记为主图
-    multiWidgetRef.current.open(); // 打开上传窗口
-  };
-
-  const handleSelectOtherImage = (index) => {
-    selectedImageRef.current = `sub-${index}`; // 标记为要替换的附加图像的索引
-    multiWidgetRef.current.open(); // 打开上传窗口
   };
 
   const handleFormSubmit = async (e) => {
@@ -242,16 +382,16 @@ const PropertyModifier = () => {
     selectedImageRef.current = "new";
     multiWidgetRef.current?.open();
   };
-
   const handleFormAdd = async (e) => {
     e.preventDefault();
+    console.log("before data:", formData);
     if (formData) {
       try {
         await createResidency(formData, token);
         toast.success("Property created successfully!");
       } catch (err) {
-        console.error("Error creating property:", error);
         toast.error("Failed to create property");
+        console.log("after data:", formData);
       }
     } else {
       return;
@@ -260,6 +400,7 @@ const PropertyModifier = () => {
 
   const handleClearForm = () => {
     setFormData({
+      id: "",
       title: "",
       type: "",
       description: "",
@@ -270,6 +411,7 @@ const PropertyModifier = () => {
       municipalTaxes: 0,
       schoolTaxes: 0,
       condoFee: 0,
+      taxed: false,
       rooms: [],
       facilities: {
         bedrooms: 0,
@@ -285,6 +427,11 @@ const PropertyModifier = () => {
       image: "",
       images: [],
     });
+    setEditMode(false);
+    setNewRooms([]);
+    setRoomData([]);
+    setAmenityToSubmit([]);
+    setCurrentAmenity([]);
   };
   return (
     <div id="wrapper" className="int_main_wraapper">
@@ -297,11 +444,16 @@ const PropertyModifier = () => {
                 <div className="detail clearfix">
                   <ul className="mb-0">
                     <li>
-                      <a>
+                      <Link to="/admin">
                         <i className="fa fa-map-marker" /> Dashboard
-                      </a>
+                      </Link>
                     </li>
-
+                    <li>
+                      <Link to="/admin/FeaturedModifier">
+                        <i className="fa fa-list" aria-hidden="true" />
+                        Featured
+                      </Link>
+                    </li>
                     <li>
                       <Link to="/admin/FranchiseModifier">
                         <i className="fa fa-heart" aria-hidden="true" />
@@ -366,7 +518,7 @@ const PropertyModifier = () => {
                           </div>
                         </td>
                         <td>{item.type}</td>
-                        <td>{item.totalInvestment}</td>
+                        <td>{item.price}</td>
                         <td className="actions">
                           <a
                             onClick={() => handleEditClick(item.id)}
@@ -491,6 +643,72 @@ const PropertyModifier = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
+                      <label>
+                        <input
+                          type="checkbox"
+                          name="taxed"
+                          checked={formData.taxed} // 绑定到 formData 中的 taxed 属性
+                          onChange={handleCheckboxChange}
+                        />
+                        Price includes tax
+                      </label>
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>
+                        <input
+                          type="checkbox"
+                          name="isFeature"
+                          checked={formData.isFeature} // 绑定到 formData 中的 isFeature 属性
+                          onChange={handleCheckboxChange}
+                        />
+                        Make it Feature
+                      </label>
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>Address</label>
+                      <input
+                        type="text"
+                        name="address"
+                        value={formData.address || ""}
+                        className="form-control"
+                        onChange={handleFormChange}
+                        placeholder="address"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>Country</label>
+                      <input
+                        type="text"
+                        name="country"
+                        value={formData.country || ""}
+                        className="form-control"
+                        onChange={handleFormChange}
+                        placeholder="country"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>City</label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={formData.city || ""}
+                        className="form-control"
+                        onChange={handleFormChange}
+                        placeholder="city"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>mlsNumber</label>
+                      <input
+                        type="text"
+                        name="mlsNumber"
+                        value={formData.mlsNumber || ""}
+                        onChange={handleFormChange}
+                        placeholder="mlsNumber"
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="form-group mb-3">
                       <label>livingSpace</label>
                       <input
                         type="number"
@@ -562,18 +780,29 @@ const PropertyModifier = () => {
                         step="any"
                       />
                     </div>
+                    <div className="form-group mb-3">
+                      <label>Property Type</label>
+                      <input
+                        type="text"
+                        name="propertyType"
+                        value={formData.propertyType || ""}
+                        className="form-control"
+                        onChange={handleFormChange}
+                        placeholder="Condo/House/Appartment"
+                      />
+                    </div>
                     <h4>Rooms</h4>
-                    {formData.rooms && formData.rooms.length > 0 ? (
-                      formData.rooms.map((room, index) => (
+                    {newRooms && newRooms.length > 0 ? (
+                      newRooms.map((room, index) => (
                         <div key={index} className="room-form mb-4">
                           <h4>Room {index + 1}</h4>
                           <div className="form-group mb-3">
                             <label>Room Type</label>
                             <input
                               type="text"
-                              name={room.type}
-                              value={room.type}
-                              onChange={(e) => handleFormChange(e, index)}
+                              name="type"
+                              value={room.type || ""}
+                              onChange={(e) => handleRoomEditChange(e, index)}
                               placeholder="Type"
                               className="form-control"
                             />
@@ -582,9 +811,9 @@ const PropertyModifier = () => {
                             <label>Level</label>
                             <input
                               type="text"
-                              name={room.level}
-                              value={room.level}
-                              onChange={(e) => handleFormChange(e, index)}
+                              name="level"
+                              value={room.level || ""}
+                              onChange={(e) => handleRoomEditChange(e, index)}
                               placeholder="Level"
                               className="form-control"
                             />
@@ -593,9 +822,9 @@ const PropertyModifier = () => {
                             <label>Dimensions</label>
                             <input
                               type="text"
-                              name={room.dimensions}
-                              value={room.dimensions}
-                              onChange={(e) => handleFormChange(e, index)}
+                              name="dimensions"
+                              value={room.dimensions || ""}
+                              onChange={(e) => handleRoomEditChange(e, index)}
                               placeholder="Dimensions"
                               className="form-control"
                             />
@@ -604,9 +833,9 @@ const PropertyModifier = () => {
                             <label>Flooring</label>
                             <input
                               type="text"
-                              name={room.flooring}
-                              value={room.flooring}
-                              onChange={(e) => handleFormChange(e, index)}
+                              name="flooring"
+                              value={room.flooring || ""}
+                              onChange={(e) => handleRoomEditChange(e, index)}
                               placeholder="Flooring"
                               className="form-control"
                             />
@@ -618,6 +847,13 @@ const PropertyModifier = () => {
                           >
                             Remove Room
                           </button>
+                          <button
+                            type="button"
+                            onClick={saveRooms}
+                            className="btn btn-danger"
+                          >
+                            Save Rooms
+                          </button>
                         </div>
                       ))
                     ) : (
@@ -627,9 +863,9 @@ const PropertyModifier = () => {
                           <label>Room Type</label>
                           <input
                             type="text"
-                            name={formData.rooms.type}
-                            value={""} // 空字符串，表明没有值
-                            onChange={(e) => handleFormChange(e, 0)} // 传递0作为索引
+                            name="type"
+                            value={roomData.type || ""}
+                            onChange={handleRoomAddChange}
                             placeholder="Type"
                             className="form-control"
                           />
@@ -638,9 +874,9 @@ const PropertyModifier = () => {
                           <label>Level</label>
                           <input
                             type="text"
-                            name={formData.rooms.level}
-                            value={""} // 空字符串，表明没有值
-                            onChange={(e) => handleFormChange(e, 0)} // 传递0作为索引
+                            name="level"
+                            value={roomData.level || ""}
+                            onChange={handleRoomAddChange}
                             placeholder="Level"
                             className="form-control"
                           />
@@ -649,9 +885,9 @@ const PropertyModifier = () => {
                           <label>Dimensions</label>
                           <input
                             type="text"
-                            name={formData.room.dimensions}
-                            value={""} // 空字符串，表明没有值
-                            onChange={(e) => handleFormChange(e, 0)} // 传递0作为索引
+                            name="dimensions"
+                            value={roomData.dimensions || ""}
+                            onChange={handleRoomAddChange}
                             placeholder="Dimensions"
                             className="form-control"
                           />
@@ -660,16 +896,16 @@ const PropertyModifier = () => {
                           <label>Flooring</label>
                           <input
                             type="text"
-                            name={formData.room.flooring}
-                            value={""} // 空字符串，表明没有值
-                            onChange={(e) => handleFormChange(e, 0)} // 传递0作为索引
+                            name="flooring"
+                            value={roomData.flooring || ""}
+                            onChange={handleRoomAddChange}
                             placeholder="Flooring"
                             className="form-control"
                           />
                         </div>
                         <button
                           type="button"
-                          onClick={AddRoom} // 删除第一个房间
+                          onClick={AddRoom}
                           className="btn btn-danger"
                         >
                           Add Room
@@ -760,18 +996,25 @@ const PropertyModifier = () => {
                       />
                     </div>
                     <h4>Amenities</h4>
-                    {formData.amenities && formData.amenities.length > 0 ? (
-                      formData.amenities.map((amenity, index) => (
+                    {editMode && amenityToEdit.length > 0 ? (
+                      amenityToEdit.map((amenity, index) => (
                         <div className="form-group mb-3" key={index}>
                           <label>Amenity {index + 1}</label>
                           <input
                             type="text"
-                            name={`amenities.${index}`} // 使用数组索引作为字段名
-                            value={amenity}
-                            onChange={handleFormChange}
+                            name="amenity" // 使用数组索引作为字段名
+                            value={amenity || []}
+                            onChange={(e) => handleAmenityEditChange(e, index)}
                             className="form-control"
                             placeholder="Amenity"
                           />
+                          <button
+                            type="button"
+                            onClick={() => handleEditAmenity(index)}
+                            className="btn btn-primary mt-2"
+                          >
+                            Change Amenity
+                          </button>
                         </div>
                       ))
                     ) : (
@@ -779,19 +1022,20 @@ const PropertyModifier = () => {
                         <label>Amenity</label>
                         <input
                           type="text"
-                          name={`amenities.0`} // 第一个输入框
-                          value={
-                            formData.amenities
-                              ? formData.amenities[0] || ""
-                              : ""
-                          }
-                          onChange={handleFormChange}
+                          value={currentAmenity || []}
+                          onChange={handleAmenityChange}
                           className="form-control"
                           placeholder="Amenity"
                         />
+                        <button
+                          type="button"
+                          onClick={handleAddAmenity}
+                          className="btn btn-primary mt-2"
+                        >
+                          Add Amenity
+                        </button>
                       </div>
                     )}
-
                     <div className="form-group mb-3">
                       <label>Main Image</label>
                       <div className="d-flex align-items-center">
@@ -807,7 +1051,11 @@ const PropertyModifier = () => {
                           className="mr-2"
                           onClick={handleSelectMainImage}
                         />
-                        <button onClick={handleSelectMainImage}>
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          onClick={handleSelectMainImage}
+                        >
                           Main Image
                         </button>
                       </div>
@@ -831,7 +1079,11 @@ const PropertyModifier = () => {
                             />
                           </div>
                         ))}
-                        <button onClick={handleNewImage}>
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          onClick={handleNewImage}
+                        >
                           Upload Sub image
                         </button>
                       </div>

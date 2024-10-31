@@ -233,6 +233,7 @@ const BrandPage = () => {
                       Franchise Fee:
                     </span>
                     <span className="det">${franchise.franchiseFee}</span>
+                    {franchise.taxed === false ? " + tax" : ""}
                   </li>
                   <li>
                     <span className="font-weight-bold mr-1">Sales:</span>

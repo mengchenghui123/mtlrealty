@@ -20,6 +20,8 @@ export const createCommercial = asyncHandler(async (req, res) => {
     type,
     city,
     agentInfo,
+    taxed,
+    isFeature,
   } = req.body.data;
   console.log(req.body.data);
 
@@ -42,6 +44,8 @@ export const createCommercial = asyncHandler(async (req, res) => {
         type,
         city,
         agentInfo,
+        taxed,
+        isFeature,
       },
     });
     res.send({ message: "Commercial created successfully", commercial });

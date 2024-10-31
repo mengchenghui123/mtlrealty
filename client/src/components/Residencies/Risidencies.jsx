@@ -18,7 +18,7 @@ export const Risidencies = () => {
     isLoading: isCommercialLoading,
   } = useCommercial();
   const propertyChunks = [];
-  const title = ["Residential", "Franchise", "Commercial"];
+  const title = ["Residential", "Commercial", "Franchise"];
   const chunkSize = 6;
 
   if (isError || isFranchiseError || iscommercialError) {
@@ -40,32 +40,23 @@ export const Risidencies = () => {
     : [];
   const combineData = [
     ...limitedData,
-    ...limitedFranchiseData,
     ...limitedCommercialData,
+    ...limitedFranchiseData,
   ];
 
   const totalProperties =
     limitedData.length +
-    limitedFranchiseData.length +
-    limitedCommercialData.length;
+    limitedCommercialData.length +
+    limitedFranchiseData.length;
 
   for (let i = 0; i < totalProperties; i += chunkSize) {
     propertyChunks.push(combineData.slice(i, i + chunkSize));
   }
 
-  console.log(propertyChunks);
-
   return (
     <section className="r-wrapper">
       {propertyChunks.map((chunk, index) => (
         <React.Fragment key={index}>
-          {index === 1 && (
-            <div key="services" className="property-section">
-              <div className="paddings innerwidth r-container">
-                <PropertyServices />
-              </div>
-            </div>
-          )}
           <div key={title[index]} className="property-section">
             <div className="paddings innerwidth r-container">
               <PropertyGrid
@@ -76,6 +67,11 @@ export const Risidencies = () => {
           </div>
         </React.Fragment>
       ))}
+      <div key="services" className="property-section">
+        <div className="paddings innerwidth r-container">
+          <PropertyServices />
+        </div>
+      </div>
     </section>
   );
 };

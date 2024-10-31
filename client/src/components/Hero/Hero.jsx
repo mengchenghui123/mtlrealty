@@ -1,13 +1,49 @@
 import { useEffect } from "react";
-import useProperty from "../../Hook/useProperty";
 import { useNavigate } from "react-router-dom";
+import useProperty from "../../Hook/useProperty";
+import useCommercial from "../../Hook/useCommercial";
+import useFranchise from "../../Hook/useFranchise";
+
+import Swiper from "swiper/bundle";
 
 const Hero = () => {
+  const {
+    data: commercialData,
+    isError: commercialError,
+    isLoading: commercialLoading,
+  } = useCommercial();
   const { data, isError, isLoading } = useProperty();
+  const {
+    data: franchiseData,
+    isError: franchiseError,
+    isLoading: franchiseLoading,
+  } = useFranchise();
   const navigate = useNavigate();
 
+  const featuredProperties = [
+    ...(commercialData
+      ?.filter((property) => property.isFeature)
+      .map((property) => ({
+        ...property,
+        typeTag: "Commercial", // 为商业物业添加标签
+      })) || []),
+    ...(data
+      ?.filter((property) => property.isFeature)
+      .map((property) => ({
+        ...property,
+        typeTag: "Residential", // 为住宅物业添加标签
+      })) || []),
+    ...(franchiseData
+      ?.filter((property) => property.isFeature)
+      .map((property) => ({
+        ...property,
+        typeTag: "Franchise", // 为特许经营物业添加标签
+      })) || []),
+  ];
+
   useEffect(() => {
-    if (!isLoading && !isError && data.length > 0) {
+    // 确保 Swiper 在数据加载完成后再初始化
+    if (!isLoading && featuredProperties.length > 0) {
       new Swiper(".swiper-container", {
         speed: 1000,
         loop: true,
@@ -18,17 +54,11 @@ const Hero = () => {
           prevEl: ".swiper-button-prev",
         },
       });
-    } else {
-      console.log("initializing data");
     }
-  }, [isLoading, isError, data]);
+  }, [isLoading, featuredProperties]);
 
-  if (isError) {
-    return (
-      <div className="wrapper">
-        <span>Error loading Properties</span>
-      </div>
-    );
+  if (commercialError || isError || franchiseError) {
+    return <div>Error loading properties.</div>;
   }
 
   const heroProperty = data
@@ -39,8 +69,21 @@ const Hero = () => {
         .slice(0, 5)
     : [];
 
-  const handleCardClick = (id) => {
-    navigate(`/property/${id}`);
+  const handleCardClick = (property) => {
+    switch (property.typeTag) {
+      case "Residential":
+        navigate(`/property/${property.id}`);
+        break;
+      case "Commercial":
+        navigate(`/commercial/${property.id}`);
+        break;
+      case "Franchise":
+        navigate(`/brands/${property.id}`);
+        break;
+      default:
+        navigate(`/property/${property.id}`); // 默认情况下导航到住宅路径
+        break;
+    }
   };
 
   return (
@@ -55,68 +98,172 @@ const Hero = () => {
                   <div className="swiper-container" data-aos="fade-right">
                     <div className="swiper-wrapper">
                       {isLoading
-                        ? Array(5).fill(null)
-                        : heroProperty.map((property) => (
+                        ? Array(featuredProperties.length).fill(null)
+                        : featuredProperties.map((property) => (
                             <div className="swiper-slide" key={property.id}>
                               <div className="swiper_imgbox imgbox1">
                                 <div className="swipper_img">
-                                  <h4>
-                                    For {property.type} <span>REALTY</span>
-                                  </h4>
-                                  <h2>{property.title}</h2>
-                                  <h3>
-                                    ${property.price.toLocaleString("en-US")}
-                                    {property.type === "Rent" ? " / Month" : ""}
-                                    <span className="banner_span1" />
-                                  </h3>
-                                  <p>
-                                    <i className="fa fa-map-marker mr-3" />
-                                    {property.address}
-                                  </p>
-                                  <ul className="homes-list clearfix">
-                                    <li>
-                                      <i
-                                        className="fa fa-bed"
-                                        aria-hidden="true"
-                                      />
-                                      <span>
-                                        {property.facilities.bedrooms}
-                                      </span>
-                                    </li>
-                                    <li>
-                                      <i
-                                        className="fa fa-bath"
-                                        aria-hidden="true"
-                                      />
-                                      <span>
-                                        {property.facilities.bathrooms}
-                                      </span>
-                                    </li>
-                                    <li>
-                                      <i
-                                        className="fa fa-object-group"
-                                        aria-hidden="true"
-                                      />
-                                      <span>{property.livingSpace} sq ft</span>
-                                    </li>
-                                    <li>
-                                      <i
-                                        className="fas fa-warehouse"
-                                        aria-hidden="true"
-                                      />
-                                      <span>{property.parking || 0}</span>
-                                    </li>
-                                  </ul>
-                                  <a
-                                    className="int_btn"
-                                    onClick={() => handleCardClick(property.id)}
-                                  >
-                                    View Property{" "}
-                                    <span className="btn_caret">
-                                      <i className="fas fa-caret-right" />
-                                    </span>
-                                  </a>
-                                  <h1>MTL</h1>
+                                  {property.typeTag === "Residential" && (
+                                    <>
+                                      <h4>
+                                        For {property.type} <span>REALTY</span>
+                                      </h4>
+                                      <h2>{property.title}</h2>
+                                      <h3>
+                                        $
+                                        {property.price.toLocaleString("en-US")}
+                                        {property.type === "Rent"
+                                          ? " / Month"
+                                          : ""}
+                                        <span className="banner_span1" />
+                                      </h3>
+                                      <p>
+                                        <i className="fa fa-map-marker mr-3" />
+                                        {property.address}
+                                      </p>
+                                      <ul className="homes-list clearfix">
+                                        <li>
+                                          <i
+                                            className="fa fa-bed"
+                                            aria-hidden="true"
+                                          />
+                                          <span>
+                                            {property.facilities.bedrooms}
+                                          </span>
+                                        </li>
+                                        <li>
+                                          <i
+                                            className="fa fa-bath"
+                                            aria-hidden="true"
+                                          />
+                                          <span>
+                                            {property.facilities.bathrooms}
+                                          </span>
+                                        </li>
+                                        <li>
+                                          <i
+                                            className="fa fa-object-group"
+                                            aria-hidden="true"
+                                          />
+                                          <span>
+                                            {property.livingSpace} sq ft
+                                          </span>
+                                        </li>
+                                        <li>
+                                          <i
+                                            className="fas fa-warehouse"
+                                            aria-hidden="true"
+                                          />
+                                          <span>{property.parking || 0}</span>
+                                        </li>
+                                      </ul>
+                                      <a
+                                        className="int_btn"
+                                        onClick={() =>
+                                          handleCardClick(property)
+                                        }
+                                      >
+                                        View Property{" "}
+                                        <span className="btn_caret">
+                                          <i className="fas fa-caret-right" />
+                                        </span>
+                                      </a>
+                                      <h1>MTL</h1>
+                                    </>
+                                  )}
+
+                                  {/* 商业物业的内容 */}
+
+                                  {property.typeTag === "Commercial" && (
+                                    <>
+                                      <h4>
+                                        {property.type} <span>REALTY</span>
+                                      </h4>
+                                      <h2>{property.title}</h2>
+                                      <h3>
+                                        $
+                                        {property.price.toLocaleString("en-US")}
+                                        {property.type === "Commercial Leasing"
+                                          ? " / Month"
+                                          : ""}
+                                        {property.taxed ? " + tax" : ""}
+                                        <span className="banner_span1" />
+                                      </h3>
+                                      <p>
+                                        {property.type === "Commercial Leasing"
+                                          ? property.address
+                                          : ""}
+                                      </p>
+                                      <ul className="homes-list clearfix">
+                                        <li>
+                                          <span>{property.commercialType}</span>
+                                        </li>
+                                        <li>
+                                          <span>{property.city}</span>
+                                        </li>
+                                      </ul>
+                                      <a
+                                        className="int_btn"
+                                        onClick={() =>
+                                          handleCardClick(property)
+                                        }
+                                      >
+                                        View Property{" "}
+                                        <span className="btn_caret">
+                                          <i className="fas fa-caret-right" />
+                                        </span>
+                                      </a>
+                                      <h1>MTL</h1>
+                                    </>
+                                  )}
+
+                                  {/* 特许经营物业的内容 */}
+                                  {property.typeTag === "Franchise" && (
+                                    <>
+                                      <h4>
+                                        Franchise <span>REALTY</span>
+                                      </h4>
+                                      <h2>{property.title}</h2>
+                                      <h3>
+                                        $
+                                        {property.franchiseFee.toLocaleString(
+                                          "en-US"
+                                        )}
+                                        <span className="banner_span1" />
+                                      </h3>
+                                      <p>{property.targetPeople}</p>
+                                      <ul className="homes-list clearfix">
+                                        <li>
+                                          <span>
+                                            {property.rent &&
+                                            property.rent !== "N/A"
+                                              ? property.rent
+                                              : ""}
+                                          </span>
+                                        </li>
+                                        <li>
+                                          <span>
+                                            {property.size &&
+                                            property.size !== "N/A"
+                                              ? property.rent
+                                              : ""}
+                                          </span>
+                                        </li>
+                                      </ul>
+                                      <a
+                                        className="int_btn"
+                                        onClick={() =>
+                                          handleCardClick(property)
+                                        }
+                                      >
+                                        View Property{" "}
+                                        <span className="btn_caret">
+                                          <i className="fas fa-caret-right" />
+                                        </span>
+                                      </a>
+                                      <h1>MTL</h1>
+                                    </>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -131,8 +278,8 @@ const Hero = () => {
                   <div className="swiper-container" data-aos="fade-left">
                     <div className="swiper-wrapper">
                       {isLoading
-                        ? Array(5).fill(null)
-                        : heroProperty.map((property) => (
+                        ? Array(featuredProperties.length).fill(null)
+                        : featuredProperties.map((property) => (
                             <div className="swiper-slide" key={property.id}>
                               <div className="swiper_contbox">
                                 <div className="swipper_conntent">

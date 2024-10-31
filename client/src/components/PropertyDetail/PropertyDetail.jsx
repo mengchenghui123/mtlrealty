@@ -162,7 +162,13 @@ export const PropertyDetail = () => {
                     <div className="single detail-wrapper mr-2">
                       <div className="detail-wrapper-body">
                         <div className="listing-title-bar">
-                          <h4>${property.price.toLocaleString("en-US")}</h4>
+                          <h4>
+                            {`${property.price.toLocaleString("en-US")}`}
+                            {property.type === "Sale" &&
+                            property.taxed === false
+                              ? " + tax"
+                              : ""}
+                          </h4>
                           <div className="mt-0"></div>
                         </div>
                       </div>

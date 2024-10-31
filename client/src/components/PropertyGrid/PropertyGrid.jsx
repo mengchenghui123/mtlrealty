@@ -12,7 +12,7 @@ const PropertyGrid = ({ properties, title }) => {
       navigate(`/property/${id}`);
     } else if (title === "Franchise") {
       navigate(`/brands/${id}`);
-    } else if (title === "Franchise") {
+    } else if (title === "Commercial") {
       navigate(`/commercial/${id}`);
     }
   };
@@ -80,7 +80,6 @@ const PropertyGrid = ({ properties, title }) => {
   };
 
   return (
-    // <!-- START SECTION PROPERTIES FOR SALE -->
     <section className="recently portfolio featured bg-white-1 rec-pro">
       <div className="container-fluid">
         <div className="row">
@@ -99,7 +98,11 @@ const PropertyGrid = ({ properties, title }) => {
               >
                 {title === "Residential" ? (
                   <div className="landscapes listing-item compact thehp-1">
-                    <div className="recent-16" style={{ cursor: "pointer" }}>
+                    <div
+                      className="recent-16"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleCardClick(property.id)}
+                    >
                       <div
                         className="recent-img16 img-fluid img-center"
                         style={{
@@ -111,7 +114,6 @@ const PropertyGrid = ({ properties, title }) => {
                           width: "100%", // 设置宽度为100%，适应容器
                           position: "relative", // 设置为相对定位
                         }}
-                        onClick={() => handleCardClick(property.id)}
                       ></div>
 
                       <div className="recent-content" />
@@ -135,6 +137,9 @@ const PropertyGrid = ({ properties, title }) => {
                         <div className="recent-price mb-3">
                           {formatPrice(property.price)}
                           {property.type === "Rent" ? " / Month" : ""}
+                          {property.type === "Sale" && property.taxed === false
+                            ? " + tax"
+                            : ""}
                         </div>
                         <div className="house-details thehp-1">
                           <i className="fa fa-bed mr-1" aria-hidden="true" />{" "}
@@ -152,7 +157,11 @@ const PropertyGrid = ({ properties, title }) => {
                   </div>
                 ) : title === "Franchise" ? (
                   <div className="landscapes listing-item compact thehp-1">
-                    <div className="recent-16" style={{ cursor: "pointer" }}>
+                    <div
+                      className="recent-16"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleCardClick(property.id)}
+                    >
                       <div
                         className="recent-img16 img-fluid img-center"
                         style={{
@@ -164,7 +173,6 @@ const PropertyGrid = ({ properties, title }) => {
                           width: "100%", // 设置宽度为100%，适应容器
                           position: "relative", // 设置为相对定位
                         }}
-                        onClick={() => handleCardClick(property.id)}
                       ></div>
                       <div
                         style={{
@@ -192,7 +200,11 @@ const PropertyGrid = ({ properties, title }) => {
                   </div>
                 ) : title === "Commercial" ? (
                   <div className="landscapes listing-item compact thehp-1">
-                    <div className="recent-16" style={{ cursor: "pointer" }}>
+                    <div
+                      className="recent-16"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleCardClick(property.id)}
+                    >
                       <div
                         className="recent-img16 img-fluid img-center"
                         style={{
@@ -204,7 +216,6 @@ const PropertyGrid = ({ properties, title }) => {
                           width: "100%", // 设置宽度为100%，适应容器
                           position: "relative", // 设置为相对定位
                         }}
-                        onClick={() => handleCardClick(property.id)}
                       ></div>
                       <div
                         style={{
@@ -230,6 +241,7 @@ const PropertyGrid = ({ properties, title }) => {
                         <div className="recent-price mb-3">
                           {formatPrice(property.price)}
                           {property.type === "Rent" ? " Per Month" : ""}
+                          {property.taxed === false ? " + tax" : ""}
                         </div>
                       </div>
                     </div>

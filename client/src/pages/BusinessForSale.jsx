@@ -254,7 +254,8 @@ const BusinessForSale = () => {
                         {commercial.title}
                       </a>
                       <span style={{ marginLeft: "auto", fontWeight: "bold" }}>
-                        ${commercial.price.toLocaleString("en-CA")}
+                        ${Number(commercial.price).toLocaleString("en-CA")}
+                        {commercial.taxed === false ? "+ tax" : ""}
                       </span>
                     </h3>
                     <p className="homes-address mb-3">

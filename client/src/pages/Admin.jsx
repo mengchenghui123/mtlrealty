@@ -149,10 +149,15 @@ const Admin = () => {
                           <i className="fa fa-map-marker" /> Dashboard
                         </a>
                       </li>
-
+                      <li>
+                        <Link to="/admin/FeaturedModifier">
+                          <i className="fa fa-list" aria-hidden="true" />
+                          Featured
+                        </Link>
+                      </li>
                       <li>
                         <Link to="/admin/FranchiseModifier">
-                          <i className="fa fa-heart" aria-hidden="true" />
+                          <i className="fa fa-list" aria-hidden="true" />
                           Franchise
                         </Link>
                       </li>
@@ -168,12 +173,7 @@ const Admin = () => {
                           Property
                         </Link>
                       </li>
-                      <li>
-                        <a href="payment-method.html">
-                          <i className="fas fa-credit-card" />
-                          User
-                        </a>
-                      </li>
+
                       <li>
                         <a href="/">
                           <i className="fas fa-sign-out-alt" />
@@ -292,7 +292,7 @@ const Admin = () => {
                                   onClick={handleDelete}
                                   style={{ cursor: "pointer" }}
                                 >
-                                  <i class="far fa-trash-alt"></i>
+                                  <i className="far fa-trash-alt"></i>
                                 </a>
                               </td>
                             </tr>

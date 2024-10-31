@@ -6,6 +6,7 @@ export const createResidency = asyncHandler(async (req, res) => {
   const {
     title,
     description,
+    taxed,
     type,
     price,
     address,
@@ -14,6 +15,7 @@ export const createResidency = asyncHandler(async (req, res) => {
     livingSpace,
     lotSize,
     yearBuild,
+    city,
     country,
     municipalTaxes,
     schoolTaxes,
@@ -25,7 +27,9 @@ export const createResidency = asyncHandler(async (req, res) => {
     userEmail,
     agentInfo,
     amenities,
+    isFeature,
   } = req.body.data;
+  console.log("Request body:", req.body.data);
   if (rooms === null || typeof rooms !== "object") {
     return res.status(400).send({
       message: "Rooms field is required and must be a valid JSON object.",
@@ -38,12 +42,14 @@ export const createResidency = asyncHandler(async (req, res) => {
         description,
         type,
         price,
+        taxed,
         address,
         mlsNumber,
         propertyType,
         livingSpace,
         lotSize,
         yearBuild,
+        city,
         country,
         municipalTaxes,
         schoolTaxes,
@@ -54,6 +60,7 @@ export const createResidency = asyncHandler(async (req, res) => {
         images,
         agentInfo,
         amenities,
+        isFeature,
         owner: { connect: { email: userEmail } },
       },
     });

@@ -19,7 +19,6 @@ const Heart = ({ id }) => {
 
   useEffect(() => {
     setHeartColor(() => checkFavourites(id, favourites));
-    console.log("Current heart color:", heartColor);
   }, [favourites]);
 
   const { mutate } = useMutation({

@@ -12,7 +12,29 @@ import {
 
 const CommercialModifier = () => {
   const { data: commercialData, isError, isLoading } = useCommercial();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    Area: "",
+    EstimatedPaybackPeriod: "",
+    address: "",
+    agentInfo: {
+      name: "",
+      contact: "",
+    },
+    annualRevenue: "",
+    city: "",
+    commercialType: "",
+    description: "",
+    estimatedProfit: "",
+    image: "",
+    images: [],
+    mlsNumber: "",
+    price: "",
+    title: "",
+    totalInvestment: "",
+    type: "",
+    taxed: false,
+    isFeature: false,
+  });
   const [editingId, setEditingId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const cloudinaryRef = useRef();
@@ -178,6 +200,15 @@ const CommercialModifier = () => {
     }
   };
 
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    console.log(`${name} changed to:`, checked);
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: checked, // 更新 taxed 属性为 true 或 false
+    }));
+  };
+
   const handleFormAdd = async (e) => {
     e.preventDefault();
     if (formData) {
@@ -204,11 +235,16 @@ const CommercialModifier = () => {
                 <div className="detail clearfix">
                   <ul className="mb-0">
                     <li>
-                      <a>
+                      <Link to="/admin">
                         <i className="fa fa-map-marker" /> Dashboard
-                      </a>
+                      </Link>
                     </li>
-
+                    <li>
+                      <Link to="/admin/FeaturedModifier">
+                        <i className="fa fa-list" aria-hidden="true" />
+                        Featured
+                      </Link>
+                    </li>
                     <li>
                       <Link to="/admin/FranchiseModifier">
                         <i className="fa fa-heart" aria-hidden="true" />
@@ -253,7 +289,7 @@ const CommercialModifier = () => {
                     <tbody key={item.id}>
                       <tr>
                         <td className="image myelist">
-                          <a href="single-property-1.html">
+                          <a>
                             <img
                               alt="my-properties-3"
                               src={item.image}
@@ -264,7 +300,7 @@ const CommercialModifier = () => {
 
                         <td>
                           <div className="inner">
-                            <a href="single-property-1.html">
+                            <a>
                               <h2>{item.title}</h2>
                             </a>
                             <figure>
@@ -376,6 +412,17 @@ const CommercialModifier = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
+                      <label>
+                        <input
+                          type="checkbox"
+                          name="taxed"
+                          checked={formData.taxed} // 绑定到 formData 中的 taxed 属性
+                          onChange={handleCheckboxChange}
+                        />
+                        Price includes tax
+                      </label>
+                    </div>
+                    <div className="form-group mb-3">
                       <label>totalInvestment</label>
                       <input
                         type="text"
@@ -385,6 +432,17 @@ const CommercialModifier = () => {
                         placeholder="totalInvestment"
                         className="form-control"
                       />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label>
+                        <input
+                          type="checkbox"
+                          name="isFeature"
+                          checked={formData.isFeature} // 绑定到 formData 中的 isFeature 属性
+                          onChange={handleCheckboxChange}
+                        />
+                        Make it Feature
+                      </label>
                     </div>
                     <div className="form-group mb-3">
                       <label>Address</label>
